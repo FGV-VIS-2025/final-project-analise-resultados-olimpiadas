@@ -1,0 +1,21 @@
+:root {
+    --bg:     #f8f9fa;
+    --card:   #fff;
+    --primary:#003366;
+    --accent: #d4af37;
+    --text:   #242424;
+    --grid:   rgba(0, 0, 0, .06);
+    --radius: 12px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif; 
+}
+
+a {
+    color: var(--accent);
+}

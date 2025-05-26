@@ -25,34 +25,12 @@
 
 	<link	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
 			rel="stylesheet">
-
-	<style>
-	:root {
-		--bg:     #f8f9fa;
-		--card:   #fff;
-		--primary:#003366;
-		--accent: #d4af37;
-		--text:   #242424;
-		--grid:   rgba(0, 0, 0, .06);
-		--radius: 12px;
-	}
-
-	html, body {
-		margin: 0;
-		padding: 0;
-		background: var(--bg);
-		color: var(--text);
-		font-family: Poppins, sans-serif;
-	}
-
-	a { color: var(--accent); }
-	</style>
 </svelte:head>
 
 <div class="page">
 	<div class="title">
 		<h1>🏆 Olympic Results Analysis 🏅</h1>
-		<h3>Guilherme Buss & Guilherme Carvalho</h3>
+		<h3>Guilherme Buss, Guilherme Carvalho e Luís Felipe</h3>
 		<p>
 			Visualização da evolução do desempenho olímpico.<br>
 			Dataset:
@@ -121,7 +99,7 @@
 .page {
 	max-width: 1380px;
 	margin: auto;
-	padding: 3rem 1rem;
+	padding: 2rem 1rem;
 }
 
 .title h1 {
@@ -211,7 +189,7 @@
 	position: absolute;
 	left: 49%;
 	height: 10px;
-	top: 254px;
+	top: 300px;
 	display: block;
 	font-size: 0.68rem;
 	color: #777;
