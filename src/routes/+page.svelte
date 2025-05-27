@@ -8,8 +8,8 @@
 	let yMax = '';
     let selectedEvent = '';  
 
-	$: graphKey = measure + search + yMin + yMax;	/* force remount */
-
+	$: graphKey = measure + search + yMin + yMax;	
+	
 	import { base } from '$app/paths';
   	let csvUrl = `${base}/df_processed.csv`;
 

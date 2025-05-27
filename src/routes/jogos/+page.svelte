@@ -1,1 +1,4 @@
-oi
+<svelte:head>
+  <title>Jogos</title>
+</svelte:head>
+
