@@ -183,10 +183,10 @@
 
 
 #guide {
-	position: absolute;
+	position: relative;
 	left: 49%;
 	height: 10px;
-	top: 300px;
+	top: -20px;
 	display: block;
 	font-size: 0.68rem;
 	color: #777;
