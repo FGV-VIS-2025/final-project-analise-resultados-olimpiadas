@@ -348,7 +348,9 @@
 
     // Function to navigate to athlete details page
     function goToAthleteDetails(athleteName) {
-        goto(`/jogos?athlete=${encodeURIComponent(athleteName)}`);
+		const isGitHubPages = window.location.hostname.includes('github.io');
+    	const basePath = isGitHubPages ? '/final-project-analise-resultados-olimpiadas' : '';
+        goto(`${basePath}/jogos?athlete=${encodeURIComponent(athleteName)}`);
     }
 	
 </script>
