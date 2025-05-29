@@ -12,7 +12,7 @@
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.30.4",
 		"@types/d3": "^7.4.3",
-		"svelte": "^4.2.19",
+		"svelte": "^4.2.20",
 		"typescript": "^5.8.3",
 		"vite": "^4.5.13"
 	},
