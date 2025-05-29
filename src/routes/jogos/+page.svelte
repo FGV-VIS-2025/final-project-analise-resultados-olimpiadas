@@ -1,6 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
+  import { base } from '$app/paths';
+
+  let csvUrl = `${base}/medals_by_country.csv`;
 
   let data;
   let years = [];
@@ -15,7 +18,7 @@
   const medalColors = { GOLD: '#ffd700', SILVER: '#c0c0c0', BRONZE: '#cd7f32' };
 
   onMount(async () => {
-    data = await d3.csv('/medals_by_country.csv', d3.autoType);
+    data = await d3.csv(csvUrl, d3.autoType);
     years = Array.from(new Set(data.map(d => d.year))).sort((a, b) => a - b);
     selectedYear = years[0];
     drawChart();
