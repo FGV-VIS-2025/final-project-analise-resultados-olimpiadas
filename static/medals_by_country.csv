@@ -1,0 +1,3963 @@
+country_name,country_3_letter_code,slug_game,year,medal_type,count_medals
+Afghanistan,AFG,beijing-2008,2008,BRONZE,1
+Afghanistan,AFG,london-2012,2012,BRONZE,1
+Algeria,ALG,los-angeles-1984,1984,BRONZE,2
+Algeria,ALG,barcelona-1992,1992,BRONZE,1
+Algeria,ALG,barcelona-1992,1992,GOLD,1
+Algeria,ALG,atlanta-1996,1996,BRONZE,1
+Algeria,ALG,atlanta-1996,1996,GOLD,2
+Algeria,ALG,sydney-2000,2000,BRONZE,3
+Algeria,ALG,sydney-2000,2000,GOLD,1
+Algeria,ALG,sydney-2000,2000,SILVER,1
+Algeria,ALG,beijing-2008,2008,BRONZE,1
+Algeria,ALG,beijing-2008,2008,SILVER,1
+Algeria,ALG,london-2012,2012,GOLD,1
+Algeria,ALG,rio-2016,2016,SILVER,2
+Argentina,ARG,paris-1924,1924,BRONZE,2
+Argentina,ARG,paris-1924,1924,GOLD,1
+Argentina,ARG,paris-1924,1924,SILVER,3
+Argentina,ARG,amsterdam-1928,1928,BRONZE,1
+Argentina,ARG,amsterdam-1928,1928,GOLD,3
+Argentina,ARG,amsterdam-1928,1928,SILVER,3
+Argentina,ARG,los-angeles-1932,1932,GOLD,3
+Argentina,ARG,los-angeles-1932,1932,SILVER,1
+Argentina,ARG,berlin-1936,1936,BRONZE,3
+Argentina,ARG,berlin-1936,1936,GOLD,2
+Argentina,ARG,berlin-1936,1936,SILVER,2
+Argentina,ARG,london-1948,1948,BRONZE,1
+Argentina,ARG,london-1948,1948,GOLD,3
+Argentina,ARG,london-1948,1948,SILVER,3
+Argentina,ARG,helsinki-1952,1952,BRONZE,2
+Argentina,ARG,helsinki-1952,1952,GOLD,1
+Argentina,ARG,helsinki-1952,1952,SILVER,2
+Argentina,ARG,melbourne-1956,1956,BRONZE,1
+Argentina,ARG,melbourne-1956,1956,SILVER,1
+Argentina,ARG,rome-1960,1960,BRONZE,1
+Argentina,ARG,rome-1960,1960,SILVER,1
+Argentina,ARG,tokyo-1964,1964,SILVER,1
+Argentina,ARG,mexico-city-1968,1968,BRONZE,2
+Argentina,ARG,munich-1972,1972,SILVER,1
+Argentina,ARG,seoul-1988,1988,BRONZE,1
+Argentina,ARG,seoul-1988,1988,SILVER,1
+Argentina,ARG,barcelona-1992,1992,BRONZE,1
+Argentina,ARG,atlanta-1996,1996,BRONZE,1
+Argentina,ARG,atlanta-1996,1996,SILVER,2
+Argentina,ARG,sydney-2000,2000,BRONZE,2
+Argentina,ARG,sydney-2000,2000,SILVER,2
+Argentina,ARG,athens-2004,2004,BRONZE,4
+Argentina,ARG,athens-2004,2004,GOLD,2
+Argentina,ARG,beijing-2008,2008,BRONZE,4
+Argentina,ARG,beijing-2008,2008,GOLD,2
+Argentina,ARG,london-2012,2012,BRONZE,2
+Argentina,ARG,london-2012,2012,GOLD,1
+Argentina,ARG,london-2012,2012,SILVER,1
+Argentina,ARG,rio-2016,2016,GOLD,3
+Argentina,ARG,rio-2016,2016,SILVER,1
+Argentina,ARG,tokyo-2020,2020,BRONZE,2
+Argentina,ARG,tokyo-2020,2020,SILVER,1
+Armenia,ARM,atlanta-1996,1996,GOLD,1
+Armenia,ARM,atlanta-1996,1996,SILVER,1
+Armenia,ARM,sydney-2000,2000,BRONZE,1
+Armenia,ARM,beijing-2008,2008,BRONZE,4
+Armenia,ARM,beijing-2008,2008,SILVER,1
+Armenia,ARM,london-2012,2012,BRONZE,1
+Armenia,ARM,london-2012,2012,SILVER,1
+Armenia,ARM,rio-2016,2016,GOLD,1
+Armenia,ARM,rio-2016,2016,SILVER,3
+Armenia,ARM,tokyo-2020,2020,BRONZE,2
+Armenia,ARM,tokyo-2020,2020,SILVER,2
+Australasia,ANZ,london-1908,1908,BRONZE,2
+Australasia,ANZ,london-1908,1908,GOLD,1
+Australasia,ANZ,london-1908,1908,SILVER,2
+Australasia,ANZ,stockholm-1912,1912,BRONZE,3
+Australasia,ANZ,stockholm-1912,1912,GOLD,2
+Australasia,ANZ,stockholm-1912,1912,SILVER,2
+Australia,AUS,athens-1896,1896,GOLD,2
+Australia,AUS,paris-1900,1900,BRONZE,3
+Australia,AUS,paris-1900,1900,GOLD,2
+Australia,AUS,st-louis-1904,1904,BRONZE,1
+Australia,AUS,st-louis-1904,1904,SILVER,3
+Australia,AUS,antwerp-1920,1920,BRONZE,1
+Australia,AUS,antwerp-1920,1920,SILVER,2
+Australia,AUS,paris-1924,1924,BRONZE,2
+Australia,AUS,paris-1924,1924,GOLD,3
+Australia,AUS,paris-1924,1924,SILVER,1
+Australia,AUS,amsterdam-1928,1928,BRONZE,1
+Australia,AUS,amsterdam-1928,1928,GOLD,1
+Australia,AUS,amsterdam-1928,1928,SILVER,2
+Australia,AUS,los-angeles-1932,1932,BRONZE,1
+Australia,AUS,los-angeles-1932,1932,GOLD,3
+Australia,AUS,los-angeles-1932,1932,SILVER,1
+Australia,AUS,berlin-1936,1936,BRONZE,1
+Australia,AUS,london-1948,1948,BRONZE,5
+Australia,AUS,london-1948,1948,GOLD,2
+Australia,AUS,london-1948,1948,SILVER,6
+Australia,AUS,helsinki-1952,1952,BRONZE,3
+Australia,AUS,helsinki-1952,1952,GOLD,6
+Australia,AUS,helsinki-1952,1952,SILVER,2
+Australia,AUS,melbourne-1956,1956,BRONZE,14
+Australia,AUS,melbourne-1956,1956,GOLD,13
+Australia,AUS,melbourne-1956,1956,SILVER,8
+Australia,AUS,rome-1960,1960,BRONZE,6
+Australia,AUS,rome-1960,1960,GOLD,8
+Australia,AUS,rome-1960,1960,SILVER,8
+Australia,AUS,tokyo-1964,1964,BRONZE,10
+Australia,AUS,tokyo-1964,1964,GOLD,6
+Australia,AUS,tokyo-1964,1964,SILVER,2
+Australia,AUS,mexico-city-1968,1968,BRONZE,5
+Australia,AUS,mexico-city-1968,1968,GOLD,5
+Australia,AUS,mexico-city-1968,1968,SILVER,7
+Australia,AUS,munich-1972,1972,BRONZE,2
+Australia,AUS,munich-1972,1972,GOLD,8
+Australia,AUS,munich-1972,1972,SILVER,7
+Australia,AUS,montreal-1976,1976,BRONZE,4
+Australia,AUS,montreal-1976,1976,SILVER,1
+Australia,AUS,moscow-1980,1980,BRONZE,5
+Australia,AUS,moscow-1980,1980,GOLD,2
+Australia,AUS,moscow-1980,1980,SILVER,2
+Australia,AUS,los-angeles-1984,1984,BRONZE,12
+Australia,AUS,los-angeles-1984,1984,GOLD,4
+Australia,AUS,los-angeles-1984,1984,SILVER,8
+Australia,AUS,seoul-1988,1988,BRONZE,5
+Australia,AUS,seoul-1988,1988,GOLD,3
+Australia,AUS,seoul-1988,1988,SILVER,6
+Australia,AUS,barcelona-1992,1992,BRONZE,11
+Australia,AUS,barcelona-1992,1992,GOLD,7
+Australia,AUS,barcelona-1992,1992,SILVER,9
+Australia,AUS,lillehammer-1994,1994,BRONZE,1
+Australia,AUS,atlanta-1996,1996,BRONZE,23
+Australia,AUS,atlanta-1996,1996,GOLD,9
+Australia,AUS,atlanta-1996,1996,SILVER,9
+Australia,AUS,nagano-1998,1998,BRONZE,1
+Australia,AUS,sydney-2000,2000,BRONZE,17
+Australia,AUS,sydney-2000,2000,GOLD,16
+Australia,AUS,sydney-2000,2000,SILVER,25
+Australia,AUS,salt-lake-city-2002,2002,GOLD,2
+Australia,AUS,athens-2004,2004,BRONZE,17
+Australia,AUS,athens-2004,2004,GOLD,17
+Australia,AUS,athens-2004,2004,SILVER,16
+Australia,AUS,turin-2006,2006,BRONZE,1
+Australia,AUS,turin-2006,2006,GOLD,1
+Australia,AUS,beijing-2008,2008,BRONZE,17
+Australia,AUS,beijing-2008,2008,GOLD,14
+Australia,AUS,beijing-2008,2008,SILVER,15
+Australia,AUS,vancouver-2010,2010,GOLD,2
+Australia,AUS,vancouver-2010,2010,SILVER,1
+Australia,AUS,london-2012,2012,BRONZE,12
+Australia,AUS,london-2012,2012,GOLD,8
+Australia,AUS,london-2012,2012,SILVER,15
+Australia,AUS,sochi-2014,2014,BRONZE,1
+Australia,AUS,sochi-2014,2014,SILVER,2
+Australia,AUS,rio-2016,2016,BRONZE,10
+Australia,AUS,rio-2016,2016,GOLD,8
+Australia,AUS,rio-2016,2016,SILVER,11
+Australia,AUS,pyeongchang-2018,2018,BRONZE,1
+Australia,AUS,pyeongchang-2018,2018,SILVER,2
+Australia,AUS,tokyo-2020,2020,BRONZE,21
+Australia,AUS,tokyo-2020,2020,GOLD,17
+Australia,AUS,tokyo-2020,2020,SILVER,7
+Australia,AUS,beijing-2022,2022,BRONZE,1
+Australia,AUS,beijing-2022,2022,GOLD,1
+Australia,AUS,beijing-2022,2022,SILVER,2
+Austria,AUT,athens-1896,1896,BRONZE,2
+Austria,AUT,athens-1896,1896,GOLD,2
+Austria,AUT,athens-1896,1896,SILVER,1
+Austria,AUT,paris-1900,1900,BRONZE,3
+Austria,AUT,paris-1900,1900,SILVER,3
+Austria,AUT,st-louis-1904,1904,BRONZE,1
+Austria,AUT,st-louis-1904,1904,GOLD,1
+Austria,AUT,st-louis-1904,1904,SILVER,1
+Austria,AUT,london-1908,1908,BRONZE,1
+Austria,AUT,stockholm-1912,1912,BRONZE,2
+Austria,AUT,stockholm-1912,1912,SILVER,2
+Austria,AUT,paris-1924,1924,BRONZE,1
+Austria,AUT,chamonix-1924,1924,GOLD,2
+Austria,AUT,chamonix-1924,1924,SILVER,1
+Austria,AUT,paris-1924,1924,SILVER,3
+Austria,AUT,amsterdam-1928,1928,BRONZE,1
+Austria,AUT,st-moritz-1928,1928,BRONZE,1
+Austria,AUT,amsterdam-1928,1928,GOLD,2
+Austria,AUT,st-moritz-1928,1928,SILVER,3
+Austria,AUT,los-angeles-1932,1932,BRONZE,3
+Austria,AUT,lake-placid-1932,1932,GOLD,1
+Austria,AUT,los-angeles-1932,1932,GOLD,1
+Austria,AUT,lake-placid-1932,1932,SILVER,1
+Austria,AUT,los-angeles-1932,1932,SILVER,1
+Austria,AUT,berlin-1936,1936,BRONZE,2
+Austria,AUT,garmisch-partenkirchen-1936,1936,BRONZE,2
+Austria,AUT,berlin-1936,1936,GOLD,3
+Austria,AUT,garmisch-partenkirchen-1936,1936,GOLD,1
+Austria,AUT,berlin-1936,1936,SILVER,4
+Austria,AUT,garmisch-partenkirchen-1936,1936,SILVER,1
+Austria,AUT,london-1948,1948,BRONZE,3
+Austria,AUT,st-moritz-1948,1948,BRONZE,4
+Austria,AUT,london-1948,1948,GOLD,1
+Austria,AUT,st-moritz-1948,1948,GOLD,1
+Austria,AUT,st-moritz-1948,1948,SILVER,3
+Austria,AUT,helsinki-1952,1952,BRONZE,1
+Austria,AUT,oslo-1952,1952,BRONZE,2
+Austria,AUT,oslo-1952,1952,GOLD,2
+Austria,AUT,helsinki-1952,1952,SILVER,1
+Austria,AUT,oslo-1952,1952,SILVER,4
+Austria,AUT,cortina-d-ampezzo-1956,1956,BRONZE,4
+Austria,AUT,melbourne-1956,1956,BRONZE,2
+Austria,AUT,cortina-d-ampezzo-1956,1956,GOLD,4
+Austria,AUT,cortina-d-ampezzo-1956,1956,SILVER,3
+Austria,AUT,squaw-valley-1960,1960,BRONZE,3
+Austria,AUT,rome-1960,1960,GOLD,1
+Austria,AUT,squaw-valley-1960,1960,GOLD,1
+Austria,AUT,rome-1960,1960,SILVER,1
+Austria,AUT,squaw-valley-1960,1960,SILVER,2
+Austria,AUT,innsbruck-1964,1964,BRONZE,3
+Austria,AUT,innsbruck-1964,1964,GOLD,4
+Austria,AUT,innsbruck-1964,1964,SILVER,5
+Austria,AUT,grenoble-1968,1968,BRONZE,4
+Austria,AUT,mexico-city-1968,1968,BRONZE,2
+Austria,AUT,grenoble-1968,1968,GOLD,3
+Austria,AUT,grenoble-1968,1968,SILVER,4
+Austria,AUT,mexico-city-1968,1968,SILVER,2
+Austria,AUT,munich-1972,1972,BRONZE,2
+Austria,AUT,sapporo-1972,1972,BRONZE,2
+Austria,AUT,sapporo-1972,1972,GOLD,1
+Austria,AUT,munich-1972,1972,SILVER,1
+Austria,AUT,sapporo-1972,1972,SILVER,2
+Austria,AUT,innsbruck-1976,1976,BRONZE,2
+Austria,AUT,montreal-1976,1976,BRONZE,1
+Austria,AUT,innsbruck-1976,1976,GOLD,2
+Austria,AUT,innsbruck-1976,1976,SILVER,2
+Austria,AUT,lake-placid-1980,1980,BRONZE,2
+Austria,AUT,moscow-1980,1980,BRONZE,1
+Austria,AUT,lake-placid-1980,1980,GOLD,3
+Austria,AUT,moscow-1980,1980,GOLD,1
+Austria,AUT,lake-placid-1980,1980,SILVER,2
+Austria,AUT,moscow-1980,1980,SILVER,2
+Austria,AUT,los-angeles-1984,1984,BRONZE,1
+Austria,AUT,sarajevo-1984,1984,BRONZE,1
+Austria,AUT,los-angeles-1984,1984,GOLD,1
+Austria,AUT,los-angeles-1984,1984,SILVER,1
+Austria,AUT,calgary-1988,1988,BRONZE,2
+Austria,AUT,calgary-1988,1988,GOLD,3
+Austria,AUT,seoul-1988,1988,GOLD,1
+Austria,AUT,calgary-1988,1988,SILVER,5
+Austria,AUT,albertville-1992,1992,BRONZE,8
+Austria,AUT,albertville-1992,1992,GOLD,6
+Austria,AUT,albertville-1992,1992,SILVER,7
+Austria,AUT,barcelona-1992,1992,SILVER,2
+Austria,AUT,lillehammer-1994,1994,BRONZE,4
+Austria,AUT,lillehammer-1994,1994,GOLD,2
+Austria,AUT,lillehammer-1994,1994,SILVER,3
+Austria,AUT,atlanta-1996,1996,BRONZE,2
+Austria,AUT,atlanta-1996,1996,SILVER,1
+Austria,AUT,nagano-1998,1998,BRONZE,9
+Austria,AUT,nagano-1998,1998,GOLD,3
+Austria,AUT,nagano-1998,1998,SILVER,5
+Austria,AUT,sydney-2000,2000,GOLD,2
+Austria,AUT,sydney-2000,2000,SILVER,1
+Austria,AUT,salt-lake-city-2002,2002,BRONZE,10
+Austria,AUT,salt-lake-city-2002,2002,GOLD,3
+Austria,AUT,salt-lake-city-2002,2002,SILVER,4
+Austria,AUT,athens-2004,2004,BRONZE,1
+Austria,AUT,athens-2004,2004,GOLD,2
+Austria,AUT,athens-2004,2004,SILVER,4
+Austria,AUT,turin-2006,2006,BRONZE,7
+Austria,AUT,turin-2006,2006,GOLD,9
+Austria,AUT,turin-2006,2006,SILVER,7
+Austria,AUT,beijing-2008,2008,BRONZE,2
+Austria,AUT,beijing-2008,2008,SILVER,1
+Austria,AUT,vancouver-2010,2010,BRONZE,6
+Austria,AUT,vancouver-2010,2010,GOLD,4
+Austria,AUT,vancouver-2010,2010,SILVER,6
+Austria,AUT,sochi-2014,2014,BRONZE,5
+Austria,AUT,sochi-2014,2014,GOLD,4
+Austria,AUT,sochi-2014,2014,SILVER,8
+Austria,AUT,rio-2016,2016,BRONZE,1
+Austria,AUT,pyeongchang-2018,2018,BRONZE,6
+Austria,AUT,pyeongchang-2018,2018,GOLD,5
+Austria,AUT,pyeongchang-2018,2018,SILVER,3
+Austria,AUT,tokyo-2020,2020,BRONZE,5
+Austria,AUT,tokyo-2020,2020,GOLD,1
+Austria,AUT,tokyo-2020,2020,SILVER,1
+Austria,AUT,beijing-2022,2022,BRONZE,4
+Austria,AUT,beijing-2022,2022,GOLD,7
+Austria,AUT,beijing-2022,2022,SILVER,7
+Azerbaijan,AZE,atlanta-1996,1996,SILVER,1
+Azerbaijan,AZE,sydney-2000,2000,BRONZE,1
+Azerbaijan,AZE,sydney-2000,2000,GOLD,2
+Azerbaijan,AZE,athens-2004,2004,BRONZE,4
+Azerbaijan,AZE,athens-2004,2004,GOLD,1
+Azerbaijan,AZE,beijing-2008,2008,BRONZE,4
+Azerbaijan,AZE,beijing-2008,2008,GOLD,1
+Azerbaijan,AZE,beijing-2008,2008,SILVER,1
+Azerbaijan,AZE,london-2012,2012,BRONZE,6
+Azerbaijan,AZE,london-2012,2012,GOLD,2
+Azerbaijan,AZE,london-2012,2012,SILVER,2
+Azerbaijan,AZE,rio-2016,2016,BRONZE,10
+Azerbaijan,AZE,rio-2016,2016,GOLD,1
+Azerbaijan,AZE,rio-2016,2016,SILVER,7
+Azerbaijan,AZE,tokyo-2020,2020,BRONZE,4
+Azerbaijan,AZE,tokyo-2020,2020,SILVER,3
+Bahamas,BAH,melbourne-1956,1956,BRONZE,1
+Bahamas,BAH,tokyo-1964,1964,GOLD,1
+Bahamas,BAH,barcelona-1992,1992,BRONZE,1
+Bahamas,BAH,atlanta-1996,1996,SILVER,1
+Bahamas,BAH,sydney-2000,2000,BRONZE,1
+Bahamas,BAH,sydney-2000,2000,GOLD,2
+Bahamas,BAH,athens-2004,2004,BRONZE,1
+Bahamas,BAH,athens-2004,2004,GOLD,1
+Bahamas,BAH,beijing-2008,2008,BRONZE,1
+Bahamas,BAH,beijing-2008,2008,SILVER,1
+Bahamas,BAH,london-2012,2012,GOLD,1
+Bahamas,BAH,rio-2016,2016,BRONZE,1
+Bahamas,BAH,rio-2016,2016,GOLD,1
+Bahamas,BAH,tokyo-2020,2020,GOLD,2
+Bahrain,BRN,london-2012,2012,GOLD,1
+Bahrain,BRN,rio-2016,2016,GOLD,1
+Bahrain,BRN,rio-2016,2016,SILVER,1
+Bahrain,BRN,tokyo-2020,2020,SILVER,1
+Barbados,BAR,sydney-2000,2000,BRONZE,1
+Belarus,BLR,lillehammer-1994,1994,SILVER,2
+Belarus,BLR,atlanta-1996,1996,BRONZE,8
+Belarus,BLR,atlanta-1996,1996,GOLD,1
+Belarus,BLR,atlanta-1996,1996,SILVER,6
+Belarus,BLR,nagano-1998,1998,BRONZE,2
+Belarus,BLR,sydney-2000,2000,BRONZE,11
+Belarus,BLR,sydney-2000,2000,GOLD,3
+Belarus,BLR,sydney-2000,2000,SILVER,3
+Belarus,BLR,salt-lake-city-2002,2002,BRONZE,1
+Belarus,BLR,athens-2004,2004,BRONZE,6
+Belarus,BLR,athens-2004,2004,GOLD,2
+Belarus,BLR,athens-2004,2004,SILVER,5
+Belarus,BLR,turin-2006,2006,SILVER,1
+Belarus,BLR,beijing-2008,2008,BRONZE,7
+Belarus,BLR,beijing-2008,2008,GOLD,3
+Belarus,BLR,beijing-2008,2008,SILVER,4
+Belarus,BLR,vancouver-2010,2010,BRONZE,1
+Belarus,BLR,vancouver-2010,2010,GOLD,1
+Belarus,BLR,vancouver-2010,2010,SILVER,1
+Belarus,BLR,london-2012,2012,BRONZE,3
+Belarus,BLR,london-2012,2012,GOLD,2
+Belarus,BLR,london-2012,2012,SILVER,5
+Belarus,BLR,sochi-2014,2014,BRONZE,1
+Belarus,BLR,sochi-2014,2014,GOLD,5
+Belarus,BLR,rio-2016,2016,BRONZE,4
+Belarus,BLR,rio-2016,2016,GOLD,1
+Belarus,BLR,rio-2016,2016,SILVER,4
+Belarus,BLR,pyeongchang-2018,2018,GOLD,2
+Belarus,BLR,pyeongchang-2018,2018,SILVER,1
+Belarus,BLR,tokyo-2020,2020,BRONZE,3
+Belarus,BLR,tokyo-2020,2020,GOLD,1
+Belarus,BLR,tokyo-2020,2020,SILVER,3
+Belarus,BLR,beijing-2022,2022,SILVER,2
+Belgium,BEL,paris-1900,1900,BRONZE,4
+Belgium,BEL,paris-1900,1900,GOLD,5
+Belgium,BEL,paris-1900,1900,SILVER,7
+Belgium,BEL,london-1908,1908,BRONZE,2
+Belgium,BEL,london-1908,1908,GOLD,1
+Belgium,BEL,london-1908,1908,SILVER,5
+Belgium,BEL,stockholm-1912,1912,BRONZE,3
+Belgium,BEL,stockholm-1912,1912,GOLD,2
+Belgium,BEL,stockholm-1912,1912,SILVER,1
+Belgium,BEL,antwerp-1920,1920,BRONZE,11
+Belgium,BEL,antwerp-1920,1920,GOLD,14
+Belgium,BEL,antwerp-1920,1920,SILVER,11
+Belgium,BEL,chamonix-1924,1924,BRONZE,1
+Belgium,BEL,paris-1924,1924,BRONZE,3
+Belgium,BEL,paris-1924,1924,GOLD,3
+Belgium,BEL,paris-1924,1924,SILVER,7
+Belgium,BEL,amsterdam-1928,1928,BRONZE,2
+Belgium,BEL,st-moritz-1928,1928,BRONZE,1
+Belgium,BEL,amsterdam-1928,1928,SILVER,1
+Belgium,BEL,berlin-1936,1936,BRONZE,2
+Belgium,BEL,london-1948,1948,BRONZE,3
+Belgium,BEL,london-1948,1948,GOLD,2
+Belgium,BEL,st-moritz-1948,1948,GOLD,1
+Belgium,BEL,london-1948,1948,SILVER,2
+Belgium,BEL,st-moritz-1948,1948,SILVER,1
+Belgium,BEL,helsinki-1952,1952,GOLD,2
+Belgium,BEL,helsinki-1952,1952,SILVER,2
+Belgium,BEL,melbourne-1956,1956,SILVER,2
+Belgium,BEL,rome-1960,1960,BRONZE,2
+Belgium,BEL,rome-1960,1960,SILVER,2
+Belgium,BEL,tokyo-1964,1964,BRONZE,1
+Belgium,BEL,tokyo-1964,1964,GOLD,2
+Belgium,BEL,mexico-city-1968,1968,BRONZE,1
+Belgium,BEL,mexico-city-1968,1968,SILVER,1
+Belgium,BEL,munich-1972,1972,SILVER,2
+Belgium,BEL,montreal-1976,1976,BRONZE,3
+Belgium,BEL,montreal-1976,1976,SILVER,3
+Belgium,BEL,moscow-1980,1980,GOLD,1
+Belgium,BEL,los-angeles-1984,1984,BRONZE,2
+Belgium,BEL,los-angeles-1984,1984,GOLD,1
+Belgium,BEL,los-angeles-1984,1984,SILVER,1
+Belgium,BEL,seoul-1988,1988,BRONZE,2
+Belgium,BEL,barcelona-1992,1992,BRONZE,2
+Belgium,BEL,barcelona-1992,1992,SILVER,1
+Belgium,BEL,atlanta-1996,1996,BRONZE,2
+Belgium,BEL,atlanta-1996,1996,GOLD,2
+Belgium,BEL,atlanta-1996,1996,SILVER,2
+Belgium,BEL,nagano-1998,1998,BRONZE,1
+Belgium,BEL,sydney-2000,2000,BRONZE,3
+Belgium,BEL,sydney-2000,2000,SILVER,2
+Belgium,BEL,athens-2004,2004,BRONZE,2
+Belgium,BEL,athens-2004,2004,GOLD,1
+Belgium,BEL,beijing-2008,2008,GOLD,2
+Belgium,BEL,london-2012,2012,BRONZE,2
+Belgium,BEL,london-2012,2012,SILVER,1
+Belgium,BEL,rio-2016,2016,BRONZE,2
+Belgium,BEL,rio-2016,2016,GOLD,2
+Belgium,BEL,rio-2016,2016,SILVER,2
+Belgium,BEL,pyeongchang-2018,2018,SILVER,1
+Belgium,BEL,tokyo-2020,2020,BRONZE,3
+Belgium,BEL,tokyo-2020,2020,GOLD,3
+Belgium,BEL,tokyo-2020,2020,SILVER,1
+Belgium,BEL,beijing-2022,2022,BRONZE,1
+Belgium,BEL,beijing-2022,2022,GOLD,1
+Bermuda,BER,montreal-1976,1976,BRONZE,1
+Bermuda,BER,tokyo-2020,2020,GOLD,1
+Bohemia,BOH,paris-1900,1900,BRONZE,1
+Bohemia,BOH,paris-1900,1900,SILVER,1
+Bohemia,BOH,london-1908,1908,BRONZE,2
+Botswana,BOT,london-2012,2012,SILVER,1
+Botswana,BOT,tokyo-2020,2020,BRONZE,1
+Brazil,BRA,antwerp-1920,1920,BRONZE,1
+Brazil,BRA,antwerp-1920,1920,GOLD,1
+Brazil,BRA,antwerp-1920,1920,SILVER,1
+Brazil,BRA,london-1948,1948,BRONZE,1
+Brazil,BRA,helsinki-1952,1952,BRONZE,2
+Brazil,BRA,helsinki-1952,1952,GOLD,1
+Brazil,BRA,melbourne-1956,1956,GOLD,1
+Brazil,BRA,rome-1960,1960,BRONZE,2
+Brazil,BRA,tokyo-1964,1964,BRONZE,1
+Brazil,BRA,mexico-city-1968,1968,BRONZE,2
+Brazil,BRA,mexico-city-1968,1968,SILVER,1
+Brazil,BRA,munich-1972,1972,BRONZE,2
+Brazil,BRA,montreal-1976,1976,BRONZE,2
+Brazil,BRA,moscow-1980,1980,BRONZE,2
+Brazil,BRA,moscow-1980,1980,GOLD,2
+Brazil,BRA,los-angeles-1984,1984,BRONZE,2
+Brazil,BRA,los-angeles-1984,1984,GOLD,1
+Brazil,BRA,los-angeles-1984,1984,SILVER,5
+Brazil,BRA,seoul-1988,1988,BRONZE,3
+Brazil,BRA,seoul-1988,1988,GOLD,1
+Brazil,BRA,seoul-1988,1988,SILVER,2
+Brazil,BRA,barcelona-1992,1992,GOLD,2
+Brazil,BRA,barcelona-1992,1992,SILVER,1
+Brazil,BRA,atlanta-1996,1996,BRONZE,9
+Brazil,BRA,atlanta-1996,1996,GOLD,3
+Brazil,BRA,atlanta-1996,1996,SILVER,3
+Brazil,BRA,sydney-2000,2000,BRONZE,6
+Brazil,BRA,sydney-2000,2000,SILVER,6
+Brazil,BRA,athens-2004,2004,BRONZE,3
+Brazil,BRA,athens-2004,2004,GOLD,5
+Brazil,BRA,athens-2004,2004,SILVER,2
+Brazil,BRA,beijing-2008,2008,BRONZE,10
+Brazil,BRA,beijing-2008,2008,GOLD,3
+Brazil,BRA,beijing-2008,2008,SILVER,4
+Brazil,BRA,london-2012,2012,BRONZE,9
+Brazil,BRA,london-2012,2012,GOLD,3
+Brazil,BRA,london-2012,2012,SILVER,5
+Brazil,BRA,rio-2016,2016,BRONZE,6
+Brazil,BRA,rio-2016,2016,GOLD,7
+Brazil,BRA,rio-2016,2016,SILVER,6
+Brazil,BRA,tokyo-2020,2020,BRONZE,8
+Brazil,BRA,tokyo-2020,2020,GOLD,6
+Brazil,BRA,tokyo-2020,2020,SILVER,6
+Bulgaria,BUL,helsinki-1952,1952,BRONZE,1
+Bulgaria,BUL,melbourne-1956,1956,BRONZE,1
+Bulgaria,BUL,melbourne-1956,1956,GOLD,1
+Bulgaria,BUL,melbourne-1956,1956,SILVER,3
+Bulgaria,BUL,rome-1960,1960,BRONZE,3
+Bulgaria,BUL,rome-1960,1960,GOLD,1
+Bulgaria,BUL,rome-1960,1960,SILVER,3
+Bulgaria,BUL,tokyo-1964,1964,BRONZE,2
+Bulgaria,BUL,tokyo-1964,1964,GOLD,3
+Bulgaria,BUL,tokyo-1964,1964,SILVER,5
+Bulgaria,BUL,mexico-city-1968,1968,BRONZE,3
+Bulgaria,BUL,mexico-city-1968,1968,GOLD,2
+Bulgaria,BUL,mexico-city-1968,1968,SILVER,4
+Bulgaria,BUL,munich-1972,1972,BRONZE,5
+Bulgaria,BUL,munich-1972,1972,GOLD,6
+Bulgaria,BUL,munich-1972,1972,SILVER,10
+Bulgaria,BUL,montreal-1976,1976,BRONZE,7
+Bulgaria,BUL,montreal-1976,1976,GOLD,6
+Bulgaria,BUL,montreal-1976,1976,SILVER,9
+Bulgaria,BUL,lake-placid-1980,1980,BRONZE,1
+Bulgaria,BUL,moscow-1980,1980,BRONZE,17
+Bulgaria,BUL,moscow-1980,1980,GOLD,8
+Bulgaria,BUL,moscow-1980,1980,SILVER,16
+Bulgaria,BUL,seoul-1988,1988,BRONZE,13
+Bulgaria,BUL,seoul-1988,1988,GOLD,10
+Bulgaria,BUL,seoul-1988,1988,SILVER,12
+Bulgaria,BUL,barcelona-1992,1992,BRONZE,6
+Bulgaria,BUL,barcelona-1992,1992,GOLD,3
+Bulgaria,BUL,barcelona-1992,1992,SILVER,7
+Bulgaria,BUL,atlanta-1996,1996,BRONZE,5
+Bulgaria,BUL,atlanta-1996,1996,GOLD,3
+Bulgaria,BUL,atlanta-1996,1996,SILVER,7
+Bulgaria,BUL,nagano-1998,1998,GOLD,1
+Bulgaria,BUL,sydney-2000,2000,BRONZE,2
+Bulgaria,BUL,sydney-2000,2000,GOLD,5
+Bulgaria,BUL,sydney-2000,2000,SILVER,6
+Bulgaria,BUL,salt-lake-city-2002,2002,BRONZE,2
+Bulgaria,BUL,salt-lake-city-2002,2002,SILVER,1
+Bulgaria,BUL,athens-2004,2004,BRONZE,9
+Bulgaria,BUL,athens-2004,2004,GOLD,2
+Bulgaria,BUL,athens-2004,2004,SILVER,1
+Bulgaria,BUL,turin-2006,2006,SILVER,1
+Bulgaria,BUL,beijing-2008,2008,BRONZE,3
+Bulgaria,BUL,beijing-2008,2008,GOLD,1
+Bulgaria,BUL,beijing-2008,2008,SILVER,1
+Bulgaria,BUL,london-2012,2012,BRONZE,1
+Bulgaria,BUL,london-2012,2012,SILVER,2
+Bulgaria,BUL,rio-2016,2016,BRONZE,2
+Bulgaria,BUL,rio-2016,2016,SILVER,1
+Bulgaria,BUL,tokyo-2020,2020,BRONZE,2
+Bulgaria,BUL,tokyo-2020,2020,GOLD,3
+Bulgaria,BUL,tokyo-2020,2020,SILVER,1
+Burkina Faso,BUR,tokyo-2020,2020,BRONZE,1
+Burundi,BDI,atlanta-1996,1996,GOLD,1
+Burundi,BDI,rio-2016,2016,SILVER,1
+Cameroon,CMR,mexico-city-1968,1968,SILVER,1
+Cameroon,CMR,los-angeles-1984,1984,BRONZE,1
+Cameroon,CMR,sydney-2000,2000,GOLD,1
+Cameroon,CMR,athens-2004,2004,GOLD,1
+Cameroon,CMR,beijing-2008,2008,GOLD,1
+Cameroon,CMR,london-2012,2012,BRONZE,1
+Canada,CAN,paris-1900,1900,BRONZE,1
+Canada,CAN,paris-1900,1900,GOLD,1
+Canada,CAN,st-louis-1904,1904,BRONZE,1
+Canada,CAN,st-louis-1904,1904,GOLD,4
+Canada,CAN,st-louis-1904,1904,SILVER,1
+Canada,CAN,london-1908,1908,BRONZE,10
+Canada,CAN,london-1908,1908,GOLD,3
+Canada,CAN,london-1908,1908,SILVER,3
+Canada,CAN,stockholm-1912,1912,BRONZE,3
+Canada,CAN,stockholm-1912,1912,GOLD,3
+Canada,CAN,stockholm-1912,1912,SILVER,2
+Canada,CAN,antwerp-1920,1920,BRONZE,3
+Canada,CAN,antwerp-1920,1920,GOLD,3
+Canada,CAN,antwerp-1920,1920,SILVER,3
+Canada,CAN,paris-1924,1924,BRONZE,1
+Canada,CAN,chamonix-1924,1924,GOLD,1
+Canada,CAN,paris-1924,1924,SILVER,3
+Canada,CAN,amsterdam-1928,1928,BRONZE,7
+Canada,CAN,amsterdam-1928,1928,GOLD,4
+Canada,CAN,st-moritz-1928,1928,GOLD,1
+Canada,CAN,amsterdam-1928,1928,SILVER,4
+Canada,CAN,lake-placid-1932,1932,BRONZE,5
+Canada,CAN,los-angeles-1932,1932,BRONZE,8
+Canada,CAN,lake-placid-1932,1932,GOLD,1
+Canada,CAN,los-angeles-1932,1932,GOLD,2
+Canada,CAN,lake-placid-1932,1932,SILVER,1
+Canada,CAN,los-angeles-1932,1932,SILVER,5
+Canada,CAN,berlin-1936,1936,BRONZE,5
+Canada,CAN,berlin-1936,1936,GOLD,1
+Canada,CAN,berlin-1936,1936,SILVER,2
+Canada,CAN,garmisch-partenkirchen-1936,1936,SILVER,1
+Canada,CAN,london-1948,1948,BRONZE,2
+Canada,CAN,st-moritz-1948,1948,BRONZE,1
+Canada,CAN,st-moritz-1948,1948,GOLD,2
+Canada,CAN,london-1948,1948,SILVER,1
+Canada,CAN,oslo-1952,1952,BRONZE,1
+Canada,CAN,helsinki-1952,1952,GOLD,1
+Canada,CAN,oslo-1952,1952,GOLD,1
+Canada,CAN,helsinki-1952,1952,SILVER,1
+Canada,CAN,cortina-d-ampezzo-1956,1956,BRONZE,2
+Canada,CAN,melbourne-1956,1956,BRONZE,2
+Canada,CAN,melbourne-1956,1956,GOLD,2
+Canada,CAN,cortina-d-ampezzo-1956,1956,SILVER,1
+Canada,CAN,melbourne-1956,1956,SILVER,1
+Canada,CAN,squaw-valley-1960,1960,BRONZE,1
+Canada,CAN,squaw-valley-1960,1960,GOLD,2
+Canada,CAN,rome-1960,1960,SILVER,1
+Canada,CAN,squaw-valley-1960,1960,SILVER,1
+Canada,CAN,innsbruck-1964,1964,BRONZE,1
+Canada,CAN,tokyo-1964,1964,BRONZE,1
+Canada,CAN,innsbruck-1964,1964,GOLD,1
+Canada,CAN,tokyo-1964,1964,GOLD,1
+Canada,CAN,innsbruck-1964,1964,SILVER,1
+Canada,CAN,tokyo-1964,1964,SILVER,2
+Canada,CAN,grenoble-1968,1968,BRONZE,1
+Canada,CAN,mexico-city-1968,1968,BRONZE,1
+Canada,CAN,grenoble-1968,1968,GOLD,1
+Canada,CAN,mexico-city-1968,1968,GOLD,1
+Canada,CAN,grenoble-1968,1968,SILVER,1
+Canada,CAN,mexico-city-1968,1968,SILVER,3
+Canada,CAN,munich-1972,1972,BRONZE,3
+Canada,CAN,munich-1972,1972,SILVER,2
+Canada,CAN,sapporo-1972,1972,SILVER,1
+Canada,CAN,innsbruck-1976,1976,BRONZE,1
+Canada,CAN,montreal-1976,1976,BRONZE,6
+Canada,CAN,innsbruck-1976,1976,GOLD,1
+Canada,CAN,innsbruck-1976,1976,SILVER,1
+Canada,CAN,montreal-1976,1976,SILVER,5
+Canada,CAN,lake-placid-1980,1980,BRONZE,1
+Canada,CAN,lake-placid-1980,1980,SILVER,1
+Canada,CAN,los-angeles-1984,1984,BRONZE,16
+Canada,CAN,sarajevo-1984,1984,BRONZE,1
+Canada,CAN,los-angeles-1984,1984,GOLD,10
+Canada,CAN,sarajevo-1984,1984,GOLD,2
+Canada,CAN,los-angeles-1984,1984,SILVER,18
+Canada,CAN,sarajevo-1984,1984,SILVER,1
+Canada,CAN,calgary-1988,1988,BRONZE,3
+Canada,CAN,seoul-1988,1988,BRONZE,5
+Canada,CAN,seoul-1988,1988,GOLD,3
+Canada,CAN,calgary-1988,1988,SILVER,2
+Canada,CAN,seoul-1988,1988,SILVER,2
+Canada,CAN,albertville-1992,1992,BRONZE,2
+Canada,CAN,barcelona-1992,1992,BRONZE,7
+Canada,CAN,albertville-1992,1992,GOLD,2
+Canada,CAN,barcelona-1992,1992,GOLD,7
+Canada,CAN,albertville-1992,1992,SILVER,3
+Canada,CAN,barcelona-1992,1992,SILVER,4
+Canada,CAN,lillehammer-1994,1994,BRONZE,4
+Canada,CAN,lillehammer-1994,1994,GOLD,3
+Canada,CAN,lillehammer-1994,1994,SILVER,6
+Canada,CAN,atlanta-1996,1996,BRONZE,8
+Canada,CAN,atlanta-1996,1996,GOLD,3
+Canada,CAN,atlanta-1996,1996,SILVER,11
+Canada,CAN,nagano-1998,1998,BRONZE,4
+Canada,CAN,nagano-1998,1998,GOLD,6
+Canada,CAN,nagano-1998,1998,SILVER,5
+Canada,CAN,sydney-2000,2000,BRONZE,8
+Canada,CAN,sydney-2000,2000,GOLD,3
+Canada,CAN,sydney-2000,2000,SILVER,3
+Canada,CAN,salt-lake-city-2002,2002,BRONZE,7
+Canada,CAN,salt-lake-city-2002,2002,GOLD,7
+Canada,CAN,salt-lake-city-2002,2002,SILVER,3
+Canada,CAN,athens-2004,2004,BRONZE,3
+Canada,CAN,athens-2004,2004,GOLD,3
+Canada,CAN,athens-2004,2004,SILVER,6
+Canada,CAN,turin-2006,2006,BRONZE,7
+Canada,CAN,turin-2006,2006,GOLD,7
+Canada,CAN,turin-2006,2006,SILVER,10
+Canada,CAN,beijing-2008,2008,BRONZE,8
+Canada,CAN,beijing-2008,2008,GOLD,3
+Canada,CAN,beijing-2008,2008,SILVER,9
+Canada,CAN,vancouver-2010,2010,BRONZE,5
+Canada,CAN,vancouver-2010,2010,GOLD,14
+Canada,CAN,vancouver-2010,2010,SILVER,7
+Canada,CAN,london-2012,2012,BRONZE,11
+Canada,CAN,london-2012,2012,GOLD,2
+Canada,CAN,london-2012,2012,SILVER,5
+Canada,CAN,sochi-2014,2014,BRONZE,5
+Canada,CAN,sochi-2014,2014,GOLD,10
+Canada,CAN,sochi-2014,2014,SILVER,10
+Canada,CAN,rio-2016,2016,BRONZE,15
+Canada,CAN,rio-2016,2016,GOLD,4
+Canada,CAN,rio-2016,2016,SILVER,3
+Canada,CAN,pyeongchang-2018,2018,BRONZE,10
+Canada,CAN,pyeongchang-2018,2018,GOLD,11
+Canada,CAN,pyeongchang-2018,2018,SILVER,8
+Canada,CAN,tokyo-2020,2020,BRONZE,11
+Canada,CAN,tokyo-2020,2020,GOLD,7
+Canada,CAN,tokyo-2020,2020,SILVER,6
+Canada,CAN,beijing-2022,2022,BRONZE,14
+Canada,CAN,beijing-2022,2022,GOLD,4
+Canada,CAN,beijing-2022,2022,SILVER,8
+Chile,CHI,amsterdam-1928,1928,SILVER,1
+Chile,CHI,helsinki-1952,1952,SILVER,2
+Chile,CHI,melbourne-1956,1956,BRONZE,2
+Chile,CHI,melbourne-1956,1956,SILVER,2
+Chile,CHI,seoul-1988,1988,SILVER,1
+Chile,CHI,sydney-2000,2000,BRONZE,1
+Chile,CHI,athens-2004,2004,BRONZE,1
+Chile,CHI,athens-2004,2004,GOLD,2
+Chile,CHI,beijing-2008,2008,SILVER,1
+Chinese Taipei,TPE,rome-1960,1960,SILVER,1
+Chinese Taipei,TPE,mexico-city-1968,1968,BRONZE,1
+Chinese Taipei,TPE,los-angeles-1984,1984,BRONZE,1
+Chinese Taipei,TPE,barcelona-1992,1992,SILVER,1
+Chinese Taipei,TPE,atlanta-1996,1996,SILVER,1
+Chinese Taipei,TPE,sydney-2000,2000,BRONZE,4
+Chinese Taipei,TPE,sydney-2000,2000,SILVER,1
+Chinese Taipei,TPE,athens-2004,2004,BRONZE,1
+Chinese Taipei,TPE,athens-2004,2004,GOLD,2
+Chinese Taipei,TPE,athens-2004,2004,SILVER,2
+Chinese Taipei,TPE,beijing-2008,2008,BRONZE,2
+Chinese Taipei,TPE,beijing-2008,2008,GOLD,1
+Chinese Taipei,TPE,beijing-2008,2008,SILVER,1
+Chinese Taipei,TPE,london-2012,2012,BRONZE,1
+Chinese Taipei,TPE,london-2012,2012,GOLD,1
+Chinese Taipei,TPE,rio-2016,2016,BRONZE,2
+Chinese Taipei,TPE,rio-2016,2016,GOLD,1
+Chinese Taipei,TPE,tokyo-2020,2020,BRONZE,6
+Chinese Taipei,TPE,tokyo-2020,2020,GOLD,2
+Chinese Taipei,TPE,tokyo-2020,2020,SILVER,4
+Colombia,COL,munich-1972,1972,BRONZE,2
+Colombia,COL,munich-1972,1972,SILVER,1
+Colombia,COL,los-angeles-1984,1984,SILVER,1
+Colombia,COL,seoul-1988,1988,BRONZE,1
+Colombia,COL,barcelona-1992,1992,BRONZE,1
+Colombia,COL,sydney-2000,2000,GOLD,1
+Colombia,COL,athens-2004,2004,BRONZE,2
+Colombia,COL,beijing-2008,2008,BRONZE,1
+Colombia,COL,beijing-2008,2008,SILVER,2
+Colombia,COL,london-2012,2012,BRONZE,4
+Colombia,COL,london-2012,2012,GOLD,1
+Colombia,COL,london-2012,2012,SILVER,3
+Colombia,COL,rio-2016,2016,BRONZE,3
+Colombia,COL,rio-2016,2016,GOLD,3
+Colombia,COL,rio-2016,2016,SILVER,2
+Colombia,COL,tokyo-2020,2020,BRONZE,1
+Colombia,COL,tokyo-2020,2020,SILVER,4
+Costa Rica,CRC,seoul-1988,1988,SILVER,1
+Costa Rica,CRC,atlanta-1996,1996,GOLD,1
+Costa Rica,CRC,sydney-2000,2000,BRONZE,2
+Croatia,CRO,barcelona-1992,1992,BRONZE,2
+Croatia,CRO,barcelona-1992,1992,SILVER,1
+Croatia,CRO,atlanta-1996,1996,GOLD,1
+Croatia,CRO,atlanta-1996,1996,SILVER,1
+Croatia,CRO,sydney-2000,2000,BRONZE,1
+Croatia,CRO,sydney-2000,2000,GOLD,1
+Croatia,CRO,salt-lake-city-2002,2002,GOLD,3
+Croatia,CRO,salt-lake-city-2002,2002,SILVER,1
+Croatia,CRO,athens-2004,2004,BRONZE,2
+Croatia,CRO,athens-2004,2004,GOLD,1
+Croatia,CRO,athens-2004,2004,SILVER,2
+Croatia,CRO,turin-2006,2006,GOLD,1
+Croatia,CRO,turin-2006,2006,SILVER,2
+Croatia,CRO,beijing-2008,2008,BRONZE,3
+Croatia,CRO,beijing-2008,2008,SILVER,2
+Croatia,CRO,vancouver-2010,2010,BRONZE,1
+Croatia,CRO,vancouver-2010,2010,SILVER,2
+Croatia,CRO,london-2012,2012,BRONZE,2
+Croatia,CRO,london-2012,2012,GOLD,3
+Croatia,CRO,london-2012,2012,SILVER,1
+Croatia,CRO,sochi-2014,2014,SILVER,1
+Croatia,CRO,rio-2016,2016,BRONZE,2
+Croatia,CRO,rio-2016,2016,GOLD,5
+Croatia,CRO,rio-2016,2016,SILVER,3
+Croatia,CRO,tokyo-2020,2020,BRONZE,2
+Croatia,CRO,tokyo-2020,2020,GOLD,3
+Croatia,CRO,tokyo-2020,2020,SILVER,3
+Cuba,CUB,paris-1900,1900,GOLD,1
+Cuba,CUB,paris-1900,1900,SILVER,1
+Cuba,CUB,st-louis-1904,1904,GOLD,3
+Cuba,CUB,london-1948,1948,SILVER,1
+Cuba,CUB,tokyo-1964,1964,SILVER,1
+Cuba,CUB,mexico-city-1968,1968,SILVER,4
+Cuba,CUB,munich-1972,1972,BRONZE,4
+Cuba,CUB,munich-1972,1972,GOLD,3
+Cuba,CUB,munich-1972,1972,SILVER,1
+Cuba,CUB,montreal-1976,1976,BRONZE,3
+Cuba,CUB,montreal-1976,1976,GOLD,6
+Cuba,CUB,montreal-1976,1976,SILVER,4
+Cuba,CUB,moscow-1980,1980,BRONZE,5
+Cuba,CUB,moscow-1980,1980,GOLD,8
+Cuba,CUB,moscow-1980,1980,SILVER,7
+Cuba,CUB,barcelona-1992,1992,BRONZE,11
+Cuba,CUB,barcelona-1992,1992,GOLD,14
+Cuba,CUB,barcelona-1992,1992,SILVER,6
+Cuba,CUB,atlanta-1996,1996,BRONZE,8
+Cuba,CUB,atlanta-1996,1996,GOLD,9
+Cuba,CUB,atlanta-1996,1996,SILVER,8
+Cuba,CUB,sydney-2000,2000,BRONZE,7
+Cuba,CUB,sydney-2000,2000,GOLD,11
+Cuba,CUB,sydney-2000,2000,SILVER,11
+Cuba,CUB,athens-2004,2004,BRONZE,11
+Cuba,CUB,athens-2004,2004,GOLD,9
+Cuba,CUB,athens-2004,2004,SILVER,7
+Cuba,CUB,beijing-2008,2008,BRONZE,17
+Cuba,CUB,beijing-2008,2008,GOLD,3
+Cuba,CUB,beijing-2008,2008,SILVER,10
+Cuba,CUB,london-2012,2012,BRONZE,7
+Cuba,CUB,london-2012,2012,GOLD,5
+Cuba,CUB,london-2012,2012,SILVER,3
+Cuba,CUB,rio-2016,2016,BRONZE,4
+Cuba,CUB,rio-2016,2016,GOLD,5
+Cuba,CUB,rio-2016,2016,SILVER,2
+Cuba,CUB,tokyo-2020,2020,BRONZE,5
+Cuba,CUB,tokyo-2020,2020,GOLD,7
+Cuba,CUB,tokyo-2020,2020,SILVER,3
+Cyprus,CYP,london-2012,2012,SILVER,1
+Czech Republic,CZE,atlanta-1996,1996,BRONZE,4
+Czech Republic,CZE,atlanta-1996,1996,GOLD,4
+Czech Republic,CZE,atlanta-1996,1996,SILVER,3
+Czech Republic,CZE,nagano-1998,1998,BRONZE,1
+Czech Republic,CZE,nagano-1998,1998,GOLD,1
+Czech Republic,CZE,nagano-1998,1998,SILVER,1
+Czech Republic,CZE,sydney-2000,2000,BRONZE,3
+Czech Republic,CZE,sydney-2000,2000,GOLD,2
+Czech Republic,CZE,sydney-2000,2000,SILVER,3
+Czech Republic,CZE,salt-lake-city-2002,2002,GOLD,1
+Czech Republic,CZE,salt-lake-city-2002,2002,SILVER,2
+Czech Republic,CZE,athens-2004,2004,BRONZE,5
+Czech Republic,CZE,athens-2004,2004,GOLD,1
+Czech Republic,CZE,athens-2004,2004,SILVER,3
+Czech Republic,CZE,turin-2006,2006,BRONZE,1
+Czech Republic,CZE,turin-2006,2006,GOLD,1
+Czech Republic,CZE,turin-2006,2006,SILVER,2
+Czech Republic,CZE,beijing-2008,2008,BRONZE,1
+Czech Republic,CZE,beijing-2008,2008,GOLD,3
+Czech Republic,CZE,beijing-2008,2008,SILVER,3
+Czech Republic,CZE,vancouver-2010,2010,BRONZE,4
+Czech Republic,CZE,vancouver-2010,2010,GOLD,2
+Czech Republic,CZE,london-2012,2012,BRONZE,4
+Czech Republic,CZE,london-2012,2012,GOLD,4
+Czech Republic,CZE,london-2012,2012,SILVER,3
+Czech Republic,CZE,sochi-2014,2014,BRONZE,2
+Czech Republic,CZE,sochi-2014,2014,GOLD,2
+Czech Republic,CZE,sochi-2014,2014,SILVER,4
+Czech Republic,CZE,rio-2016,2016,BRONZE,7
+Czech Republic,CZE,rio-2016,2016,GOLD,1
+Czech Republic,CZE,rio-2016,2016,SILVER,2
+Czech Republic,CZE,pyeongchang-2018,2018,BRONZE,3
+Czech Republic,CZE,pyeongchang-2018,2018,GOLD,2
+Czech Republic,CZE,pyeongchang-2018,2018,SILVER,2
+Czech Republic,CZE,tokyo-2020,2020,BRONZE,3
+Czech Republic,CZE,tokyo-2020,2020,GOLD,4
+Czech Republic,CZE,tokyo-2020,2020,SILVER,4
+Czech Republic,CZE,beijing-2022,2022,BRONZE,1
+Czech Republic,CZE,beijing-2022,2022,GOLD,1
+Czechoslovakia,TCH,antwerp-1920,1920,BRONZE,2
+Czechoslovakia,TCH,paris-1924,1924,BRONZE,5
+Czechoslovakia,TCH,paris-1924,1924,GOLD,1
+Czechoslovakia,TCH,paris-1924,1924,SILVER,4
+Czechoslovakia,TCH,amsterdam-1928,1928,BRONZE,2
+Czechoslovakia,TCH,st-moritz-1928,1928,BRONZE,1
+Czechoslovakia,TCH,amsterdam-1928,1928,GOLD,2
+Czechoslovakia,TCH,amsterdam-1928,1928,SILVER,5
+Czechoslovakia,TCH,los-angeles-1932,1932,BRONZE,1
+Czechoslovakia,TCH,los-angeles-1932,1932,GOLD,1
+Czechoslovakia,TCH,los-angeles-1932,1932,SILVER,2
+Czechoslovakia,TCH,berlin-1936,1936,GOLD,2
+Czechoslovakia,TCH,berlin-1936,1936,SILVER,5
+Czechoslovakia,TCH,london-1948,1948,BRONZE,3
+Czechoslovakia,TCH,london-1948,1948,GOLD,6
+Czechoslovakia,TCH,london-1948,1948,SILVER,2
+Czechoslovakia,TCH,st-moritz-1948,1948,SILVER,1
+Czechoslovakia,TCH,helsinki-1952,1952,BRONZE,2
+Czechoslovakia,TCH,helsinki-1952,1952,GOLD,7
+Czechoslovakia,TCH,helsinki-1952,1952,SILVER,3
+Czechoslovakia,TCH,melbourne-1956,1956,BRONZE,1
+Czechoslovakia,TCH,melbourne-1956,1956,GOLD,1
+Czechoslovakia,TCH,melbourne-1956,1956,SILVER,4
+Czechoslovakia,TCH,rome-1960,1960,BRONZE,3
+Czechoslovakia,TCH,rome-1960,1960,GOLD,3
+Czechoslovakia,TCH,rome-1960,1960,SILVER,2
+Czechoslovakia,TCH,squaw-valley-1960,1960,SILVER,1
+Czechoslovakia,TCH,innsbruck-1964,1964,BRONZE,1
+Czechoslovakia,TCH,tokyo-1964,1964,BRONZE,3
+Czechoslovakia,TCH,tokyo-1964,1964,GOLD,5
+Czechoslovakia,TCH,tokyo-1964,1964,SILVER,6
+Czechoslovakia,TCH,grenoble-1968,1968,BRONZE,1
+Czechoslovakia,TCH,mexico-city-1968,1968,BRONZE,4
+Czechoslovakia,TCH,grenoble-1968,1968,GOLD,1
+Czechoslovakia,TCH,mexico-city-1968,1968,GOLD,7
+Czechoslovakia,TCH,grenoble-1968,1968,SILVER,2
+Czechoslovakia,TCH,mexico-city-1968,1968,SILVER,2
+Czechoslovakia,TCH,munich-1972,1972,BRONZE,2
+Czechoslovakia,TCH,sapporo-1972,1972,BRONZE,2
+Czechoslovakia,TCH,munich-1972,1972,GOLD,2
+Czechoslovakia,TCH,sapporo-1972,1972,GOLD,1
+Czechoslovakia,TCH,munich-1972,1972,SILVER,4
+Czechoslovakia,TCH,montreal-1976,1976,BRONZE,4
+Czechoslovakia,TCH,montreal-1976,1976,GOLD,2
+Czechoslovakia,TCH,innsbruck-1976,1976,SILVER,1
+Czechoslovakia,TCH,montreal-1976,1976,SILVER,2
+Czechoslovakia,TCH,lake-placid-1980,1980,BRONZE,1
+Czechoslovakia,TCH,moscow-1980,1980,BRONZE,9
+Czechoslovakia,TCH,moscow-1980,1980,GOLD,2
+Czechoslovakia,TCH,moscow-1980,1980,SILVER,3
+Czechoslovakia,TCH,sarajevo-1984,1984,BRONZE,4
+Czechoslovakia,TCH,sarajevo-1984,1984,SILVER,2
+Czechoslovakia,TCH,calgary-1988,1988,BRONZE,2
+Czechoslovakia,TCH,seoul-1988,1988,BRONZE,2
+Czechoslovakia,TCH,seoul-1988,1988,GOLD,3
+Czechoslovakia,TCH,calgary-1988,1988,SILVER,1
+Czechoslovakia,TCH,seoul-1988,1988,SILVER,3
+Czechoslovakia,TCH,albertville-1992,1992,BRONZE,3
+Czechoslovakia,TCH,barcelona-1992,1992,BRONZE,1
+Czechoslovakia,TCH,barcelona-1992,1992,GOLD,4
+Czechoslovakia,TCH,barcelona-1992,1992,SILVER,2
+Côte d'Ivoire,CIV,tokyo-2020,2020,BRONZE,1
+Democratic People's Republic of Korea,PRK,innsbruck-1964,1964,SILVER,1
+Democratic People's Republic of Korea,PRK,munich-1972,1972,BRONZE,3
+Democratic People's Republic of Korea,PRK,munich-1972,1972,GOLD,1
+Democratic People's Republic of Korea,PRK,munich-1972,1972,SILVER,1
+Democratic People's Republic of Korea,PRK,montreal-1976,1976,GOLD,1
+Democratic People's Republic of Korea,PRK,montreal-1976,1976,SILVER,1
+Democratic People's Republic of Korea,PRK,moscow-1980,1980,BRONZE,2
+Democratic People's Republic of Korea,PRK,moscow-1980,1980,SILVER,3
+Democratic People's Republic of Korea,PRK,albertville-1992,1992,BRONZE,1
+Democratic People's Republic of Korea,PRK,barcelona-1992,1992,BRONZE,5
+Democratic People's Republic of Korea,PRK,barcelona-1992,1992,GOLD,4
+Democratic People's Republic of Korea,PRK,atlanta-1996,1996,BRONZE,2
+Democratic People's Republic of Korea,PRK,atlanta-1996,1996,GOLD,2
+Democratic People's Republic of Korea,PRK,atlanta-1996,1996,SILVER,1
+Democratic People's Republic of Korea,PRK,sydney-2000,2000,BRONZE,3
+Democratic People's Republic of Korea,PRK,sydney-2000,2000,SILVER,1
+Democratic People's Republic of Korea,PRK,athens-2004,2004,BRONZE,1
+Democratic People's Republic of Korea,PRK,athens-2004,2004,SILVER,4
+Democratic People's Republic of Korea,PRK,beijing-2008,2008,BRONZE,2
+Democratic People's Republic of Korea,PRK,beijing-2008,2008,GOLD,2
+Democratic People's Republic of Korea,PRK,beijing-2008,2008,SILVER,2
+Democratic People's Republic of Korea,PRK,london-2012,2012,BRONZE,2
+Democratic People's Republic of Korea,PRK,london-2012,2012,GOLD,4
+Democratic People's Republic of Korea,PRK,rio-2016,2016,BRONZE,2
+Democratic People's Republic of Korea,PRK,rio-2016,2016,GOLD,2
+Democratic People's Republic of Korea,PRK,rio-2016,2016,SILVER,3
+Denmark,DEN,athens-1896,1896,BRONZE,3
+Denmark,DEN,athens-1896,1896,GOLD,1
+Denmark,DEN,athens-1896,1896,SILVER,2
+Denmark,DEN,paris-1900,1900,BRONZE,2
+Denmark,DEN,paris-1900,1900,GOLD,1
+Denmark,DEN,paris-1900,1900,SILVER,3
+Denmark,DEN,london-1908,1908,BRONZE,3
+Denmark,DEN,london-1908,1908,SILVER,2
+Denmark,DEN,stockholm-1912,1912,BRONZE,6
+Denmark,DEN,stockholm-1912,1912,GOLD,1
+Denmark,DEN,stockholm-1912,1912,SILVER,6
+Denmark,DEN,antwerp-1920,1920,BRONZE,1
+Denmark,DEN,antwerp-1920,1920,GOLD,3
+Denmark,DEN,antwerp-1920,1920,SILVER,9
+Denmark,DEN,paris-1924,1924,BRONZE,2
+Denmark,DEN,paris-1924,1924,GOLD,2
+Denmark,DEN,paris-1924,1924,SILVER,5
+Denmark,DEN,amsterdam-1928,1928,BRONZE,2
+Denmark,DEN,amsterdam-1928,1928,GOLD,3
+Denmark,DEN,amsterdam-1928,1928,SILVER,1
+Denmark,DEN,los-angeles-1932,1932,BRONZE,3
+Denmark,DEN,los-angeles-1932,1932,SILVER,3
+Denmark,DEN,berlin-1936,1936,BRONZE,3
+Denmark,DEN,berlin-1936,1936,SILVER,2
+Denmark,DEN,london-1948,1948,BRONZE,8
+Denmark,DEN,london-1948,1948,GOLD,5
+Denmark,DEN,london-1948,1948,SILVER,7
+Denmark,DEN,helsinki-1952,1952,BRONZE,3
+Denmark,DEN,helsinki-1952,1952,GOLD,2
+Denmark,DEN,helsinki-1952,1952,SILVER,1
+Denmark,DEN,melbourne-1956,1956,BRONZE,1
+Denmark,DEN,melbourne-1956,1956,GOLD,1
+Denmark,DEN,melbourne-1956,1956,SILVER,1
+Denmark,DEN,rome-1960,1960,BRONZE,1
+Denmark,DEN,rome-1960,1960,GOLD,2
+Denmark,DEN,rome-1960,1960,SILVER,3
+Denmark,DEN,tokyo-1964,1964,BRONZE,3
+Denmark,DEN,tokyo-1964,1964,GOLD,2
+Denmark,DEN,tokyo-1964,1964,SILVER,1
+Denmark,DEN,mexico-city-1968,1968,BRONZE,3
+Denmark,DEN,mexico-city-1968,1968,GOLD,1
+Denmark,DEN,mexico-city-1968,1968,SILVER,4
+Denmark,DEN,munich-1972,1972,GOLD,1
+Denmark,DEN,montreal-1976,1976,BRONZE,2
+Denmark,DEN,montreal-1976,1976,GOLD,1
+Denmark,DEN,moscow-1980,1980,BRONZE,2
+Denmark,DEN,moscow-1980,1980,GOLD,2
+Denmark,DEN,moscow-1980,1980,SILVER,1
+Denmark,DEN,los-angeles-1984,1984,BRONZE,3
+Denmark,DEN,los-angeles-1984,1984,SILVER,3
+Denmark,DEN,seoul-1988,1988,BRONZE,1
+Denmark,DEN,seoul-1988,1988,GOLD,2
+Denmark,DEN,seoul-1988,1988,SILVER,1
+Denmark,DEN,barcelona-1992,1992,BRONZE,4
+Denmark,DEN,barcelona-1992,1992,GOLD,1
+Denmark,DEN,barcelona-1992,1992,SILVER,1
+Denmark,DEN,atlanta-1996,1996,BRONZE,1
+Denmark,DEN,atlanta-1996,1996,GOLD,4
+Denmark,DEN,atlanta-1996,1996,SILVER,1
+Denmark,DEN,nagano-1998,1998,SILVER,1
+Denmark,DEN,sydney-2000,2000,BRONZE,1
+Denmark,DEN,sydney-2000,2000,GOLD,2
+Denmark,DEN,sydney-2000,2000,SILVER,3
+Denmark,DEN,athens-2004,2004,BRONZE,5
+Denmark,DEN,athens-2004,2004,GOLD,2
+Denmark,DEN,athens-2004,2004,SILVER,1
+Denmark,DEN,beijing-2008,2008,BRONZE,3
+Denmark,DEN,beijing-2008,2008,GOLD,2
+Denmark,DEN,beijing-2008,2008,SILVER,2
+Denmark,DEN,london-2012,2012,BRONZE,3
+Denmark,DEN,london-2012,2012,GOLD,2
+Denmark,DEN,london-2012,2012,SILVER,4
+Denmark,DEN,rio-2016,2016,BRONZE,7
+Denmark,DEN,rio-2016,2016,GOLD,2
+Denmark,DEN,rio-2016,2016,SILVER,6
+Denmark,DEN,tokyo-2020,2020,BRONZE,4
+Denmark,DEN,tokyo-2020,2020,GOLD,3
+Denmark,DEN,tokyo-2020,2020,SILVER,4
+Djibouti,DJI,seoul-1988,1988,BRONZE,1
+Dominican Republic,DOM,los-angeles-1984,1984,BRONZE,1
+Dominican Republic,DOM,athens-2004,2004,GOLD,1
+Dominican Republic,DOM,beijing-2008,2008,GOLD,1
+Dominican Republic,DOM,beijing-2008,2008,SILVER,1
+Dominican Republic,DOM,london-2012,2012,GOLD,1
+Dominican Republic,DOM,london-2012,2012,SILVER,1
+Dominican Republic,DOM,rio-2016,2016,BRONZE,1
+Dominican Republic,DOM,tokyo-2020,2020,BRONZE,2
+Dominican Republic,DOM,tokyo-2020,2020,SILVER,3
+Ecuador,ECU,atlanta-1996,1996,GOLD,1
+Ecuador,ECU,beijing-2008,2008,SILVER,1
+Ecuador,ECU,tokyo-2020,2020,GOLD,2
+Ecuador,ECU,tokyo-2020,2020,SILVER,1
+Egypt,EGY,amsterdam-1928,1928,BRONZE,1
+Egypt,EGY,amsterdam-1928,1928,GOLD,2
+Egypt,EGY,amsterdam-1928,1928,SILVER,1
+Egypt,EGY,berlin-1936,1936,BRONZE,2
+Egypt,EGY,berlin-1936,1936,GOLD,2
+Egypt,EGY,berlin-1936,1936,SILVER,1
+Egypt,EGY,london-1948,1948,BRONZE,1
+Egypt,EGY,london-1948,1948,GOLD,2
+Egypt,EGY,london-1948,1948,SILVER,2
+Egypt,EGY,helsinki-1952,1952,BRONZE,1
+Egypt,EGY,los-angeles-1984,1984,SILVER,1
+Egypt,EGY,athens-2004,2004,BRONZE,3
+Egypt,EGY,athens-2004,2004,GOLD,1
+Egypt,EGY,athens-2004,2004,SILVER,1
+Egypt,EGY,beijing-2008,2008,BRONZE,2
+Egypt,EGY,london-2012,2012,BRONZE,1
+Egypt,EGY,london-2012,2012,SILVER,3
+Egypt,EGY,rio-2016,2016,BRONZE,3
+Egypt,EGY,tokyo-2020,2020,BRONZE,4
+Egypt,EGY,tokyo-2020,2020,GOLD,1
+Egypt,EGY,tokyo-2020,2020,SILVER,1
+Eritrea,ERI,athens-2004,2004,BRONZE,1
+Estonia,EST,antwerp-1920,1920,GOLD,1
+Estonia,EST,antwerp-1920,1920,SILVER,2
+Estonia,EST,paris-1924,1924,BRONZE,4
+Estonia,EST,paris-1924,1924,GOLD,1
+Estonia,EST,paris-1924,1924,SILVER,1
+Estonia,EST,amsterdam-1928,1928,BRONZE,2
+Estonia,EST,amsterdam-1928,1928,GOLD,2
+Estonia,EST,amsterdam-1928,1928,SILVER,1
+Estonia,EST,berlin-1936,1936,BRONZE,3
+Estonia,EST,berlin-1936,1936,GOLD,2
+Estonia,EST,berlin-1936,1936,SILVER,2
+Estonia,EST,barcelona-1992,1992,BRONZE,1
+Estonia,EST,barcelona-1992,1992,GOLD,1
+Estonia,EST,sydney-2000,2000,BRONZE,2
+Estonia,EST,sydney-2000,2000,GOLD,1
+Estonia,EST,salt-lake-city-2002,2002,BRONZE,1
+Estonia,EST,salt-lake-city-2002,2002,GOLD,1
+Estonia,EST,salt-lake-city-2002,2002,SILVER,1
+Estonia,EST,athens-2004,2004,BRONZE,2
+Estonia,EST,athens-2004,2004,SILVER,1
+Estonia,EST,turin-2006,2006,GOLD,3
+Estonia,EST,beijing-2008,2008,GOLD,1
+Estonia,EST,beijing-2008,2008,SILVER,1
+Estonia,EST,vancouver-2010,2010,SILVER,1
+Estonia,EST,london-2012,2012,BRONZE,1
+Estonia,EST,london-2012,2012,SILVER,1
+Estonia,EST,rio-2016,2016,BRONZE,1
+Estonia,EST,tokyo-2020,2020,BRONZE,1
+Estonia,EST,tokyo-2020,2020,GOLD,1
+Estonia,EST,beijing-2022,2022,BRONZE,1
+Ethiopia,ETH,rome-1960,1960,GOLD,1
+Ethiopia,ETH,tokyo-1964,1964,GOLD,1
+Ethiopia,ETH,mexico-city-1968,1968,GOLD,1
+Ethiopia,ETH,mexico-city-1968,1968,SILVER,1
+Ethiopia,ETH,munich-1972,1972,BRONZE,2
+Ethiopia,ETH,moscow-1980,1980,BRONZE,2
+Ethiopia,ETH,moscow-1980,1980,GOLD,2
+Ethiopia,ETH,barcelona-1992,1992,BRONZE,2
+Ethiopia,ETH,barcelona-1992,1992,GOLD,1
+Ethiopia,ETH,atlanta-1996,1996,BRONZE,1
+Ethiopia,ETH,atlanta-1996,1996,GOLD,2
+Ethiopia,ETH,sydney-2000,2000,BRONZE,3
+Ethiopia,ETH,sydney-2000,2000,GOLD,4
+Ethiopia,ETH,sydney-2000,2000,SILVER,1
+Ethiopia,ETH,athens-2004,2004,BRONZE,2
+Ethiopia,ETH,athens-2004,2004,GOLD,2
+Ethiopia,ETH,athens-2004,2004,SILVER,3
+Ethiopia,ETH,beijing-2008,2008,BRONZE,1
+Ethiopia,ETH,beijing-2008,2008,GOLD,4
+Ethiopia,ETH,beijing-2008,2008,SILVER,2
+Ethiopia,ETH,london-2012,2012,BRONZE,2
+Ethiopia,ETH,london-2012,2012,GOLD,3
+Ethiopia,ETH,london-2012,2012,SILVER,2
+Ethiopia,ETH,rio-2016,2016,BRONZE,5
+Ethiopia,ETH,rio-2016,2016,GOLD,1
+Ethiopia,ETH,rio-2016,2016,SILVER,2
+Ethiopia,ETH,tokyo-2020,2020,BRONZE,2
+Ethiopia,ETH,tokyo-2020,2020,GOLD,1
+Ethiopia,ETH,tokyo-2020,2020,SILVER,1
+Federal Republic of Germany,FRG,grenoble-1968,1968,BRONZE,3
+Federal Republic of Germany,FRG,mexico-city-1968,1968,BRONZE,10
+Federal Republic of Germany,FRG,grenoble-1968,1968,GOLD,2
+Federal Republic of Germany,FRG,mexico-city-1968,1968,GOLD,5
+Federal Republic of Germany,FRG,grenoble-1968,1968,SILVER,2
+Federal Republic of Germany,FRG,mexico-city-1968,1968,SILVER,11
+Federal Republic of Germany,FRG,munich-1972,1972,BRONZE,16
+Federal Republic of Germany,FRG,sapporo-1972,1972,BRONZE,1
+Federal Republic of Germany,FRG,munich-1972,1972,GOLD,13
+Federal Republic of Germany,FRG,sapporo-1972,1972,GOLD,3
+Federal Republic of Germany,FRG,munich-1972,1972,SILVER,11
+Federal Republic of Germany,FRG,sapporo-1972,1972,SILVER,1
+Federal Republic of Germany,FRG,innsbruck-1976,1976,BRONZE,3
+Federal Republic of Germany,FRG,montreal-1976,1976,BRONZE,17
+Federal Republic of Germany,FRG,innsbruck-1976,1976,GOLD,2
+Federal Republic of Germany,FRG,montreal-1976,1976,GOLD,10
+Federal Republic of Germany,FRG,innsbruck-1976,1976,SILVER,5
+Federal Republic of Germany,FRG,montreal-1976,1976,SILVER,12
+Federal Republic of Germany,FRG,lake-placid-1980,1980,BRONZE,2
+Federal Republic of Germany,FRG,lake-placid-1980,1980,SILVER,2
+Federal Republic of Germany,FRG,los-angeles-1984,1984,BRONZE,23
+Federal Republic of Germany,FRG,sarajevo-1984,1984,BRONZE,1
+Federal Republic of Germany,FRG,los-angeles-1984,1984,GOLD,17
+Federal Republic of Germany,FRG,sarajevo-1984,1984,GOLD,2
+Federal Republic of Germany,FRG,los-angeles-1984,1984,SILVER,19
+Federal Republic of Germany,FRG,sarajevo-1984,1984,SILVER,1
+Federal Republic of Germany,FRG,calgary-1988,1988,BRONZE,2
+Federal Republic of Germany,FRG,seoul-1988,1988,BRONZE,15
+Federal Republic of Germany,FRG,calgary-1988,1988,GOLD,2
+Federal Republic of Germany,FRG,seoul-1988,1988,GOLD,11
+Federal Republic of Germany,FRG,calgary-1988,1988,SILVER,4
+Federal Republic of Germany,FRG,seoul-1988,1988,SILVER,14
+Fiji,FIJ,rio-2016,2016,GOLD,1
+Fiji,FIJ,tokyo-2020,2020,BRONZE,1
+Fiji,FIJ,tokyo-2020,2020,GOLD,1
+Finland,FIN,london-1908,1908,BRONZE,3
+Finland,FIN,london-1908,1908,GOLD,1
+Finland,FIN,london-1908,1908,SILVER,1
+Finland,FIN,stockholm-1912,1912,BRONZE,9
+Finland,FIN,stockholm-1912,1912,GOLD,9
+Finland,FIN,stockholm-1912,1912,SILVER,8
+Finland,FIN,antwerp-1920,1920,BRONZE,9
+Finland,FIN,antwerp-1920,1920,GOLD,15
+Finland,FIN,antwerp-1920,1920,SILVER,10
+Finland,FIN,chamonix-1924,1924,BRONZE,3
+Finland,FIN,paris-1924,1924,BRONZE,10
+Finland,FIN,chamonix-1924,1924,GOLD,4
+Finland,FIN,paris-1924,1924,GOLD,14
+Finland,FIN,chamonix-1924,1924,SILVER,4
+Finland,FIN,paris-1924,1924,SILVER,13
+Finland,FIN,amsterdam-1928,1928,BRONZE,8
+Finland,FIN,st-moritz-1928,1928,BRONZE,1
+Finland,FIN,amsterdam-1928,1928,GOLD,8
+Finland,FIN,st-moritz-1928,1928,GOLD,2
+Finland,FIN,amsterdam-1928,1928,SILVER,8
+Finland,FIN,st-moritz-1928,1928,SILVER,1
+Finland,FIN,lake-placid-1932,1932,BRONZE,1
+Finland,FIN,los-angeles-1932,1932,BRONZE,12
+Finland,FIN,lake-placid-1932,1932,GOLD,1
+Finland,FIN,los-angeles-1932,1932,GOLD,5
+Finland,FIN,lake-placid-1932,1932,SILVER,1
+Finland,FIN,los-angeles-1932,1932,SILVER,8
+Finland,FIN,berlin-1936,1936,BRONZE,6
+Finland,FIN,garmisch-partenkirchen-1936,1936,BRONZE,3
+Finland,FIN,berlin-1936,1936,GOLD,7
+Finland,FIN,garmisch-partenkirchen-1936,1936,GOLD,1
+Finland,FIN,berlin-1936,1936,SILVER,6
+Finland,FIN,garmisch-partenkirchen-1936,1936,SILVER,2
+Finland,FIN,london-1948,1948,BRONZE,5
+Finland,FIN,st-moritz-1948,1948,BRONZE,2
+Finland,FIN,london-1948,1948,GOLD,8
+Finland,FIN,st-moritz-1948,1948,GOLD,1
+Finland,FIN,london-1948,1948,SILVER,7
+Finland,FIN,st-moritz-1948,1948,SILVER,3
+Finland,FIN,helsinki-1952,1952,BRONZE,13
+Finland,FIN,oslo-1952,1952,BRONZE,2
+Finland,FIN,helsinki-1952,1952,GOLD,4
+Finland,FIN,oslo-1952,1952,GOLD,3
+Finland,FIN,helsinki-1952,1952,SILVER,3
+Finland,FIN,oslo-1952,1952,SILVER,4
+Finland,FIN,cortina-d-ampezzo-1956,1956,BRONZE,1
+Finland,FIN,melbourne-1956,1956,BRONZE,11
+Finland,FIN,cortina-d-ampezzo-1956,1956,GOLD,3
+Finland,FIN,melbourne-1956,1956,GOLD,3
+Finland,FIN,cortina-d-ampezzo-1956,1956,SILVER,3
+Finland,FIN,melbourne-1956,1956,SILVER,1
+Finland,FIN,rome-1960,1960,BRONZE,3
+Finland,FIN,squaw-valley-1960,1960,BRONZE,3
+Finland,FIN,rome-1960,1960,GOLD,1
+Finland,FIN,squaw-valley-1960,1960,GOLD,2
+Finland,FIN,rome-1960,1960,SILVER,1
+Finland,FIN,squaw-valley-1960,1960,SILVER,3
+Finland,FIN,innsbruck-1964,1964,BRONZE,3
+Finland,FIN,tokyo-1964,1964,BRONZE,2
+Finland,FIN,innsbruck-1964,1964,GOLD,3
+Finland,FIN,tokyo-1964,1964,GOLD,3
+Finland,FIN,innsbruck-1964,1964,SILVER,4
+Finland,FIN,grenoble-1968,1968,BRONZE,2
+Finland,FIN,mexico-city-1968,1968,BRONZE,1
+Finland,FIN,grenoble-1968,1968,GOLD,1
+Finland,FIN,mexico-city-1968,1968,GOLD,1
+Finland,FIN,grenoble-1968,1968,SILVER,2
+Finland,FIN,mexico-city-1968,1968,SILVER,2
+Finland,FIN,munich-1972,1972,BRONZE,4
+Finland,FIN,sapporo-1972,1972,BRONZE,1
+Finland,FIN,munich-1972,1972,GOLD,3
+Finland,FIN,munich-1972,1972,SILVER,1
+Finland,FIN,sapporo-1972,1972,SILVER,4
+Finland,FIN,innsbruck-1976,1976,BRONZE,1
+Finland,FIN,innsbruck-1976,1976,GOLD,2
+Finland,FIN,montreal-1976,1976,GOLD,4
+Finland,FIN,innsbruck-1976,1976,SILVER,4
+Finland,FIN,montreal-1976,1976,SILVER,2
+Finland,FIN,lake-placid-1980,1980,BRONZE,3
+Finland,FIN,moscow-1980,1980,BRONZE,4
+Finland,FIN,lake-placid-1980,1980,GOLD,1
+Finland,FIN,moscow-1980,1980,GOLD,3
+Finland,FIN,lake-placid-1980,1980,SILVER,5
+Finland,FIN,moscow-1980,1980,SILVER,1
+Finland,FIN,los-angeles-1984,1984,BRONZE,6
+Finland,FIN,sarajevo-1984,1984,BRONZE,6
+Finland,FIN,los-angeles-1984,1984,GOLD,4
+Finland,FIN,sarajevo-1984,1984,GOLD,4
+Finland,FIN,los-angeles-1984,1984,SILVER,2
+Finland,FIN,sarajevo-1984,1984,SILVER,3
+Finland,FIN,calgary-1988,1988,BRONZE,2
+Finland,FIN,seoul-1988,1988,BRONZE,2
+Finland,FIN,calgary-1988,1988,GOLD,4
+Finland,FIN,seoul-1988,1988,GOLD,1
+Finland,FIN,calgary-1988,1988,SILVER,1
+Finland,FIN,seoul-1988,1988,SILVER,1
+Finland,FIN,albertville-1992,1992,BRONZE,3
+Finland,FIN,barcelona-1992,1992,BRONZE,2
+Finland,FIN,albertville-1992,1992,GOLD,3
+Finland,FIN,barcelona-1992,1992,GOLD,1
+Finland,FIN,albertville-1992,1992,SILVER,1
+Finland,FIN,barcelona-1992,1992,SILVER,2
+Finland,FIN,lillehammer-1994,1994,BRONZE,5
+Finland,FIN,lillehammer-1994,1994,SILVER,1
+Finland,FIN,atlanta-1996,1996,BRONZE,1
+Finland,FIN,atlanta-1996,1996,GOLD,1
+Finland,FIN,atlanta-1996,1996,SILVER,2
+Finland,FIN,nagano-1998,1998,BRONZE,6
+Finland,FIN,nagano-1998,1998,GOLD,2
+Finland,FIN,nagano-1998,1998,SILVER,4
+Finland,FIN,sydney-2000,2000,BRONZE,1
+Finland,FIN,sydney-2000,2000,GOLD,2
+Finland,FIN,sydney-2000,2000,SILVER,1
+Finland,FIN,salt-lake-city-2002,2002,BRONZE,1
+Finland,FIN,salt-lake-city-2002,2002,GOLD,4
+Finland,FIN,salt-lake-city-2002,2002,SILVER,2
+Finland,FIN,athens-2004,2004,SILVER,2
+Finland,FIN,turin-2006,2006,BRONZE,3
+Finland,FIN,turin-2006,2006,SILVER,6
+Finland,FIN,beijing-2008,2008,BRONZE,2
+Finland,FIN,beijing-2008,2008,GOLD,1
+Finland,FIN,beijing-2008,2008,SILVER,1
+Finland,FIN,vancouver-2010,2010,BRONZE,4
+Finland,FIN,vancouver-2010,2010,SILVER,1
+Finland,FIN,london-2012,2012,BRONZE,1
+Finland,FIN,london-2012,2012,SILVER,2
+Finland,FIN,sochi-2014,2014,BRONZE,1
+Finland,FIN,sochi-2014,2014,GOLD,1
+Finland,FIN,sochi-2014,2014,SILVER,3
+Finland,FIN,rio-2016,2016,BRONZE,1
+Finland,FIN,pyeongchang-2018,2018,BRONZE,4
+Finland,FIN,pyeongchang-2018,2018,GOLD,1
+Finland,FIN,pyeongchang-2018,2018,SILVER,1
+Finland,FIN,tokyo-2020,2020,BRONZE,2
+Finland,FIN,beijing-2022,2022,BRONZE,4
+Finland,FIN,beijing-2022,2022,GOLD,2
+Finland,FIN,beijing-2022,2022,SILVER,2
+France,FRA,athens-1896,1896,BRONZE,2
+France,FRA,athens-1896,1896,GOLD,5
+France,FRA,athens-1896,1896,SILVER,4
+France,FRA,paris-1900,1900,BRONZE,35
+France,FRA,paris-1900,1900,GOLD,26
+France,FRA,paris-1900,1900,SILVER,36
+France,FRA,st-louis-1904,1904,SILVER,1
+France,FRA,london-1908,1908,BRONZE,9
+France,FRA,london-1908,1908,GOLD,5
+France,FRA,london-1908,1908,SILVER,5
+France,FRA,stockholm-1912,1912,BRONZE,3
+France,FRA,stockholm-1912,1912,GOLD,7
+France,FRA,stockholm-1912,1912,SILVER,4
+France,FRA,antwerp-1920,1920,BRONZE,13
+France,FRA,antwerp-1920,1920,GOLD,9
+France,FRA,antwerp-1920,1920,SILVER,19
+France,FRA,chamonix-1924,1924,BRONZE,3
+France,FRA,paris-1924,1924,BRONZE,10
+France,FRA,paris-1924,1924,GOLD,13
+France,FRA,paris-1924,1924,SILVER,15
+France,FRA,amsterdam-1928,1928,BRONZE,5
+France,FRA,amsterdam-1928,1928,GOLD,6
+France,FRA,st-moritz-1928,1928,GOLD,1
+France,FRA,amsterdam-1928,1928,SILVER,10
+France,FRA,los-angeles-1932,1932,BRONZE,4
+France,FRA,lake-placid-1932,1932,GOLD,1
+France,FRA,los-angeles-1932,1932,GOLD,10
+France,FRA,los-angeles-1932,1932,SILVER,5
+France,FRA,berlin-1936,1936,BRONZE,6
+France,FRA,garmisch-partenkirchen-1936,1936,BRONZE,1
+France,FRA,berlin-1936,1936,GOLD,7
+France,FRA,berlin-1936,1936,SILVER,5
+France,FRA,london-1948,1948,BRONZE,13
+France,FRA,st-moritz-1948,1948,BRONZE,2
+France,FRA,london-1948,1948,GOLD,10
+France,FRA,st-moritz-1948,1948,GOLD,2
+France,FRA,london-1948,1948,SILVER,6
+France,FRA,st-moritz-1948,1948,SILVER,1
+France,FRA,helsinki-1952,1952,BRONZE,6
+France,FRA,oslo-1952,1952,BRONZE,1
+France,FRA,helsinki-1952,1952,GOLD,5
+France,FRA,helsinki-1952,1952,SILVER,6
+France,FRA,melbourne-1956,1956,BRONZE,6
+France,FRA,melbourne-1956,1956,GOLD,4
+France,FRA,melbourne-1956,1956,SILVER,4
+France,FRA,rome-1960,1960,BRONZE,3
+France,FRA,squaw-valley-1960,1960,BRONZE,2
+France,FRA,squaw-valley-1960,1960,GOLD,1
+France,FRA,rome-1960,1960,SILVER,2
+France,FRA,tokyo-1964,1964,BRONZE,6
+France,FRA,innsbruck-1964,1964,GOLD,3
+France,FRA,tokyo-1964,1964,GOLD,1
+France,FRA,innsbruck-1964,1964,SILVER,4
+France,FRA,tokyo-1964,1964,SILVER,8
+France,FRA,grenoble-1968,1968,BRONZE,2
+France,FRA,mexico-city-1968,1968,BRONZE,5
+France,FRA,grenoble-1968,1968,GOLD,4
+France,FRA,mexico-city-1968,1968,GOLD,7
+France,FRA,grenoble-1968,1968,SILVER,3
+France,FRA,mexico-city-1968,1968,SILVER,3
+France,FRA,munich-1972,1972,BRONZE,7
+France,FRA,sapporo-1972,1972,BRONZE,2
+France,FRA,munich-1972,1972,GOLD,2
+France,FRA,munich-1972,1972,SILVER,4
+France,FRA,sapporo-1972,1972,SILVER,1
+France,FRA,innsbruck-1976,1976,BRONZE,1
+France,FRA,montreal-1976,1976,BRONZE,4
+France,FRA,montreal-1976,1976,GOLD,2
+France,FRA,montreal-1976,1976,SILVER,3
+France,FRA,lake-placid-1980,1980,BRONZE,1
+France,FRA,moscow-1980,1980,BRONZE,3
+France,FRA,moscow-1980,1980,GOLD,6
+France,FRA,moscow-1980,1980,SILVER,5
+France,FRA,los-angeles-1984,1984,BRONZE,16
+France,FRA,sarajevo-1984,1984,BRONZE,2
+France,FRA,los-angeles-1984,1984,GOLD,5
+France,FRA,los-angeles-1984,1984,SILVER,7
+France,FRA,sarajevo-1984,1984,SILVER,1
+France,FRA,calgary-1988,1988,BRONZE,1
+France,FRA,seoul-1988,1988,BRONZE,6
+France,FRA,calgary-1988,1988,GOLD,1
+France,FRA,seoul-1988,1988,GOLD,6
+France,FRA,seoul-1988,1988,SILVER,4
+France,FRA,albertville-1992,1992,BRONZE,1
+France,FRA,barcelona-1992,1992,BRONZE,16
+France,FRA,albertville-1992,1992,GOLD,3
+France,FRA,barcelona-1992,1992,GOLD,8
+France,FRA,albertville-1992,1992,SILVER,5
+France,FRA,barcelona-1992,1992,SILVER,5
+France,FRA,lillehammer-1994,1994,BRONZE,4
+France,FRA,lillehammer-1994,1994,SILVER,1
+France,FRA,atlanta-1996,1996,BRONZE,15
+France,FRA,atlanta-1996,1996,GOLD,15
+France,FRA,atlanta-1996,1996,SILVER,7
+France,FRA,nagano-1998,1998,BRONZE,5
+France,FRA,nagano-1998,1998,GOLD,2
+France,FRA,nagano-1998,1998,SILVER,1
+France,FRA,sydney-2000,2000,BRONZE,11
+France,FRA,sydney-2000,2000,GOLD,13
+France,FRA,sydney-2000,2000,SILVER,14
+France,FRA,salt-lake-city-2002,2002,BRONZE,2
+France,FRA,salt-lake-city-2002,2002,GOLD,4
+France,FRA,salt-lake-city-2002,2002,SILVER,5
+France,FRA,athens-2004,2004,BRONZE,13
+France,FRA,athens-2004,2004,GOLD,11
+France,FRA,athens-2004,2004,SILVER,9
+France,FRA,turin-2006,2006,BRONZE,4
+France,FRA,turin-2006,2006,GOLD,3
+France,FRA,turin-2006,2006,SILVER,2
+France,FRA,beijing-2008,2008,BRONZE,20
+France,FRA,beijing-2008,2008,GOLD,6
+France,FRA,beijing-2008,2008,SILVER,15
+France,FRA,vancouver-2010,2010,BRONZE,6
+France,FRA,vancouver-2010,2010,GOLD,2
+France,FRA,vancouver-2010,2010,SILVER,3
+France,FRA,london-2012,2012,BRONZE,13
+France,FRA,london-2012,2012,GOLD,11
+France,FRA,london-2012,2012,SILVER,11
+France,FRA,sochi-2014,2014,BRONZE,7
+France,FRA,sochi-2014,2014,GOLD,4
+France,FRA,sochi-2014,2014,SILVER,4
+France,FRA,rio-2016,2016,BRONZE,14
+France,FRA,rio-2016,2016,GOLD,10
+France,FRA,rio-2016,2016,SILVER,18
+France,FRA,pyeongchang-2018,2018,BRONZE,6
+France,FRA,pyeongchang-2018,2018,GOLD,5
+France,FRA,pyeongchang-2018,2018,SILVER,4
+France,FRA,tokyo-2020,2020,BRONZE,11
+France,FRA,tokyo-2020,2020,GOLD,10
+France,FRA,tokyo-2020,2020,SILVER,12
+France,FRA,beijing-2022,2022,BRONZE,2
+France,FRA,beijing-2022,2022,GOLD,5
+France,FRA,beijing-2022,2022,SILVER,7
+Gabon,GAB,london-2012,2012,SILVER,1
+Georgia,GEO,atlanta-1996,1996,BRONZE,2
+Georgia,GEO,sydney-2000,2000,BRONZE,6
+Georgia,GEO,athens-2004,2004,GOLD,2
+Georgia,GEO,athens-2004,2004,SILVER,2
+Georgia,GEO,beijing-2008,2008,BRONZE,2
+Georgia,GEO,beijing-2008,2008,GOLD,3
+Georgia,GEO,beijing-2008,2008,SILVER,2
+Georgia,GEO,london-2012,2012,BRONZE,3
+Georgia,GEO,london-2012,2012,GOLD,1
+Georgia,GEO,london-2012,2012,SILVER,2
+Georgia,GEO,rio-2016,2016,BRONZE,4
+Georgia,GEO,rio-2016,2016,GOLD,2
+Georgia,GEO,rio-2016,2016,SILVER,1
+Georgia,GEO,tokyo-2020,2020,BRONZE,1
+Georgia,GEO,tokyo-2020,2020,GOLD,2
+Georgia,GEO,tokyo-2020,2020,SILVER,5
+German Democratic Republic (Germany),GDR,grenoble-1968,1968,BRONZE,2
+German Democratic Republic (Germany),GDR,mexico-city-1968,1968,BRONZE,7
+German Democratic Republic (Germany),GDR,grenoble-1968,1968,GOLD,1
+German Democratic Republic (Germany),GDR,mexico-city-1968,1968,GOLD,9
+German Democratic Republic (Germany),GDR,grenoble-1968,1968,SILVER,2
+German Democratic Republic (Germany),GDR,mexico-city-1968,1968,SILVER,9
+German Democratic Republic (Germany),GDR,munich-1972,1972,BRONZE,23
+German Democratic Republic (Germany),GDR,sapporo-1972,1972,BRONZE,7
+German Democratic Republic (Germany),GDR,munich-1972,1972,GOLD,20
+German Democratic Republic (Germany),GDR,sapporo-1972,1972,GOLD,4
+German Democratic Republic (Germany),GDR,munich-1972,1972,SILVER,23
+German Democratic Republic (Germany),GDR,sapporo-1972,1972,SILVER,3
+German Democratic Republic (Germany),GDR,innsbruck-1976,1976,BRONZE,7
+German Democratic Republic (Germany),GDR,montreal-1976,1976,BRONZE,25
+German Democratic Republic (Germany),GDR,innsbruck-1976,1976,GOLD,7
+German Democratic Republic (Germany),GDR,montreal-1976,1976,GOLD,40
+German Democratic Republic (Germany),GDR,innsbruck-1976,1976,SILVER,5
+German Democratic Republic (Germany),GDR,montreal-1976,1976,SILVER,25
+German Democratic Republic (Germany),GDR,lake-placid-1980,1980,BRONZE,7
+German Democratic Republic (Germany),GDR,moscow-1980,1980,BRONZE,42
+German Democratic Republic (Germany),GDR,lake-placid-1980,1980,GOLD,9
+German Democratic Republic (Germany),GDR,moscow-1980,1980,GOLD,47
+German Democratic Republic (Germany),GDR,lake-placid-1980,1980,SILVER,7
+German Democratic Republic (Germany),GDR,moscow-1980,1980,SILVER,37
+German Democratic Republic (Germany),GDR,sarajevo-1984,1984,BRONZE,6
+German Democratic Republic (Germany),GDR,sarajevo-1984,1984,GOLD,9
+German Democratic Republic (Germany),GDR,sarajevo-1984,1984,SILVER,9
+German Democratic Republic (Germany),GDR,calgary-1988,1988,BRONZE,6
+German Democratic Republic (Germany),GDR,seoul-1988,1988,BRONZE,30
+German Democratic Republic (Germany),GDR,calgary-1988,1988,GOLD,9
+German Democratic Republic (Germany),GDR,seoul-1988,1988,GOLD,37
+German Democratic Republic (Germany),GDR,calgary-1988,1988,SILVER,10
+German Democratic Republic (Germany),GDR,seoul-1988,1988,SILVER,35
+Germany,GER,athens-1896,1896,BRONZE,2
+Germany,GER,athens-1896,1896,GOLD,6
+Germany,GER,athens-1896,1896,SILVER,5
+Germany,GER,paris-1900,1900,BRONZE,2
+Germany,GER,paris-1900,1900,GOLD,4
+Germany,GER,paris-1900,1900,SILVER,3
+Germany,GER,st-louis-1904,1904,BRONZE,6
+Germany,GER,st-louis-1904,1904,GOLD,4
+Germany,GER,st-louis-1904,1904,SILVER,5
+Germany,GER,london-1908,1908,BRONZE,5
+Germany,GER,london-1908,1908,GOLD,3
+Germany,GER,london-1908,1908,SILVER,5
+Germany,GER,stockholm-1912,1912,BRONZE,5
+Germany,GER,stockholm-1912,1912,GOLD,6
+Germany,GER,stockholm-1912,1912,SILVER,14
+Germany,GER,amsterdam-1928,1928,BRONZE,14
+Germany,GER,st-moritz-1928,1928,BRONZE,1
+Germany,GER,amsterdam-1928,1928,GOLD,9
+Germany,GER,amsterdam-1928,1928,SILVER,7
+Germany,GER,lake-placid-1932,1932,BRONZE,2
+Germany,GER,los-angeles-1932,1932,BRONZE,5
+Germany,GER,los-angeles-1932,1932,GOLD,3
+Germany,GER,los-angeles-1932,1932,SILVER,12
+Germany,GER,berlin-1936,1936,BRONZE,29
+Germany,GER,berlin-1936,1936,GOLD,31
+Germany,GER,garmisch-partenkirchen-1936,1936,GOLD,3
+Germany,GER,berlin-1936,1936,SILVER,24
+Germany,GER,garmisch-partenkirchen-1936,1936,SILVER,3
+Germany,GER,helsinki-1952,1952,BRONZE,15
+Germany,GER,oslo-1952,1952,BRONZE,2
+Germany,GER,oslo-1952,1952,GOLD,3
+Germany,GER,helsinki-1952,1952,SILVER,7
+Germany,GER,oslo-1952,1952,SILVER,2
+Germany,GER,cortina-d-ampezzo-1956,1956,BRONZE,1
+Germany,GER,melbourne-1956,1956,BRONZE,6
+Germany,GER,cortina-d-ampezzo-1956,1956,GOLD,1
+Germany,GER,melbourne-1956,1956,GOLD,4
+Germany,GER,melbourne-1956,1956,SILVER,10
+Germany,GER,rome-1960,1960,BRONZE,11
+Germany,GER,squaw-valley-1960,1960,BRONZE,1
+Germany,GER,rome-1960,1960,GOLD,12
+Germany,GER,squaw-valley-1960,1960,GOLD,4
+Germany,GER,rome-1960,1960,SILVER,19
+Germany,GER,squaw-valley-1960,1960,SILVER,3
+Germany,GER,innsbruck-1964,1964,BRONZE,3
+Germany,GER,tokyo-1964,1964,BRONZE,18
+Germany,GER,innsbruck-1964,1964,GOLD,3
+Germany,GER,tokyo-1964,1964,GOLD,10
+Germany,GER,innsbruck-1964,1964,SILVER,3
+Germany,GER,tokyo-1964,1964,SILVER,22
+Germany,GER,albertville-1992,1992,BRONZE,6
+Germany,GER,barcelona-1992,1992,BRONZE,28
+Germany,GER,albertville-1992,1992,GOLD,10
+Germany,GER,barcelona-1992,1992,GOLD,33
+Germany,GER,albertville-1992,1992,SILVER,10
+Germany,GER,barcelona-1992,1992,SILVER,21
+Germany,GER,lillehammer-1994,1994,BRONZE,8
+Germany,GER,lillehammer-1994,1994,GOLD,9
+Germany,GER,lillehammer-1994,1994,SILVER,7
+Germany,GER,atlanta-1996,1996,BRONZE,27
+Germany,GER,atlanta-1996,1996,GOLD,20
+Germany,GER,atlanta-1996,1996,SILVER,18
+Germany,GER,nagano-1998,1998,BRONZE,8
+Germany,GER,nagano-1998,1998,GOLD,12
+Germany,GER,nagano-1998,1998,SILVER,9
+Germany,GER,sydney-2000,2000,BRONZE,26
+Germany,GER,sydney-2000,2000,GOLD,13
+Germany,GER,sydney-2000,2000,SILVER,17
+Germany,GER,salt-lake-city-2002,2002,BRONZE,8
+Germany,GER,salt-lake-city-2002,2002,GOLD,12
+Germany,GER,salt-lake-city-2002,2002,SILVER,16
+Germany,GER,athens-2004,2004,BRONZE,20
+Germany,GER,athens-2004,2004,GOLD,13
+Germany,GER,athens-2004,2004,SILVER,16
+Germany,GER,turin-2006,2006,BRONZE,6
+Germany,GER,turin-2006,2006,GOLD,11
+Germany,GER,turin-2006,2006,SILVER,12
+Germany,GER,beijing-2008,2008,BRONZE,14
+Germany,GER,beijing-2008,2008,GOLD,16
+Germany,GER,beijing-2008,2008,SILVER,11
+Germany,GER,vancouver-2010,2010,BRONZE,7
+Germany,GER,vancouver-2010,2010,GOLD,10
+Germany,GER,vancouver-2010,2010,SILVER,13
+Germany,GER,london-2012,2012,BRONZE,13
+Germany,GER,london-2012,2012,GOLD,11
+Germany,GER,london-2012,2012,SILVER,20
+Germany,GER,sochi-2014,2014,BRONZE,5
+Germany,GER,sochi-2014,2014,GOLD,8
+Germany,GER,sochi-2014,2014,SILVER,6
+Germany,GER,rio-2016,2016,BRONZE,15
+Germany,GER,rio-2016,2016,GOLD,17
+Germany,GER,rio-2016,2016,SILVER,10
+Germany,GER,pyeongchang-2018,2018,BRONZE,7
+Germany,GER,pyeongchang-2018,2018,GOLD,14
+Germany,GER,pyeongchang-2018,2018,SILVER,10
+Germany,GER,tokyo-2020,2020,BRONZE,16
+Germany,GER,tokyo-2020,2020,GOLD,10
+Germany,GER,tokyo-2020,2020,SILVER,11
+Germany,GER,beijing-2022,2022,BRONZE,5
+Germany,GER,beijing-2022,2022,GOLD,12
+Germany,GER,beijing-2022,2022,SILVER,10
+Ghana,GHA,rome-1960,1960,SILVER,1
+Ghana,GHA,tokyo-1964,1964,BRONZE,1
+Ghana,GHA,munich-1972,1972,BRONZE,1
+Ghana,GHA,barcelona-1992,1992,BRONZE,1
+Ghana,GHA,tokyo-2020,2020,BRONZE,1
+Great Britain,GBR,athens-1896,1896,BRONZE,2
+Great Britain,GBR,athens-1896,1896,GOLD,2
+Great Britain,GBR,athens-1896,1896,SILVER,3
+Great Britain,GBR,paris-1900,1900,BRONZE,9
+Great Britain,GBR,paris-1900,1900,GOLD,15
+Great Britain,GBR,paris-1900,1900,SILVER,8
+Great Britain,GBR,st-louis-1904,1904,GOLD,1
+Great Britain,GBR,st-louis-1904,1904,SILVER,1
+Great Britain,GBR,london-1908,1908,BRONZE,39
+Great Britain,GBR,london-1908,1908,GOLD,56
+Great Britain,GBR,london-1908,1908,SILVER,51
+Great Britain,GBR,stockholm-1912,1912,BRONZE,16
+Great Britain,GBR,stockholm-1912,1912,GOLD,9
+Great Britain,GBR,stockholm-1912,1912,SILVER,14
+Great Britain,GBR,antwerp-1920,1920,BRONZE,13
+Great Britain,GBR,antwerp-1920,1920,GOLD,14
+Great Britain,GBR,antwerp-1920,1920,SILVER,15
+Great Britain,GBR,chamonix-1924,1924,BRONZE,2
+Great Britain,GBR,paris-1924,1924,BRONZE,12
+Great Britain,GBR,chamonix-1924,1924,GOLD,1
+Great Britain,GBR,paris-1924,1924,GOLD,9
+Great Britain,GBR,chamonix-1924,1924,SILVER,1
+Great Britain,GBR,paris-1924,1924,SILVER,13
+Great Britain,GBR,amsterdam-1928,1928,BRONZE,7
+Great Britain,GBR,st-moritz-1928,1928,BRONZE,1
+Great Britain,GBR,amsterdam-1928,1928,GOLD,3
+Great Britain,GBR,amsterdam-1928,1928,SILVER,10
+Great Britain,GBR,los-angeles-1932,1932,BRONZE,5
+Great Britain,GBR,los-angeles-1932,1932,GOLD,4
+Great Britain,GBR,los-angeles-1932,1932,SILVER,7
+Great Britain,GBR,berlin-1936,1936,BRONZE,2
+Great Britain,GBR,garmisch-partenkirchen-1936,1936,BRONZE,1
+Great Britain,GBR,berlin-1936,1936,GOLD,4
+Great Britain,GBR,garmisch-partenkirchen-1936,1936,GOLD,1
+Great Britain,GBR,berlin-1936,1936,SILVER,7
+Great Britain,GBR,garmisch-partenkirchen-1936,1936,SILVER,1
+Great Britain,GBR,london-1948,1948,BRONZE,6
+Great Britain,GBR,st-moritz-1948,1948,BRONZE,2
+Great Britain,GBR,london-1948,1948,GOLD,3
+Great Britain,GBR,london-1948,1948,SILVER,14
+Great Britain,GBR,helsinki-1952,1952,BRONZE,8
+Great Britain,GBR,helsinki-1952,1952,GOLD,1
+Great Britain,GBR,oslo-1952,1952,GOLD,1
+Great Britain,GBR,helsinki-1952,1952,SILVER,2
+Great Britain,GBR,melbourne-1956,1956,BRONZE,9
+Great Britain,GBR,melbourne-1956,1956,GOLD,5
+Great Britain,GBR,melbourne-1956,1956,SILVER,7
+Great Britain,GBR,rome-1960,1960,BRONZE,12
+Great Britain,GBR,rome-1960,1960,GOLD,2
+Great Britain,GBR,rome-1960,1960,SILVER,6
+Great Britain,GBR,tokyo-1964,1964,BRONZE,2
+Great Britain,GBR,innsbruck-1964,1964,GOLD,1
+Great Britain,GBR,tokyo-1964,1964,GOLD,4
+Great Britain,GBR,tokyo-1964,1964,SILVER,12
+Great Britain,GBR,mexico-city-1968,1968,BRONZE,3
+Great Britain,GBR,mexico-city-1968,1968,GOLD,5
+Great Britain,GBR,mexico-city-1968,1968,SILVER,5
+Great Britain,GBR,munich-1972,1972,BRONZE,9
+Great Britain,GBR,munich-1972,1972,GOLD,4
+Great Britain,GBR,munich-1972,1972,SILVER,5
+Great Britain,GBR,montreal-1976,1976,BRONZE,5
+Great Britain,GBR,innsbruck-1976,1976,GOLD,1
+Great Britain,GBR,montreal-1976,1976,GOLD,3
+Great Britain,GBR,montreal-1976,1976,SILVER,5
+Great Britain,GBR,moscow-1980,1980,BRONZE,9
+Great Britain,GBR,lake-placid-1980,1980,GOLD,1
+Great Britain,GBR,moscow-1980,1980,GOLD,5
+Great Britain,GBR,moscow-1980,1980,SILVER,7
+Great Britain,GBR,los-angeles-1984,1984,BRONZE,21
+Great Britain,GBR,los-angeles-1984,1984,GOLD,5
+Great Britain,GBR,sarajevo-1984,1984,GOLD,1
+Great Britain,GBR,los-angeles-1984,1984,SILVER,11
+Great Britain,GBR,seoul-1988,1988,BRONZE,9
+Great Britain,GBR,seoul-1988,1988,GOLD,5
+Great Britain,GBR,seoul-1988,1988,SILVER,10
+Great Britain,GBR,barcelona-1992,1992,BRONZE,12
+Great Britain,GBR,barcelona-1992,1992,GOLD,5
+Great Britain,GBR,barcelona-1992,1992,SILVER,3
+Great Britain,GBR,lillehammer-1994,1994,BRONZE,2
+Great Britain,GBR,atlanta-1996,1996,BRONZE,6
+Great Britain,GBR,atlanta-1996,1996,GOLD,1
+Great Britain,GBR,atlanta-1996,1996,SILVER,8
+Great Britain,GBR,nagano-1998,1998,BRONZE,1
+Great Britain,GBR,sydney-2000,2000,BRONZE,7
+Great Britain,GBR,sydney-2000,2000,GOLD,11
+Great Britain,GBR,sydney-2000,2000,SILVER,10
+Great Britain,GBR,salt-lake-city-2002,2002,BRONZE,1
+Great Britain,GBR,salt-lake-city-2002,2002,GOLD,1
+Great Britain,GBR,athens-2004,2004,BRONZE,12
+Great Britain,GBR,athens-2004,2004,GOLD,9
+Great Britain,GBR,athens-2004,2004,SILVER,9
+Great Britain,GBR,turin-2006,2006,SILVER,1
+Great Britain,GBR,beijing-2008,2008,BRONZE,19
+Great Britain,GBR,beijing-2008,2008,GOLD,19
+Great Britain,GBR,beijing-2008,2008,SILVER,13
+Great Britain,GBR,vancouver-2010,2010,GOLD,1
+Great Britain,GBR,london-2012,2012,BRONZE,19
+Great Britain,GBR,london-2012,2012,GOLD,29
+Great Britain,GBR,london-2012,2012,SILVER,17
+Great Britain,GBR,sochi-2014,2014,BRONZE,3
+Great Britain,GBR,sochi-2014,2014,GOLD,1
+Great Britain,GBR,sochi-2014,2014,SILVER,1
+Great Britain,GBR,rio-2016,2016,BRONZE,17
+Great Britain,GBR,rio-2016,2016,GOLD,27
+Great Britain,GBR,rio-2016,2016,SILVER,23
+Great Britain,GBR,pyeongchang-2018,2018,BRONZE,4
+Great Britain,GBR,pyeongchang-2018,2018,GOLD,1
+Great Britain,GBR,tokyo-2020,2020,BRONZE,22
+Great Britain,GBR,tokyo-2020,2020,GOLD,22
+Great Britain,GBR,tokyo-2020,2020,SILVER,21
+Great Britain,GBR,beijing-2022,2022,GOLD,1
+Great Britain,GBR,beijing-2022,2022,SILVER,1
+Greece,GRE,athens-1896,1896,BRONZE,19
+Greece,GRE,athens-1896,1896,GOLD,10
+Greece,GRE,athens-1896,1896,SILVER,18
+Greece,GRE,st-louis-1904,1904,BRONZE,1
+Greece,GRE,st-louis-1904,1904,GOLD,1
+Greece,GRE,london-1908,1908,BRONZE,1
+Greece,GRE,london-1908,1908,SILVER,3
+Greece,GRE,stockholm-1912,1912,BRONZE,1
+Greece,GRE,stockholm-1912,1912,GOLD,1
+Greece,GRE,antwerp-1920,1920,SILVER,1
+Greece,GRE,melbourne-1956,1956,BRONZE,1
+Greece,GRE,rome-1960,1960,GOLD,1
+Greece,GRE,mexico-city-1968,1968,BRONZE,1
+Greece,GRE,munich-1972,1972,SILVER,2
+Greece,GRE,moscow-1980,1980,BRONZE,2
+Greece,GRE,moscow-1980,1980,GOLD,1
+Greece,GRE,los-angeles-1984,1984,BRONZE,1
+Greece,GRE,los-angeles-1984,1984,SILVER,1
+Greece,GRE,seoul-1988,1988,BRONZE,1
+Greece,GRE,barcelona-1992,1992,GOLD,2
+Greece,GRE,atlanta-1996,1996,GOLD,4
+Greece,GRE,atlanta-1996,1996,SILVER,4
+Greece,GRE,sydney-2000,2000,BRONZE,3
+Greece,GRE,sydney-2000,2000,GOLD,4
+Greece,GRE,sydney-2000,2000,SILVER,6
+Greece,GRE,athens-2004,2004,BRONZE,4
+Greece,GRE,athens-2004,2004,GOLD,6
+Greece,GRE,athens-2004,2004,SILVER,6
+Greece,GRE,beijing-2008,2008,BRONZE,1
+Greece,GRE,beijing-2008,2008,SILVER,2
+Greece,GRE,london-2012,2012,BRONZE,2
+Greece,GRE,rio-2016,2016,BRONZE,2
+Greece,GRE,rio-2016,2016,GOLD,3
+Greece,GRE,rio-2016,2016,SILVER,1
+Greece,GRE,tokyo-2020,2020,BRONZE,1
+Greece,GRE,tokyo-2020,2020,GOLD,2
+Greece,GRE,tokyo-2020,2020,SILVER,1
+Grenada,GRN,london-2012,2012,GOLD,1
+Grenada,GRN,rio-2016,2016,SILVER,1
+Grenada,GRN,tokyo-2020,2020,BRONZE,1
+Guatemala,GUA,london-2012,2012,SILVER,1
+Guyana,GUY,moscow-1980,1980,BRONZE,1
+Haiti,HAI,paris-1924,1924,BRONZE,1
+Haiti,HAI,amsterdam-1928,1928,SILVER,1
+"Hong Kong, China",HKG,atlanta-1996,1996,GOLD,1
+"Hong Kong, China",HKG,athens-2004,2004,SILVER,1
+"Hong Kong, China",HKG,london-2012,2012,BRONZE,1
+"Hong Kong, China",HKG,tokyo-2020,2020,BRONZE,3
+"Hong Kong, China",HKG,tokyo-2020,2020,GOLD,1
+"Hong Kong, China",HKG,tokyo-2020,2020,SILVER,2
+Hungary,HUN,athens-1896,1896,BRONZE,3
+Hungary,HUN,athens-1896,1896,GOLD,2
+Hungary,HUN,athens-1896,1896,SILVER,1
+Hungary,HUN,paris-1900,1900,BRONZE,2
+Hungary,HUN,paris-1900,1900,GOLD,1
+Hungary,HUN,paris-1900,1900,SILVER,2
+Hungary,HUN,st-louis-1904,1904,BRONZE,1
+Hungary,HUN,st-louis-1904,1904,GOLD,2
+Hungary,HUN,st-louis-1904,1904,SILVER,1
+Hungary,HUN,london-1908,1908,BRONZE,2
+Hungary,HUN,london-1908,1908,GOLD,3
+Hungary,HUN,london-1908,1908,SILVER,4
+Hungary,HUN,stockholm-1912,1912,BRONZE,3
+Hungary,HUN,stockholm-1912,1912,GOLD,3
+Hungary,HUN,stockholm-1912,1912,SILVER,2
+Hungary,HUN,paris-1924,1924,BRONZE,4
+Hungary,HUN,paris-1924,1924,GOLD,2
+Hungary,HUN,paris-1924,1924,SILVER,3
+Hungary,HUN,amsterdam-1928,1928,GOLD,4
+Hungary,HUN,amsterdam-1928,1928,SILVER,5
+Hungary,HUN,lake-placid-1932,1932,BRONZE,1
+Hungary,HUN,los-angeles-1932,1932,BRONZE,5
+Hungary,HUN,los-angeles-1932,1932,GOLD,6
+Hungary,HUN,los-angeles-1932,1932,SILVER,4
+Hungary,HUN,berlin-1936,1936,BRONZE,5
+Hungary,HUN,garmisch-partenkirchen-1936,1936,BRONZE,1
+Hungary,HUN,berlin-1936,1936,GOLD,10
+Hungary,HUN,berlin-1936,1936,SILVER,1
+Hungary,HUN,london-1948,1948,BRONZE,12
+Hungary,HUN,london-1948,1948,GOLD,10
+Hungary,HUN,london-1948,1948,SILVER,5
+Hungary,HUN,st-moritz-1948,1948,SILVER,1
+Hungary,HUN,helsinki-1952,1952,BRONZE,15
+Hungary,HUN,oslo-1952,1952,BRONZE,1
+Hungary,HUN,helsinki-1952,1952,GOLD,16
+Hungary,HUN,helsinki-1952,1952,SILVER,9
+Hungary,HUN,cortina-d-ampezzo-1956,1956,BRONZE,1
+Hungary,HUN,melbourne-1956,1956,BRONZE,7
+Hungary,HUN,melbourne-1956,1956,GOLD,9
+Hungary,HUN,melbourne-1956,1956,SILVER,10
+Hungary,HUN,rome-1960,1960,BRONZE,7
+Hungary,HUN,rome-1960,1960,GOLD,6
+Hungary,HUN,rome-1960,1960,SILVER,8
+Hungary,HUN,tokyo-1964,1964,BRONZE,5
+Hungary,HUN,tokyo-1964,1964,GOLD,10
+Hungary,HUN,tokyo-1964,1964,SILVER,7
+Hungary,HUN,mexico-city-1968,1968,BRONZE,12
+Hungary,HUN,mexico-city-1968,1968,GOLD,10
+Hungary,HUN,mexico-city-1968,1968,SILVER,10
+Hungary,HUN,munich-1972,1972,BRONZE,16
+Hungary,HUN,munich-1972,1972,GOLD,6
+Hungary,HUN,munich-1972,1972,SILVER,13
+Hungary,HUN,montreal-1976,1976,BRONZE,13
+Hungary,HUN,montreal-1976,1976,GOLD,4
+Hungary,HUN,montreal-1976,1976,SILVER,5
+Hungary,HUN,moscow-1980,1980,BRONZE,15
+Hungary,HUN,moscow-1980,1980,GOLD,7
+Hungary,HUN,lake-placid-1980,1980,SILVER,1
+Hungary,HUN,moscow-1980,1980,SILVER,10
+Hungary,HUN,seoul-1988,1988,BRONZE,6
+Hungary,HUN,seoul-1988,1988,GOLD,11
+Hungary,HUN,seoul-1988,1988,SILVER,6
+Hungary,HUN,barcelona-1992,1992,BRONZE,7
+Hungary,HUN,barcelona-1992,1992,GOLD,11
+Hungary,HUN,barcelona-1992,1992,SILVER,12
+Hungary,HUN,atlanta-1996,1996,BRONZE,10
+Hungary,HUN,atlanta-1996,1996,GOLD,7
+Hungary,HUN,atlanta-1996,1996,SILVER,4
+Hungary,HUN,sydney-2000,2000,BRONZE,3
+Hungary,HUN,sydney-2000,2000,GOLD,8
+Hungary,HUN,sydney-2000,2000,SILVER,6
+Hungary,HUN,athens-2004,2004,BRONZE,3
+Hungary,HUN,athens-2004,2004,GOLD,8
+Hungary,HUN,athens-2004,2004,SILVER,6
+Hungary,HUN,beijing-2008,2008,BRONZE,2
+Hungary,HUN,beijing-2008,2008,GOLD,3
+Hungary,HUN,beijing-2008,2008,SILVER,5
+Hungary,HUN,london-2012,2012,BRONZE,6
+Hungary,HUN,london-2012,2012,GOLD,8
+Hungary,HUN,london-2012,2012,SILVER,4
+Hungary,HUN,rio-2016,2016,BRONZE,4
+Hungary,HUN,rio-2016,2016,GOLD,8
+Hungary,HUN,rio-2016,2016,SILVER,3
+Hungary,HUN,pyeongchang-2018,2018,GOLD,1
+Hungary,HUN,tokyo-2020,2020,BRONZE,7
+Hungary,HUN,tokyo-2020,2020,GOLD,6
+Hungary,HUN,tokyo-2020,2020,SILVER,7
+Hungary,HUN,beijing-2022,2022,BRONZE,2
+Hungary,HUN,beijing-2022,2022,GOLD,1
+Iceland,ISL,melbourne-1956,1956,SILVER,1
+Iceland,ISL,los-angeles-1984,1984,BRONZE,1
+Iceland,ISL,sydney-2000,2000,BRONZE,1
+Iceland,ISL,beijing-2008,2008,SILVER,1
+Independent Olympic Athletes,IOA,barcelona-1992,1992,BRONZE,2
+Independent Olympic Athletes,IOA,barcelona-1992,1992,SILVER,1
+Independent Olympic Athletes,IOA,rio-2016,2016,BRONZE,1
+Independent Olympic Athletes,IOA,rio-2016,2016,GOLD,1
+India,IND,paris-1900,1900,SILVER,2
+India,IND,amsterdam-1928,1928,GOLD,1
+India,IND,los-angeles-1932,1932,GOLD,1
+India,IND,berlin-1936,1936,GOLD,1
+India,IND,london-1948,1948,GOLD,1
+India,IND,helsinki-1952,1952,BRONZE,1
+India,IND,helsinki-1952,1952,GOLD,1
+India,IND,melbourne-1956,1956,GOLD,1
+India,IND,rome-1960,1960,SILVER,1
+India,IND,tokyo-1964,1964,GOLD,1
+India,IND,mexico-city-1968,1968,BRONZE,1
+India,IND,munich-1972,1972,BRONZE,1
+India,IND,moscow-1980,1980,GOLD,1
+India,IND,atlanta-1996,1996,BRONZE,1
+India,IND,sydney-2000,2000,BRONZE,1
+India,IND,athens-2004,2004,SILVER,1
+India,IND,beijing-2008,2008,BRONZE,2
+India,IND,beijing-2008,2008,GOLD,1
+India,IND,london-2012,2012,BRONZE,4
+India,IND,london-2012,2012,SILVER,2
+India,IND,rio-2016,2016,BRONZE,1
+India,IND,rio-2016,2016,SILVER,1
+India,IND,tokyo-2020,2020,BRONZE,4
+India,IND,tokyo-2020,2020,GOLD,1
+India,IND,tokyo-2020,2020,SILVER,2
+Indonesia,INA,seoul-1988,1988,SILVER,1
+Indonesia,INA,barcelona-1992,1992,BRONZE,1
+Indonesia,INA,barcelona-1992,1992,GOLD,2
+Indonesia,INA,barcelona-1992,1992,SILVER,2
+Indonesia,INA,atlanta-1996,1996,BRONZE,2
+Indonesia,INA,atlanta-1996,1996,GOLD,1
+Indonesia,INA,atlanta-1996,1996,SILVER,1
+Indonesia,INA,sydney-2000,2000,BRONZE,2
+Indonesia,INA,sydney-2000,2000,GOLD,1
+Indonesia,INA,sydney-2000,2000,SILVER,3
+Indonesia,INA,athens-2004,2004,BRONZE,2
+Indonesia,INA,athens-2004,2004,GOLD,1
+Indonesia,INA,athens-2004,2004,SILVER,1
+Indonesia,INA,beijing-2008,2008,BRONZE,4
+Indonesia,INA,beijing-2008,2008,GOLD,1
+Indonesia,INA,beijing-2008,2008,SILVER,1
+Indonesia,INA,london-2012,2012,BRONZE,1
+Indonesia,INA,london-2012,2012,SILVER,2
+Indonesia,INA,rio-2016,2016,GOLD,1
+Indonesia,INA,rio-2016,2016,SILVER,2
+Indonesia,INA,tokyo-2020,2020,BRONZE,3
+Indonesia,INA,tokyo-2020,2020,GOLD,1
+Indonesia,INA,tokyo-2020,2020,SILVER,1
+Iraq,IRQ,rome-1960,1960,BRONZE,1
+Ireland,IRL,amsterdam-1928,1928,GOLD,1
+Ireland,IRL,los-angeles-1932,1932,GOLD,2
+Ireland,IRL,helsinki-1952,1952,SILVER,1
+Ireland,IRL,melbourne-1956,1956,BRONZE,3
+Ireland,IRL,melbourne-1956,1956,GOLD,1
+Ireland,IRL,melbourne-1956,1956,SILVER,1
+Ireland,IRL,tokyo-1964,1964,BRONZE,1
+Ireland,IRL,moscow-1980,1980,BRONZE,1
+Ireland,IRL,moscow-1980,1980,SILVER,1
+Ireland,IRL,los-angeles-1984,1984,SILVER,1
+Ireland,IRL,barcelona-1992,1992,GOLD,1
+Ireland,IRL,barcelona-1992,1992,SILVER,1
+Ireland,IRL,atlanta-1996,1996,BRONZE,1
+Ireland,IRL,atlanta-1996,1996,GOLD,3
+Ireland,IRL,sydney-2000,2000,SILVER,1
+Ireland,IRL,beijing-2008,2008,BRONZE,2
+Ireland,IRL,beijing-2008,2008,SILVER,1
+Ireland,IRL,london-2012,2012,BRONZE,4
+Ireland,IRL,london-2012,2012,GOLD,1
+Ireland,IRL,london-2012,2012,SILVER,1
+Ireland,IRL,rio-2016,2016,SILVER,2
+Ireland,IRL,tokyo-2020,2020,BRONZE,2
+Ireland,IRL,tokyo-2020,2020,GOLD,2
+Islamic Republic of Iran,IRI,london-1948,1948,BRONZE,1
+Islamic Republic of Iran,IRI,helsinki-1952,1952,BRONZE,4
+Islamic Republic of Iran,IRI,helsinki-1952,1952,SILVER,3
+Islamic Republic of Iran,IRI,melbourne-1956,1956,BRONZE,1
+Islamic Republic of Iran,IRI,melbourne-1956,1956,GOLD,2
+Islamic Republic of Iran,IRI,melbourne-1956,1956,SILVER,2
+Islamic Republic of Iran,IRI,rome-1960,1960,BRONZE,3
+Islamic Republic of Iran,IRI,rome-1960,1960,SILVER,1
+Islamic Republic of Iran,IRI,tokyo-1964,1964,BRONZE,2
+Islamic Republic of Iran,IRI,mexico-city-1968,1968,BRONZE,2
+Islamic Republic of Iran,IRI,mexico-city-1968,1968,GOLD,2
+Islamic Republic of Iran,IRI,mexico-city-1968,1968,SILVER,1
+Islamic Republic of Iran,IRI,munich-1972,1972,BRONZE,1
+Islamic Republic of Iran,IRI,munich-1972,1972,SILVER,2
+Islamic Republic of Iran,IRI,montreal-1976,1976,BRONZE,1
+Islamic Republic of Iran,IRI,montreal-1976,1976,SILVER,1
+Islamic Republic of Iran,IRI,seoul-1988,1988,SILVER,1
+Islamic Republic of Iran,IRI,barcelona-1992,1992,BRONZE,2
+Islamic Republic of Iran,IRI,barcelona-1992,1992,SILVER,1
+Islamic Republic of Iran,IRI,atlanta-1996,1996,BRONZE,1
+Islamic Republic of Iran,IRI,atlanta-1996,1996,GOLD,1
+Islamic Republic of Iran,IRI,atlanta-1996,1996,SILVER,1
+Islamic Republic of Iran,IRI,sydney-2000,2000,BRONZE,1
+Islamic Republic of Iran,IRI,sydney-2000,2000,GOLD,3
+Islamic Republic of Iran,IRI,athens-2004,2004,BRONZE,2
+Islamic Republic of Iran,IRI,athens-2004,2004,GOLD,2
+Islamic Republic of Iran,IRI,athens-2004,2004,SILVER,2
+Islamic Republic of Iran,IRI,beijing-2008,2008,BRONZE,1
+Islamic Republic of Iran,IRI,beijing-2008,2008,GOLD,1
+Islamic Republic of Iran,IRI,london-2012,2012,BRONZE,1
+Islamic Republic of Iran,IRI,london-2012,2012,GOLD,6
+Islamic Republic of Iran,IRI,london-2012,2012,SILVER,6
+Islamic Republic of Iran,IRI,rio-2016,2016,BRONZE,4
+Islamic Republic of Iran,IRI,rio-2016,2016,GOLD,3
+Islamic Republic of Iran,IRI,rio-2016,2016,SILVER,1
+Islamic Republic of Iran,IRI,tokyo-2020,2020,BRONZE,2
+Islamic Republic of Iran,IRI,tokyo-2020,2020,GOLD,3
+Islamic Republic of Iran,IRI,tokyo-2020,2020,SILVER,2
+Israel,ISR,barcelona-1992,1992,BRONZE,1
+Israel,ISR,barcelona-1992,1992,SILVER,1
+Israel,ISR,atlanta-1996,1996,BRONZE,1
+Israel,ISR,sydney-2000,2000,BRONZE,1
+Israel,ISR,athens-2004,2004,BRONZE,1
+Israel,ISR,athens-2004,2004,GOLD,1
+Israel,ISR,beijing-2008,2008,BRONZE,1
+Israel,ISR,rio-2016,2016,BRONZE,2
+Israel,ISR,tokyo-2020,2020,BRONZE,2
+Israel,ISR,tokyo-2020,2020,GOLD,2
+Italy,ITA,paris-1900,1900,GOLD,2
+Italy,ITA,paris-1900,1900,SILVER,2
+Italy,ITA,london-1908,1908,GOLD,2
+Italy,ITA,london-1908,1908,SILVER,2
+Italy,ITA,stockholm-1912,1912,BRONZE,2
+Italy,ITA,stockholm-1912,1912,GOLD,3
+Italy,ITA,stockholm-1912,1912,SILVER,1
+Italy,ITA,antwerp-1920,1920,BRONZE,5
+Italy,ITA,antwerp-1920,1920,GOLD,13
+Italy,ITA,antwerp-1920,1920,SILVER,5
+Italy,ITA,paris-1924,1924,BRONZE,5
+Italy,ITA,paris-1924,1924,GOLD,8
+Italy,ITA,paris-1924,1924,SILVER,3
+Italy,ITA,amsterdam-1928,1928,BRONZE,7
+Italy,ITA,amsterdam-1928,1928,GOLD,7
+Italy,ITA,amsterdam-1928,1928,SILVER,5
+Italy,ITA,los-angeles-1932,1932,BRONZE,12
+Italy,ITA,los-angeles-1932,1932,GOLD,12
+Italy,ITA,los-angeles-1932,1932,SILVER,12
+Italy,ITA,berlin-1936,1936,BRONZE,5
+Italy,ITA,berlin-1936,1936,GOLD,8
+Italy,ITA,berlin-1936,1936,SILVER,9
+Italy,ITA,london-1948,1948,BRONZE,8
+Italy,ITA,london-1948,1948,GOLD,8
+Italy,ITA,st-moritz-1948,1948,GOLD,1
+Italy,ITA,london-1948,1948,SILVER,11
+Italy,ITA,helsinki-1952,1952,BRONZE,4
+Italy,ITA,oslo-1952,1952,BRONZE,1
+Italy,ITA,helsinki-1952,1952,GOLD,8
+Italy,ITA,oslo-1952,1952,GOLD,1
+Italy,ITA,helsinki-1952,1952,SILVER,9
+Italy,ITA,melbourne-1956,1956,BRONZE,8
+Italy,ITA,cortina-d-ampezzo-1956,1956,GOLD,1
+Italy,ITA,melbourne-1956,1956,GOLD,8
+Italy,ITA,cortina-d-ampezzo-1956,1956,SILVER,2
+Italy,ITA,melbourne-1956,1956,SILVER,6
+Italy,ITA,rome-1960,1960,BRONZE,13
+Italy,ITA,squaw-valley-1960,1960,BRONZE,1
+Italy,ITA,rome-1960,1960,GOLD,13
+Italy,ITA,rome-1960,1960,SILVER,10
+Italy,ITA,innsbruck-1964,1964,BRONZE,3
+Italy,ITA,tokyo-1964,1964,BRONZE,7
+Italy,ITA,tokyo-1964,1964,GOLD,10
+Italy,ITA,innsbruck-1964,1964,SILVER,1
+Italy,ITA,tokyo-1964,1964,SILVER,10
+Italy,ITA,mexico-city-1968,1968,BRONZE,9
+Italy,ITA,grenoble-1968,1968,GOLD,4
+Italy,ITA,mexico-city-1968,1968,GOLD,3
+Italy,ITA,mexico-city-1968,1968,SILVER,4
+Italy,ITA,munich-1972,1972,BRONZE,10
+Italy,ITA,sapporo-1972,1972,BRONZE,1
+Italy,ITA,munich-1972,1972,GOLD,5
+Italy,ITA,sapporo-1972,1972,GOLD,2
+Italy,ITA,munich-1972,1972,SILVER,3
+Italy,ITA,sapporo-1972,1972,SILVER,2
+Italy,ITA,innsbruck-1976,1976,BRONZE,1
+Italy,ITA,montreal-1976,1976,BRONZE,4
+Italy,ITA,innsbruck-1976,1976,GOLD,1
+Italy,ITA,montreal-1976,1976,GOLD,2
+Italy,ITA,innsbruck-1976,1976,SILVER,2
+Italy,ITA,montreal-1976,1976,SILVER,7
+Italy,ITA,moscow-1980,1980,BRONZE,4
+Italy,ITA,moscow-1980,1980,GOLD,8
+Italy,ITA,lake-placid-1980,1980,SILVER,2
+Italy,ITA,moscow-1980,1980,SILVER,3
+Italy,ITA,los-angeles-1984,1984,BRONZE,12
+Italy,ITA,los-angeles-1984,1984,GOLD,14
+Italy,ITA,sarajevo-1984,1984,GOLD,2
+Italy,ITA,los-angeles-1984,1984,SILVER,6
+Italy,ITA,calgary-1988,1988,BRONZE,2
+Italy,ITA,seoul-1988,1988,BRONZE,4
+Italy,ITA,calgary-1988,1988,GOLD,2
+Italy,ITA,seoul-1988,1988,GOLD,6
+Italy,ITA,calgary-1988,1988,SILVER,1
+Italy,ITA,seoul-1988,1988,SILVER,4
+Italy,ITA,albertville-1992,1992,BRONZE,4
+Italy,ITA,barcelona-1992,1992,BRONZE,8
+Italy,ITA,albertville-1992,1992,GOLD,4
+Italy,ITA,barcelona-1992,1992,GOLD,6
+Italy,ITA,albertville-1992,1992,SILVER,6
+Italy,ITA,barcelona-1992,1992,SILVER,5
+Italy,ITA,lillehammer-1994,1994,BRONZE,8
+Italy,ITA,lillehammer-1994,1994,GOLD,7
+Italy,ITA,lillehammer-1994,1994,SILVER,5
+Italy,ITA,atlanta-1996,1996,BRONZE,12
+Italy,ITA,atlanta-1996,1996,GOLD,13
+Italy,ITA,atlanta-1996,1996,SILVER,10
+Italy,ITA,nagano-1998,1998,BRONZE,2
+Italy,ITA,nagano-1998,1998,GOLD,2
+Italy,ITA,nagano-1998,1998,SILVER,6
+Italy,ITA,sydney-2000,2000,BRONZE,13
+Italy,ITA,sydney-2000,2000,GOLD,13
+Italy,ITA,sydney-2000,2000,SILVER,8
+Italy,ITA,salt-lake-city-2002,2002,BRONZE,5
+Italy,ITA,salt-lake-city-2002,2002,GOLD,4
+Italy,ITA,salt-lake-city-2002,2002,SILVER,4
+Italy,ITA,athens-2004,2004,BRONZE,11
+Italy,ITA,athens-2004,2004,GOLD,10
+Italy,ITA,athens-2004,2004,SILVER,11
+Italy,ITA,turin-2006,2006,BRONZE,6
+Italy,ITA,turin-2006,2006,GOLD,5
+Italy,ITA,beijing-2008,2008,BRONZE,10
+Italy,ITA,beijing-2008,2008,GOLD,8
+Italy,ITA,beijing-2008,2008,SILVER,9
+Italy,ITA,vancouver-2010,2010,BRONZE,3
+Italy,ITA,vancouver-2010,2010,GOLD,1
+Italy,ITA,vancouver-2010,2010,SILVER,1
+Italy,ITA,london-2012,2012,BRONZE,11
+Italy,ITA,london-2012,2012,GOLD,8
+Italy,ITA,london-2012,2012,SILVER,9
+Italy,ITA,sochi-2014,2014,BRONZE,6
+Italy,ITA,sochi-2014,2014,SILVER,2
+Italy,ITA,rio-2016,2016,BRONZE,8
+Italy,ITA,rio-2016,2016,GOLD,8
+Italy,ITA,rio-2016,2016,SILVER,12
+Italy,ITA,pyeongchang-2018,2018,BRONZE,5
+Italy,ITA,pyeongchang-2018,2018,GOLD,3
+Italy,ITA,pyeongchang-2018,2018,SILVER,2
+Italy,ITA,tokyo-2020,2020,BRONZE,20
+Italy,ITA,tokyo-2020,2020,GOLD,10
+Italy,ITA,tokyo-2020,2020,SILVER,10
+Italy,ITA,beijing-2022,2022,BRONZE,8
+Italy,ITA,beijing-2022,2022,GOLD,2
+Italy,ITA,beijing-2022,2022,SILVER,7
+Ivory Coast,CIV,los-angeles-1984,1984,SILVER,1
+Ivory Coast,CIV,rio-2016,2016,BRONZE,1
+Ivory Coast,CIV,rio-2016,2016,GOLD,1
+Jamaica,JAM,london-1948,1948,GOLD,1
+Jamaica,JAM,london-1948,1948,SILVER,2
+Jamaica,JAM,helsinki-1952,1952,GOLD,2
+Jamaica,JAM,helsinki-1952,1952,SILVER,3
+Jamaica,JAM,mexico-city-1968,1968,SILVER,1
+Jamaica,JAM,munich-1972,1972,BRONZE,1
+Jamaica,JAM,montreal-1976,1976,GOLD,1
+Jamaica,JAM,montreal-1976,1976,SILVER,1
+Jamaica,JAM,moscow-1980,1980,BRONZE,3
+Jamaica,JAM,los-angeles-1984,1984,BRONZE,2
+Jamaica,JAM,los-angeles-1984,1984,SILVER,1
+Jamaica,JAM,seoul-1988,1988,SILVER,2
+Jamaica,JAM,barcelona-1992,1992,BRONZE,1
+Jamaica,JAM,barcelona-1992,1992,SILVER,3
+Jamaica,JAM,atlanta-1996,1996,BRONZE,2
+Jamaica,JAM,atlanta-1996,1996,GOLD,1
+Jamaica,JAM,atlanta-1996,1996,SILVER,3
+Jamaica,JAM,sydney-2000,2000,BRONZE,3
+Jamaica,JAM,sydney-2000,2000,SILVER,6
+Jamaica,JAM,athens-2004,2004,BRONZE,2
+Jamaica,JAM,athens-2004,2004,GOLD,2
+Jamaica,JAM,athens-2004,2004,SILVER,1
+Jamaica,JAM,beijing-2008,2008,BRONZE,1
+Jamaica,JAM,beijing-2008,2008,GOLD,5
+Jamaica,JAM,beijing-2008,2008,SILVER,4
+Jamaica,JAM,london-2012,2012,BRONZE,3
+Jamaica,JAM,london-2012,2012,GOLD,4
+Jamaica,JAM,london-2012,2012,SILVER,5
+Jamaica,JAM,rio-2016,2016,BRONZE,2
+Jamaica,JAM,rio-2016,2016,GOLD,6
+Jamaica,JAM,rio-2016,2016,SILVER,3
+Jamaica,JAM,tokyo-2020,2020,BRONZE,4
+Jamaica,JAM,tokyo-2020,2020,GOLD,4
+Jamaica,JAM,tokyo-2020,2020,SILVER,1
+Japan,JPN,antwerp-1920,1920,SILVER,2
+Japan,JPN,paris-1924,1924,BRONZE,1
+Japan,JPN,amsterdam-1928,1928,BRONZE,1
+Japan,JPN,amsterdam-1928,1928,GOLD,2
+Japan,JPN,amsterdam-1928,1928,SILVER,2
+Japan,JPN,los-angeles-1932,1932,BRONZE,4
+Japan,JPN,los-angeles-1932,1932,GOLD,7
+Japan,JPN,los-angeles-1932,1932,SILVER,7
+Japan,JPN,berlin-1936,1936,BRONZE,8
+Japan,JPN,berlin-1936,1936,GOLD,6
+Japan,JPN,berlin-1936,1936,SILVER,4
+Japan,JPN,helsinki-1952,1952,BRONZE,2
+Japan,JPN,helsinki-1952,1952,GOLD,1
+Japan,JPN,helsinki-1952,1952,SILVER,6
+Japan,JPN,melbourne-1956,1956,BRONZE,5
+Japan,JPN,melbourne-1956,1956,GOLD,4
+Japan,JPN,cortina-d-ampezzo-1956,1956,SILVER,1
+Japan,JPN,melbourne-1956,1956,SILVER,10
+Japan,JPN,rome-1960,1960,BRONZE,7
+Japan,JPN,rome-1960,1960,GOLD,4
+Japan,JPN,rome-1960,1960,SILVER,7
+Japan,JPN,tokyo-1964,1964,BRONZE,8
+Japan,JPN,tokyo-1964,1964,GOLD,16
+Japan,JPN,tokyo-1964,1964,SILVER,5
+Japan,JPN,mexico-city-1968,1968,BRONZE,7
+Japan,JPN,mexico-city-1968,1968,GOLD,11
+Japan,JPN,mexico-city-1968,1968,SILVER,7
+Japan,JPN,munich-1972,1972,BRONZE,8
+Japan,JPN,sapporo-1972,1972,BRONZE,1
+Japan,JPN,munich-1972,1972,GOLD,13
+Japan,JPN,sapporo-1972,1972,GOLD,1
+Japan,JPN,munich-1972,1972,SILVER,8
+Japan,JPN,sapporo-1972,1972,SILVER,1
+Japan,JPN,montreal-1976,1976,BRONZE,10
+Japan,JPN,montreal-1976,1976,GOLD,9
+Japan,JPN,montreal-1976,1976,SILVER,6
+Japan,JPN,lake-placid-1980,1980,SILVER,1
+Japan,JPN,los-angeles-1984,1984,BRONZE,14
+Japan,JPN,los-angeles-1984,1984,GOLD,10
+Japan,JPN,los-angeles-1984,1984,SILVER,8
+Japan,JPN,sarajevo-1984,1984,SILVER,1
+Japan,JPN,calgary-1988,1988,BRONZE,1
+Japan,JPN,seoul-1988,1988,BRONZE,7
+Japan,JPN,seoul-1988,1988,GOLD,4
+Japan,JPN,seoul-1988,1988,SILVER,3
+Japan,JPN,albertville-1992,1992,BRONZE,4
+Japan,JPN,barcelona-1992,1992,BRONZE,11
+Japan,JPN,albertville-1992,1992,GOLD,1
+Japan,JPN,barcelona-1992,1992,GOLD,3
+Japan,JPN,albertville-1992,1992,SILVER,2
+Japan,JPN,barcelona-1992,1992,SILVER,8
+Japan,JPN,lillehammer-1994,1994,BRONZE,2
+Japan,JPN,lillehammer-1994,1994,GOLD,1
+Japan,JPN,lillehammer-1994,1994,SILVER,2
+Japan,JPN,atlanta-1996,1996,BRONZE,5
+Japan,JPN,atlanta-1996,1996,GOLD,3
+Japan,JPN,atlanta-1996,1996,SILVER,6
+Japan,JPN,nagano-1998,1998,BRONZE,4
+Japan,JPN,nagano-1998,1998,GOLD,5
+Japan,JPN,nagano-1998,1998,SILVER,1
+Japan,JPN,sydney-2000,2000,BRONZE,5
+Japan,JPN,sydney-2000,2000,GOLD,5
+Japan,JPN,sydney-2000,2000,SILVER,8
+Japan,JPN,salt-lake-city-2002,2002,BRONZE,1
+Japan,JPN,salt-lake-city-2002,2002,SILVER,1
+Japan,JPN,athens-2004,2004,BRONZE,12
+Japan,JPN,athens-2004,2004,GOLD,16
+Japan,JPN,athens-2004,2004,SILVER,9
+Japan,JPN,turin-2006,2006,GOLD,1
+Japan,JPN,beijing-2008,2008,BRONZE,8
+Japan,JPN,beijing-2008,2008,GOLD,9
+Japan,JPN,beijing-2008,2008,SILVER,8
+Japan,JPN,vancouver-2010,2010,BRONZE,2
+Japan,JPN,vancouver-2010,2010,SILVER,3
+Japan,JPN,london-2012,2012,BRONZE,17
+Japan,JPN,london-2012,2012,GOLD,7
+Japan,JPN,london-2012,2012,SILVER,14
+Japan,JPN,sochi-2014,2014,BRONZE,3
+Japan,JPN,sochi-2014,2014,GOLD,1
+Japan,JPN,sochi-2014,2014,SILVER,4
+Japan,JPN,rio-2016,2016,BRONZE,21
+Japan,JPN,rio-2016,2016,GOLD,12
+Japan,JPN,rio-2016,2016,SILVER,8
+Japan,JPN,pyeongchang-2018,2018,BRONZE,4
+Japan,JPN,pyeongchang-2018,2018,GOLD,4
+Japan,JPN,pyeongchang-2018,2018,SILVER,5
+Japan,JPN,tokyo-2020,2020,BRONZE,17
+Japan,JPN,tokyo-2020,2020,GOLD,27
+Japan,JPN,tokyo-2020,2020,SILVER,13
+Japan,JPN,beijing-2022,2022,BRONZE,9
+Japan,JPN,beijing-2022,2022,GOLD,3
+Japan,JPN,beijing-2022,2022,SILVER,6
+Jordan,JOR,rio-2016,2016,GOLD,1
+Jordan,JOR,tokyo-2020,2020,BRONZE,1
+Jordan,JOR,tokyo-2020,2020,SILVER,1
+Kazakhstan,KAZ,lillehammer-1994,1994,GOLD,1
+Kazakhstan,KAZ,lillehammer-1994,1994,SILVER,2
+Kazakhstan,KAZ,atlanta-1996,1996,BRONZE,4
+Kazakhstan,KAZ,atlanta-1996,1996,GOLD,3
+Kazakhstan,KAZ,atlanta-1996,1996,SILVER,4
+Kazakhstan,KAZ,nagano-1998,1998,BRONZE,2
+Kazakhstan,KAZ,sydney-2000,2000,GOLD,3
+Kazakhstan,KAZ,sydney-2000,2000,SILVER,4
+Kazakhstan,KAZ,athens-2004,2004,BRONZE,3
+Kazakhstan,KAZ,athens-2004,2004,GOLD,1
+Kazakhstan,KAZ,athens-2004,2004,SILVER,4
+Kazakhstan,KAZ,beijing-2008,2008,BRONZE,4
+Kazakhstan,KAZ,beijing-2008,2008,GOLD,2
+Kazakhstan,KAZ,beijing-2008,2008,SILVER,3
+Kazakhstan,KAZ,vancouver-2010,2010,SILVER,1
+Kazakhstan,KAZ,london-2012,2012,BRONZE,7
+Kazakhstan,KAZ,london-2012,2012,GOLD,3
+Kazakhstan,KAZ,london-2012,2012,SILVER,1
+Kazakhstan,KAZ,sochi-2014,2014,BRONZE,1
+Kazakhstan,KAZ,rio-2016,2016,BRONZE,10
+Kazakhstan,KAZ,rio-2016,2016,GOLD,3
+Kazakhstan,KAZ,rio-2016,2016,SILVER,5
+Kazakhstan,KAZ,pyeongchang-2018,2018,BRONZE,1
+Kazakhstan,KAZ,tokyo-2020,2020,BRONZE,8
+Kenya,KEN,tokyo-1964,1964,BRONZE,1
+Kenya,KEN,mexico-city-1968,1968,BRONZE,2
+Kenya,KEN,mexico-city-1968,1968,GOLD,3
+Kenya,KEN,mexico-city-1968,1968,SILVER,4
+Kenya,KEN,munich-1972,1972,BRONZE,4
+Kenya,KEN,munich-1972,1972,GOLD,2
+Kenya,KEN,munich-1972,1972,SILVER,3
+Kenya,KEN,los-angeles-1984,1984,BRONZE,2
+Kenya,KEN,los-angeles-1984,1984,GOLD,1
+Kenya,KEN,seoul-1988,1988,BRONZE,2
+Kenya,KEN,seoul-1988,1988,GOLD,5
+Kenya,KEN,seoul-1988,1988,SILVER,2
+Kenya,KEN,barcelona-1992,1992,BRONZE,2
+Kenya,KEN,barcelona-1992,1992,GOLD,2
+Kenya,KEN,barcelona-1992,1992,SILVER,4
+Kenya,KEN,atlanta-1996,1996,BRONZE,3
+Kenya,KEN,atlanta-1996,1996,GOLD,1
+Kenya,KEN,atlanta-1996,1996,SILVER,4
+Kenya,KEN,sydney-2000,2000,BRONZE,2
+Kenya,KEN,sydney-2000,2000,GOLD,2
+Kenya,KEN,sydney-2000,2000,SILVER,3
+Kenya,KEN,athens-2004,2004,BRONZE,2
+Kenya,KEN,athens-2004,2004,GOLD,1
+Kenya,KEN,athens-2004,2004,SILVER,4
+Kenya,KEN,beijing-2008,2008,BRONZE,6
+Kenya,KEN,beijing-2008,2008,GOLD,6
+Kenya,KEN,beijing-2008,2008,SILVER,4
+Kenya,KEN,london-2012,2012,BRONZE,6
+Kenya,KEN,london-2012,2012,GOLD,2
+Kenya,KEN,london-2012,2012,SILVER,4
+Kenya,KEN,rio-2016,2016,BRONZE,1
+Kenya,KEN,rio-2016,2016,GOLD,6
+Kenya,KEN,rio-2016,2016,SILVER,6
+Kenya,KEN,tokyo-2020,2020,BRONZE,2
+Kenya,KEN,tokyo-2020,2020,GOLD,4
+Kenya,KEN,tokyo-2020,2020,SILVER,4
+Kosovo,KOS,rio-2016,2016,GOLD,1
+Kosovo,KOS,tokyo-2020,2020,GOLD,2
+Kuwait,KUW,sydney-2000,2000,BRONZE,1
+Kuwait,KUW,london-2012,2012,BRONZE,1
+Kuwait,KUW,tokyo-2020,2020,BRONZE,1
+Kyrgyzstan,KGZ,sydney-2000,2000,BRONZE,1
+Kyrgyzstan,KGZ,beijing-2008,2008,BRONZE,2
+Kyrgyzstan,KGZ,beijing-2008,2008,SILVER,1
+Kyrgyzstan,KGZ,tokyo-2020,2020,BRONZE,1
+Kyrgyzstan,KGZ,tokyo-2020,2020,SILVER,2
+Latvia,LAT,los-angeles-1932,1932,SILVER,1
+Latvia,LAT,berlin-1936,1936,BRONZE,1
+Latvia,LAT,berlin-1936,1936,SILVER,1
+Latvia,LAT,barcelona-1992,1992,BRONZE,1
+Latvia,LAT,barcelona-1992,1992,SILVER,2
+Latvia,LAT,atlanta-1996,1996,SILVER,1
+Latvia,LAT,sydney-2000,2000,BRONZE,1
+Latvia,LAT,sydney-2000,2000,GOLD,1
+Latvia,LAT,sydney-2000,2000,SILVER,1
+Latvia,LAT,athens-2004,2004,SILVER,4
+Latvia,LAT,turin-2006,2006,BRONZE,1
+Latvia,LAT,beijing-2008,2008,BRONZE,1
+Latvia,LAT,beijing-2008,2008,GOLD,1
+Latvia,LAT,beijing-2008,2008,SILVER,1
+Latvia,LAT,vancouver-2010,2010,SILVER,2
+Latvia,LAT,london-2012,2012,BRONZE,1
+Latvia,LAT,london-2012,2012,GOLD,1
+Latvia,LAT,sochi-2014,2014,BRONZE,3
+Latvia,LAT,sochi-2014,2014,GOLD,1
+Latvia,LAT,sochi-2014,2014,SILVER,1
+Latvia,LAT,pyeongchang-2018,2018,BRONZE,1
+Latvia,LAT,tokyo-2020,2020,BRONZE,1
+Latvia,LAT,tokyo-2020,2020,GOLD,1
+Latvia,LAT,beijing-2022,2022,BRONZE,1
+Lebanon,LBN,helsinki-1952,1952,BRONZE,1
+Lebanon,LBN,helsinki-1952,1952,SILVER,1
+Lebanon,LBN,munich-1972,1972,SILVER,1
+Lebanon,LBN,moscow-1980,1980,BRONZE,1
+Liechtenstein,LIE,innsbruck-1976,1976,BRONZE,2
+Liechtenstein,LIE,lake-placid-1980,1980,GOLD,2
+Liechtenstein,LIE,lake-placid-1980,1980,SILVER,2
+Liechtenstein,LIE,sarajevo-1984,1984,BRONZE,2
+Liechtenstein,LIE,calgary-1988,1988,BRONZE,1
+Liechtenstein,LIE,pyeongchang-2018,2018,BRONZE,1
+Lithuania,LTU,barcelona-1992,1992,BRONZE,1
+Lithuania,LTU,barcelona-1992,1992,GOLD,1
+Lithuania,LTU,atlanta-1996,1996,BRONZE,1
+Lithuania,LTU,sydney-2000,2000,BRONZE,3
+Lithuania,LTU,sydney-2000,2000,GOLD,2
+Lithuania,LTU,athens-2004,2004,GOLD,1
+Lithuania,LTU,athens-2004,2004,SILVER,2
+Lithuania,LTU,beijing-2008,2008,BRONZE,2
+Lithuania,LTU,beijing-2008,2008,SILVER,3
+Lithuania,LTU,london-2012,2012,BRONZE,3
+Lithuania,LTU,london-2012,2012,GOLD,2
+Lithuania,LTU,rio-2016,2016,BRONZE,3
+Lithuania,LTU,rio-2016,2016,SILVER,1
+Lithuania,LTU,tokyo-2020,2020,SILVER,1
+Luxembourg,LUX,paris-1900,1900,GOLD,1
+Luxembourg,LUX,antwerp-1920,1920,SILVER,1
+Luxembourg,LUX,helsinki-1952,1952,GOLD,1
+Luxembourg,LUX,albertville-1992,1992,SILVER,2
+MIX,MIX,athens-1896,1896,BRONZE,1
+MIX,MIX,athens-1896,1896,GOLD,1
+MIX,MIX,paris-1900,1900,BRONZE,6
+MIX,MIX,paris-1900,1900,GOLD,8
+MIX,MIX,paris-1900,1900,SILVER,5
+MIX,MIX,st-louis-1904,1904,BRONZE,1
+MIX,MIX,st-louis-1904,1904,GOLD,2
+MIX,MIX,st-louis-1904,1904,SILVER,1
+Malaysia,MAS,barcelona-1992,1992,BRONZE,1
+Malaysia,MAS,atlanta-1996,1996,BRONZE,1
+Malaysia,MAS,atlanta-1996,1996,SILVER,1
+Malaysia,MAS,beijing-2008,2008,SILVER,1
+Malaysia,MAS,london-2012,2012,BRONZE,1
+Malaysia,MAS,london-2012,2012,SILVER,1
+Malaysia,MAS,rio-2016,2016,BRONZE,1
+Malaysia,MAS,rio-2016,2016,SILVER,4
+Malaysia,MAS,tokyo-2020,2020,BRONZE,1
+Malaysia,MAS,tokyo-2020,2020,SILVER,1
+Mauritius,MRI,beijing-2008,2008,BRONZE,1
+Mexico,MEX,los-angeles-1932,1932,SILVER,2
+Mexico,MEX,berlin-1936,1936,BRONZE,3
+Mexico,MEX,london-1948,1948,BRONZE,2
+Mexico,MEX,london-1948,1948,GOLD,2
+Mexico,MEX,london-1948,1948,SILVER,1
+Mexico,MEX,helsinki-1952,1952,SILVER,1
+Mexico,MEX,melbourne-1956,1956,BRONZE,1
+Mexico,MEX,melbourne-1956,1956,GOLD,1
+Mexico,MEX,rome-1960,1960,BRONZE,1
+Mexico,MEX,tokyo-1964,1964,BRONZE,1
+Mexico,MEX,mexico-city-1968,1968,BRONZE,3
+Mexico,MEX,mexico-city-1968,1968,GOLD,3
+Mexico,MEX,mexico-city-1968,1968,SILVER,3
+Mexico,MEX,munich-1972,1972,SILVER,1
+Mexico,MEX,montreal-1976,1976,BRONZE,1
+Mexico,MEX,montreal-1976,1976,GOLD,1
+Mexico,MEX,moscow-1980,1980,BRONZE,3
+Mexico,MEX,moscow-1980,1980,SILVER,1
+Mexico,MEX,los-angeles-1984,1984,BRONZE,1
+Mexico,MEX,los-angeles-1984,1984,GOLD,2
+Mexico,MEX,los-angeles-1984,1984,SILVER,3
+Mexico,MEX,seoul-1988,1988,BRONZE,2
+Mexico,MEX,barcelona-1992,1992,SILVER,1
+Mexico,MEX,atlanta-1996,1996,BRONZE,1
+Mexico,MEX,sydney-2000,2000,BRONZE,3
+Mexico,MEX,sydney-2000,2000,GOLD,1
+Mexico,MEX,sydney-2000,2000,SILVER,2
+Mexico,MEX,athens-2004,2004,BRONZE,1
+Mexico,MEX,athens-2004,2004,SILVER,3
+Mexico,MEX,beijing-2008,2008,BRONZE,2
+Mexico,MEX,beijing-2008,2008,GOLD,2
+Mexico,MEX,london-2012,2012,BRONZE,4
+Mexico,MEX,london-2012,2012,GOLD,1
+Mexico,MEX,london-2012,2012,SILVER,3
+Mexico,MEX,rio-2016,2016,BRONZE,2
+Mexico,MEX,rio-2016,2016,SILVER,3
+Mexico,MEX,tokyo-2020,2020,BRONZE,4
+Mongolia,MGL,mexico-city-1968,1968,BRONZE,3
+Mongolia,MGL,mexico-city-1968,1968,SILVER,1
+Mongolia,MGL,munich-1972,1972,SILVER,1
+Mongolia,MGL,montreal-1976,1976,SILVER,1
+Mongolia,MGL,moscow-1980,1980,BRONZE,2
+Mongolia,MGL,moscow-1980,1980,SILVER,2
+Mongolia,MGL,seoul-1988,1988,BRONZE,1
+Mongolia,MGL,barcelona-1992,1992,BRONZE,2
+Mongolia,MGL,atlanta-1996,1996,BRONZE,1
+Mongolia,MGL,athens-2004,2004,BRONZE,1
+Mongolia,MGL,beijing-2008,2008,GOLD,2
+Mongolia,MGL,beijing-2008,2008,SILVER,2
+Mongolia,MGL,london-2012,2012,BRONZE,3
+Mongolia,MGL,london-2012,2012,SILVER,2
+Mongolia,MGL,rio-2016,2016,BRONZE,1
+Mongolia,MGL,rio-2016,2016,SILVER,1
+Mongolia,MGL,tokyo-2020,2020,BRONZE,3
+Mongolia,MGL,tokyo-2020,2020,SILVER,1
+Montenegro,MNE,london-2012,2012,SILVER,1
+Morocco,MAR,rome-1960,1960,SILVER,1
+Morocco,MAR,los-angeles-1984,1984,GOLD,2
+Morocco,MAR,seoul-1988,1988,BRONZE,2
+Morocco,MAR,seoul-1988,1988,GOLD,1
+Morocco,MAR,barcelona-1992,1992,BRONZE,1
+Morocco,MAR,barcelona-1992,1992,GOLD,1
+Morocco,MAR,barcelona-1992,1992,SILVER,1
+Morocco,MAR,atlanta-1996,1996,BRONZE,2
+Morocco,MAR,sydney-2000,2000,BRONZE,4
+Morocco,MAR,sydney-2000,2000,SILVER,1
+Morocco,MAR,athens-2004,2004,GOLD,2
+Morocco,MAR,athens-2004,2004,SILVER,1
+Morocco,MAR,beijing-2008,2008,BRONZE,1
+Morocco,MAR,beijing-2008,2008,SILVER,1
+Morocco,MAR,london-2012,2012,BRONZE,1
+Morocco,MAR,rio-2016,2016,BRONZE,1
+Morocco,MAR,tokyo-2020,2020,GOLD,1
+Mozambique,MOZ,atlanta-1996,1996,BRONZE,1
+Mozambique,MOZ,sydney-2000,2000,GOLD,1
+Namibia,NAM,barcelona-1992,1992,SILVER,2
+Namibia,NAM,atlanta-1996,1996,SILVER,2
+Namibia,NAM,tokyo-2020,2020,SILVER,1
+Netherlands,NED,paris-1900,1900,BRONZE,3
+Netherlands,NED,paris-1900,1900,SILVER,2
+Netherlands,NED,london-1908,1908,BRONZE,2
+Netherlands,NED,stockholm-1912,1912,BRONZE,3
+Netherlands,NED,antwerp-1920,1920,BRONZE,5
+Netherlands,NED,antwerp-1920,1920,GOLD,4
+Netherlands,NED,antwerp-1920,1920,SILVER,2
+Netherlands,NED,paris-1924,1924,BRONZE,5
+Netherlands,NED,paris-1924,1924,GOLD,4
+Netherlands,NED,paris-1924,1924,SILVER,1
+Netherlands,NED,amsterdam-1928,1928,BRONZE,4
+Netherlands,NED,amsterdam-1928,1928,GOLD,6
+Netherlands,NED,amsterdam-1928,1928,SILVER,9
+Netherlands,NED,los-angeles-1932,1932,GOLD,2
+Netherlands,NED,los-angeles-1932,1932,SILVER,5
+Netherlands,NED,berlin-1936,1936,BRONZE,6
+Netherlands,NED,berlin-1936,1936,GOLD,5
+Netherlands,NED,berlin-1936,1936,SILVER,4
+Netherlands,NED,london-1948,1948,BRONZE,9
+Netherlands,NED,london-1948,1948,GOLD,5
+Netherlands,NED,london-1948,1948,SILVER,2
+Netherlands,NED,helsinki-1952,1952,SILVER,5
+Netherlands,NED,oslo-1952,1952,SILVER,3
+Netherlands,NED,rome-1960,1960,BRONZE,2
+Netherlands,NED,squaw-valley-1960,1960,BRONZE,1
+Netherlands,NED,rome-1960,1960,SILVER,1
+Netherlands,NED,squaw-valley-1960,1960,SILVER,1
+Netherlands,NED,tokyo-1964,1964,BRONZE,4
+Netherlands,NED,innsbruck-1964,1964,GOLD,1
+Netherlands,NED,tokyo-1964,1964,GOLD,2
+Netherlands,NED,innsbruck-1964,1964,SILVER,1
+Netherlands,NED,tokyo-1964,1964,SILVER,4
+Netherlands,NED,grenoble-1968,1968,BRONZE,3
+Netherlands,NED,mexico-city-1968,1968,BRONZE,1
+Netherlands,NED,grenoble-1968,1968,GOLD,3
+Netherlands,NED,mexico-city-1968,1968,GOLD,3
+Netherlands,NED,grenoble-1968,1968,SILVER,3
+Netherlands,NED,mexico-city-1968,1968,SILVER,3
+Netherlands,NED,munich-1972,1972,BRONZE,1
+Netherlands,NED,sapporo-1972,1972,BRONZE,2
+Netherlands,NED,munich-1972,1972,GOLD,3
+Netherlands,NED,sapporo-1972,1972,GOLD,4
+Netherlands,NED,munich-1972,1972,SILVER,1
+Netherlands,NED,sapporo-1972,1972,SILVER,3
+Netherlands,NED,innsbruck-1976,1976,BRONZE,3
+Netherlands,NED,montreal-1976,1976,BRONZE,3
+Netherlands,NED,innsbruck-1976,1976,GOLD,1
+Netherlands,NED,innsbruck-1976,1976,SILVER,2
+Netherlands,NED,montreal-1976,1976,SILVER,2
+Netherlands,NED,lake-placid-1980,1980,BRONZE,1
+Netherlands,NED,moscow-1980,1980,BRONZE,2
+Netherlands,NED,lake-placid-1980,1980,GOLD,1
+Netherlands,NED,lake-placid-1980,1980,SILVER,2
+Netherlands,NED,moscow-1980,1980,SILVER,1
+Netherlands,NED,los-angeles-1984,1984,BRONZE,6
+Netherlands,NED,los-angeles-1984,1984,GOLD,5
+Netherlands,NED,los-angeles-1984,1984,SILVER,2
+Netherlands,NED,calgary-1988,1988,BRONZE,2
+Netherlands,NED,seoul-1988,1988,BRONZE,5
+Netherlands,NED,calgary-1988,1988,GOLD,3
+Netherlands,NED,seoul-1988,1988,GOLD,2
+Netherlands,NED,calgary-1988,1988,SILVER,2
+Netherlands,NED,seoul-1988,1988,SILVER,2
+Netherlands,NED,albertville-1992,1992,BRONZE,2
+Netherlands,NED,barcelona-1992,1992,BRONZE,7
+Netherlands,NED,albertville-1992,1992,GOLD,1
+Netherlands,NED,barcelona-1992,1992,GOLD,2
+Netherlands,NED,albertville-1992,1992,SILVER,1
+Netherlands,NED,barcelona-1992,1992,SILVER,6
+Netherlands,NED,lillehammer-1994,1994,BRONZE,3
+Netherlands,NED,lillehammer-1994,1994,SILVER,1
+Netherlands,NED,atlanta-1996,1996,BRONZE,10
+Netherlands,NED,atlanta-1996,1996,GOLD,4
+Netherlands,NED,atlanta-1996,1996,SILVER,5
+Netherlands,NED,nagano-1998,1998,BRONZE,2
+Netherlands,NED,nagano-1998,1998,GOLD,5
+Netherlands,NED,nagano-1998,1998,SILVER,4
+Netherlands,NED,sydney-2000,2000,BRONZE,4
+Netherlands,NED,sydney-2000,2000,GOLD,12
+Netherlands,NED,sydney-2000,2000,SILVER,9
+Netherlands,NED,salt-lake-city-2002,2002,GOLD,3
+Netherlands,NED,salt-lake-city-2002,2002,SILVER,5
+Netherlands,NED,athens-2004,2004,BRONZE,9
+Netherlands,NED,athens-2004,2004,GOLD,4
+Netherlands,NED,athens-2004,2004,SILVER,9
+Netherlands,NED,turin-2006,2006,BRONZE,4
+Netherlands,NED,turin-2006,2006,GOLD,3
+Netherlands,NED,turin-2006,2006,SILVER,2
+Netherlands,NED,beijing-2008,2008,BRONZE,4
+Netherlands,NED,beijing-2008,2008,GOLD,7
+Netherlands,NED,beijing-2008,2008,SILVER,5
+Netherlands,NED,vancouver-2010,2010,BRONZE,3
+Netherlands,NED,vancouver-2010,2010,GOLD,4
+Netherlands,NED,vancouver-2010,2010,SILVER,1
+Netherlands,NED,london-2012,2012,BRONZE,8
+Netherlands,NED,london-2012,2012,GOLD,6
+Netherlands,NED,london-2012,2012,SILVER,6
+Netherlands,NED,sochi-2014,2014,BRONZE,9
+Netherlands,NED,sochi-2014,2014,GOLD,8
+Netherlands,NED,sochi-2014,2014,SILVER,7
+Netherlands,NED,rio-2016,2016,BRONZE,4
+Netherlands,NED,rio-2016,2016,GOLD,8
+Netherlands,NED,rio-2016,2016,SILVER,7
+Netherlands,NED,pyeongchang-2018,2018,BRONZE,6
+Netherlands,NED,pyeongchang-2018,2018,GOLD,8
+Netherlands,NED,pyeongchang-2018,2018,SILVER,6
+Netherlands,NED,tokyo-2020,2020,BRONZE,14
+Netherlands,NED,tokyo-2020,2020,GOLD,10
+Netherlands,NED,tokyo-2020,2020,SILVER,12
+Netherlands,NED,beijing-2022,2022,BRONZE,4
+Netherlands,NED,beijing-2022,2022,GOLD,8
+Netherlands,NED,beijing-2022,2022,SILVER,5
+Netherlands Antilles,AHO,seoul-1988,1988,SILVER,1
+New Zealand,NZL,antwerp-1920,1920,BRONZE,1
+New Zealand,NZL,paris-1924,1924,BRONZE,1
+New Zealand,NZL,amsterdam-1928,1928,GOLD,1
+New Zealand,NZL,los-angeles-1932,1932,SILVER,1
+New Zealand,NZL,berlin-1936,1936,GOLD,1
+New Zealand,NZL,helsinki-1952,1952,BRONZE,2
+New Zealand,NZL,helsinki-1952,1952,GOLD,1
+New Zealand,NZL,melbourne-1956,1956,GOLD,2
+New Zealand,NZL,rome-1960,1960,BRONZE,1
+New Zealand,NZL,rome-1960,1960,GOLD,2
+New Zealand,NZL,tokyo-1964,1964,BRONZE,2
+New Zealand,NZL,tokyo-1964,1964,GOLD,3
+New Zealand,NZL,mexico-city-1968,1968,BRONZE,2
+New Zealand,NZL,mexico-city-1968,1968,GOLD,1
+New Zealand,NZL,munich-1972,1972,BRONZE,1
+New Zealand,NZL,munich-1972,1972,GOLD,1
+New Zealand,NZL,munich-1972,1972,SILVER,1
+New Zealand,NZL,montreal-1976,1976,BRONZE,1
+New Zealand,NZL,montreal-1976,1976,GOLD,2
+New Zealand,NZL,montreal-1976,1976,SILVER,1
+New Zealand,NZL,los-angeles-1984,1984,BRONZE,2
+New Zealand,NZL,los-angeles-1984,1984,GOLD,8
+New Zealand,NZL,los-angeles-1984,1984,SILVER,1
+New Zealand,NZL,seoul-1988,1988,BRONZE,8
+New Zealand,NZL,seoul-1988,1988,GOLD,3
+New Zealand,NZL,seoul-1988,1988,SILVER,2
+New Zealand,NZL,barcelona-1992,1992,BRONZE,5
+New Zealand,NZL,barcelona-1992,1992,GOLD,1
+New Zealand,NZL,albertville-1992,1992,SILVER,1
+New Zealand,NZL,barcelona-1992,1992,SILVER,4
+New Zealand,NZL,atlanta-1996,1996,BRONZE,1
+New Zealand,NZL,atlanta-1996,1996,GOLD,3
+New Zealand,NZL,atlanta-1996,1996,SILVER,2
+New Zealand,NZL,sydney-2000,2000,BRONZE,3
+New Zealand,NZL,sydney-2000,2000,GOLD,1
+New Zealand,NZL,athens-2004,2004,GOLD,3
+New Zealand,NZL,athens-2004,2004,SILVER,2
+New Zealand,NZL,beijing-2008,2008,BRONZE,4
+New Zealand,NZL,beijing-2008,2008,GOLD,3
+New Zealand,NZL,beijing-2008,2008,SILVER,2
+New Zealand,NZL,london-2012,2012,BRONZE,5
+New Zealand,NZL,london-2012,2012,GOLD,6
+New Zealand,NZL,london-2012,2012,SILVER,2
+New Zealand,NZL,rio-2016,2016,BRONZE,5
+New Zealand,NZL,rio-2016,2016,GOLD,4
+New Zealand,NZL,rio-2016,2016,SILVER,9
+New Zealand,NZL,pyeongchang-2018,2018,BRONZE,2
+New Zealand,NZL,tokyo-2020,2020,BRONZE,7
+New Zealand,NZL,tokyo-2020,2020,GOLD,7
+New Zealand,NZL,tokyo-2020,2020,SILVER,6
+New Zealand,NZL,beijing-2022,2022,GOLD,2
+New Zealand,NZL,beijing-2022,2022,SILVER,1
+Niger,NIG,munich-1972,1972,BRONZE,1
+Niger,NIG,rio-2016,2016,SILVER,1
+Nigeria,NGR,tokyo-1964,1964,BRONZE,1
+Nigeria,NGR,munich-1972,1972,BRONZE,1
+Nigeria,NGR,los-angeles-1984,1984,BRONZE,1
+Nigeria,NGR,los-angeles-1984,1984,SILVER,1
+Nigeria,NGR,barcelona-1992,1992,BRONZE,1
+Nigeria,NGR,barcelona-1992,1992,SILVER,3
+Nigeria,NGR,atlanta-1996,1996,BRONZE,3
+Nigeria,NGR,atlanta-1996,1996,GOLD,2
+Nigeria,NGR,atlanta-1996,1996,SILVER,1
+Nigeria,NGR,sydney-2000,2000,GOLD,1
+Nigeria,NGR,sydney-2000,2000,SILVER,2
+Nigeria,NGR,athens-2004,2004,BRONZE,2
+Nigeria,NGR,beijing-2008,2008,BRONZE,3
+Nigeria,NGR,beijing-2008,2008,SILVER,2
+Nigeria,NGR,rio-2016,2016,BRONZE,1
+Nigeria,NGR,tokyo-2020,2020,BRONZE,1
+Nigeria,NGR,tokyo-2020,2020,SILVER,1
+North Macedonia,MKD,tokyo-2020,2020,SILVER,1
+Norway,NOR,paris-1900,1900,BRONZE,3
+Norway,NOR,paris-1900,1900,SILVER,2
+Norway,NOR,st-louis-1904,1904,GOLD,2
+Norway,NOR,london-1908,1908,BRONZE,3
+Norway,NOR,london-1908,1908,GOLD,2
+Norway,NOR,london-1908,1908,SILVER,3
+Norway,NOR,stockholm-1912,1912,BRONZE,6
+Norway,NOR,stockholm-1912,1912,GOLD,4
+Norway,NOR,stockholm-1912,1912,SILVER,1
+Norway,NOR,antwerp-1920,1920,BRONZE,9
+Norway,NOR,antwerp-1920,1920,GOLD,13
+Norway,NOR,antwerp-1920,1920,SILVER,9
+Norway,NOR,chamonix-1924,1924,BRONZE,6
+Norway,NOR,paris-1924,1924,BRONZE,3
+Norway,NOR,chamonix-1924,1924,GOLD,4
+Norway,NOR,paris-1924,1924,GOLD,5
+Norway,NOR,chamonix-1924,1924,SILVER,7
+Norway,NOR,paris-1924,1924,SILVER,2
+Norway,NOR,amsterdam-1928,1928,BRONZE,1
+Norway,NOR,st-moritz-1928,1928,BRONZE,5
+Norway,NOR,amsterdam-1928,1928,GOLD,1
+Norway,NOR,st-moritz-1928,1928,GOLD,6
+Norway,NOR,amsterdam-1928,1928,SILVER,1
+Norway,NOR,st-moritz-1928,1928,SILVER,4
+Norway,NOR,lake-placid-1932,1932,BRONZE,3
+Norway,NOR,lake-placid-1932,1932,GOLD,3
+Norway,NOR,lake-placid-1932,1932,SILVER,4
+Norway,NOR,berlin-1936,1936,BRONZE,2
+Norway,NOR,garmisch-partenkirchen-1936,1936,BRONZE,3
+Norway,NOR,berlin-1936,1936,GOLD,1
+Norway,NOR,garmisch-partenkirchen-1936,1936,GOLD,7
+Norway,NOR,berlin-1936,1936,SILVER,3
+Norway,NOR,garmisch-partenkirchen-1936,1936,SILVER,5
+Norway,NOR,london-1948,1948,BRONZE,3
+Norway,NOR,st-moritz-1948,1948,BRONZE,3
+Norway,NOR,london-1948,1948,GOLD,1
+Norway,NOR,st-moritz-1948,1948,GOLD,4
+Norway,NOR,london-1948,1948,SILVER,3
+Norway,NOR,st-moritz-1948,1948,SILVER,3
+Norway,NOR,oslo-1952,1952,BRONZE,6
+Norway,NOR,helsinki-1952,1952,GOLD,3
+Norway,NOR,oslo-1952,1952,GOLD,7
+Norway,NOR,helsinki-1952,1952,SILVER,2
+Norway,NOR,oslo-1952,1952,SILVER,3
+Norway,NOR,cortina-d-ampezzo-1956,1956,BRONZE,1
+Norway,NOR,melbourne-1956,1956,BRONZE,2
+Norway,NOR,cortina-d-ampezzo-1956,1956,GOLD,2
+Norway,NOR,melbourne-1956,1956,GOLD,1
+Norway,NOR,cortina-d-ampezzo-1956,1956,SILVER,1
+Norway,NOR,rome-1960,1960,GOLD,1
+Norway,NOR,squaw-valley-1960,1960,GOLD,3
+Norway,NOR,squaw-valley-1960,1960,SILVER,3
+Norway,NOR,innsbruck-1964,1964,BRONZE,6
+Norway,NOR,innsbruck-1964,1964,GOLD,3
+Norway,NOR,innsbruck-1964,1964,SILVER,6
+Norway,NOR,grenoble-1968,1968,BRONZE,2
+Norway,NOR,grenoble-1968,1968,GOLD,6
+Norway,NOR,mexico-city-1968,1968,GOLD,1
+Norway,NOR,grenoble-1968,1968,SILVER,6
+Norway,NOR,mexico-city-1968,1968,SILVER,1
+Norway,NOR,munich-1972,1972,BRONZE,1
+Norway,NOR,sapporo-1972,1972,BRONZE,5
+Norway,NOR,munich-1972,1972,GOLD,2
+Norway,NOR,sapporo-1972,1972,GOLD,2
+Norway,NOR,munich-1972,1972,SILVER,1
+Norway,NOR,sapporo-1972,1972,SILVER,5
+Norway,NOR,innsbruck-1976,1976,BRONZE,1
+Norway,NOR,innsbruck-1976,1976,GOLD,3
+Norway,NOR,montreal-1976,1976,GOLD,1
+Norway,NOR,innsbruck-1976,1976,SILVER,3
+Norway,NOR,montreal-1976,1976,SILVER,1
+Norway,NOR,lake-placid-1980,1980,BRONZE,6
+Norway,NOR,lake-placid-1980,1980,GOLD,1
+Norway,NOR,lake-placid-1980,1980,SILVER,3
+Norway,NOR,los-angeles-1984,1984,BRONZE,2
+Norway,NOR,sarajevo-1984,1984,BRONZE,4
+Norway,NOR,sarajevo-1984,1984,GOLD,3
+Norway,NOR,los-angeles-1984,1984,SILVER,1
+Norway,NOR,sarajevo-1984,1984,SILVER,2
+Norway,NOR,calgary-1988,1988,BRONZE,2
+Norway,NOR,seoul-1988,1988,GOLD,2
+Norway,NOR,calgary-1988,1988,SILVER,3
+Norway,NOR,seoul-1988,1988,SILVER,3
+Norway,NOR,albertville-1992,1992,BRONZE,5
+Norway,NOR,barcelona-1992,1992,BRONZE,1
+Norway,NOR,albertville-1992,1992,GOLD,9
+Norway,NOR,barcelona-1992,1992,GOLD,2
+Norway,NOR,albertville-1992,1992,SILVER,6
+Norway,NOR,barcelona-1992,1992,SILVER,4
+Norway,NOR,lillehammer-1994,1994,BRONZE,5
+Norway,NOR,lillehammer-1994,1994,GOLD,10
+Norway,NOR,lillehammer-1994,1994,SILVER,11
+Norway,NOR,atlanta-1996,1996,BRONZE,3
+Norway,NOR,atlanta-1996,1996,GOLD,2
+Norway,NOR,atlanta-1996,1996,SILVER,2
+Norway,NOR,nagano-1998,1998,BRONZE,5
+Norway,NOR,nagano-1998,1998,GOLD,10
+Norway,NOR,nagano-1998,1998,SILVER,10
+Norway,NOR,sydney-2000,2000,BRONZE,3
+Norway,NOR,sydney-2000,2000,GOLD,4
+Norway,NOR,sydney-2000,2000,SILVER,3
+Norway,NOR,salt-lake-city-2002,2002,BRONZE,7
+Norway,NOR,salt-lake-city-2002,2002,GOLD,13
+Norway,NOR,salt-lake-city-2002,2002,SILVER,5
+Norway,NOR,athens-2004,2004,BRONZE,1
+Norway,NOR,athens-2004,2004,GOLD,5
+Norway,NOR,turin-2006,2006,BRONZE,9
+Norway,NOR,turin-2006,2006,GOLD,2
+Norway,NOR,turin-2006,2006,SILVER,8
+Norway,NOR,beijing-2008,2008,BRONZE,1
+Norway,NOR,beijing-2008,2008,GOLD,3
+Norway,NOR,beijing-2008,2008,SILVER,5
+Norway,NOR,vancouver-2010,2010,BRONZE,6
+Norway,NOR,vancouver-2010,2010,GOLD,9
+Norway,NOR,vancouver-2010,2010,SILVER,8
+Norway,NOR,london-2012,2012,BRONZE,1
+Norway,NOR,london-2012,2012,GOLD,2
+Norway,NOR,london-2012,2012,SILVER,1
+Norway,NOR,sochi-2014,2014,BRONZE,10
+Norway,NOR,sochi-2014,2014,GOLD,11
+Norway,NOR,sochi-2014,2014,SILVER,5
+Norway,NOR,rio-2016,2016,BRONZE,4
+Norway,NOR,pyeongchang-2018,2018,BRONZE,11
+Norway,NOR,pyeongchang-2018,2018,GOLD,14
+Norway,NOR,pyeongchang-2018,2018,SILVER,14
+Norway,NOR,tokyo-2020,2020,BRONZE,2
+Norway,NOR,tokyo-2020,2020,GOLD,4
+Norway,NOR,tokyo-2020,2020,SILVER,2
+Norway,NOR,beijing-2022,2022,BRONZE,13
+Norway,NOR,beijing-2022,2022,GOLD,16
+Norway,NOR,beijing-2022,2022,SILVER,8
+Olympic Athletes from Russia,OAR,pyeongchang-2018,2018,BRONZE,9
+Olympic Athletes from Russia,OAR,pyeongchang-2018,2018,GOLD,2
+Olympic Athletes from Russia,OAR,pyeongchang-2018,2018,SILVER,6
+Pakistan,PAK,melbourne-1956,1956,SILVER,1
+Pakistan,PAK,rome-1960,1960,BRONZE,1
+Pakistan,PAK,rome-1960,1960,GOLD,1
+Pakistan,PAK,tokyo-1964,1964,SILVER,1
+Pakistan,PAK,mexico-city-1968,1968,GOLD,1
+Pakistan,PAK,munich-1972,1972,SILVER,1
+Pakistan,PAK,montreal-1976,1976,BRONZE,1
+Pakistan,PAK,los-angeles-1984,1984,GOLD,1
+Pakistan,PAK,seoul-1988,1988,BRONZE,1
+Pakistan,PAK,barcelona-1992,1992,BRONZE,1
+Panama,PAN,london-1948,1948,BRONZE,2
+Panama,PAN,beijing-2008,2008,GOLD,1
+Paraguay,PAR,athens-2004,2004,SILVER,1
+People's Republic of China,CHN,los-angeles-1984,1984,BRONZE,9
+People's Republic of China,CHN,los-angeles-1984,1984,GOLD,15
+People's Republic of China,CHN,los-angeles-1984,1984,SILVER,8
+People's Republic of China,CHN,seoul-1988,1988,BRONZE,12
+People's Republic of China,CHN,seoul-1988,1988,GOLD,5
+People's Republic of China,CHN,seoul-1988,1988,SILVER,11
+People's Republic of China,CHN,barcelona-1992,1992,BRONZE,16
+People's Republic of China,CHN,barcelona-1992,1992,GOLD,16
+People's Republic of China,CHN,albertville-1992,1992,SILVER,3
+People's Republic of China,CHN,barcelona-1992,1992,SILVER,22
+People's Republic of China,CHN,lillehammer-1994,1994,BRONZE,2
+People's Republic of China,CHN,lillehammer-1994,1994,SILVER,1
+People's Republic of China,CHN,atlanta-1996,1996,BRONZE,12
+People's Republic of China,CHN,atlanta-1996,1996,GOLD,16
+People's Republic of China,CHN,atlanta-1996,1996,SILVER,22
+People's Republic of China,CHN,nagano-1998,1998,BRONZE,2
+People's Republic of China,CHN,nagano-1998,1998,SILVER,6
+People's Republic of China,CHN,sydney-2000,2000,BRONZE,14
+People's Republic of China,CHN,sydney-2000,2000,GOLD,28
+People's Republic of China,CHN,sydney-2000,2000,SILVER,16
+People's Republic of China,CHN,salt-lake-city-2002,2002,BRONZE,4
+People's Republic of China,CHN,salt-lake-city-2002,2002,GOLD,2
+People's Republic of China,CHN,salt-lake-city-2002,2002,SILVER,2
+People's Republic of China,CHN,athens-2004,2004,BRONZE,14
+People's Republic of China,CHN,athens-2004,2004,GOLD,32
+People's Republic of China,CHN,athens-2004,2004,SILVER,17
+People's Republic of China,CHN,turin-2006,2006,BRONZE,5
+People's Republic of China,CHN,turin-2006,2006,GOLD,2
+People's Republic of China,CHN,turin-2006,2006,SILVER,4
+People's Republic of China,CHN,beijing-2008,2008,BRONZE,30
+People's Republic of China,CHN,beijing-2008,2008,GOLD,48
+People's Republic of China,CHN,beijing-2008,2008,SILVER,22
+People's Republic of China,CHN,vancouver-2010,2010,BRONZE,4
+People's Republic of China,CHN,vancouver-2010,2010,GOLD,5
+People's Republic of China,CHN,vancouver-2010,2010,SILVER,2
+People's Republic of China,CHN,london-2012,2012,BRONZE,22
+People's Republic of China,CHN,london-2012,2012,GOLD,38
+People's Republic of China,CHN,london-2012,2012,SILVER,31
+People's Republic of China,CHN,sochi-2014,2014,BRONZE,2
+People's Republic of China,CHN,sochi-2014,2014,GOLD,3
+People's Republic of China,CHN,sochi-2014,2014,SILVER,4
+People's Republic of China,CHN,rio-2016,2016,BRONZE,26
+People's Republic of China,CHN,rio-2016,2016,GOLD,26
+People's Republic of China,CHN,rio-2016,2016,SILVER,18
+People's Republic of China,CHN,pyeongchang-2018,2018,BRONZE,2
+People's Republic of China,CHN,pyeongchang-2018,2018,GOLD,1
+People's Republic of China,CHN,pyeongchang-2018,2018,SILVER,6
+People's Republic of China,CHN,tokyo-2020,2020,BRONZE,18
+People's Republic of China,CHN,tokyo-2020,2020,GOLD,38
+People's Republic of China,CHN,tokyo-2020,2020,SILVER,32
+People's Republic of China,CHN,beijing-2022,2022,BRONZE,2
+People's Republic of China,CHN,beijing-2022,2022,GOLD,9
+People's Republic of China,CHN,beijing-2022,2022,SILVER,4
+Peru,PER,london-1948,1948,GOLD,1
+Peru,PER,los-angeles-1984,1984,SILVER,1
+Peru,PER,seoul-1988,1988,SILVER,1
+Peru,PER,barcelona-1992,1992,SILVER,1
+Philippines,PHI,amsterdam-1928,1928,BRONZE,1
+Philippines,PHI,los-angeles-1932,1932,BRONZE,3
+Philippines,PHI,berlin-1936,1936,BRONZE,1
+Philippines,PHI,tokyo-1964,1964,SILVER,1
+Philippines,PHI,seoul-1988,1988,BRONZE,1
+Philippines,PHI,barcelona-1992,1992,BRONZE,1
+Philippines,PHI,atlanta-1996,1996,SILVER,1
+Philippines,PHI,rio-2016,2016,SILVER,1
+Philippines,PHI,tokyo-2020,2020,BRONZE,1
+Philippines,PHI,tokyo-2020,2020,GOLD,1
+Philippines,PHI,tokyo-2020,2020,SILVER,2
+Poland,POL,paris-1924,1924,BRONZE,1
+Poland,POL,paris-1924,1924,SILVER,1
+Poland,POL,amsterdam-1928,1928,BRONZE,3
+Poland,POL,amsterdam-1928,1928,GOLD,1
+Poland,POL,amsterdam-1928,1928,SILVER,1
+Poland,POL,los-angeles-1932,1932,BRONZE,4
+Poland,POL,los-angeles-1932,1932,GOLD,2
+Poland,POL,los-angeles-1932,1932,SILVER,1
+Poland,POL,berlin-1936,1936,BRONZE,3
+Poland,POL,berlin-1936,1936,SILVER,3
+Poland,POL,london-1948,1948,BRONZE,1
+Poland,POL,helsinki-1952,1952,BRONZE,1
+Poland,POL,helsinki-1952,1952,GOLD,1
+Poland,POL,helsinki-1952,1952,SILVER,2
+Poland,POL,cortina-d-ampezzo-1956,1956,BRONZE,1
+Poland,POL,melbourne-1956,1956,BRONZE,4
+Poland,POL,melbourne-1956,1956,GOLD,1
+Poland,POL,melbourne-1956,1956,SILVER,4
+Poland,POL,rome-1960,1960,BRONZE,11
+Poland,POL,squaw-valley-1960,1960,BRONZE,1
+Poland,POL,rome-1960,1960,GOLD,4
+Poland,POL,rome-1960,1960,SILVER,6
+Poland,POL,squaw-valley-1960,1960,SILVER,1
+Poland,POL,tokyo-1964,1964,BRONZE,10
+Poland,POL,tokyo-1964,1964,GOLD,7
+Poland,POL,tokyo-1964,1964,SILVER,6
+Poland,POL,mexico-city-1968,1968,BRONZE,11
+Poland,POL,mexico-city-1968,1968,GOLD,5
+Poland,POL,mexico-city-1968,1968,SILVER,2
+Poland,POL,munich-1972,1972,BRONZE,9
+Poland,POL,munich-1972,1972,GOLD,7
+Poland,POL,sapporo-1972,1972,GOLD,1
+Poland,POL,munich-1972,1972,SILVER,5
+Poland,POL,montreal-1976,1976,BRONZE,13
+Poland,POL,montreal-1976,1976,GOLD,7
+Poland,POL,montreal-1976,1976,SILVER,6
+Poland,POL,moscow-1980,1980,BRONZE,15
+Poland,POL,moscow-1980,1980,GOLD,3
+Poland,POL,moscow-1980,1980,SILVER,14
+Poland,POL,seoul-1988,1988,BRONZE,9
+Poland,POL,seoul-1988,1988,GOLD,2
+Poland,POL,seoul-1988,1988,SILVER,5
+Poland,POL,barcelona-1992,1992,BRONZE,10
+Poland,POL,barcelona-1992,1992,GOLD,3
+Poland,POL,barcelona-1992,1992,SILVER,6
+Poland,POL,atlanta-1996,1996,BRONZE,5
+Poland,POL,atlanta-1996,1996,GOLD,7
+Poland,POL,atlanta-1996,1996,SILVER,5
+Poland,POL,sydney-2000,2000,BRONZE,3
+Poland,POL,sydney-2000,2000,GOLD,6
+Poland,POL,sydney-2000,2000,SILVER,5
+Poland,POL,salt-lake-city-2002,2002,BRONZE,1
+Poland,POL,salt-lake-city-2002,2002,SILVER,1
+Poland,POL,athens-2004,2004,BRONZE,5
+Poland,POL,athens-2004,2004,GOLD,3
+Poland,POL,athens-2004,2004,SILVER,2
+Poland,POL,turin-2006,2006,BRONZE,1
+Poland,POL,turin-2006,2006,SILVER,1
+Poland,POL,beijing-2008,2008,BRONZE,2
+Poland,POL,beijing-2008,2008,GOLD,4
+Poland,POL,beijing-2008,2008,SILVER,5
+Poland,POL,vancouver-2010,2010,BRONZE,2
+Poland,POL,vancouver-2010,2010,GOLD,1
+Poland,POL,vancouver-2010,2010,SILVER,3
+Poland,POL,london-2012,2012,BRONZE,7
+Poland,POL,london-2012,2012,GOLD,3
+Poland,POL,london-2012,2012,SILVER,1
+Poland,POL,sochi-2014,2014,BRONZE,1
+Poland,POL,sochi-2014,2014,GOLD,4
+Poland,POL,sochi-2014,2014,SILVER,1
+Poland,POL,rio-2016,2016,BRONZE,6
+Poland,POL,rio-2016,2016,GOLD,2
+Poland,POL,rio-2016,2016,SILVER,3
+Poland,POL,pyeongchang-2018,2018,BRONZE,1
+Poland,POL,pyeongchang-2018,2018,GOLD,1
+Poland,POL,tokyo-2020,2020,BRONZE,5
+Poland,POL,tokyo-2020,2020,GOLD,4
+Poland,POL,tokyo-2020,2020,SILVER,5
+Poland,POL,beijing-2022,2022,BRONZE,1
+Portugal,POR,paris-1924,1924,BRONZE,1
+Portugal,POR,amsterdam-1928,1928,BRONZE,1
+Portugal,POR,berlin-1936,1936,BRONZE,1
+Portugal,POR,london-1948,1948,BRONZE,1
+Portugal,POR,london-1948,1948,SILVER,1
+Portugal,POR,helsinki-1952,1952,BRONZE,1
+Portugal,POR,rome-1960,1960,SILVER,1
+Portugal,POR,montreal-1976,1976,SILVER,2
+Portugal,POR,los-angeles-1984,1984,BRONZE,2
+Portugal,POR,los-angeles-1984,1984,GOLD,1
+Portugal,POR,seoul-1988,1988,GOLD,1
+Portugal,POR,atlanta-1996,1996,BRONZE,1
+Portugal,POR,atlanta-1996,1996,GOLD,1
+Portugal,POR,sydney-2000,2000,BRONZE,2
+Portugal,POR,athens-2004,2004,BRONZE,1
+Portugal,POR,athens-2004,2004,SILVER,2
+Portugal,POR,beijing-2008,2008,GOLD,1
+Portugal,POR,beijing-2008,2008,SILVER,1
+Portugal,POR,london-2012,2012,SILVER,1
+Portugal,POR,rio-2016,2016,BRONZE,1
+Portugal,POR,tokyo-2020,2020,BRONZE,2
+Portugal,POR,tokyo-2020,2020,GOLD,1
+Portugal,POR,tokyo-2020,2020,SILVER,1
+Puerto Rico,PUR,london-1948,1948,BRONZE,1
+Puerto Rico,PUR,montreal-1976,1976,BRONZE,1
+Puerto Rico,PUR,los-angeles-1984,1984,BRONZE,1
+Puerto Rico,PUR,los-angeles-1984,1984,SILVER,1
+Puerto Rico,PUR,barcelona-1992,1992,BRONZE,1
+Puerto Rico,PUR,atlanta-1996,1996,BRONZE,1
+Puerto Rico,PUR,london-2012,2012,BRONZE,1
+Puerto Rico,PUR,london-2012,2012,SILVER,1
+Puerto Rico,PUR,rio-2016,2016,GOLD,1
+Puerto Rico,PUR,tokyo-2020,2020,GOLD,1
+Qatar,QAT,barcelona-1992,1992,BRONZE,1
+Qatar,QAT,sydney-2000,2000,BRONZE,1
+Qatar,QAT,london-2012,2012,BRONZE,2
+Qatar,QAT,rio-2016,2016,SILVER,1
+Qatar,QAT,tokyo-2020,2020,BRONZE,1
+Qatar,QAT,tokyo-2020,2020,GOLD,2
+ROC,ROC,tokyo-2020,2020,BRONZE,22
+ROC,ROC,tokyo-2020,2020,GOLD,20
+ROC,ROC,tokyo-2020,2020,SILVER,28
+ROC,ROC,beijing-2022,2022,BRONZE,14
+ROC,ROC,beijing-2022,2022,GOLD,6
+ROC,ROC,beijing-2022,2022,SILVER,12
+Republic of Korea,KOR,london-1948,1948,BRONZE,2
+Republic of Korea,KOR,helsinki-1952,1952,BRONZE,2
+Republic of Korea,KOR,melbourne-1956,1956,BRONZE,1
+Republic of Korea,KOR,melbourne-1956,1956,SILVER,1
+Republic of Korea,KOR,tokyo-1964,1964,BRONZE,1
+Republic of Korea,KOR,tokyo-1964,1964,SILVER,2
+Republic of Korea,KOR,mexico-city-1968,1968,BRONZE,1
+Republic of Korea,KOR,mexico-city-1968,1968,SILVER,1
+Republic of Korea,KOR,munich-1972,1972,SILVER,1
+Republic of Korea,KOR,montreal-1976,1976,BRONZE,4
+Republic of Korea,KOR,montreal-1976,1976,GOLD,1
+Republic of Korea,KOR,montreal-1976,1976,SILVER,1
+Republic of Korea,KOR,los-angeles-1984,1984,BRONZE,7
+Republic of Korea,KOR,los-angeles-1984,1984,GOLD,6
+Republic of Korea,KOR,los-angeles-1984,1984,SILVER,6
+Republic of Korea,KOR,seoul-1988,1988,BRONZE,11
+Republic of Korea,KOR,seoul-1988,1988,GOLD,12
+Republic of Korea,KOR,seoul-1988,1988,SILVER,10
+Republic of Korea,KOR,albertville-1992,1992,BRONZE,1
+Republic of Korea,KOR,barcelona-1992,1992,BRONZE,12
+Republic of Korea,KOR,albertville-1992,1992,GOLD,2
+Republic of Korea,KOR,barcelona-1992,1992,GOLD,12
+Republic of Korea,KOR,albertville-1992,1992,SILVER,1
+Republic of Korea,KOR,barcelona-1992,1992,SILVER,5
+Republic of Korea,KOR,lillehammer-1994,1994,BRONZE,1
+Republic of Korea,KOR,lillehammer-1994,1994,GOLD,4
+Republic of Korea,KOR,lillehammer-1994,1994,SILVER,1
+Republic of Korea,KOR,atlanta-1996,1996,BRONZE,5
+Republic of Korea,KOR,atlanta-1996,1996,GOLD,7
+Republic of Korea,KOR,atlanta-1996,1996,SILVER,15
+Republic of Korea,KOR,nagano-1998,1998,BRONZE,2
+Republic of Korea,KOR,nagano-1998,1998,GOLD,3
+Republic of Korea,KOR,nagano-1998,1998,SILVER,1
+Republic of Korea,KOR,sydney-2000,2000,BRONZE,10
+Republic of Korea,KOR,sydney-2000,2000,GOLD,8
+Republic of Korea,KOR,sydney-2000,2000,SILVER,10
+Republic of Korea,KOR,salt-lake-city-2002,2002,GOLD,2
+Republic of Korea,KOR,salt-lake-city-2002,2002,SILVER,2
+Republic of Korea,KOR,athens-2004,2004,BRONZE,9
+Republic of Korea,KOR,athens-2004,2004,GOLD,9
+Republic of Korea,KOR,athens-2004,2004,SILVER,12
+Republic of Korea,KOR,turin-2006,2006,BRONZE,2
+Republic of Korea,KOR,turin-2006,2006,GOLD,6
+Republic of Korea,KOR,turin-2006,2006,SILVER,3
+Republic of Korea,KOR,beijing-2008,2008,BRONZE,8
+Republic of Korea,KOR,beijing-2008,2008,GOLD,13
+Republic of Korea,KOR,beijing-2008,2008,SILVER,11
+Republic of Korea,KOR,vancouver-2010,2010,BRONZE,2
+Republic of Korea,KOR,vancouver-2010,2010,GOLD,6
+Republic of Korea,KOR,vancouver-2010,2010,SILVER,6
+Republic of Korea,KOR,london-2012,2012,BRONZE,8
+Republic of Korea,KOR,london-2012,2012,GOLD,13
+Republic of Korea,KOR,london-2012,2012,SILVER,9
+Republic of Korea,KOR,sochi-2014,2014,BRONZE,2
+Republic of Korea,KOR,sochi-2014,2014,GOLD,3
+Republic of Korea,KOR,sochi-2014,2014,SILVER,3
+Republic of Korea,KOR,rio-2016,2016,BRONZE,9
+Republic of Korea,KOR,rio-2016,2016,GOLD,9
+Republic of Korea,KOR,rio-2016,2016,SILVER,3
+Republic of Korea,KOR,pyeongchang-2018,2018,BRONZE,4
+Republic of Korea,KOR,pyeongchang-2018,2018,GOLD,5
+Republic of Korea,KOR,pyeongchang-2018,2018,SILVER,8
+Republic of Korea,KOR,tokyo-2020,2020,BRONZE,10
+Republic of Korea,KOR,tokyo-2020,2020,GOLD,6
+Republic of Korea,KOR,tokyo-2020,2020,SILVER,4
+Republic of Korea,KOR,beijing-2022,2022,BRONZE,2
+Republic of Korea,KOR,beijing-2022,2022,GOLD,2
+Republic of Korea,KOR,beijing-2022,2022,SILVER,5
+Republic of Moldova,MDA,atlanta-1996,1996,BRONZE,1
+Republic of Moldova,MDA,atlanta-1996,1996,SILVER,1
+Republic of Moldova,MDA,sydney-2000,2000,BRONZE,1
+Republic of Moldova,MDA,sydney-2000,2000,SILVER,1
+Republic of Moldova,MDA,beijing-2008,2008,BRONZE,1
+Republic of Moldova,MDA,tokyo-2020,2020,BRONZE,1
+Romania,ROU,paris-1924,1924,BRONZE,1
+Romania,ROU,berlin-1936,1936,SILVER,1
+Romania,ROU,helsinki-1952,1952,BRONZE,2
+Romania,ROU,helsinki-1952,1952,GOLD,1
+Romania,ROU,helsinki-1952,1952,SILVER,1
+Romania,ROU,melbourne-1956,1956,BRONZE,5
+Romania,ROU,melbourne-1956,1956,GOLD,5
+Romania,ROU,melbourne-1956,1956,SILVER,3
+Romania,ROU,rome-1960,1960,BRONZE,6
+Romania,ROU,rome-1960,1960,GOLD,3
+Romania,ROU,rome-1960,1960,SILVER,1
+Romania,ROU,tokyo-1964,1964,BRONZE,6
+Romania,ROU,tokyo-1964,1964,GOLD,2
+Romania,ROU,tokyo-1964,1964,SILVER,4
+Romania,ROU,grenoble-1968,1968,BRONZE,1
+Romania,ROU,mexico-city-1968,1968,BRONZE,5
+Romania,ROU,mexico-city-1968,1968,GOLD,4
+Romania,ROU,mexico-city-1968,1968,SILVER,6
+Romania,ROU,munich-1972,1972,BRONZE,7
+Romania,ROU,munich-1972,1972,GOLD,3
+Romania,ROU,munich-1972,1972,SILVER,6
+Romania,ROU,montreal-1976,1976,BRONZE,14
+Romania,ROU,montreal-1976,1976,GOLD,4
+Romania,ROU,montreal-1976,1976,SILVER,9
+Romania,ROU,moscow-1980,1980,BRONZE,13
+Romania,ROU,moscow-1980,1980,GOLD,6
+Romania,ROU,moscow-1980,1980,SILVER,6
+Romania,ROU,los-angeles-1984,1984,BRONZE,17
+Romania,ROU,los-angeles-1984,1984,GOLD,20
+Romania,ROU,los-angeles-1984,1984,SILVER,16
+Romania,ROU,seoul-1988,1988,BRONZE,6
+Romania,ROU,seoul-1988,1988,GOLD,7
+Romania,ROU,seoul-1988,1988,SILVER,11
+Romania,ROU,barcelona-1992,1992,BRONZE,8
+Romania,ROU,barcelona-1992,1992,GOLD,4
+Romania,ROU,barcelona-1992,1992,SILVER,6
+Romania,ROU,atlanta-1996,1996,BRONZE,9
+Romania,ROU,atlanta-1996,1996,GOLD,4
+Romania,ROU,atlanta-1996,1996,SILVER,7
+Romania,ROU,sydney-2000,2000,BRONZE,9
+Romania,ROU,sydney-2000,2000,GOLD,11
+Romania,ROU,sydney-2000,2000,SILVER,6
+Romania,ROU,athens-2004,2004,BRONZE,6
+Romania,ROU,athens-2004,2004,GOLD,8
+Romania,ROU,athens-2004,2004,SILVER,5
+Romania,ROU,beijing-2008,2008,BRONZE,4
+Romania,ROU,beijing-2008,2008,GOLD,4
+Romania,ROU,beijing-2008,2008,SILVER,1
+Romania,ROU,london-2012,2012,BRONZE,2
+Romania,ROU,london-2012,2012,GOLD,2
+Romania,ROU,london-2012,2012,SILVER,5
+Romania,ROU,rio-2016,2016,BRONZE,2
+Romania,ROU,rio-2016,2016,GOLD,1
+Romania,ROU,rio-2016,2016,SILVER,1
+Romania,ROU,tokyo-2020,2020,GOLD,1
+Romania,ROU,tokyo-2020,2020,SILVER,3
+Russian Federation,RUS,london-1908,1908,GOLD,1
+Russian Federation,RUS,london-1908,1908,SILVER,2
+Russian Federation,RUS,stockholm-1912,1912,BRONZE,4
+Russian Federation,RUS,stockholm-1912,1912,SILVER,2
+Russian Federation,RUS,lillehammer-1994,1994,BRONZE,4
+Russian Federation,RUS,lillehammer-1994,1994,GOLD,11
+Russian Federation,RUS,lillehammer-1994,1994,SILVER,8
+Russian Federation,RUS,atlanta-1996,1996,BRONZE,16
+Russian Federation,RUS,atlanta-1996,1996,GOLD,26
+Russian Federation,RUS,atlanta-1996,1996,SILVER,21
+Russian Federation,RUS,nagano-1998,1998,BRONZE,3
+Russian Federation,RUS,nagano-1998,1998,GOLD,9
+Russian Federation,RUS,nagano-1998,1998,SILVER,6
+Russian Federation,RUS,sydney-2000,2000,BRONZE,29
+Russian Federation,RUS,sydney-2000,2000,GOLD,32
+Russian Federation,RUS,sydney-2000,2000,SILVER,28
+Russian Federation,RUS,salt-lake-city-2002,2002,BRONZE,4
+Russian Federation,RUS,salt-lake-city-2002,2002,GOLD,5
+Russian Federation,RUS,salt-lake-city-2002,2002,SILVER,4
+Russian Federation,RUS,athens-2004,2004,BRONZE,36
+Russian Federation,RUS,athens-2004,2004,GOLD,28
+Russian Federation,RUS,athens-2004,2004,SILVER,26
+Russian Federation,RUS,turin-2006,2006,BRONZE,8
+Russian Federation,RUS,turin-2006,2006,GOLD,8
+Russian Federation,RUS,turin-2006,2006,SILVER,6
+Russian Federation,RUS,beijing-2008,2008,BRONZE,23
+Russian Federation,RUS,beijing-2008,2008,GOLD,24
+Russian Federation,RUS,beijing-2008,2008,SILVER,13
+Russian Federation,RUS,vancouver-2010,2010,BRONZE,7
+Russian Federation,RUS,vancouver-2010,2010,GOLD,3
+Russian Federation,RUS,vancouver-2010,2010,SILVER,5
+Russian Federation,RUS,london-2012,2012,BRONZE,28
+Russian Federation,RUS,london-2012,2012,GOLD,20
+Russian Federation,RUS,london-2012,2012,SILVER,19
+Russian Federation,RUS,sochi-2014,2014,BRONZE,9
+Russian Federation,RUS,sochi-2014,2014,GOLD,11
+Russian Federation,RUS,sochi-2014,2014,SILVER,9
+Russian Federation,RUS,rio-2016,2016,BRONZE,20
+Russian Federation,RUS,rio-2016,2016,GOLD,19
+Russian Federation,RUS,rio-2016,2016,SILVER,17
+Samoa,SAM,beijing-2008,2008,SILVER,1
+San Marino,SMR,tokyo-2020,2020,BRONZE,2
+San Marino,SMR,tokyo-2020,2020,SILVER,1
+Saudi Arabia,KSA,sydney-2000,2000,BRONZE,1
+Saudi Arabia,KSA,sydney-2000,2000,SILVER,1
+Saudi Arabia,KSA,london-2012,2012,BRONZE,1
+Saudi Arabia,KSA,tokyo-2020,2020,SILVER,1
+Senegal,SEN,seoul-1988,1988,SILVER,1
+Serbia,SRB,beijing-2008,2008,BRONZE,2
+Serbia,SRB,beijing-2008,2008,SILVER,1
+Serbia,SRB,london-2012,2012,BRONZE,2
+Serbia,SRB,london-2012,2012,GOLD,1
+Serbia,SRB,london-2012,2012,SILVER,1
+Serbia,SRB,rio-2016,2016,BRONZE,2
+Serbia,SRB,rio-2016,2016,GOLD,2
+Serbia,SRB,rio-2016,2016,SILVER,4
+Serbia,SRB,tokyo-2020,2020,BRONZE,5
+Serbia,SRB,tokyo-2020,2020,GOLD,3
+Serbia,SRB,tokyo-2020,2020,SILVER,1
+Serbia and Montenegro,SCG,atlanta-1996,1996,BRONZE,2
+Serbia and Montenegro,SCG,atlanta-1996,1996,GOLD,1
+Serbia and Montenegro,SCG,atlanta-1996,1996,SILVER,1
+Serbia and Montenegro,SCG,sydney-2000,2000,BRONZE,1
+Serbia and Montenegro,SCG,sydney-2000,2000,GOLD,1
+Serbia and Montenegro,SCG,sydney-2000,2000,SILVER,1
+Serbia and Montenegro,SCG,athens-2004,2004,SILVER,2
+Singapore,SGP,rome-1960,1960,SILVER,1
+Singapore,SGP,beijing-2008,2008,SILVER,1
+Singapore,SGP,london-2012,2012,BRONZE,2
+Singapore,SGP,rio-2016,2016,GOLD,1
+Slovakia,SVK,atlanta-1996,1996,BRONZE,1
+Slovakia,SVK,atlanta-1996,1996,GOLD,1
+Slovakia,SVK,atlanta-1996,1996,SILVER,1
+Slovakia,SVK,sydney-2000,2000,BRONZE,1
+Slovakia,SVK,sydney-2000,2000,GOLD,1
+Slovakia,SVK,sydney-2000,2000,SILVER,3
+Slovakia,SVK,athens-2004,2004,BRONZE,2
+Slovakia,SVK,athens-2004,2004,GOLD,2
+Slovakia,SVK,athens-2004,2004,SILVER,2
+Slovakia,SVK,turin-2006,2006,SILVER,1
+Slovakia,SVK,beijing-2008,2008,GOLD,3
+Slovakia,SVK,beijing-2008,2008,SILVER,3
+Slovakia,SVK,vancouver-2010,2010,BRONZE,1
+Slovakia,SVK,vancouver-2010,2010,GOLD,1
+Slovakia,SVK,vancouver-2010,2010,SILVER,1
+Slovakia,SVK,london-2012,2012,BRONZE,3
+Slovakia,SVK,london-2012,2012,SILVER,1
+Slovakia,SVK,sochi-2014,2014,GOLD,1
+Slovakia,SVK,rio-2016,2016,GOLD,2
+Slovakia,SVK,rio-2016,2016,SILVER,2
+Slovakia,SVK,pyeongchang-2018,2018,GOLD,1
+Slovakia,SVK,pyeongchang-2018,2018,SILVER,2
+Slovakia,SVK,tokyo-2020,2020,BRONZE,1
+Slovakia,SVK,tokyo-2020,2020,GOLD,1
+Slovakia,SVK,tokyo-2020,2020,SILVER,2
+Slovakia,SVK,beijing-2022,2022,BRONZE,1
+Slovakia,SVK,beijing-2022,2022,GOLD,1
+Slovenia,SLO,barcelona-1992,1992,BRONZE,2
+Slovenia,SLO,lillehammer-1994,1994,BRONZE,3
+Slovenia,SLO,atlanta-1996,1996,SILVER,2
+Slovenia,SLO,sydney-2000,2000,GOLD,2
+Slovenia,SLO,salt-lake-city-2002,2002,BRONZE,1
+Slovenia,SLO,athens-2004,2004,BRONZE,3
+Slovenia,SLO,athens-2004,2004,SILVER,1
+Slovenia,SLO,beijing-2008,2008,BRONZE,2
+Slovenia,SLO,beijing-2008,2008,GOLD,1
+Slovenia,SLO,beijing-2008,2008,SILVER,2
+Slovenia,SLO,vancouver-2010,2010,BRONZE,1
+Slovenia,SLO,vancouver-2010,2010,SILVER,2
+Slovenia,SLO,london-2012,2012,BRONZE,2
+Slovenia,SLO,london-2012,2012,GOLD,1
+Slovenia,SLO,london-2012,2012,SILVER,1
+Slovenia,SLO,sochi-2014,2014,BRONZE,4
+Slovenia,SLO,sochi-2014,2014,GOLD,2
+Slovenia,SLO,sochi-2014,2014,SILVER,2
+Slovenia,SLO,rio-2016,2016,BRONZE,1
+Slovenia,SLO,rio-2016,2016,GOLD,1
+Slovenia,SLO,rio-2016,2016,SILVER,2
+Slovenia,SLO,pyeongchang-2018,2018,BRONZE,1
+Slovenia,SLO,pyeongchang-2018,2018,SILVER,1
+Slovenia,SLO,tokyo-2020,2020,BRONZE,1
+Slovenia,SLO,tokyo-2020,2020,GOLD,3
+Slovenia,SLO,tokyo-2020,2020,SILVER,1
+Slovenia,SLO,beijing-2022,2022,BRONZE,2
+Slovenia,SLO,beijing-2022,2022,GOLD,2
+Slovenia,SLO,beijing-2022,2022,SILVER,3
+South Africa,RSA,london-1908,1908,GOLD,1
+South Africa,RSA,london-1908,1908,SILVER,1
+South Africa,RSA,stockholm-1912,1912,GOLD,4
+South Africa,RSA,stockholm-1912,1912,SILVER,2
+South Africa,RSA,antwerp-1920,1920,BRONZE,3
+South Africa,RSA,antwerp-1920,1920,GOLD,3
+South Africa,RSA,antwerp-1920,1920,SILVER,4
+South Africa,RSA,paris-1924,1924,BRONZE,1
+South Africa,RSA,paris-1924,1924,GOLD,1
+South Africa,RSA,paris-1924,1924,SILVER,1
+South Africa,RSA,amsterdam-1928,1928,BRONZE,2
+South Africa,RSA,amsterdam-1928,1928,GOLD,1
+South Africa,RSA,los-angeles-1932,1932,BRONZE,3
+South Africa,RSA,los-angeles-1932,1932,GOLD,2
+South Africa,RSA,berlin-1936,1936,SILVER,1
+South Africa,RSA,london-1948,1948,BRONZE,1
+South Africa,RSA,london-1948,1948,GOLD,2
+South Africa,RSA,london-1948,1948,SILVER,1
+South Africa,RSA,helsinki-1952,1952,BRONZE,4
+South Africa,RSA,helsinki-1952,1952,GOLD,2
+South Africa,RSA,helsinki-1952,1952,SILVER,4
+South Africa,RSA,melbourne-1956,1956,BRONZE,4
+South Africa,RSA,rome-1960,1960,BRONZE,2
+South Africa,RSA,rome-1960,1960,SILVER,1
+South Africa,RSA,barcelona-1992,1992,SILVER,2
+South Africa,RSA,atlanta-1996,1996,BRONZE,1
+South Africa,RSA,atlanta-1996,1996,GOLD,3
+South Africa,RSA,atlanta-1996,1996,SILVER,1
+South Africa,RSA,sydney-2000,2000,BRONZE,3
+South Africa,RSA,sydney-2000,2000,SILVER,2
+South Africa,RSA,athens-2004,2004,BRONZE,2
+South Africa,RSA,athens-2004,2004,GOLD,1
+South Africa,RSA,athens-2004,2004,SILVER,3
+South Africa,RSA,beijing-2008,2008,SILVER,1
+South Africa,RSA,london-2012,2012,BRONZE,1
+South Africa,RSA,london-2012,2012,GOLD,4
+South Africa,RSA,london-2012,2012,SILVER,1
+South Africa,RSA,rio-2016,2016,BRONZE,2
+South Africa,RSA,rio-2016,2016,GOLD,2
+South Africa,RSA,rio-2016,2016,SILVER,6
+South Africa,RSA,tokyo-2020,2020,GOLD,1
+South Africa,RSA,tokyo-2020,2020,SILVER,2
+Soviet Union,URS,helsinki-1952,1952,BRONZE,19
+Soviet Union,URS,helsinki-1952,1952,GOLD,22
+Soviet Union,URS,helsinki-1952,1952,SILVER,30
+Soviet Union,URS,cortina-d-ampezzo-1956,1956,BRONZE,6
+Soviet Union,URS,melbourne-1956,1956,BRONZE,32
+Soviet Union,URS,cortina-d-ampezzo-1956,1956,GOLD,7
+Soviet Union,URS,melbourne-1956,1956,GOLD,37
+Soviet Union,URS,cortina-d-ampezzo-1956,1956,SILVER,3
+Soviet Union,URS,melbourne-1956,1956,SILVER,29
+Soviet Union,URS,rome-1960,1960,BRONZE,31
+Soviet Union,URS,squaw-valley-1960,1960,BRONZE,9
+Soviet Union,URS,rome-1960,1960,GOLD,43
+Soviet Union,URS,squaw-valley-1960,1960,GOLD,7
+Soviet Union,URS,rome-1960,1960,SILVER,29
+Soviet Union,URS,squaw-valley-1960,1960,SILVER,5
+Soviet Union,URS,innsbruck-1964,1964,BRONZE,6
+Soviet Union,URS,tokyo-1964,1964,BRONZE,35
+Soviet Union,URS,innsbruck-1964,1964,GOLD,11
+Soviet Union,URS,tokyo-1964,1964,GOLD,30
+Soviet Union,URS,innsbruck-1964,1964,SILVER,8
+Soviet Union,URS,tokyo-1964,1964,SILVER,31
+Soviet Union,URS,grenoble-1968,1968,BRONZE,3
+Soviet Union,URS,mexico-city-1968,1968,BRONZE,30
+Soviet Union,URS,grenoble-1968,1968,GOLD,5
+Soviet Union,URS,mexico-city-1968,1968,GOLD,29
+Soviet Union,URS,grenoble-1968,1968,SILVER,5
+Soviet Union,URS,mexico-city-1968,1968,SILVER,32
+Soviet Union,URS,munich-1972,1972,BRONZE,22
+Soviet Union,URS,sapporo-1972,1972,BRONZE,3
+Soviet Union,URS,munich-1972,1972,GOLD,50
+Soviet Union,URS,sapporo-1972,1972,GOLD,8
+Soviet Union,URS,munich-1972,1972,SILVER,27
+Soviet Union,URS,sapporo-1972,1972,SILVER,5
+Soviet Union,URS,innsbruck-1976,1976,BRONZE,8
+Soviet Union,URS,montreal-1976,1976,BRONZE,35
+Soviet Union,URS,innsbruck-1976,1976,GOLD,13
+Soviet Union,URS,montreal-1976,1976,GOLD,49
+Soviet Union,URS,innsbruck-1976,1976,SILVER,6
+Soviet Union,URS,montreal-1976,1976,SILVER,41
+Soviet Union,URS,lake-placid-1980,1980,BRONZE,6
+Soviet Union,URS,moscow-1980,1980,BRONZE,46
+Soviet Union,URS,lake-placid-1980,1980,GOLD,10
+Soviet Union,URS,moscow-1980,1980,GOLD,80
+Soviet Union,URS,lake-placid-1980,1980,SILVER,6
+Soviet Union,URS,moscow-1980,1980,SILVER,69
+Soviet Union,URS,sarajevo-1984,1984,BRONZE,9
+Soviet Union,URS,sarajevo-1984,1984,GOLD,6
+Soviet Union,URS,sarajevo-1984,1984,SILVER,10
+Soviet Union,URS,calgary-1988,1988,BRONZE,9
+Soviet Union,URS,seoul-1988,1988,BRONZE,46
+Soviet Union,URS,calgary-1988,1988,GOLD,11
+Soviet Union,URS,seoul-1988,1988,GOLD,55
+Soviet Union,URS,calgary-1988,1988,SILVER,9
+Soviet Union,URS,seoul-1988,1988,SILVER,31
+Spain,ESP,paris-1900,1900,GOLD,1
+Spain,ESP,antwerp-1920,1920,SILVER,2
+Spain,ESP,amsterdam-1928,1928,GOLD,1
+Spain,ESP,los-angeles-1932,1932,BRONZE,1
+Spain,ESP,london-1948,1948,SILVER,1
+Spain,ESP,helsinki-1952,1952,SILVER,1
+Spain,ESP,rome-1960,1960,BRONZE,1
+Spain,ESP,munich-1972,1972,BRONZE,1
+Spain,ESP,sapporo-1972,1972,GOLD,1
+Spain,ESP,montreal-1976,1976,SILVER,2
+Spain,ESP,moscow-1980,1980,BRONZE,2
+Spain,ESP,moscow-1980,1980,GOLD,1
+Spain,ESP,moscow-1980,1980,SILVER,3
+Spain,ESP,los-angeles-1984,1984,BRONZE,2
+Spain,ESP,los-angeles-1984,1984,GOLD,1
+Spain,ESP,los-angeles-1984,1984,SILVER,2
+Spain,ESP,seoul-1988,1988,BRONZE,2
+Spain,ESP,seoul-1988,1988,GOLD,1
+Spain,ESP,seoul-1988,1988,SILVER,1
+Spain,ESP,albertville-1992,1992,BRONZE,1
+Spain,ESP,barcelona-1992,1992,BRONZE,2
+Spain,ESP,barcelona-1992,1992,GOLD,13
+Spain,ESP,barcelona-1992,1992,SILVER,7
+Spain,ESP,atlanta-1996,1996,BRONZE,6
+Spain,ESP,atlanta-1996,1996,GOLD,5
+Spain,ESP,atlanta-1996,1996,SILVER,6
+Spain,ESP,sydney-2000,2000,BRONZE,5
+Spain,ESP,sydney-2000,2000,GOLD,3
+Spain,ESP,sydney-2000,2000,SILVER,3
+Spain,ESP,athens-2004,2004,BRONZE,6
+Spain,ESP,athens-2004,2004,GOLD,3
+Spain,ESP,athens-2004,2004,SILVER,11
+Spain,ESP,beijing-2008,2008,BRONZE,3
+Spain,ESP,beijing-2008,2008,GOLD,5
+Spain,ESP,beijing-2008,2008,SILVER,11
+Spain,ESP,london-2012,2012,BRONZE,4
+Spain,ESP,london-2012,2012,GOLD,4
+Spain,ESP,london-2012,2012,SILVER,10
+Spain,ESP,rio-2016,2016,BRONZE,6
+Spain,ESP,rio-2016,2016,GOLD,7
+Spain,ESP,rio-2016,2016,SILVER,4
+Spain,ESP,pyeongchang-2018,2018,BRONZE,2
+Spain,ESP,tokyo-2020,2020,BRONZE,6
+Spain,ESP,tokyo-2020,2020,GOLD,3
+Spain,ESP,tokyo-2020,2020,SILVER,8
+Spain,ESP,beijing-2022,2022,SILVER,1
+Sri Lanka,SRI,london-1948,1948,SILVER,1
+Sri Lanka,SRI,sydney-2000,2000,SILVER,1
+Sudan,SUD,beijing-2008,2008,SILVER,1
+Suriname,SUR,seoul-1988,1988,GOLD,1
+Suriname,SUR,barcelona-1992,1992,BRONZE,1
+Sweden,SWE,paris-1900,1900,BRONZE,1
+Sweden,SWE,london-1908,1908,BRONZE,11
+Sweden,SWE,london-1908,1908,GOLD,8
+Sweden,SWE,london-1908,1908,SILVER,6
+Sweden,SWE,stockholm-1912,1912,BRONZE,17
+Sweden,SWE,stockholm-1912,1912,GOLD,24
+Sweden,SWE,stockholm-1912,1912,SILVER,24
+Sweden,SWE,antwerp-1920,1920,BRONZE,25
+Sweden,SWE,antwerp-1920,1920,GOLD,19
+Sweden,SWE,antwerp-1920,1920,SILVER,20
+Sweden,SWE,paris-1924,1924,BRONZE,12
+Sweden,SWE,chamonix-1924,1924,GOLD,1
+Sweden,SWE,paris-1924,1924,GOLD,4
+Sweden,SWE,chamonix-1924,1924,SILVER,1
+Sweden,SWE,paris-1924,1924,SILVER,13
+Sweden,SWE,amsterdam-1928,1928,BRONZE,12
+Sweden,SWE,st-moritz-1928,1928,BRONZE,1
+Sweden,SWE,amsterdam-1928,1928,GOLD,6
+Sweden,SWE,st-moritz-1928,1928,GOLD,2
+Sweden,SWE,amsterdam-1928,1928,SILVER,6
+Sweden,SWE,st-moritz-1928,1928,SILVER,2
+Sweden,SWE,los-angeles-1932,1932,BRONZE,9
+Sweden,SWE,lake-placid-1932,1932,GOLD,1
+Sweden,SWE,los-angeles-1932,1932,GOLD,9
+Sweden,SWE,lake-placid-1932,1932,SILVER,2
+Sweden,SWE,los-angeles-1932,1932,SILVER,5
+Sweden,SWE,berlin-1936,1936,BRONZE,8
+Sweden,SWE,garmisch-partenkirchen-1936,1936,BRONZE,3
+Sweden,SWE,berlin-1936,1936,GOLD,5
+Sweden,SWE,garmisch-partenkirchen-1936,1936,GOLD,2
+Sweden,SWE,berlin-1936,1936,SILVER,5
+Sweden,SWE,garmisch-partenkirchen-1936,1936,SILVER,2
+Sweden,SWE,london-1948,1948,BRONZE,17
+Sweden,SWE,st-moritz-1948,1948,BRONZE,3
+Sweden,SWE,london-1948,1948,GOLD,16
+Sweden,SWE,st-moritz-1948,1948,GOLD,4
+Sweden,SWE,london-1948,1948,SILVER,11
+Sweden,SWE,st-moritz-1948,1948,SILVER,3
+Sweden,SWE,helsinki-1952,1952,BRONZE,10
+Sweden,SWE,oslo-1952,1952,BRONZE,4
+Sweden,SWE,helsinki-1952,1952,GOLD,12
+Sweden,SWE,helsinki-1952,1952,SILVER,11
+Sweden,SWE,cortina-d-ampezzo-1956,1956,BRONZE,4
+Sweden,SWE,melbourne-1956,1956,BRONZE,6
+Sweden,SWE,cortina-d-ampezzo-1956,1956,GOLD,2
+Sweden,SWE,melbourne-1956,1956,GOLD,5
+Sweden,SWE,cortina-d-ampezzo-1956,1956,SILVER,4
+Sweden,SWE,melbourne-1956,1956,SILVER,5
+Sweden,SWE,rome-1960,1960,BRONZE,3
+Sweden,SWE,squaw-valley-1960,1960,BRONZE,2
+Sweden,SWE,rome-1960,1960,GOLD,1
+Sweden,SWE,squaw-valley-1960,1960,GOLD,3
+Sweden,SWE,rome-1960,1960,SILVER,2
+Sweden,SWE,squaw-valley-1960,1960,SILVER,2
+Sweden,SWE,innsbruck-1964,1964,BRONZE,1
+Sweden,SWE,tokyo-1964,1964,BRONZE,4
+Sweden,SWE,innsbruck-1964,1964,GOLD,3
+Sweden,SWE,tokyo-1964,1964,GOLD,2
+Sweden,SWE,innsbruck-1964,1964,SILVER,3
+Sweden,SWE,tokyo-1964,1964,SILVER,2
+Sweden,SWE,grenoble-1968,1968,BRONZE,3
+Sweden,SWE,mexico-city-1968,1968,BRONZE,1
+Sweden,SWE,grenoble-1968,1968,GOLD,3
+Sweden,SWE,mexico-city-1968,1968,GOLD,2
+Sweden,SWE,grenoble-1968,1968,SILVER,2
+Sweden,SWE,mexico-city-1968,1968,SILVER,1
+Sweden,SWE,munich-1972,1972,BRONZE,6
+Sweden,SWE,sapporo-1972,1972,BRONZE,2
+Sweden,SWE,munich-1972,1972,GOLD,4
+Sweden,SWE,sapporo-1972,1972,GOLD,1
+Sweden,SWE,munich-1972,1972,SILVER,6
+Sweden,SWE,sapporo-1972,1972,SILVER,1
+Sweden,SWE,innsbruck-1976,1976,BRONZE,2
+Sweden,SWE,montreal-1976,1976,GOLD,4
+Sweden,SWE,montreal-1976,1976,SILVER,1
+Sweden,SWE,lake-placid-1980,1980,BRONZE,1
+Sweden,SWE,moscow-1980,1980,BRONZE,6
+Sweden,SWE,lake-placid-1980,1980,GOLD,3
+Sweden,SWE,moscow-1980,1980,GOLD,3
+Sweden,SWE,moscow-1980,1980,SILVER,3
+Sweden,SWE,los-angeles-1984,1984,BRONZE,6
+Sweden,SWE,sarajevo-1984,1984,BRONZE,2
+Sweden,SWE,los-angeles-1984,1984,GOLD,2
+Sweden,SWE,sarajevo-1984,1984,GOLD,4
+Sweden,SWE,los-angeles-1984,1984,SILVER,11
+Sweden,SWE,sarajevo-1984,1984,SILVER,2
+Sweden,SWE,calgary-1988,1988,BRONZE,2
+Sweden,SWE,seoul-1988,1988,BRONZE,7
+Sweden,SWE,calgary-1988,1988,GOLD,4
+Sweden,SWE,seoul-1988,1988,SILVER,4
+Sweden,SWE,albertville-1992,1992,BRONZE,3
+Sweden,SWE,barcelona-1992,1992,BRONZE,4
+Sweden,SWE,albertville-1992,1992,GOLD,1
+Sweden,SWE,barcelona-1992,1992,GOLD,1
+Sweden,SWE,barcelona-1992,1992,SILVER,7
+Sweden,SWE,lillehammer-1994,1994,GOLD,2
+Sweden,SWE,lillehammer-1994,1994,SILVER,1
+Sweden,SWE,atlanta-1996,1996,BRONZE,2
+Sweden,SWE,atlanta-1996,1996,GOLD,2
+Sweden,SWE,atlanta-1996,1996,SILVER,4
+Sweden,SWE,nagano-1998,1998,BRONZE,1
+Sweden,SWE,nagano-1998,1998,SILVER,2
+Sweden,SWE,sydney-2000,2000,BRONZE,3
+Sweden,SWE,sydney-2000,2000,GOLD,4
+Sweden,SWE,sydney-2000,2000,SILVER,5
+Sweden,SWE,salt-lake-city-2002,2002,BRONZE,5
+Sweden,SWE,salt-lake-city-2002,2002,SILVER,2
+Sweden,SWE,athens-2004,2004,BRONZE,1
+Sweden,SWE,athens-2004,2004,GOLD,4
+Sweden,SWE,athens-2004,2004,SILVER,2
+Sweden,SWE,turin-2006,2006,BRONZE,5
+Sweden,SWE,turin-2006,2006,GOLD,7
+Sweden,SWE,turin-2006,2006,SILVER,2
+Sweden,SWE,beijing-2008,2008,BRONZE,1
+Sweden,SWE,beijing-2008,2008,SILVER,4
+Sweden,SWE,vancouver-2010,2010,BRONZE,4
+Sweden,SWE,vancouver-2010,2010,GOLD,5
+Sweden,SWE,vancouver-2010,2010,SILVER,2
+Sweden,SWE,london-2012,2012,BRONZE,3
+Sweden,SWE,london-2012,2012,GOLD,1
+Sweden,SWE,london-2012,2012,SILVER,4
+Sweden,SWE,sochi-2014,2014,BRONZE,6
+Sweden,SWE,sochi-2014,2014,GOLD,2
+Sweden,SWE,sochi-2014,2014,SILVER,7
+Sweden,SWE,rio-2016,2016,BRONZE,3
+Sweden,SWE,rio-2016,2016,GOLD,2
+Sweden,SWE,rio-2016,2016,SILVER,6
+Sweden,SWE,pyeongchang-2018,2018,BRONZE,1
+Sweden,SWE,pyeongchang-2018,2018,GOLD,7
+Sweden,SWE,pyeongchang-2018,2018,SILVER,6
+Sweden,SWE,tokyo-2020,2020,GOLD,3
+Sweden,SWE,tokyo-2020,2020,SILVER,6
+Sweden,SWE,beijing-2022,2022,BRONZE,5
+Sweden,SWE,beijing-2022,2022,GOLD,8
+Sweden,SWE,beijing-2022,2022,SILVER,5
+Switzerland,SUI,athens-1896,1896,GOLD,1
+Switzerland,SUI,athens-1896,1896,SILVER,2
+Switzerland,SUI,paris-1900,1900,BRONZE,1
+Switzerland,SUI,paris-1900,1900,GOLD,6
+Switzerland,SUI,paris-1900,1900,SILVER,2
+Switzerland,SUI,st-louis-1904,1904,BRONZE,2
+Switzerland,SUI,st-louis-1904,1904,GOLD,1
+Switzerland,SUI,antwerp-1920,1920,BRONZE,7
+Switzerland,SUI,antwerp-1920,1920,GOLD,2
+Switzerland,SUI,antwerp-1920,1920,SILVER,2
+Switzerland,SUI,chamonix-1924,1924,BRONZE,1
+Switzerland,SUI,paris-1924,1924,BRONZE,10
+Switzerland,SUI,chamonix-1924,1924,GOLD,2
+Switzerland,SUI,paris-1924,1924,GOLD,7
+Switzerland,SUI,paris-1924,1924,SILVER,8
+Switzerland,SUI,amsterdam-1928,1928,BRONZE,4
+Switzerland,SUI,st-moritz-1928,1928,BRONZE,1
+Switzerland,SUI,amsterdam-1928,1928,GOLD,7
+Switzerland,SUI,amsterdam-1928,1928,SILVER,4
+Switzerland,SUI,lake-placid-1932,1932,SILVER,1
+Switzerland,SUI,los-angeles-1932,1932,SILVER,1
+Switzerland,SUI,berlin-1936,1936,BRONZE,5
+Switzerland,SUI,berlin-1936,1936,GOLD,1
+Switzerland,SUI,garmisch-partenkirchen-1936,1936,GOLD,1
+Switzerland,SUI,berlin-1936,1936,SILVER,9
+Switzerland,SUI,garmisch-partenkirchen-1936,1936,SILVER,2
+Switzerland,SUI,london-1948,1948,BRONZE,5
+Switzerland,SUI,st-moritz-1948,1948,BRONZE,3
+Switzerland,SUI,london-1948,1948,GOLD,5
+Switzerland,SUI,st-moritz-1948,1948,GOLD,3
+Switzerland,SUI,london-1948,1948,SILVER,10
+Switzerland,SUI,st-moritz-1948,1948,SILVER,4
+Switzerland,SUI,helsinki-1952,1952,BRONZE,6
+Switzerland,SUI,oslo-1952,1952,BRONZE,2
+Switzerland,SUI,helsinki-1952,1952,GOLD,2
+Switzerland,SUI,helsinki-1952,1952,SILVER,6
+Switzerland,SUI,cortina-d-ampezzo-1956,1956,BRONZE,1
+Switzerland,SUI,cortina-d-ampezzo-1956,1956,GOLD,3
+Switzerland,SUI,cortina-d-ampezzo-1956,1956,SILVER,2
+Switzerland,SUI,rome-1960,1960,BRONZE,3
+Switzerland,SUI,squaw-valley-1960,1960,GOLD,2
+Switzerland,SUI,rome-1960,1960,SILVER,3
+Switzerland,SUI,tokyo-1964,1964,BRONZE,1
+Switzerland,SUI,tokyo-1964,1964,GOLD,1
+Switzerland,SUI,tokyo-1964,1964,SILVER,2
+Switzerland,SUI,grenoble-1968,1968,BRONZE,4
+Switzerland,SUI,mexico-city-1968,1968,BRONZE,4
+Switzerland,SUI,grenoble-1968,1968,SILVER,2
+Switzerland,SUI,mexico-city-1968,1968,SILVER,1
+Switzerland,SUI,sapporo-1972,1972,BRONZE,3
+Switzerland,SUI,sapporo-1972,1972,GOLD,4
+Switzerland,SUI,munich-1972,1972,SILVER,3
+Switzerland,SUI,sapporo-1972,1972,SILVER,3
+Switzerland,SUI,innsbruck-1976,1976,BRONZE,1
+Switzerland,SUI,montreal-1976,1976,BRONZE,2
+Switzerland,SUI,innsbruck-1976,1976,GOLD,1
+Switzerland,SUI,montreal-1976,1976,GOLD,1
+Switzerland,SUI,innsbruck-1976,1976,SILVER,3
+Switzerland,SUI,montreal-1976,1976,SILVER,1
+Switzerland,SUI,lake-placid-1980,1980,BRONZE,3
+Switzerland,SUI,lake-placid-1980,1980,GOLD,1
+Switzerland,SUI,moscow-1980,1980,GOLD,2
+Switzerland,SUI,lake-placid-1980,1980,SILVER,1
+Switzerland,SUI,los-angeles-1984,1984,BRONZE,4
+Switzerland,SUI,sarajevo-1984,1984,BRONZE,1
+Switzerland,SUI,sarajevo-1984,1984,GOLD,2
+Switzerland,SUI,los-angeles-1984,1984,SILVER,4
+Switzerland,SUI,sarajevo-1984,1984,SILVER,2
+Switzerland,SUI,calgary-1988,1988,BRONZE,5
+Switzerland,SUI,seoul-1988,1988,BRONZE,2
+Switzerland,SUI,calgary-1988,1988,GOLD,5
+Switzerland,SUI,calgary-1988,1988,SILVER,5
+Switzerland,SUI,seoul-1988,1988,SILVER,2
+Switzerland,SUI,albertville-1992,1992,BRONZE,2
+Switzerland,SUI,albertville-1992,1992,GOLD,1
+Switzerland,SUI,barcelona-1992,1992,GOLD,1
+Switzerland,SUI,lillehammer-1994,1994,BRONZE,2
+Switzerland,SUI,lillehammer-1994,1994,GOLD,3
+Switzerland,SUI,lillehammer-1994,1994,SILVER,4
+Switzerland,SUI,atlanta-1996,1996,GOLD,4
+Switzerland,SUI,atlanta-1996,1996,SILVER,3
+Switzerland,SUI,nagano-1998,1998,BRONZE,3
+Switzerland,SUI,nagano-1998,1998,GOLD,2
+Switzerland,SUI,nagano-1998,1998,SILVER,2
+Switzerland,SUI,sydney-2000,2000,BRONZE,2
+Switzerland,SUI,sydney-2000,2000,GOLD,1
+Switzerland,SUI,sydney-2000,2000,SILVER,6
+Switzerland,SUI,salt-lake-city-2002,2002,BRONZE,6
+Switzerland,SUI,salt-lake-city-2002,2002,GOLD,3
+Switzerland,SUI,salt-lake-city-2002,2002,SILVER,2
+Switzerland,SUI,athens-2004,2004,BRONZE,3
+Switzerland,SUI,athens-2004,2004,GOLD,1
+Switzerland,SUI,athens-2004,2004,SILVER,1
+Switzerland,SUI,turin-2006,2006,BRONZE,5
+Switzerland,SUI,turin-2006,2006,GOLD,5
+Switzerland,SUI,turin-2006,2006,SILVER,4
+Switzerland,SUI,beijing-2008,2008,BRONZE,3
+Switzerland,SUI,beijing-2008,2008,GOLD,2
+Switzerland,SUI,beijing-2008,2008,SILVER,1
+Switzerland,SUI,vancouver-2010,2010,BRONZE,3
+Switzerland,SUI,vancouver-2010,2010,GOLD,6
+Switzerland,SUI,london-2012,2012,GOLD,2
+Switzerland,SUI,london-2012,2012,SILVER,2
+Switzerland,SUI,sochi-2014,2014,BRONZE,2
+Switzerland,SUI,sochi-2014,2014,GOLD,7
+Switzerland,SUI,sochi-2014,2014,SILVER,2
+Switzerland,SUI,rio-2016,2016,BRONZE,2
+Switzerland,SUI,rio-2016,2016,GOLD,3
+Switzerland,SUI,rio-2016,2016,SILVER,2
+Switzerland,SUI,pyeongchang-2018,2018,BRONZE,4
+Switzerland,SUI,pyeongchang-2018,2018,GOLD,5
+Switzerland,SUI,pyeongchang-2018,2018,SILVER,6
+Switzerland,SUI,tokyo-2020,2020,BRONZE,6
+Switzerland,SUI,tokyo-2020,2020,GOLD,3
+Switzerland,SUI,tokyo-2020,2020,SILVER,4
+Switzerland,SUI,beijing-2022,2022,BRONZE,5
+Switzerland,SUI,beijing-2022,2022,GOLD,7
+Switzerland,SUI,beijing-2022,2022,SILVER,2
+Syrian Arab Republic,SYR,los-angeles-1984,1984,SILVER,1
+Syrian Arab Republic,SYR,atlanta-1996,1996,GOLD,1
+Syrian Arab Republic,SYR,athens-2004,2004,BRONZE,1
+Syrian Arab Republic,SYR,tokyo-2020,2020,BRONZE,1
+Tajikistan,TJK,beijing-2008,2008,BRONZE,1
+Tajikistan,TJK,beijing-2008,2008,SILVER,1
+Tajikistan,TJK,london-2012,2012,BRONZE,1
+Tajikistan,TJK,rio-2016,2016,GOLD,1
+Thailand,THA,montreal-1976,1976,BRONZE,1
+Thailand,THA,los-angeles-1984,1984,SILVER,1
+Thailand,THA,seoul-1988,1988,BRONZE,1
+Thailand,THA,barcelona-1992,1992,BRONZE,1
+Thailand,THA,atlanta-1996,1996,BRONZE,1
+Thailand,THA,atlanta-1996,1996,GOLD,1
+Thailand,THA,sydney-2000,2000,BRONZE,2
+Thailand,THA,sydney-2000,2000,GOLD,1
+Thailand,THA,athens-2004,2004,BRONZE,4
+Thailand,THA,athens-2004,2004,GOLD,3
+Thailand,THA,athens-2004,2004,SILVER,1
+Thailand,THA,beijing-2008,2008,BRONZE,2
+Thailand,THA,beijing-2008,2008,GOLD,2
+Thailand,THA,beijing-2008,2008,SILVER,2
+Thailand,THA,london-2012,2012,BRONZE,2
+Thailand,THA,london-2012,2012,SILVER,2
+Thailand,THA,rio-2016,2016,BRONZE,2
+Thailand,THA,rio-2016,2016,GOLD,2
+Thailand,THA,rio-2016,2016,SILVER,2
+Thailand,THA,tokyo-2020,2020,BRONZE,1
+Thailand,THA,tokyo-2020,2020,GOLD,1
+The Former Yugoslav Republic of Macedonia,MKD,sydney-2000,2000,BRONZE,1
+Togo,TOG,beijing-2008,2008,BRONZE,1
+Tonga,TGA,atlanta-1996,1996,SILVER,1
+Trinidad and Tobago,TTO,london-1948,1948,SILVER,1
+Trinidad and Tobago,TTO,helsinki-1952,1952,BRONZE,2
+Trinidad and Tobago,TTO,tokyo-1964,1964,BRONZE,2
+Trinidad and Tobago,TTO,tokyo-1964,1964,SILVER,1
+Trinidad and Tobago,TTO,montreal-1976,1976,GOLD,1
+Trinidad and Tobago,TTO,atlanta-1996,1996,BRONZE,2
+Trinidad and Tobago,TTO,sydney-2000,2000,BRONZE,1
+Trinidad and Tobago,TTO,sydney-2000,2000,SILVER,1
+Trinidad and Tobago,TTO,athens-2004,2004,BRONZE,1
+Trinidad and Tobago,TTO,beijing-2008,2008,GOLD,1
+Trinidad and Tobago,TTO,beijing-2008,2008,SILVER,1
+Trinidad and Tobago,TTO,london-2012,2012,BRONZE,2
+Trinidad and Tobago,TTO,london-2012,2012,GOLD,1
+Trinidad and Tobago,TTO,london-2012,2012,SILVER,1
+Trinidad and Tobago,TTO,rio-2016,2016,BRONZE,1
+Tunisia,TUN,tokyo-1964,1964,BRONZE,1
+Tunisia,TUN,tokyo-1964,1964,SILVER,1
+Tunisia,TUN,mexico-city-1968,1968,BRONZE,1
+Tunisia,TUN,mexico-city-1968,1968,GOLD,1
+Tunisia,TUN,munich-1972,1972,SILVER,1
+Tunisia,TUN,atlanta-1996,1996,BRONZE,1
+Tunisia,TUN,beijing-2008,2008,GOLD,1
+Tunisia,TUN,london-2012,2012,BRONZE,1
+Tunisia,TUN,london-2012,2012,GOLD,2
+Tunisia,TUN,rio-2016,2016,BRONZE,3
+Tunisia,TUN,tokyo-2020,2020,GOLD,1
+Tunisia,TUN,tokyo-2020,2020,SILVER,1
+Turkey,TUR,berlin-1936,1936,BRONZE,1
+Turkey,TUR,berlin-1936,1936,GOLD,1
+Turkey,TUR,london-1948,1948,BRONZE,2
+Turkey,TUR,london-1948,1948,GOLD,6
+Turkey,TUR,london-1948,1948,SILVER,4
+Turkey,TUR,helsinki-1952,1952,BRONZE,1
+Turkey,TUR,helsinki-1952,1952,GOLD,2
+Turkey,TUR,melbourne-1956,1956,BRONZE,2
+Turkey,TUR,melbourne-1956,1956,GOLD,3
+Turkey,TUR,melbourne-1956,1956,SILVER,2
+Turkey,TUR,rome-1960,1960,GOLD,7
+Turkey,TUR,rome-1960,1960,SILVER,2
+Turkey,TUR,tokyo-1964,1964,BRONZE,1
+Turkey,TUR,tokyo-1964,1964,GOLD,2
+Turkey,TUR,tokyo-1964,1964,SILVER,3
+Turkey,TUR,mexico-city-1968,1968,GOLD,2
+Turkey,TUR,munich-1972,1972,SILVER,1
+Turkey,TUR,los-angeles-1984,1984,BRONZE,3
+Turkey,TUR,seoul-1988,1988,GOLD,1
+Turkey,TUR,seoul-1988,1988,SILVER,1
+Turkey,TUR,barcelona-1992,1992,BRONZE,2
+Turkey,TUR,barcelona-1992,1992,GOLD,2
+Turkey,TUR,barcelona-1992,1992,SILVER,2
+Turkey,TUR,atlanta-1996,1996,BRONZE,1
+Turkey,TUR,atlanta-1996,1996,GOLD,4
+Turkey,TUR,atlanta-1996,1996,SILVER,1
+Turkey,TUR,sydney-2000,2000,BRONZE,2
+Turkey,TUR,sydney-2000,2000,GOLD,3
+Turkey,TUR,athens-2004,2004,BRONZE,4
+Turkey,TUR,athens-2004,2004,GOLD,3
+Turkey,TUR,athens-2004,2004,SILVER,3
+Turkey,TUR,beijing-2008,2008,BRONZE,3
+Turkey,TUR,beijing-2008,2008,GOLD,1
+Turkey,TUR,beijing-2008,2008,SILVER,1
+Turkey,TUR,london-2012,2012,BRONZE,1
+Turkey,TUR,london-2012,2012,GOLD,1
+Turkey,TUR,london-2012,2012,SILVER,1
+Turkey,TUR,rio-2016,2016,BRONZE,4
+Turkey,TUR,rio-2016,2016,GOLD,1
+Turkey,TUR,rio-2016,2016,SILVER,3
+Turkey,TUR,tokyo-2020,2020,BRONZE,9
+Turkey,TUR,tokyo-2020,2020,GOLD,2
+Turkey,TUR,tokyo-2020,2020,SILVER,2
+Turkmenistan,TKM,tokyo-2020,2020,SILVER,1
+US Virgin Islands,ISV,seoul-1988,1988,SILVER,1
+Uganda,UGA,mexico-city-1968,1968,BRONZE,1
+Uganda,UGA,mexico-city-1968,1968,SILVER,1
+Uganda,UGA,munich-1972,1972,GOLD,1
+Uganda,UGA,munich-1972,1972,SILVER,1
+Uganda,UGA,moscow-1980,1980,SILVER,1
+Uganda,UGA,atlanta-1996,1996,BRONZE,1
+Uganda,UGA,london-2012,2012,GOLD,1
+Uganda,UGA,tokyo-2020,2020,BRONZE,1
+Uganda,UGA,tokyo-2020,2020,GOLD,2
+Uganda,UGA,tokyo-2020,2020,SILVER,1
+Ukraine,UKR,lillehammer-1994,1994,BRONZE,1
+Ukraine,UKR,lillehammer-1994,1994,GOLD,1
+Ukraine,UKR,atlanta-1996,1996,BRONZE,12
+Ukraine,UKR,atlanta-1996,1996,GOLD,9
+Ukraine,UKR,atlanta-1996,1996,SILVER,2
+Ukraine,UKR,nagano-1998,1998,SILVER,1
+Ukraine,UKR,sydney-2000,2000,BRONZE,10
+Ukraine,UKR,sydney-2000,2000,GOLD,3
+Ukraine,UKR,sydney-2000,2000,SILVER,10
+Ukraine,UKR,athens-2004,2004,BRONZE,9
+Ukraine,UKR,athens-2004,2004,GOLD,8
+Ukraine,UKR,athens-2004,2004,SILVER,5
+Ukraine,UKR,turin-2006,2006,BRONZE,2
+Ukraine,UKR,beijing-2008,2008,BRONZE,11
+Ukraine,UKR,beijing-2008,2008,GOLD,7
+Ukraine,UKR,beijing-2008,2008,SILVER,4
+Ukraine,UKR,london-2012,2012,BRONZE,10
+Ukraine,UKR,london-2012,2012,GOLD,5
+Ukraine,UKR,london-2012,2012,SILVER,4
+Ukraine,UKR,sochi-2014,2014,BRONZE,1
+Ukraine,UKR,sochi-2014,2014,GOLD,1
+Ukraine,UKR,rio-2016,2016,BRONZE,4
+Ukraine,UKR,rio-2016,2016,GOLD,2
+Ukraine,UKR,rio-2016,2016,SILVER,5
+Ukraine,UKR,pyeongchang-2018,2018,GOLD,1
+Ukraine,UKR,tokyo-2020,2020,BRONZE,12
+Ukraine,UKR,tokyo-2020,2020,GOLD,1
+Ukraine,UKR,tokyo-2020,2020,SILVER,6
+Ukraine,UKR,beijing-2022,2022,SILVER,1
+Unified Team,EUN,albertville-1992,1992,BRONZE,8
+Unified Team,EUN,barcelona-1992,1992,BRONZE,29
+Unified Team,EUN,albertville-1992,1992,GOLD,9
+Unified Team,EUN,barcelona-1992,1992,GOLD,45
+Unified Team,EUN,albertville-1992,1992,SILVER,6
+Unified Team,EUN,barcelona-1992,1992,SILVER,38
+United Arab Emirates,UAE,athens-2004,2004,GOLD,1
+United Arab Emirates,UAE,rio-2016,2016,BRONZE,1
+United Arab Republic,UAR,rome-1960,1960,BRONZE,1
+United Arab Republic,UAR,rome-1960,1960,SILVER,1
+United Republic of Tanzania,TAN,moscow-1980,1980,SILVER,2
+United States of America,USA,athens-1896,1896,BRONZE,2
+United States of America,USA,athens-1896,1896,GOLD,11
+United States of America,USA,athens-1896,1896,SILVER,7
+United States of America,USA,paris-1900,1900,BRONZE,15
+United States of America,USA,paris-1900,1900,GOLD,19
+United States of America,USA,paris-1900,1900,SILVER,14
+United States of America,USA,st-louis-1904,1904,BRONZE,77
+United States of America,USA,st-louis-1904,1904,GOLD,76
+United States of America,USA,st-louis-1904,1904,SILVER,78
+United States of America,USA,london-1908,1908,BRONZE,12
+United States of America,USA,london-1908,1908,GOLD,23
+United States of America,USA,london-1908,1908,SILVER,12
+United States of America,USA,stockholm-1912,1912,BRONZE,19
+United States of America,USA,stockholm-1912,1912,GOLD,25
+United States of America,USA,stockholm-1912,1912,SILVER,19
+United States of America,USA,antwerp-1920,1920,BRONZE,27
+United States of America,USA,antwerp-1920,1920,GOLD,41
+United States of America,USA,antwerp-1920,1920,SILVER,27
+United States of America,USA,chamonix-1924,1924,BRONZE,1
+United States of America,USA,paris-1924,1924,BRONZE,27
+United States of America,USA,chamonix-1924,1924,GOLD,1
+United States of America,USA,paris-1924,1924,GOLD,45
+United States of America,USA,chamonix-1924,1924,SILVER,2
+United States of America,USA,paris-1924,1924,SILVER,27
+United States of America,USA,amsterdam-1928,1928,BRONZE,16
+United States of America,USA,st-moritz-1928,1928,BRONZE,2
+United States of America,USA,amsterdam-1928,1928,GOLD,22
+United States of America,USA,st-moritz-1928,1928,GOLD,2
+United States of America,USA,amsterdam-1928,1928,SILVER,18
+United States of America,USA,st-moritz-1928,1928,SILVER,2
+United States of America,USA,lake-placid-1932,1932,BRONZE,2
+United States of America,USA,los-angeles-1932,1932,BRONZE,30
+United States of America,USA,lake-placid-1932,1932,GOLD,6
+United States of America,USA,los-angeles-1932,1932,GOLD,41
+United States of America,USA,lake-placid-1932,1932,SILVER,4
+United States of America,USA,los-angeles-1932,1932,SILVER,32
+United States of America,USA,berlin-1936,1936,BRONZE,11
+United States of America,USA,garmisch-partenkirchen-1936,1936,BRONZE,3
+United States of America,USA,berlin-1936,1936,GOLD,24
+United States of America,USA,garmisch-partenkirchen-1936,1936,GOLD,1
+United States of America,USA,berlin-1936,1936,SILVER,20
+United States of America,USA,london-1948,1948,BRONZE,19
+United States of America,USA,st-moritz-1948,1948,BRONZE,2
+United States of America,USA,london-1948,1948,GOLD,38
+United States of America,USA,st-moritz-1948,1948,GOLD,3
+United States of America,USA,london-1948,1948,SILVER,27
+United States of America,USA,st-moritz-1948,1948,SILVER,4
+United States of America,USA,helsinki-1952,1952,BRONZE,17
+United States of America,USA,oslo-1952,1952,BRONZE,1
+United States of America,USA,helsinki-1952,1952,GOLD,39
+United States of America,USA,oslo-1952,1952,GOLD,4
+United States of America,USA,helsinki-1952,1952,SILVER,19
+United States of America,USA,oslo-1952,1952,SILVER,6
+United States of America,USA,cortina-d-ampezzo-1956,1956,BRONZE,2
+United States of America,USA,melbourne-1956,1956,BRONZE,17
+United States of America,USA,cortina-d-ampezzo-1956,1956,GOLD,2
+United States of America,USA,melbourne-1956,1956,GOLD,32
+United States of America,USA,cortina-d-ampezzo-1956,1956,SILVER,3
+United States of America,USA,melbourne-1956,1956,SILVER,25
+United States of America,USA,rome-1960,1960,BRONZE,16
+United States of America,USA,squaw-valley-1960,1960,BRONZE,3
+United States of America,USA,rome-1960,1960,GOLD,34
+United States of America,USA,squaw-valley-1960,1960,GOLD,3
+United States of America,USA,rome-1960,1960,SILVER,21
+United States of America,USA,squaw-valley-1960,1960,SILVER,4
+United States of America,USA,innsbruck-1964,1964,BRONZE,4
+United States of America,USA,tokyo-1964,1964,BRONZE,28
+United States of America,USA,innsbruck-1964,1964,GOLD,1
+United States of America,USA,tokyo-1964,1964,GOLD,36
+United States of America,USA,innsbruck-1964,1964,SILVER,2
+United States of America,USA,tokyo-1964,1964,SILVER,26
+United States of America,USA,grenoble-1968,1968,BRONZE,1
+United States of America,USA,mexico-city-1968,1968,BRONZE,34
+United States of America,USA,grenoble-1968,1968,GOLD,1
+United States of America,USA,mexico-city-1968,1968,GOLD,45
+United States of America,USA,grenoble-1968,1968,SILVER,5
+United States of America,USA,mexico-city-1968,1968,SILVER,28
+United States of America,USA,munich-1972,1972,BRONZE,30
+United States of America,USA,sapporo-1972,1972,BRONZE,3
+United States of America,USA,munich-1972,1972,GOLD,33
+United States of America,USA,sapporo-1972,1972,GOLD,3
+United States of America,USA,munich-1972,1972,SILVER,31
+United States of America,USA,sapporo-1972,1972,SILVER,2
+United States of America,USA,innsbruck-1976,1976,BRONZE,4
+United States of America,USA,montreal-1976,1976,BRONZE,25
+United States of America,USA,innsbruck-1976,1976,GOLD,3
+United States of America,USA,montreal-1976,1976,GOLD,34
+United States of America,USA,innsbruck-1976,1976,SILVER,3
+United States of America,USA,montreal-1976,1976,SILVER,35
+United States of America,USA,lake-placid-1980,1980,BRONZE,2
+United States of America,USA,lake-placid-1980,1980,GOLD,6
+United States of America,USA,lake-placid-1980,1980,SILVER,4
+United States of America,USA,los-angeles-1984,1984,BRONZE,30
+United States of America,USA,los-angeles-1984,1984,GOLD,83
+United States of America,USA,sarajevo-1984,1984,GOLD,4
+United States of America,USA,los-angeles-1984,1984,SILVER,61
+United States of America,USA,sarajevo-1984,1984,SILVER,4
+United States of America,USA,calgary-1988,1988,BRONZE,3
+United States of America,USA,seoul-1988,1988,BRONZE,27
+United States of America,USA,calgary-1988,1988,GOLD,2
+United States of America,USA,seoul-1988,1988,GOLD,36
+United States of America,USA,calgary-1988,1988,SILVER,1
+United States of America,USA,seoul-1988,1988,SILVER,31
+United States of America,USA,albertville-1992,1992,BRONZE,2
+United States of America,USA,barcelona-1992,1992,BRONZE,37
+United States of America,USA,albertville-1992,1992,GOLD,5
+United States of America,USA,barcelona-1992,1992,GOLD,37
+United States of America,USA,albertville-1992,1992,SILVER,4
+United States of America,USA,barcelona-1992,1992,SILVER,34
+United States of America,USA,lillehammer-1994,1994,BRONZE,2
+United States of America,USA,lillehammer-1994,1994,GOLD,6
+United States of America,USA,lillehammer-1994,1994,SILVER,5
+United States of America,USA,atlanta-1996,1996,BRONZE,25
+United States of America,USA,atlanta-1996,1996,GOLD,44
+United States of America,USA,atlanta-1996,1996,SILVER,32
+United States of America,USA,nagano-1998,1998,BRONZE,4
+United States of America,USA,nagano-1998,1998,GOLD,6
+United States of America,USA,nagano-1998,1998,SILVER,3
+United States of America,USA,sydney-2000,2000,BRONZE,32
+United States of America,USA,sydney-2000,2000,GOLD,37
+United States of America,USA,sydney-2000,2000,SILVER,24
+United States of America,USA,salt-lake-city-2002,2002,BRONZE,11
+United States of America,USA,salt-lake-city-2002,2002,GOLD,10
+United States of America,USA,salt-lake-city-2002,2002,SILVER,13
+United States of America,USA,athens-2004,2004,BRONZE,26
+United States of America,USA,athens-2004,2004,GOLD,36
+United States of America,USA,athens-2004,2004,SILVER,39
+United States of America,USA,turin-2006,2006,BRONZE,7
+United States of America,USA,turin-2006,2006,GOLD,9
+United States of America,USA,turin-2006,2006,SILVER,9
+United States of America,USA,beijing-2008,2008,BRONZE,37
+United States of America,USA,beijing-2008,2008,GOLD,36
+United States of America,USA,beijing-2008,2008,SILVER,39
+United States of America,USA,vancouver-2010,2010,BRONZE,13
+United States of America,USA,vancouver-2010,2010,GOLD,9
+United States of America,USA,vancouver-2010,2010,SILVER,15
+United States of America,USA,london-2012,2012,BRONZE,30
+United States of America,USA,london-2012,2012,GOLD,46
+United States of America,USA,london-2012,2012,SILVER,28
+United States of America,USA,sochi-2014,2014,BRONZE,10
+United States of America,USA,sochi-2014,2014,GOLD,9
+United States of America,USA,sochi-2014,2014,SILVER,9
+United States of America,USA,rio-2016,2016,BRONZE,38
+United States of America,USA,rio-2016,2016,GOLD,46
+United States of America,USA,rio-2016,2016,SILVER,37
+United States of America,USA,pyeongchang-2018,2018,BRONZE,6
+United States of America,USA,pyeongchang-2018,2018,GOLD,9
+United States of America,USA,pyeongchang-2018,2018,SILVER,8
+United States of America,USA,tokyo-2020,2020,BRONZE,33
+United States of America,USA,tokyo-2020,2020,GOLD,39
+United States of America,USA,tokyo-2020,2020,SILVER,41
+United States of America,USA,beijing-2022,2022,BRONZE,7
+United States of America,USA,beijing-2022,2022,GOLD,8
+United States of America,USA,beijing-2022,2022,SILVER,10
+Uruguay,URU,paris-1924,1924,GOLD,1
+Uruguay,URU,amsterdam-1928,1928,GOLD,1
+Uruguay,URU,los-angeles-1932,1932,BRONZE,1
+Uruguay,URU,london-1948,1948,BRONZE,1
+Uruguay,URU,london-1948,1948,SILVER,1
+Uruguay,URU,helsinki-1952,1952,BRONZE,2
+Uruguay,URU,melbourne-1956,1956,BRONZE,1
+Uruguay,URU,tokyo-1964,1964,BRONZE,1
+Uruguay,URU,sydney-2000,2000,SILVER,1
+Uzbekistan,UZB,lillehammer-1994,1994,GOLD,1
+Uzbekistan,UZB,atlanta-1996,1996,BRONZE,1
+Uzbekistan,UZB,atlanta-1996,1996,SILVER,1
+Uzbekistan,UZB,sydney-2000,2000,BRONZE,2
+Uzbekistan,UZB,sydney-2000,2000,GOLD,1
+Uzbekistan,UZB,sydney-2000,2000,SILVER,1
+Uzbekistan,UZB,athens-2004,2004,BRONZE,2
+Uzbekistan,UZB,athens-2004,2004,GOLD,2
+Uzbekistan,UZB,athens-2004,2004,SILVER,1
+Uzbekistan,UZB,beijing-2008,2008,BRONZE,3
+Uzbekistan,UZB,beijing-2008,2008,SILVER,1
+Uzbekistan,UZB,london-2012,2012,BRONZE,2
+Uzbekistan,UZB,rio-2016,2016,BRONZE,7
+Uzbekistan,UZB,rio-2016,2016,GOLD,4
+Uzbekistan,UZB,rio-2016,2016,SILVER,2
+Uzbekistan,UZB,tokyo-2020,2020,BRONZE,2
+Uzbekistan,UZB,tokyo-2020,2020,GOLD,3
+Venezuela,VEN,helsinki-1952,1952,BRONZE,1
+Venezuela,VEN,rome-1960,1960,BRONZE,1
+Venezuela,VEN,mexico-city-1968,1968,GOLD,1
+Venezuela,VEN,montreal-1976,1976,SILVER,1
+Venezuela,VEN,moscow-1980,1980,SILVER,1
+Venezuela,VEN,los-angeles-1984,1984,BRONZE,3
+Venezuela,VEN,athens-2004,2004,BRONZE,2
+Venezuela,VEN,beijing-2008,2008,BRONZE,1
+Venezuela,VEN,london-2012,2012,GOLD,1
+Venezuela,VEN,rio-2016,2016,BRONZE,1
+Venezuela,VEN,rio-2016,2016,SILVER,2
+Venezuela,VEN,tokyo-2020,2020,GOLD,1
+Venezuela,VEN,tokyo-2020,2020,SILVER,3
+Vietnam,VIE,sydney-2000,2000,SILVER,1
+Vietnam,VIE,beijing-2008,2008,SILVER,1
+Vietnam,VIE,rio-2016,2016,GOLD,1
+Vietnam,VIE,rio-2016,2016,SILVER,1
+West Indies Federation,WIF,rome-1960,1960,BRONZE,2
+Yugoslavia,YUG,paris-1924,1924,GOLD,2
+Yugoslavia,YUG,amsterdam-1928,1928,BRONZE,3
+Yugoslavia,YUG,amsterdam-1928,1928,GOLD,1
+Yugoslavia,YUG,amsterdam-1928,1928,SILVER,1
+Yugoslavia,YUG,berlin-1936,1936,SILVER,1
+Yugoslavia,YUG,london-1948,1948,SILVER,2
+Yugoslavia,YUG,helsinki-1952,1952,GOLD,1
+Yugoslavia,YUG,helsinki-1952,1952,SILVER,2
+Yugoslavia,YUG,melbourne-1956,1956,SILVER,3
+Yugoslavia,YUG,rome-1960,1960,GOLD,1
+Yugoslavia,YUG,rome-1960,1960,SILVER,1
+Yugoslavia,YUG,tokyo-1964,1964,BRONZE,2
+Yugoslavia,YUG,tokyo-1964,1964,GOLD,2
+Yugoslavia,YUG,tokyo-1964,1964,SILVER,1
+Yugoslavia,YUG,mexico-city-1968,1968,BRONZE,2
+Yugoslavia,YUG,mexico-city-1968,1968,GOLD,3
+Yugoslavia,YUG,mexico-city-1968,1968,SILVER,3
+Yugoslavia,YUG,munich-1972,1972,BRONZE,2
+Yugoslavia,YUG,munich-1972,1972,GOLD,2
+Yugoslavia,YUG,munich-1972,1972,SILVER,1
+Yugoslavia,YUG,montreal-1976,1976,BRONZE,3
+Yugoslavia,YUG,montreal-1976,1976,GOLD,2
+Yugoslavia,YUG,montreal-1976,1976,SILVER,3
+Yugoslavia,YUG,moscow-1980,1980,BRONZE,4
+Yugoslavia,YUG,moscow-1980,1980,GOLD,2
+Yugoslavia,YUG,moscow-1980,1980,SILVER,3
+Yugoslavia,YUG,los-angeles-1984,1984,BRONZE,7
+Yugoslavia,YUG,los-angeles-1984,1984,GOLD,7
+Yugoslavia,YUG,los-angeles-1984,1984,SILVER,4
+Yugoslavia,YUG,sarajevo-1984,1984,SILVER,1
+Yugoslavia,YUG,calgary-1988,1988,BRONZE,1
+Yugoslavia,YUG,seoul-1988,1988,BRONZE,5
+Yugoslavia,YUG,seoul-1988,1988,GOLD,3
+Yugoslavia,YUG,calgary-1988,1988,SILVER,2
+Yugoslavia,YUG,seoul-1988,1988,SILVER,4
+Zambia,ZAM,los-angeles-1984,1984,BRONZE,1
+Zambia,ZAM,atlanta-1996,1996,SILVER,1
+Zimbabwe,ZIM,moscow-1980,1980,GOLD,1
+Zimbabwe,ZIM,athens-2004,2004,BRONZE,1
+Zimbabwe,ZIM,athens-2004,2004,GOLD,1
+Zimbabwe,ZIM,athens-2004,2004,SILVER,1
+Zimbabwe,ZIM,beijing-2008,2008,GOLD,1
+Zimbabwe,ZIM,beijing-2008,2008,SILVER,3
