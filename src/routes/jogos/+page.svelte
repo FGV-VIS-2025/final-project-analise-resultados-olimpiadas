@@ -115,7 +115,7 @@
         // Only show if segment wide enough
         const widthSeg = x(d[1]) - x(d[0]);
         const val = d[1] - d[0];
-        return widthSeg > 20 && val > 0 ? val : '';
+        return widthSeg > 5 && val > 0 ? val : '';
       });
 
     // Axes
@@ -159,6 +159,29 @@
   }
 </script>
 
+
+<svelte:head>
+    <title>Histórico de Medalhas</title>
+</svelte:head>
+
+
+<div id="controls">
+  <input
+    type="range"
+    min="{years[0]}"
+    max="{years[years.length - 1]}"
+    bind:value={selectedYear}
+    on:input={onYearChange}
+  />
+  <span>{selectedYear}</span>
+  <button on:click={togglePlay}>
+    {isPlaying ? 'Pause' : 'Play'}
+  </button>
+</div>
+
+<div id="chart"></div>
+
+
 <style>
   #controls {
     margin-bottom: 20px;
@@ -176,19 +199,3 @@
     color: #fff;
   }
 </style>
-
-<div id="controls">
-  <input
-    type="range"
-    min="{years[0]}"
-    max="{years[years.length - 1]}"
-    bind:value={selectedYear}
-    on:input={onYearChange}
-  />
-  <span>{selectedYear}</span>
-  <button on:click={togglePlay}>
-    {isPlaying ? 'Pause' : 'Play'}
-  </button>
-</div>
-
-<div id="chart"></div>
