@@ -4,6 +4,7 @@
 
     let pages = [
         { url: "/", title: "Home" },
+        { url: "/atletas", title: "Atletas" },
         { url: "/jogos", title: "Jogos" },
         { url: "/exxtras", title: "Extras" },
         { url: "/paises", title: "Países" }
