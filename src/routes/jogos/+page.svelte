@@ -11,7 +11,7 @@
   // Dimensions
   const margin = { top: 40, right: 20, bottom: 50, left: 100 };
   const width = 800 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 600 - margin.top - margin.bottom;
 
   // Color mapping for medal types
   const medalColors = {
@@ -57,82 +57,96 @@
     // Compute total
     countries.forEach(d => d.total = d.GOLD + d.SILVER + d.BRONZE);
 
-    // Top 10 by total medals
-    countries = countries.sort((a, b) => b.total - a.total).slice(0, 10);
+    // Top 10
+    const top10 = countries.sort((a, b) => b.total - a.total).slice(0, 10);
+    // Brazil entry
+    const brazil = countries.find(d => d.country === 'Brazil') || { country: 'Brazil', GOLD: 0, SILVER: 0, BRONZE: 0, total: 0 };
+    // Junta top10 + brazil (sem duplicar)
+    const display = top10.filter(d => d.country !== 'Brazil');
+    display.push(brazil);
 
-    // Prepare stack
-    const stack = d3.stack()
-      .keys(['BRONZE', 'SILVER', 'GOLD']);
-
-    const series = stack(countries);
-
-    // Remove existing svg
-    d3.select('#chart').selectAll('*').remove();
-
-    const svg = d3.select('#chart')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    // Scales
+    // Escalas
     const x = d3.scaleLinear()
-      .domain([0, d3.max(countries, d => d.total)]).nice()
+      .domain([0, d3.max(display, d => d.total)]).nice()
       .range([0, width]);
 
     const y = d3.scaleBand()
-      .domain(countries.map(d => d.country))
+      .domain(display.map(d => d.country))
       .range([0, height])
       .padding(0.1);
 
-    // Draw bars
-    svg.selectAll('g.series')
-      .data(series)
-      .join('g')
-      .attr('class', 'series')
-      .attr('fill', ({ key }) => medalColors[key])
-      .selectAll('rect')
-      .data(d => d)
-      .join('rect')
-      .attr('y', (d, i) => y(countries[i].country))
-      .attr('x', d => x(d[0]))
-      .attr('height', y.bandwidth())
-      .attr('width', d => x(d[1]) - x(d[0]));
+    const stack = d3.stack().keys(['BRONZE','SILVER','GOLD']);
+    const series = stack(display);
 
-    // Add medal counts inside segments
-    svg.selectAll('g.series')
-      .selectAll('text')
-      .data(d => d)
-      .join('text')
-      .attr('x', d => x(d[0]) + (x(d[1]) - x(d[0])) / 2)
-      .attr('y', (_, i) => y(countries[i].country) + y.bandwidth() / 2)
-      .attr('dy', '0.35em')
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#000')
-      .style('font-size', '10px')
-      .text((d, j, nodes) => {
-        // Only show if segment wide enough
-        const widthSeg = x(d[1]) - x(d[0]);
+    // Seletor SVG
+    const svg = d3.select('#chart svg g');
+    if (!svg.size()) {
+      const base = d3.select('#chart')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+      base.append('g').attr('class','bars');
+      base.append('g').attr('class','axis-y');
+      base.append('g').attr('class','axis-x').attr('transform', `translate(0,${height})`);
+      base.append('text').attr('class','chart-title').attr('x', width/2).attr('y', -10).attr('text-anchor','middle').style('font-size','16px');
+    }
+
+    // Atualiza título
+    d3.select('.chart-title').text(`Top 10 países + Brazil até ${selectedYear}`);
+
+    // Atualiza eixos
+    d3.select('.axis-y').transition().duration(800).call(d3.axisLeft(y));
+    d3.select('.axis-x').transition().duration(800).call(d3.axisBottom(x));
+
+    // Bind série de barras empilhadas
+    const layers = d3.select('.bars').selectAll('g.layer')
+      .data(series, s => s.key);
+
+    // Enter
+    const layerEnter = layers.enter().append('g').attr('class','layer').attr('fill', s => medalColors[s.key]);
+    // Merge + transition
+    const layerMerge = layerEnter.merge(layers);
+
+    const bars = layerMerge.selectAll('rect')
+      .data(d => d, (d,i) => display[i].country);
+
+    bars.enter().append('rect')
+      .attr('y', (_,i) => y(display[i].country))
+      .attr('height', y.bandwidth())
+      .attr('x', d => x(d[0]))
+      .attr('width', 0)
+    .merge(bars)
+      .transition().duration(800)
+        .attr('y', (_,i) => y(display[i].country))
+        .attr('height', y.bandwidth())
+        .attr('x', d => x(d[0]))
+        .attr('width', d => x(d[1]) - x(d[0]));
+
+    bars.exit().transition().duration(800).attr('width',0).remove();
+
+    // Labels
+    const labels = layerMerge.selectAll('text')
+      .data(d => d, (d,i) => display[i].country);
+
+    labels.enter().append('text')
+      .attr('y', (_,i) => y(display[i].country) + y.bandwidth()/2)
+      .attr('dy','0.35em')
+      .attr('fill','#000')
+      .attr('text-anchor','middle')
+      .style('font-size','8px')
+      .attr('x', d => x(d[0]))
+      .text('')
+    .merge(labels)
+      .transition().duration(800)
+      .attr('x', d => x(d[0]) + (x(d[1]) - x(d[0]))/2)
+      .text((d) => {
         const val = d[1] - d[0];
-        return widthSeg > 5 && val > 0 ? val : '';
+        return val > 0 ? val : '';
       });
 
-    // Axes
-    svg.append('g')
-      .call(d3.axisLeft(y));
-
-    svg.append('g')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x));
-
-    // Title
-    svg.append('text')
-      .attr('x', width / 2)
-      .attr('y', -10)
-      .attr('text-anchor', 'middle')
-      .style('font-size', '16px')
-      .text(`Top 10 países por medalhas até ${selectedYear}`);
+    labels.exit().remove();
   }
 
   function onYearChange(e) {
@@ -141,61 +155,29 @@
   }
 
   function togglePlay() {
-    if (isPlaying) {
-      clearInterval(playInterval);
-    } else {
+    if (isPlaying) clearInterval(playInterval);
+    else {
       let idx = years.indexOf(selectedYear);
       playInterval = setInterval(() => {
         idx = (idx + 1) % years.length;
         selectedYear = years[idx];
         drawChart();
-        if (idx === years.length - 1) {
-          clearInterval(playInterval);
-          isPlaying = false;
-        }
+        if (idx === years.length - 1) { clearInterval(playInterval); isPlaying = false; }
       }, 800);
     }
     isPlaying = !isPlaying;
   }
 </script>
 
-
-<svelte:head>
-    <title>Histórico de Medalhas</title>
-</svelte:head>
-
+<style>
+  #controls { margin-bottom: 20px; }
+  input[type='range'] { width: 300px; }
+  button { margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; background-color: #007bff; color: #fff; }
+</style>
 
 <div id="controls">
-  <input
-    type="range"
-    min="{years[0]}"
-    max="{years[years.length - 1]}"
-    bind:value={selectedYear}
-    on:input={onYearChange}
-  />
+  <input type="range" min="{years[0]}" max="{years[years.length - 1]}" bind:value={selectedYear} on:input={onYearChange} />
   <span>{selectedYear}</span>
-  <button on:click={togglePlay}>
-    {isPlaying ? 'Pause' : 'Play'}
-  </button>
+  <button on:click={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
 </div>
-
 <div id="chart"></div>
-
-
-<style>
-  #controls {
-    margin-bottom: 20px;
-  }
-  input[type='range'] {
-    width: 300px;
-  }
-  button {
-    margin-left: 10px;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-  }
-</style>
