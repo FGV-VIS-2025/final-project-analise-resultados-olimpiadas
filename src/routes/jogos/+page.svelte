@@ -20,6 +20,10 @@
   const height = 600 - margin.top - margin.bottom;
   const medalColors = { GOLD: '#ffd700', SILVER: '#c0c0c0', BRONZE: '#cd7f32' };
 
+  let svg;     // Vai armazenar a referência ao <svg> central
+  let g;       // Vai armazenar a referência ao <g> dentro do SVG (margem aplicada)
+  let initialized = false;  // Controle para inicializar só uma vez
+
   // Cache para a função fetchAthleteMedia
   const cache = new Map();
 
@@ -74,37 +78,12 @@
 
 
   onMount(async () => {
-    try {
-      const [csvCountryData, csvAthleteData] = await Promise.all([
-        d3.csv(countryMedalsCsvUrl, d3.autoType).catch(err => {
-          console.error(`Falha ao carregar ${countryMedalsCsvUrl}:`, err);
-          return [];
-        }),
-        d3.csv(athleteMedalsCsvUrl, d3.autoType).catch(err => {
-          console.error(`Falha ao carregar ${athleteMedalsCsvUrl}:`, err);
-          return [];
-        })
-      ]);
-
-      countryMedalsData = csvCountryData;
-      athleteMedalsData = csvAthleteData;
-
-      if (countryMedalsData.length > 0) {
-          years = Array.from(new Set(countryMedalsData.map(d => d.year))).sort((a, b) => a - b);
-          if (years.length > 0) {
-              selectedYear = years[0];
-          } else {
-            years = [];
-            selectedYear = undefined;
-          }
-      } else {
-          years = [];
-          selectedYear = undefined;
-      }
-    } catch (error) {
-        console.error("Erro geral no onMount:", error);
-        countryMedalsData = []; athleteMedalsData = []; years = []; selectedYear = undefined;
-    }
+    countryMedalsData = await d3.csv(countryMedalsCsvUrl, d3.autoType);
+    years = Array.from(new Set(countryMedalsData.map(d => d.year)))
+      .filter(y => y % 4 === 0)           // exemplo: anos de 4 em 4
+      .sort((a,b) => a - b);
+    selectedYear = years[0];
+    drawChart();
   });
 
   // A função updateEditionCardsInfo precisa ser async pois processYearData agora é async
@@ -222,106 +201,246 @@
   }
 
   function drawChart() {
-    d3.select('#chart svg').remove(); 
+    // Se não tiver data ou selectedYear indefinido, apenas retorna e exibe mensagem, etc.
+    if (!countryMedalsData.length || selectedYear === undefined) {
+      d3.select('#chart svg').remove();
+      d3.select('#chart .no-data-message-chart').remove();
+      d3.select('#chart')
+        .append('p')
+        .attr('class','no-data-message-chart')
+        .text('Dados para o gráfico principal não disponíveis.');
+      return;
+    }
+
+    // Inicialização única do SVG + <g>
+    if (!initialized) {
+      d3.select('#chart').selectAll('svg').remove();
+      svg = d3.select('#chart')
+        .append('svg')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom);
+
+      // Apply margin
+      g = svg.append('g')
+          .attr('transform', `translate(${margin.left},${margin.top})`);
+
+      // Cria grupos vazios (sem conteúdo) para depois “join” de ranks, eixos, barras, labels, título
+      g.append('g').attr('class','axis-ranks');
+      g.append('g').attr('class','axis-y');
+      g.append('g').attr('class','bars');
+      g.append('g').attr('class','axis-x').attr('transform', `translate(0,${height})`);
+      g.append('text')
+        .attr('class','chart-title')
+        .attr('x', width/2)
+        .attr('y', -10)
+        .attr('text-anchor','middle')
+        .style('font-size','16px');
+      g.append('g').attr('class','country-labels');
+
+      initialized = true;
+    }
+
+    // Remove mensagem de “sem dados” se existir
     d3.select('#chart .no-data-message-chart').remove();
 
-    if (countryMedalsData.length === 0 || selectedYear === undefined) {
-        d3.select('#chart').append('p').attr('class', 'no-data-message-chart').text(`Dados para o gráfico principal não disponíveis.`);
-        return;
-    }
+    // Filtra todos os anos até o selecionado
     const filtered = countryMedalsData.filter(d => d.year <= selectedYear);
-    if (filtered.length === 0) {
-        d3.select('#chart').append('p').attr('class', 'no-data-message-chart').text(`Sem dados de medalhas acumulados para exibir até ${selectedYear}.`);
-        return;
+    if (!filtered.length) {
+      d3.select('#chart')
+        .append('p')
+        .attr('class','no-data-message-chart')
+        .text(`Nenhum dado acumulado até ${selectedYear}.`);
+      return;
     }
+
+    // Faz um rollup por país e tipo de medalha
     const nested = d3.rollup(
       filtered,
       v => d3.rollup(v, vv => d3.sum(vv, d => d.count_medals || 0), d => d.medal_type),
       d => d.country_name
     );
+
     let countries = Array.from(nested, ([country, medalMap]) => ({
-      country, GOLD: medalMap.get('GOLD') || 0, SILVER: medalMap.get('SILVER') || 0, BRONZE: medalMap.get('BRONZE') || 0,
-      total: (medalMap.get('GOLD') || 0) + (medalMap.get('SILVER') || 0) + (medalMap.get('BRONZE') || 0)
+      country,
+      GOLD: medalMap.get('GOLD') || 0,
+      SILVER: medalMap.get('SILVER') || 0,
+      BRONZE: medalMap.get('BRONZE') || 0
     }));
-    const sortedAll = [...countries].sort((a, b) => b.total - a.total || b.GOLD - a.GOLD);
-    const brazil = sortedAll.find(d => d.country === 'Brazil'); 
-    let display = [...sortedAll.slice(0, 10)];
-    if (brazil && brazil.total > 0 && !display.some(d => d.country === 'Brazil')) {
-        if (display.length >= 10) display.pop();
-        display.push(brazil);
+    countries.forEach(d => d.total = d.GOLD + d.SILVER + d.BRONZE);
+
+    // Ranking geral para saber posição do Brasil
+    const sortedAll = [...countries].sort((a, b) => b.total - a.total);
+    const brazilRank = sortedAll.findIndex(d => d.country === 'Brazil') + 1;
+
+    // Top 10 países
+    const top10 = sortedAll.slice(0, 10);
+    const brazilEntry = sortedAll.find(d => d.country === 'Brazil') || 
+      { country: 'Brazil', GOLD: 0, SILVER: 0, BRONZE: 0, total: 0 };
+
+    // Garante que o Brasil apareça se estiver fora do Top 10
+    const display = [...top10];
+    if (!top10.some(d => d.country === 'Brazil')) {
+      display.push(brazilEntry);
     }
-    display.sort((a,b) => b.total - a.total || b.GOLD - a.GOLD);
-    const ranks = display.map((d) => (sortedAll.findIndex(s => s.country === d.country) +1) || 'N/A');
-    const x = d3.scaleLinear().domain([0, d3.max(display, d => d.total) || 10]).nice().range([0, width]);
-    const y = d3.scaleBand().domain(display.map(d => d.country)).range([0, height]).padding(0.1);
+
+    // Ordena novamente para a escala (desc por total, depois por ouro como tie‐break, etc)
+    display.sort((a, b) => {
+      if (b.total !== a.total) return b.total - a.total;
+      return b.GOLD - a.GOLD;
+    });
+
+    // Matriz de ranks (1,2,3...) para exibir ao lado
+    const ranks = display.map(d => {
+      const idx = sortedAll.findIndex(s => s.country === d.country);
+      return idx >= 0 ? idx + 1 : 'N/A';
+    });
+
+    // Escalas X e Y
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(display, d => d.total)]).nice()
+      .range([0, width]);
+
+    const y = d3.scaleBand()
+      .domain(display.map(d => d.country))
+      .range([0, height])
+      .padding(0.1);
+
+    // “Stack” das 3 categorias de medalhas
     const stack = d3.stack().keys(['BRONZE','SILVER','GOLD']);
-    const series = stack(display.map(countryData => ({ ...countryData })));
-    const svgBase = d3.select('#chart').append('svg')
-      .attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
-    const g = svgBase.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
-    g.append('g').attr('class','axis-ranks'); g.append('g').attr('class','axis-y');
-    g.append('g').attr('class','bars'); g.append('g').attr('class','axis-x').attr('transform', `translate(0,${height})`);
-    g.append('text').attr('class','chart-title').attr('x', width/2).attr('y', -margin.top/2)
-      .attr('text-anchor','middle').style('font-size','16px').text(`Top Países (e Brasil) - Acumulado até ${selectedYear}`);
-    g.append('g').attr('class','country-labels');
-    g.select('.axis-ranks').selectAll('text.rank-label').data(display, d => d.country)
-      .join(
-        enter => enter.append('text').attr('class', 'rank-label').attr('x', -10).attr('y', d => y(d.country) + y.bandwidth()/2)
-          .attr('dy','0.35em').attr('text-anchor','end').style('font-size','12px').text((d,i) => ranks[i]),
-        update => update.transition().duration(800).attr('y', d => y(d.country) + y.bandwidth()/2).text((d,i) => ranks[i]),
-        exit => exit.remove()
-      );
-    g.select('.country-labels').selectAll('text.country-label-text').data(display, d => d.country)
-      .join(
-        enter => enter.append('text').attr('class', 'country-label-text').attr('x', d => x(d.total) + 5).attr('y', d => y(d.country) + y.bandwidth()/2)
-          .attr('dy','0.35em').attr('text-anchor','start').style('font-size','12px').text(d => d.country),
-        update => update.transition().duration(800).attr('x', d => x(d.total) + 5).attr('y', d => y(d.country) + y.bandwidth()/2).text(d => d.country),
-        exit => exit.remove()
-      );
-    g.select('.axis-y').transition().duration(800).call(d3.axisLeft(y).tickFormat(''));
-    g.select('.axis-x').transition().duration(800).call(d3.axisBottom(x));
-    g.select('.bars').selectAll('g.layer').data(series, s => s.key)
-      .join(enter => enter.append('g').attr('class','layer').attr('fill', s => medalColors[s.key]));
-    g.selectAll('g.layer').selectAll('rect').data(d => d.map(s => ({...s, countryName: s.data.country})), dd => dd.countryName)
-      .join(
-        enter => enter.append('rect').attr('y', d => y(d.countryName)).attr('height', y.bandwidth())
-          .attr('x', d => x(d[0])).attr('width', 0)
-          .call(sel => sel.transition().duration(800).attr('width', d => Math.max(0, x(d[1]) - x(d[0])))),
-        update => update.transition().duration(800).attr('y', d => y(d.countryName)).attr('x', d => x(d[0]))
-          .attr('width', d => Math.max(0, x(d[1]) - x(d[0]))),
-        exit => exit.transition().duration(800).attr('width',0).remove()
-      );
-    g.selectAll('g.layer').selectAll('text.medal-label').data(d => d.map(s => ({...s, countryName: s.data.country})), dd => dd.countryName)
-      .join(
-        enter => enter.append('text').attr('class','medal-label').attr('y', d => y(d.countryName) + y.bandwidth()/2).attr('dy','0.35em')
-          .style('font-size','8px').attr('fill','#000').attr('text-anchor','middle').text('')
-          .call(sel => sel.transition().duration(800).attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => d[1] - d[0] > 0 ? d[1] - d[0] : '')),
-        update => update.transition().duration(800).attr('y', d => y(d.countryName) + y.bandwidth()/2)
-          .attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => d[1] - d[0] > 0 ? d[1] - d[0] : ''),
-        exit => exit.remove()
-      );
+    const series = stack(display);
+
+    // Atualiza título
+    g.select('.chart-title')
+      .text(`Top 10 + Brasil até ${selectedYear}`);
+
+    // ——— 1) Rótulos de rank (“1”, “2”, …) ———
+    const rankSel = g.select('.axis-ranks')
+      .selectAll('text.rank-label')
+      .data(display, d => d.country);
+
+    rankSel.join(
+      enter => enter.append('text')
+        .attr('class','rank-label')
+        .attr('x', -10)
+        .attr('y', d => y(d.country) + y.bandwidth()/2)
+        .attr('dy','0.35em')
+        .attr('text-anchor','end')
+        .style('font-size','12px')
+        .text((d,i) => ranks[i]),
+      update => update.transition().duration(800)
+        .attr('y', d => y(d.country) + y.bandwidth()/2)
+        .text((d,i) => ranks[i]),
+      exit => exit.remove()
+    );
+
+    // ——— 2) Rótulos de país (nome ao lado da barra) ———
+    const nameSel = g.select('.country-labels')
+      .selectAll('text.country-label-text')
+      .data(display, d => d.country);
+
+    nameSel.join(
+      enter => enter.append('text')
+        .attr('class','country-label-text')
+        .attr('x', d => x(d.total) + 5)
+        .attr('y', d => y(d.country) + y.bandwidth()/2)
+        .attr('dy','0.35em')
+        .attr('text-anchor','start')
+        .style('font-size','12px')
+        .text(d => d.country),
+      update => update.transition().duration(800)
+        .attr('x', d => x(d.total) + 5)
+        .attr('y', d => y(d.country) + y.bandwidth()/2)
+        .text(d => d.country),
+      exit => exit.remove()
+    );
+
+    // ——— 3) Eixo Y (barras “vazias”, apenas para desenhar linhas) ———
+    g.select('.axis-y')
+      .transition().duration(800)
+      .call(d3.axisLeft(y).tickFormat(''));
+
+    // ——— 4) Eixo X (números de medalhas) ———
+    g.select('.axis-x')
+      .transition().duration(800)
+      .call(d3.axisBottom(x));
+
+    // ——— 5) Barras empilhadas ———
+    // a) Cria/atualiza os grupos de cada chave (BRONZE, SILVER, GOLD)
+    const layers = g.select('.bars')
+      .selectAll('g.layer')
+      .data(series, s => s.key);
+
+    const layerEnter = layers.enter()
+      .append('g')
+        .attr('class','layer')
+        .attr('fill', s => medalColors[s.key]);
+
+    const layerMerge = layerEnter.merge(layers);
+
+    // b) Dentro de cada “layer”, faz o join dos rects por país
+    const bars = layerMerge.selectAll('rect')
+      .data(d => d.map(s => ({ ...s, countryName: s.data.country })), 
+            dd => dd.countryName);
+
+    bars.join(
+      enter => enter.append('rect')
+        .attr('y', d => y(d.countryName))
+        .attr('height', y.bandwidth())
+        .attr('x', d => x(d[0]))
+        .attr('width', 0)
+        .call(sel => sel.transition().duration(800)
+          .attr('width', d => Math.max(0, x(d[1]) - x(d[0])))
+        ),
+      update => update.transition().duration(800)
+        .attr('y', d => y(d.countryName))
+        .attr('x', d => x(d[0]))
+        .attr('width', d => Math.max(0, x(d[1]) - x(d[0]))),
+      exit => exit.transition().duration(800).attr('width',0).remove()
+    );
+
+    // c) Rótulos internos (“medal-label”) em cada fatia, se houver condição desejada
+    const labels = layerMerge.selectAll('text.medal-label')
+      .data(d => d.map(s => ({ ...s, countryName: s.data.country })), 
+            dd => dd.countryName);
+
+    labels.join(
+      enter => enter.append('text')
+        .attr('class','medal-label')
+        .attr('y', d => y(d.countryName) + y.bandwidth()/2)
+        .attr('dy','0.35em')
+        .style('font-size','8px')
+        .attr('fill','#000')
+        .attr('text-anchor','middle')
+        .text('')
+        .call(sel => sel.transition().duration(800)
+          .attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2)
+          .text(d => d[1] - d[0] > 0 ? d[1] - d[0] : '')
+        ),
+      update => update.transition().duration(800)
+        .attr('y', d => y(d.countryName) + y.bandwidth()/2)
+        .attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2)
+        .text(d => d[1] - d[0] > 0 ? d[1] - d[0] : ''),
+      exit => exit.remove()
+    );
   }
 
   function handleYearChange(event) {
     selectedYear = +event.target.value;
+    drawChart();
   }
   
   function togglePlay() {
-    if (!years || years.length === 0) return;
+    if (!years.length) return;
     if (isPlaying) {
       clearInterval(playInterval);
     } else {
       let idx = years.indexOf(selectedYear);
-      if (idx === years.length -1 && years.length > 1 ) idx = -1; 
       playInterval = setInterval(() => {
-        idx = idx + 1;
-        if (idx >= years.length) {
-            clearInterval(playInterval); isPlaying = false;
-            if (years.length > 0) selectedYear = years[years.length-1];
-            return;
-        }
+        idx = (idx + 1) % years.length;
         selectedYear = years[idx];
-      }, 1200);
+        drawChart();
+        // Se quiser parar ao chegar no último, pode checar idx === years.length - 1
+      }, 800);
     }
     isPlaying = !isPlaying;
   }
@@ -366,21 +485,18 @@
 </style>
 
 <div id="controls">
-  <label for="year-select">Edição (Ano):</label>
-  {#if years.length > 0 && selectedYear !== undefined}
-    <select id="year-select" bind:value={selectedYear} on:change={handleYearChange}>
-      {#each years as year}
-        <option value={year}>{year}</option>
-      {/each}
-    </select>
-    <input type="range" min="{years[0]}" max="{years[years.length - 1]}" step="1" bind:value={selectedYear} on:input={handleYearChange} />
-    <span>{selectedYear}</span>
-    <button on:click={togglePlay} disabled={!years || years.length === 0}>{isPlaying ? 'Pause' : 'Play'}</button>
-  {:else if years.length === 0 && (countryMedalsData.length > 0 || athleteMedalsData.length > 0) && selectedYear === undefined}
-    <span>Nenhum ano válido encontrado. Verifique os CSVs.</span>
-  {:else}
-    <span>Carregando dados...</span>
-  {/if}
+  <input 
+    type="range" 
+    min="{years[0]}" 
+    max="{years[years.length - 1]}" 
+    step="4"
+    bind:value={selectedYear} 
+    on:input={handleYearChange} 
+  />
+  <span>{selectedYear}</span>
+  <button on:click={togglePlay}>
+    {isPlaying ? 'Pause' : 'Play'}
+  </button>
 </div>
 
 <div id="chart"></div>
