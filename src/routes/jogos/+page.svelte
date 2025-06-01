@@ -374,12 +374,16 @@
     nameSel.join(
       enter => enter.append('text').attr('class','country-label-text')
         .attr('y', d => y(d.country) + y.bandwidth()/2).attr('dy','0.35em').style('font-size','12px').text(d => d.country)
-        .attr('x', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? bEP - p : bEP + p; })
-        .attr('text-anchor', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? 'end' : 'start'; }),
+        .attr('x', d => x(d.total) + 5)  // Sempre coloca o texto à direita (+5px de padding)
+        .attr('text-anchor', 'start'),    // Sempre alinha à esquerda do ponto `x`
+        // .attr('x', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? bEP - p : bEP + p; })
+        // .attr('text-anchor', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? 'end' : 'start'; }),
       update => update.transition().duration(800)
         .attr('y', d => y(d.country) + y.bandwidth()/2).text(d => d.country)
-        .attr('x', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? bEP - p : bEP + p; })
-        .attr('text-anchor', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? 'end' : 'start'; }),
+        .attr('x', d => x(d.total) + 5)  // Sempre coloca o texto à direita (+5px de padding)
+        .attr('text-anchor', 'start'),    // Sempre alinha à esquerda do ponto `x`
+        // .attr('x', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? bEP - p : bEP + p; })
+        // .attr('text-anchor', d => { const bEP = x(d.total), tL = d.country.length * 6.5, p = 8; return (bEP + p + tL > width && bEP > tL + p) ? 'end' : 'start'; }),
       exit => exit.remove()
     );
     const layers = g.select('.bars').selectAll('g.layer').data(series, s => s.key);
@@ -445,7 +449,7 @@
   :global(.axis-x .tick line) { stroke: #ccc; }
   :global(.axis-x .domain) { stroke: #ccc; }
   :global(.axis-x text) { fill: #333; font-size: 10px; }
-  :global(#chart svg) { background-color: #f7f9fc; border-radius: 5px; }
+  :global(#chart svg) { background-color: #f7f9fc; border-radius: 5px; overflow: visible;}
   :global(.country-flag-axis) {}
 </style>
 
