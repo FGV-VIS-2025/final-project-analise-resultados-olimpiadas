@@ -236,6 +236,56 @@
       g.append('g').attr('class','axis-x').attr('transform', `translate(0,${height})`);
       g.append('text').attr('class','chart-title').attr('x', width/2).attr('y', -10).attr('text-anchor','middle').style('font-size','16px');
       g.append('g').attr('class','country-labels');
+
+      // Eixo x
+      g.select('.axis-x')
+        .append('text')
+        .attr('class', 'x-axis-label')
+        .attr('x', width / 2)
+        .attr('y', 40)
+        .attr('fill', 'currentColor')
+        .style('text-anchor', 'middle')
+        .style('font-size', '12px')
+        .text('Número de Medalhas');
+        
+      // Cria grupo para a legenda (posicionado no canto inferior direito)
+      const legend = g.append('g')
+        .attr('class', 'medal-legend')
+        .attr('transform', `translate(${width - 120}, ${height - 100})`); // Ajuste de posição
+
+      // Dados para a legenda
+      const medalTypes = [
+        { type: 'GOLD', label: 'Ouro' },
+        { type: 'SILVER', label: 'Prata' },
+        { type: 'BRONZE', label: 'Bronze' }
+      ];
+
+      // Adiciona itens da legenda
+      medalTypes.forEach((d, i) => {
+        const legendItem = legend.append('g')
+          .attr('transform', `translate(0, ${i * 20})`);
+
+        legendItem.append('rect')
+          .attr('width', 18)
+          .attr('height', 18)
+          .attr('fill', medalColors[d.type]);
+
+        legendItem.append('text')
+          .attr('x', 24)
+          .attr('y', 9)
+          .attr('dy', '0.35em')
+          .style('font-size', '12px')
+          .text(d.label);
+      });
+
+      // Adiciona título da legenda
+      legend.append('text')
+        .attr('x', 0)
+        .attr('y', -10)
+        .attr('class', 'legend-title')
+        .text('Medalhas:');
+
+
       initialized = true;
     }
     d3.select('#chart .no-data-message-chart').remove();
@@ -344,8 +394,8 @@
     const labels = layerMerge.selectAll('text.medal-label').data(d => d.map(s => ({ ...s, countryName: s.data.country })), dd => dd.countryName);
     labels.join(
       enter => enter.append('text').attr('class','medal-label').attr('y', d => y(d.countryName) + y.bandwidth()/2).attr('dy','0.35em').style('font-size','8px').attr('fill','#000').attr('text-anchor','middle').text('')
-        .call(sel => sel.transition().duration(800).attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => { const v = d[1]-d[0]; return v > (x.domain()[1]-x.domain()[0])*0.03 ? v : ''; })),
-      update => update.transition().duration(800).attr('y', d => y(d.countryName) + y.bandwidth()/2).attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => { const v = d[1]-d[0]; return v > (x.domain()[1]-x.domain()[0])*0.03 ? v : ''; }),
+        .call(sel => sel.transition().duration(800).attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => { const v = d[1]-d[0]; return v > (x.domain()[1]-x.domain()[0])*0.01 ? v : ''; })),
+      update => update.transition().duration(800).attr('y', d => y(d.countryName) + y.bandwidth()/2).attr('x', d => x(d[0]) + (Math.max(0, x(d[1]) - x(d[0])))/2).text(d => { const v = d[1]-d[0]; return v > (x.domain()[1]-x.domain()[0])*0.01 ? v : ''; }),
       exit => exit.remove()
     );
   }
@@ -389,14 +439,14 @@
   .photo-error-message {font-style: italic; color: #777; text-align: center; margin-top:10px;}
   .no-data-message, .no-data-message-chart { text-align: center; color: #777; font-size: 1.1em; margin-top: 20px; width: 100%;}
   
-  :global(line.grid-line-y) { stroke: #e0e0e0; stroke-dasharray: 2,2; }
+  /* :global(line.grid-line-y) { stroke: #e0e0e0; stroke-dasharray: 2,2; } */
   :global(.country-labels text) { fill: #222; }
   :global(.chart-title) { font-weight: bold; fill: #333; font-size: 18px !important;}
   :global(.axis-x .tick line) { stroke: #ccc; }
   :global(.axis-x .domain) { stroke: #ccc; }
   :global(.axis-x text) { fill: #333; font-size: 10px; }
   :global(#chart svg) { background-color: #f7f9fc; border-radius: 5px; }
-  :global(.country-flag-axis) { /* Adicione se quiser borda ou algo assim */ }
+  :global(.country-flag-axis) {}
 </style>
 
 <div id="controls">
