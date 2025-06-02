@@ -442,6 +442,17 @@
   <title>Histórico de Medalhas Olímpicas</title>
 </svelte:head>
 
+<div class="title">
+    <h1>História das Edições Olímpicas</h1>
+
+    <p>
+      A animação abaixo revela a evolução do ranking dos 10 países com mais medalhas conquistadas em todas as edições dos Jogos 
+      Olímpicos. Descubra as ascensões e quedas das maiores potências esportivas do mundo e acompanhe as mudanças no domínio 
+      olímpico ao longo dos anos. Além disso, confira os cards ao lado do ranking para informações detalhadas sobre cada edição, 
+      incluindo curiosidades e destaques marcantes.
+    </p> 
+</div>
+
 <div id="controls">
   {#if years.length > 0}
     <label for="year-select">Ano:</label>
@@ -592,6 +603,7 @@
     <p class="no-data-message">Processando dados para {selectedYear}...</p>
 {/if}
 
+
 <style>
   #controls { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; padding: 10px; background-color: #f0f0f0; border-radius: 5px;}
   input[type='range'] { width: 250px; cursor: pointer;}
@@ -659,6 +671,16 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding-left: 30px;
     padding-right: 30px;
+  }
+
+  .title h1 {
+    font-weight: 700;
+    color: var(--primary-color-darker);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    font-family: var(--font-family-sans);
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
   }
 
   @media (max-width: 1300px) { 

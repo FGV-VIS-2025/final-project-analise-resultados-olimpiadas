@@ -340,6 +340,16 @@
 
 <div class="page">
     <div class="title">
+        <h1>Detalhes dos Atletas</h1>
+
+        <p>
+            Esta página é dedicada a se aprofundar na trajetória dos protagonistas dos jogos olímpicos: os atletas. Pesquise por dois atletas 
+             para visualizar e comparar seus resultados ao longo das edições olímpicas em que competiram. 
+            Acompanhe a evolução de suas performances e, para uma análise mais detalhada, simplesmente passe o mouse sobre os pontos no 
+            gráfico para revelar informações precisas de cada marca ou conquista. Descubra a história olímpica contada através de seus 
+            protagonistas!
+        </p> 
+
         <h1>
             {#if athleteName1 && athleteName2}
                 Comparação: {athleteName1} e {athleteName2}

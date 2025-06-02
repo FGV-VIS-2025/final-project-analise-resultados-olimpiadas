@@ -24,19 +24,46 @@
     <title>Tarefa 4 – Olimpíadas</title>
 </svelte:head>
 
+<div class="title">
+    <h1>Análise dos Resultados Olímpicos</h1>
+            
+    <h3>por Guilherme Buss, Guilherme Carvalho e Luís Felipe Marciano</h3>
+
+    <p>
+        Bem-vindo(a) à nossa plataforma de Análise Olímpica!
+        
+        Nosso objetivo com este site é mergulhar na rica história dos Jogos Olímpicos através de dados e visualizações interativas.
+        Queremos oferecer a você uma maneira fascinante de explorar tendências, comparar performances marcantes e compreender a evolução
+        do esporte ao longo das décadas. Logo abaixo, você encontrará nossa visualização principal, um ponto de partida para sua jornada 
+        exploratória.
+
+    </p>
+
+    <p>
+        Dataset:
+        <a href="https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_results.csv"
+            target="_blank"
+            rel="noopener">
+            Olympic Results (1986-2018)
+        </a>
+    </p>    
+
+    <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0;">
+</div>
+
 <div class="page">
     <div class="title">
-        <h1>🏆 Olympic Results Analysis 🏅</h1>
-        <h3>Guilherme Buss, Guilherme Carvalho e Luís Felipe</h3>
+
+        <h1 class="graph_title">Resultados olímpicos ao longo do tempo</h1>
+
         <p>
-            Visualização da evolução do desempenho olímpico.<br>
-            Dataset:
-            <a href="https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_results.csv"
-                target="_blank"
-                rel="noopener">
-                Olympic Results (1986-2018)
-            </a>
-        </p>
+
+            Nessa visualização destacamos a performance dos medalhistas de ouro em diversas modalidades do atletismo através das diferentes
+             edições dos Jogos Olímpicos. Observe como as marcas vencedoras evoluíram, identifique atletas que dominaram suas provas e perceba
+              o impacto de diferentes eras no ápice do desempenho humano. Lembre-se de utilizar os filtros disponíveis para refinar sua busca 
+              e focar em eventos específicos ou faixas de resultados que mais lhe interessam.
+        </p>    
+
     </div>
 
     <div class="controls-container">
@@ -82,11 +109,23 @@
     margin: auto;
     padding: 2rem 1rem;
 }
+/* .page {
+    max-width: 1380px;
+    margin: auto;
+    padding: 1.75rem;
+    background: var(--page-background);
+    font-family: var(--font-family-sans);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+} */
 
 .title h1 {
-    font-weight: 600;
-    color: var(--primary);
-    margin: .2em 0;
+    font-weight: 700;
+    color: var(--primary-color-darker);
+    margin: 0 0 1.5rem 0;
+    font-family: var(--font-family-sans);
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
 }
 
 .title h3 {
@@ -98,8 +137,6 @@
 
 .title p {
     font-size: .9rem;
-    color: #555;
-    text-align: center;
 }
 
 .controls-container {
@@ -174,5 +211,9 @@
     display: block;
     font-size: 0.68rem;
     color: #777;
+}
+
+.graph_title {
+    text-align: center;
 }
 </style>
