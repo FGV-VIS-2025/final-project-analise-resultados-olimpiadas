@@ -57,10 +57,6 @@
     <main>
         <slot />
     </main>
-
-    <footer>
-        <p>&copy; {new Date().getFullYear()} Análise Olimpíadas. Todos os direitos reservados.</p>
-    </footer>
 </div>
 
 <style>
@@ -122,7 +118,6 @@
     main {
         flex-grow: 1; /* Faz o conteúdo principal ocupar o espaço restante */
         padding: 1.5rem;
-        max-width: 1200px; /* Limita a largura máxima do conteúdo */
         width: 90%; /* Usa 90% da largura disponível */
         margin: 0 auto; /* Centraliza o conteúdo */
     }
