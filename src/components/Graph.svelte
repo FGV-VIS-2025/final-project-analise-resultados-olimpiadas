@@ -467,7 +467,7 @@
   function goToAthleteDetails(athleteName) {
     const isGitHubPages = window.location.hostname.includes('github.io');
     const basePath = isGitHubPages ? '/final-project-analise-resultados-olimpiadas' : '';
-    goto(`${basePath}/atletas?athlete=${encodeURIComponent(athleteName)}`);
+    goto(`${basePath}/atletas?athlete1=${encodeURIComponent(athleteName)}`);
   }
 </script>
 

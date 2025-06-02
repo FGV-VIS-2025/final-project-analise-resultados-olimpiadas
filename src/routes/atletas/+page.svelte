@@ -6,38 +6,48 @@
 
     let csvUrl = `${base}/df_all.csv`;
     let rawData = [];
-    let athleteName = '';
-    let filteredAthleteData = [];
+    let athleteName1 = '';
+    let athleteName2 = '';
+    let filteredAthleteData1 = [];
+    let filteredAthleteData2 = [];
     let athleteSports = [];
-    let allAthleteNames = []; // For autocomplete suggestions
-    let suggestions = [];
-    let showSuggestions = false;
+    let allAthleteNames = [];
+    let suggestions1 = [];
+    let suggestions2 = [];
+    let showSuggestions1 = false;
+    let showSuggestions2 = false;
+    let secondAthleteOptions = [];
 
     let svgRef, chartContainerRef, ro;
-    const margin = { top: 60, right: 50, bottom: 60, left: 60 };
+    const margin = { top: 60, right: 50, bottom: 70, left: 60 };
     const chartHeight = 500;
     let chartWidth = 600;
 
-    let xScale, yScale, colorScale;
+    let xScale, yScale;
+    const athleteColors = {
+        athlete1: '#1f77b4',
+        athlete2: '#ff7f0e'
+    };
 
-    // Hover state
     let hoverVisible = false;
-    let hoverData = { sport: '', year: 0, value: 0, country: '', photo: '', flag: '' };
+    let hoverData = { athlete: '', sport: '', year: 0, value: 0, country: '', photo: '', flag: '' };
     const cache = new Map();
 
-    // Get athlete name from URL query parameter
-    $: {
+    onMount(() => {
         const urlParams = $page.url.searchParams;
-        if (urlParams.has('athlete')) {
-            athleteName = decodeURIComponent(urlParams.get('athlete'));
+        if (urlParams.has('athlete1')) {
+            athleteName1 = decodeURIComponent(urlParams.get('athlete1'));
         }
-    }
+        if (urlParams.has('athlete2')) {
+            athleteName2 = decodeURIComponent(urlParams.get('athlete2'));
+        }
+        filterAndDrawAthleteData();
+    });
+
 
     onMount(async () => {
         rawData = await d3.csv(csvUrl);
-        // Extract all unique athlete names for autocomplete
         allAthleteNames = [...new Set(rawData.map(d => d.athlete_full_name).filter(Boolean))].sort();
-        
         updateWidth();
         if (typeof ResizeObserver !== 'undefined') {
             ro = new ResizeObserver(updateWidth);
@@ -47,17 +57,21 @@
     });
 
     $: {
-        // Update suggestions when athleteName changes
-        if (athleteName) {
-            suggestions = allAthleteNames.filter(name => 
-                name.toLowerCase().includes(athleteName.toLowerCase())
-            ).slice(0, 5); // Limit to 5 suggestions
+        if (athleteName1 && rawData.length) {
+            const sports = new Set(
+                rawData
+                    .filter(d => d.athlete_full_name === athleteName1)
+                    .map(d => d.event_title)
+            );
+            secondAthleteOptions = [...new Set(
+                rawData
+                    .filter(d => sports.has(d.event_title))
+                    .map(d => d.athlete_full_name)
+            )].filter(name => name !== athleteName1);
         } else {
-            suggestions = [];
+            secondAthleteOptions = [];
         }
     }
-
-    $: athleteName, rawData, rawData.length && filterAndDrawAthleteData();
 
     function updateWidth() {
         if (!chartContainerRef) return;
@@ -90,55 +104,95 @@
     }
 
     function resetSearch() {
-        athleteName = '';
-        if ($page.url.searchParams.has('athlete')) {
-            $page.url.searchParams.delete('athlete');
+        athleteName1 = '';
+        athleteName2 = '';
+        if ($page.url.searchParams.has('athlete1')) {
+            $page.url.searchParams.delete('athlete1');
+            $page.url.searchParams.delete('athlete2');
             $page.url.search = $page.url.searchParams.toString();
         }
-        filteredAthleteData = [];
+        filteredAthleteData1 = [];
+        filteredAthleteData2 = [];
         athleteSports = [];
         hoverVisible = false;
-        showSuggestions = false;
+        showSuggestions1 = false;
+        showSuggestions2 = false;
         drawAthleteGraph();
     }
 
     async function filterAndDrawAthleteData() {
-        if (!athleteName) {
-            filteredAthleteData = [];
+        filteredAthleteData1 = [];
+        filteredAthleteData2 = [];
+        athleteSports = [];
+        if (!athleteName1) {
+            filteredAthleteData1 = [];
+            filteredAthleteData2 = [];
             athleteSports = [];
             drawAthleteGraph();
             return;
         }
 
-        filteredAthleteData = rawData.filter(d =>
-            d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName.toLowerCase() && !isNaN(+d.value_unit)
-        ).sort((a, b) => +a.ano - +b.ano);
+        if (athleteName1) {
+            filteredAthleteData1 = rawData.filter(d =>
+                d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName1.toLowerCase() && !isNaN(+d.value_unit)
+            ).sort((a, b) => +a.ano - +b.ano);
 
-        athleteSports = [...new Set(filteredAthleteData.map(d => d.event_title))].sort((a, b) => a.localeCompare(b));
+            athleteSports = [...new Set(filteredAthleteData1.map(d => d.event_title))];
+        }
+
+        if (athleteName2) {
+            filteredAthleteData2 = rawData.filter(d =>
+                d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName2.toLowerCase() && 
+                !isNaN(+d.value_unit) && 
+                athleteSports.includes(d.event_title)
+            ).sort((a, b) => +a.ano - +b.ano);
+        }
 
         drawAthleteGraph();
     }
 
-    function selectSuggestion(name) {
-        athleteName = name;
-        showSuggestions = false;
-        // Update URL with selected athlete
-        $page.url.searchParams.set('athlete', encodeURIComponent(name));
+    function selectSuggestion(name, athleteNum) {
+        if (athleteNum === 1) {
+            athleteName1 = name;
+            showSuggestions1 = false;
+        } else {
+            athleteName2 = name;
+            showSuggestions2 = false;
+        }
+        
+        $page.url.searchParams.set('athlete1', encodeURIComponent(athleteName1));
+        if (athleteName2) {
+            $page.url.searchParams.set('athlete2', encodeURIComponent(athleteName2));
+        } else {
+            $page.url.searchParams.delete('athlete2');
+        }
         $page.url.search = $page.url.searchParams.toString();
         filterAndDrawAthleteData();
     }
 
+    function getMedalColor(medalType) {
+        if (!medalType) return null;
+        const medal = medalType.toLowerCase();
+        if (medal.includes('gold')) return 'gold';
+        if (medal.includes('silver')) return 'silver';
+        if (medal.includes('bronze')) return '#cd7f32';
+        return null;
+    }
+
     async function showHover(d) {
-        const { photo, flag } = await fetchAthleteMedia(d.raw.athlete_url);
         hoverData = {
+            athlete: d.athlete,
             sport: d.raw.event_title,
             year: d.year,
             value: d.val,
             country: d.raw.country_name,
-            photo: photo,
-            flag: flag
+            photo: '',
+            flag: ''
         };
         hoverVisible = true;
+
+        const media = await fetchAthleteMedia(d.raw.athlete_url);
+        hoverData = {...hoverData, ...media};
     }
 
     function hideHover() {
@@ -153,83 +207,109 @@
             .attr('height', chartHeight);
         svg.selectAll('*').remove();
 
-        if (!filteredAthleteData.length) {
+        if (!filteredAthleteData1.length && !filteredAthleteData2.length) {
             svg.append('text')
                 .attr('x', (chartWidth + margin.left + margin.right) / 2)
                 .attr('y', chartHeight / 2)
                 .attr('text-anchor', 'middle')
-                .text(athleteName ? 'Nenhum dado encontrado para este atleta.' : 'Selecione um atleta.');
+                .text(athleteName1 ? 'Nenhum dado encontrado.' : 'Selecione pelo menos um atleta.');
             return;
         }
 
-        const allYears = filteredAthleteData.map(d => +d.ano);
-        const allValues = filteredAthleteData.map(d => +d.value_unit);
+        const allYears = [
+            ...filteredAthleteData1.map(d => +d.ano),
+            ...filteredAthleteData2.map(d => +d.ano)
+        ];
+        const allValues = [
+            ...filteredAthleteData1.map(d => +d.value_unit),
+            ...filteredAthleteData2.map(d => +d.value_unit)
+        ];
 
-        // Calculate nice rounded values for axis ticks
         const yearExtent = d3.extent(allYears);
         xScale = d3.scaleLinear()
             .domain([Math.floor(yearExtent[0] / 4) * 4, Math.ceil(yearExtent[1] / 4) * 4])
             .range([margin.left, margin.left + chartWidth]);
 
-        // Calculate nice y-axis domain
         const valueExtent = d3.extent(allValues);
         const yPadding = (valueExtent[1] - valueExtent[0]) * 0.1;
         yScale = d3.scaleLinear()
             .domain([Math.max(0, valueExtent[0] - yPadding), valueExtent[1] + yPadding])
             .range([chartHeight - margin.bottom, margin.top]);
 
-        colorScale = d3.scaleOrdinal()
-            .domain(athleteSports)
-            .range(d3.quantize(t => d3.interpolateRainbow(t * 0.8 + 0.1), Math.max(10, athleteSports.length)));
-
         const line = d3.line()
             .x(d => xScale(d.year))
             .y(d => yScale(d.val));
 
-        const dataBySport = d3.group(filteredAthleteData, d => d.event_title);
+        const datasets = [
+            { 
+                name: athleteName1, 
+                data: filteredAthleteData1, 
+                color: athleteColors.athlete1,
+                id: 'athlete1'
+            },
+            { 
+                name: athleteName2, 
+                data: filteredAthleteData2, 
+                color: athleteColors.athlete2,
+                id: 'athlete2'
+            }
+        ];
 
-        // Add chart title
+        let titleText = '';
+        if (athleteName1 && athleteName2) {
+            titleText = `Resultados de ${athleteName1} e ${athleteName2}`;
+        } else if (athleteName1) {
+            titleText = `Resultados de ${athleteName1}`;
+        }
         svg.append('text')
             .attr('x', (chartWidth + margin.left + margin.right) / 2)
             .attr('y', 30)
             .attr('text-anchor', 'middle')
             .attr('font-size', '20px')
-            .text(`Resultados de ${athleteName}`);
+            .text(titleText);
 
-        dataBySport.forEach((rows, sportTitle) => {
-            const series = rows.map(r => ({
-                year: +r.ano,
-                val: +r.value_unit,
-                raw: r,
-                sport: sportTitle
-            })).sort((a, b) => a.year - b.year);
+        datasets.forEach(athleteData => {
+            if (!athleteData.data.length) return;
+            
+            const dataBySport = d3.group(athleteData.data, d => d.event_title);
+            
+            dataBySport.forEach((rows, sportTitle) => {
+                const series = rows.map(r => ({
+                    year: +r.ano,
+                    val: +r.value_unit,
+                    raw: r,
+                    sport: sportTitle,
+                    athlete: athleteData.name,
+                    athleteId: athleteData.id
+                })).sort((a, b) => a.year - b.year);
 
-            // Draw line
-            svg.append('path').datum(series)
-                .attr('fill', 'none')
-                .attr('stroke', colorScale(sportTitle))
-                .attr('stroke-width', 2)
-                .attr('d', line);
+                svg.append('path').datum(series)
+                    .attr('fill', 'none')
+                    .attr('stroke', athleteData.color)
+                    .attr('stroke-width', 2)
+                    .attr('d', line);
 
-            // Draw points
-            svg.selectAll(null).data(series).enter().append('circle')
-                .attr('cx', d => xScale(d.year))
-                .attr('cy', d => yScale(d.val))
-                .attr('r', 4)
-                .attr('fill', colorScale(sportTitle))
-                .attr('stroke', 'white')
-                .attr('stroke-width', 1)
-                .on('mouseenter', function(_, d) {
-                    d3.select(this).attr('r', 6);
-                    showHover(d);
-                })
-                .on('mouseleave', function() {
-                    d3.select(this).attr('r', 4);
-                    hideHover();
-                });
+                svg.selectAll(null).data(series).enter().append('circle')
+                    .attr('cx', d => xScale(d.year))
+                    .attr('cy', d => yScale(d.val))
+                    .attr('r', 4)
+                    .attr('fill', d => {
+                        const medalColor = getMedalColor(d.raw.medal_type);
+                        return medalColor || athleteData.color;
+                    })
+                    .attr('stroke', 'white')
+                    .attr('stroke-width', 1)
+                    .on('mouseenter', function(_, d) {
+                        d3.select(this).attr('r', 6);
+                        showHover(d);
+                    })
+                    .on('mouseleave', function() {
+                        d3.select(this).attr('r', 4);
+                        hideHover();
+                    });
+            });
         });
 
-        // Create axes
         const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
         const yAxis = d3.axisLeft(yScale)
             .tickFormat(d => {
@@ -240,7 +320,6 @@
                 return d3.format('.2f')(d);
             });
 
-        // Add X axis with grid
         svg.append('g')
             .attr('class', 'x-axis')
             .attr('transform', `translate(0,${chartHeight - margin.bottom})`)
@@ -250,7 +329,6 @@
                 .attr('y2', -chartHeight + margin.top + margin.bottom)
                 .attr('stroke-opacity', 0.1));
 
-        // Add Y axis with grid
         svg.append('g')
             .attr('class', 'y-axis')
             .attr('transform', `translate(${margin.left},0)`)
@@ -260,7 +338,6 @@
                 .attr('x2', chartWidth)
                 .attr('stroke-opacity', 0.1));
 
-        // Axis labels
         svg.append('text')
             .attr('class', 'axis-label')
             .attr('x', margin.left + (chartWidth / 2))
@@ -276,15 +353,28 @@
             .attr('text-anchor', 'middle')
             .text('Valor do Resultado');
     }
+
+    $: if (athleteName1 || athleteName2) {
+        filterAndDrawAthleteData();
+    }
+
 </script>
 
 <svelte:head>
-    <title>Detalhes do Atleta</title>
+    <title>Comparação de Atletas</title>
 </svelte:head>
 
 <div class="page">
     <div class="title">
-        <h1>Detalhes do Atleta: {athleteName || 'Buscar Atleta'}</h1>
+        <h1>
+            {#if athleteName1 && athleteName2}
+                Comparação: {athleteName1} e {athleteName2}
+            {:else if athleteName1}
+                Detalhes do Atleta: {athleteName1}
+            {:else}
+                Comparação de Atletas
+            {/if}
+        </h1>
     </div>
 
     <div class="controls-container">
@@ -292,17 +382,22 @@
             <div class="search-container">
                 <input 
                     type="text" 
-                    bind:value={athleteName}
-                    on:input={() => showSuggestions = true}
-                    on:blur={() => setTimeout(() => showSuggestions = false, 200)}
-                    placeholder="Buscar atleta…">
+                    bind:value={athleteName1}
+                    on:input={() => {
+                        showSuggestions1 = true;
+                        suggestions1 = allAthleteNames.filter(name => 
+                            name.toLowerCase().includes(athleteName1.toLowerCase())
+                        ).slice(0, 5);
+                    }}
+                    on:blur={() => setTimeout(() => showSuggestions1 = false, 200)}
+                    placeholder="Primeiro atleta...">
                 
-                {#if showSuggestions && suggestions.length > 0}
+                {#if showSuggestions1 && suggestions1.length > 0}
                     <div class="suggestions-dropdown">
-                        {#each suggestions as suggestion}
+                        {#each suggestions1 as suggestion}
                             <div 
                                 class="suggestion-item"
-                                on:mousedown={() => selectSuggestion(suggestion)}>
+                                on:mousedown={() => selectSuggestion(suggestion, 1)}>
                                 {suggestion}
                             </div>
                         {/each}
@@ -310,13 +405,32 @@
                 {/if}
             </div>
             
-            <button on:click={() => {
-                if (athleteName) {
-                    $page.url.searchParams.set('athlete', encodeURIComponent(athleteName));
-                    $page.url.search = $page.url.searchParams.toString();
-                    filterAndDrawAthleteData();
-                }
-            }}>Buscar</button>
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    bind:value={athleteName2}
+                    disabled={!athleteName1}
+                    on:input={() => {
+                        showSuggestions2 = true;
+                        suggestions2 = secondAthleteOptions.filter(name => 
+                            name.toLowerCase().includes(athleteName2.toLowerCase())
+                        ).slice(0, 5);
+                    }}
+                    on:blur={() => setTimeout(() => showSuggestions2 = false, 200)}
+                    placeholder={athleteName1 ? "Segundo atleta..." : "Selecione primeiro atleta"}>
+                
+                {#if showSuggestions2 && suggestions2.length > 0}
+                    <div class="suggestions-dropdown">
+                        {#each suggestions2 as suggestion}
+                            <div 
+                                class="suggestion-item"
+                                on:mousedown={() => selectSuggestion(suggestion, 2)}>
+                                {suggestion}
+                            </div>
+                        {/each}
+                    </div>
+                {/if}
+            </div>
             
             <button class="reset-button" on:click={resetSearch}>
                 Limpar
@@ -329,33 +443,43 @@
             <svg bind:this={svgRef}></svg>
         </div>
 
-        <aside class="hover-card">
-            {#if hoverVisible}
-                <h3>Resultado do Atleta</h3>
-                <p><b>Evento:</b> {hoverData.sport}</p>
-                <p><b>Ano:</b> {hoverData.year}</p>
-                {#if hoverData.photo}
-                    <img class="ath-img" src={hoverData.photo} alt={athleteName}/>
-                {/if}
-                <p><b>País:</b> {hoverData.country}
-                    {#if hoverData.flag}
-                        <img class="flag" src={hoverData.flag} alt={hoverData.country}/>
+        <div class="sidebar">
+            <aside class="hover-card">
+                {#if hoverVisible}
+                    <h3>Resultado do Atleta</h3>
+                    <p><b>Atleta:</b> {hoverData.athlete}</p>
+                    <p><b>Evento:</b> {hoverData.sport}</p>
+                    <p><b>Ano:</b> {hoverData.year}</p>
+                    {#if hoverData.photo}
+                        <img class="ath-img" src={hoverData.photo} alt={hoverData.athlete}/>
                     {/if}
-                </p>
-                <p><b>Resultado:</b> {hoverData.value}</p>
-            {:else}
-                <p>Passe o mouse sobre um ponto para ver os detalhes do resultado.</p>
-            {/if}
-        </aside>
-    </div>
+                    <p><b>País:</b> {hoverData.country}
+                        {#if hoverData.flag}
+                            <img class="flag" src={hoverData.flag} alt={hoverData.country}/>
+                        {/if}
+                    </p>
+                    <p><b>Resultado:</b> {hoverData.value}</p>
+                {:else}
+                    <p>Passe o mouse sobre um ponto para ver os detalhes.</p>
+                {/if}
+            </aside>
 
-    <aside class="legend">
-        {#each athleteSports as sport}
-            <div class="legend-item">
-                <span class="swatch" style="background:{colorScale(sport)}"></span>{sport}
-            </div>
-        {/each}
-    </aside>
+            <aside class="legend">
+                {#if athleteName1}
+                    <div class="legend-item">
+                        <span class="swatch" style="background:#1f77b4"></span>
+                        {athleteName1}
+                    </div>
+                {/if}
+                {#if athleteName2}
+                    <div class="legend-item">
+                        <span class="swatch" style="background:#ff7f0e"></span>
+                        {athleteName2}
+                    </div>
+                {/if}
+            </aside>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -393,18 +517,16 @@
     }
 
     .controls {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
         gap: 15px;
         max-width: 800px;
         width: 100%;
-        flex-wrap: wrap;
-        align-items: center;
         position: relative;
     }
 
     .search-container {
         position: relative;
-        flex: 1;
     }
 
     .controls input {
@@ -449,29 +571,17 @@
         border-bottom: none;
     }
 
-    .controls button {
+    .reset-button {
         padding: .6rem 1rem;
         font-size: .9rem;
         border: none;
         border-radius: var(--radius);
         cursor: pointer;
-        transition: background .2s;
-        font-weight: 500;
-        font-family: Poppins, sans-serif;
-    }
-
-    .controls > button:not(.reset-button) {
-        background: var(--primary);
-        color: #fff;
-    }
-
-    .controls > button:not(.reset-button):hover {
-        background: #0d5cb6;
-    }
-
-    .reset-button {
         background: #f44336;
         color: white;
+        font-weight: 500;
+        font-family: Poppins, sans-serif;
+        transition: background .2s;
     }
 
     .reset-button:hover {
@@ -483,6 +593,12 @@
         grid-template-columns: 1fr 250px;
         gap: 1rem;
         margin-top: 1rem;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     .chart-container {
@@ -510,13 +626,11 @@
     }
 
     .legend {
-        grid-column: 1 / span 2;
         max-height: 200px;
         overflow-y: auto;
         padding: 1rem;
         border-radius: var(--radius);
         background: var(--card);
-        margin-top: 1rem;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 10px;
@@ -556,7 +670,6 @@
         vertical-align: middle;
     }
 
-    /* Fix for axis styling */
     .x-axis path, .x-axis line,
     .y-axis path, .y-axis line {
         stroke: var(--grid);
@@ -581,19 +694,7 @@
             grid-template-columns: 1fr;
         }
         
-        .controls {
-            flex-direction: column;
-        }
-        
-        .search-container {
-            width: 100%;
-        }
-        
-        .controls button {
-            width: 100%;
-        }
-        
-        .hover-card {
+        .sidebar {
             order: 1;
         }
         
@@ -601,8 +702,12 @@
             order: 2;
         }
         
-        .legend {
-            order: 3;
+        .controls {
+            grid-template-columns: 1fr;
+        }
+        
+        .search-container {
+            width: 100%;
         }
     }
 </style>
