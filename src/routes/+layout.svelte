@@ -50,9 +50,9 @@
 <div class="layout-container">
     <Navbar {pages} />
 
-    <button on:click={toggleColorScheme} class="theme-toggle">
+    <!-- <button on:click={toggleColorScheme} class="theme-toggle">
         Alternar para tema {colorScheme === 'light' ? 'Escuro' : 'Claro'}
-    </button>
+    </button> -->
 
     <main>
         <slot />
