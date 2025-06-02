@@ -44,7 +44,6 @@
         filterAndDrawAthleteData();
     });
 
-
     onMount(async () => {
         rawData = await d3.csv(csvUrl);
         allAthleteNames = [...new Set(rawData.map(d => d.athlete_full_name).filter(Boolean))].sort();
@@ -82,11 +81,9 @@
 
     async function fetchAthleteMedia(athleteUrl) {
         if (!athleteUrl) return { photo: '', flag: '' };
-        
         if (cache.has(athleteUrl)) {
             return cache.get(athleteUrl);
         }
-
         try {
             const html = await (await fetch(athleteUrl)).text();
             const d = new DOMParser().parseFromString(html, 'text/html');
@@ -131,15 +128,12 @@
             drawAthleteGraph();
             return;
         }
-
         if (athleteName1) {
             filteredAthleteData1 = rawData.filter(d =>
                 d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName1.toLowerCase() && !isNaN(+d.value_unit)
             ).sort((a, b) => +a.ano - +b.ano);
-
             athleteSports = [...new Set(filteredAthleteData1.map(d => d.event_title))];
         }
-
         if (athleteName2) {
             filteredAthleteData2 = rawData.filter(d =>
                 d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName2.toLowerCase() && 
@@ -147,7 +141,6 @@
                 athleteSports.includes(d.event_title)
             ).sort((a, b) => +a.ano - +b.ano);
         }
-
         drawAthleteGraph();
     }
 
@@ -159,7 +152,6 @@
             athleteName2 = name;
             showSuggestions2 = false;
         }
-        
         $page.url.searchParams.set('athlete1', encodeURIComponent(athleteName1));
         if (athleteName2) {
             $page.url.searchParams.set('athlete2', encodeURIComponent(athleteName2));
@@ -190,7 +182,6 @@
             flag: ''
         };
         hoverVisible = true;
-
         const media = await fetchAthleteMedia(d.raw.athlete_url);
         hoverData = {...hoverData, ...media};
     }
@@ -201,12 +192,10 @@
 
     function drawAthleteGraph() {
         if (!svgRef) return;
-
         const svg = d3.select(svgRef)
             .attr('width', chartWidth + margin.left + margin.right)
             .attr('height', chartHeight);
         svg.selectAll('*').remove();
-
         if (!filteredAthleteData1.length && !filteredAthleteData2.length) {
             svg.append('text')
                 .attr('x', (chartWidth + margin.left + margin.right) / 2)
@@ -215,7 +204,6 @@
                 .text(athleteName1 ? 'Nenhum dado encontrado.' : 'Selecione pelo menos um atleta.');
             return;
         }
-
         const allYears = [
             ...filteredAthleteData1.map(d => +d.ano),
             ...filteredAthleteData2.map(d => +d.ano)
@@ -224,24 +212,19 @@
             ...filteredAthleteData1.map(d => +d.value_unit),
             ...filteredAthleteData2.map(d => +d.value_unit)
         ];
-
         const yearExtent = d3.extent(allYears);
         xScale = d3.scaleLinear()
             .domain([Math.floor(yearExtent[0] / 4) * 4, Math.ceil(yearExtent[1] / 4) * 4])
             .range([margin.left, margin.left + chartWidth]);
-
         const valueExtent = d3.extent(allValues);
         const yPadding = (valueExtent[1] - valueExtent[0]) * 0.1;
         yScale = d3.scaleLinear()
             .domain([Math.max(0, valueExtent[0] - yPadding), valueExtent[1] + yPadding])
             .range([chartHeight - margin.bottom, margin.top]);
-
-        // Updated line generator
         const line = d3.line()
             .x(d => xScale(d.year))
             .y(d => yScale(d.val))
-            .curve(d3.curveMonotoneX); // Makes lines smoother
-
+            .curve(d3.curveMonotoneX);
         const datasets = [
             { 
                 name: athleteName1, 
@@ -256,7 +239,6 @@
                 id: 'athlete2'
             }
         ];
-
         let titleText = '';
         if (athleteName1 && athleteName2) {
             titleText = `Resultados de ${athleteName1} e ${athleteName2}`;
@@ -265,16 +247,13 @@
         }
         svg.append('text')
             .attr('x', (chartWidth + margin.left + margin.right) / 2)
-            .attr('y', 30) // Keep this y for title from previous CSS
+            .attr('y', 30)
             .attr('text-anchor', 'middle')
-            .attr('font-size', '20px') // This will be styled by CSS
+            .attr('font-size', '20px')
             .text(titleText);
-
         datasets.forEach(athleteData => {
             if (!athleteData.data.length) return;
-            
             const dataBySport = d3.group(athleteData.data, d => d.event_title);
-            
             dataBySport.forEach((rows, sportTitle) => {
                 const series = rows.map(r => ({
                     year: +r.ano,
@@ -284,38 +263,32 @@
                     athlete: athleteData.name,
                     athleteId: athleteData.id
                 })).sort((a, b) => a.year - b.year);
-
-                // Updated path rendering
                 svg.append('path').datum(series)
                     .attr('fill', 'none')
                     .attr('stroke', athleteData.color)
-                    .attr('stroke-width', 2.5)       // Adjusted stroke-width
-                    .attr('stroke-linecap', 'round') // Added linecap for softer ends
+                    .attr('stroke-width', 2.5)
+                    .attr('stroke-linecap', 'round')
                     .attr('d', line);
-
-                // Updated circle rendering
                 svg.selectAll(null).data(series).enter().append('circle')
                     .attr('cx', d => xScale(d.year))
                     .attr('cy', d => yScale(d.val))
-                    .attr('r', 4) // Base radius
+                    .attr('r', 4)
                     .attr('fill', d => {
                         const medalColor = getMedalColor(d.raw.medal_type);
-                        // Use medal color if available, otherwise a brighter version of athlete's color
-                        return medalColor || d3.rgb(athleteData.color).brighter(0.3); 
+                        return medalColor || d3.rgb(athleteData.color).brighter(0.3);
                     })
-                    .attr('stroke', d3.rgb(athleteData.color).darker(1)) // Stroke is darker version of athlete color
-                    .attr('stroke-width', 1.5) // Adjusted stroke-width
+                    .attr('stroke', d3.rgb(athleteData.color).darker(1))
+                    .attr('stroke-width', 1.5)
                     .on('mouseenter', function(_, d) {
-                        d3.select(this).attr('r', 6); // Hover radius
+                        d3.select(this).attr('r', 6);
                         showHover(d);
                     })
                     .on('mouseleave', function() {
-                        d3.select(this).attr('r', 4); // Restore base radius
+                        d3.select(this).attr('r', 4);
                         hideHover();
                     });
             });
         });
-
         const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
         const yAxis = d3.axisLeft(yScale)
             .tickFormat(d => {
@@ -325,32 +298,28 @@
                 if (maxVal > 10) return d3.format('.1f')(d);
                 return d3.format('.2f')(d);
             });
-
         svg.append('g')
             .attr('class', 'x-axis')
             .attr('transform', `translate(0,${chartHeight - margin.bottom})`)
             .call(xAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc')) // Original color, can be overridden by CSS
+            .call(g => g.select('.domain').attr('stroke', '#ccc'))
             .call(g => g.selectAll('.tick line').clone()
                 .attr('y2', -chartHeight + margin.top + margin.bottom)
                 .attr('stroke-opacity', 0.1));
-
         svg.append('g')
             .attr('class', 'y-axis')
             .attr('transform', `translate(${margin.left},0)`)
             .call(yAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc')) // Original color, can be overridden by CSS
+            .call(g => g.select('.domain').attr('stroke', '#ccc'))
             .call(g => g.selectAll('.tick line').clone()
                 .attr('x2', chartWidth)
                 .attr('stroke-opacity', 0.1));
-
         svg.append('text')
             .attr('class', 'axis-label')
             .attr('x', margin.left + (chartWidth / 2))
             .attr('y', chartHeight - (margin.bottom / 3))
             .attr('text-anchor', 'middle')
             .text('Ano');
-
         svg.append('text')
             .attr('class', 'axis-label')
             .attr('transform', 'rotate(-90)')
@@ -363,7 +332,6 @@
     $: if (athleteName1 || athleteName2) {
         filterAndDrawAthleteData();
     }
-
 </script>
 
 <svelte:head>
@@ -397,7 +365,6 @@
                     }}
                     on:blur={() => setTimeout(() => showSuggestions1 = false, 200)}
                     placeholder="Primeiro atleta...">
-                
                 {#if showSuggestions1 && suggestions1.length > 0}
                     <div class="suggestions-dropdown">
                         {#each suggestions1 as suggestion}
@@ -410,7 +377,6 @@
                     </div>
                 {/if}
             </div>
-            
             <div class="search-container">
                 <input 
                     type="text" 
@@ -424,7 +390,6 @@
                     }}
                     on:blur={() => setTimeout(() => showSuggestions2 = false, 200)}
                     placeholder={athleteName1 ? "Segundo atleta..." : "Selecione primeiro atleta"}>
-                
                 {#if showSuggestions2 && suggestions2.length > 0}
                     <div class="suggestions-dropdown">
                         {#each suggestions2 as suggestion}
@@ -437,7 +402,6 @@
                     </div>
                 {/if}
             </div>
-            
             <button class="reset-button" on:click={resetSearch}>
                 Limpar
             </button>
@@ -576,7 +540,6 @@
         color: var(--text-muted-color);
     }
 
-
     .suggestions-dropdown {
         position: absolute;
         top: calc(100% + 5px);
@@ -602,10 +565,10 @@
     }
 
     .suggestion-item:hover,
-    .suggestion-item:focus { /* Added focus style for keyboard navigation */
+    .suggestion-item:focus {
         background-color: var(--primary-color-lighter);
         color: var(--primary-color-darker);
-        outline: none; /* Or a custom outline */
+        outline: none;
     }
 
     .suggestion-item:last-child {
@@ -635,7 +598,6 @@
         transform: translateY(0);
     }
 
-
     .dashboard {
         display: grid;
         grid-template-columns: 1fr 300px;
@@ -662,7 +624,6 @@
         transform: translateY(-3px);
         box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-color-medium);
     }
-
 
     .chart-container {
         min-width: 0;
@@ -724,7 +685,6 @@
         color: var(--primary-color-darker);
     }
 
-
     .legend-item .swatch {
         width: 16px;
         height: 16px;
@@ -736,7 +696,6 @@
     }
     .legend-item .swatch[style*="background:#1f77b4"] { box-shadow: 0 0 5px #1f77b4; }
     .legend-item .swatch[style*="background:#ff7f0e"] { box-shadow: 0 0 5px #ff7f0e; }
-
 
     .ath-img {
         width: 70px;
@@ -774,7 +733,6 @@
         stroke-opacity: 0.1;
     }
 
-
     .chart-container svg .x-axis .tick text,
     .chart-container svg .y-axis .tick text {
         font-size: .75rem;
@@ -782,7 +740,7 @@
         font-weight: 500;
     }
 
-    .chart-container svg .axis-label { /* This class is explicitly added in your D3 code */
+    .chart-container svg .axis-label {
         font-size: .8rem;
         fill: var(--text-primary-color);
         font-weight: 600;
@@ -791,14 +749,14 @@
         font-family: var(--font-family-sans);
     }
 
-    .chart-container svg text[font-size="20px"] { /* Targets the title based on attribute */
+    .chart-container svg text[font-size="20px"] {
         font-size: 1.3rem !important;
         font-weight: 700;
         fill: var(--primary-color-darker);
         font-family: var(--font-family-sans);
         letter-spacing: -0.5px;
     }
-    .chart-container svg text[text-anchor="middle"]:not([font-size="20px"]):not(.axis-label) { /* Targets "no data" text */
+    .chart-container svg text[text-anchor="middle"]:not([font-size="20px"]):not(.axis-label) {
         font-size: 1.1rem;
         fill: var(--text-muted-color);
         font-weight: 500;
@@ -828,7 +786,6 @@
     .suggestions-dropdown::-webkit-scrollbar-thumb:hover {
         background: var(--secondary-color);
     }
-
 
     @media (max-width: 992px) {
         .dashboard {
