@@ -6,7 +6,7 @@
     let valueTypes = [];
     let yMin = '';
     let yMax = '';
-    let selectedEvent = ''; // Now correctly bound to Graph.svelte's selectedEvent
+    let selectedEvent = '';
 
     $: graphKey = measure + search + yMin + yMax;
 
@@ -71,24 +71,9 @@
             searchQuery={search}
             yMin={yMin}
             yMax={yMax}
-            bind:selectedEvent={selectedEvent} />
+            bind:selectedEvent={selectedEvent}
+        />
     {/key}
-
-    {#if selectedEvent}
-    <h2 style="text-align:center;margin:2rem 0">
-        🔍 {selectedEvent}
-        <button style="margin-left:10px"
-                on:click={() => selectedEvent = ''}>voltar</button>
-    </h2>
-
-    <Graph
-        {csvUrl}
-        bind:valueTypes
-        {measure}
-        searchQuery={selectedEvent} yMin={yMin}
-        yMax={yMax}
-    />
-    {/if}
 </div>
 
 <style>
@@ -190,5 +175,4 @@
     font-size: 0.68rem;
     color: #777;
 }
-
 </style>
