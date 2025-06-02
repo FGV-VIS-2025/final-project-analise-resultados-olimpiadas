@@ -395,7 +395,6 @@
       .style('cursor', d => (!selectedEvent || d.eventKey === selectedEvent) ? 'pointer' : 'default')
       .on('mouseenter', function (event, dPoint) {
         if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
-        if (isHoverPinned && !(pinnedHoverData.year === dPoint.year && pinnedHoverData.athlete === dPoint.raw.athlete_full_name) ) return;
         d3.select(this).transition().duration(100).attr('r', selectedEvent ? 7 : 6).style('fill-opacity', 1);
         showHover(dPoint);
       })
@@ -410,36 +409,54 @@
       })
       .on('click', function(e, dPoint) {
         e.stopPropagation();
+
+        // Se existe filtro de evento, só permite clicar no evento selecionado
         if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
 
-        if (selectedEvent !== dPoint.eventKey) {
+        // Se já está fixado no mesmo ponto, desfaz a fixação
+        if (isHoverPinned &&
+            pinnedHoverData &&
+            pinnedHoverData.athlete === dPoint.raw.athlete_full_name &&
+            pinnedHoverData.year === dPoint.year) {
+          // Destrava hover
+          pinnedHoverData = null;
+          isHoverPinned = false;
+          hoverVisible = false;
+
+          // Atualiza visual dos pontos (remove destaque)
+          svg.selectAll('circle.data-point')
+            .transition().duration(100)
+            .attr('r', selectedEvent ? 5 : 4);
+
+        } else {
+          // Atualiza hover fixado para o novo ponto
           pinnedHoverData = {
-            sport: dPoint.event, athlete: dPoint.raw.athlete_full_name,
-            year: dPoint.year, value: dPoint.val, country: dPoint.raw.country_name,
-            photo: '', flag: ''
+            sport: dPoint.event,
+            athlete: dPoint.raw.athlete_full_name,
+            year: dPoint.year,
+            value: dPoint.val,
+            country: dPoint.raw.country_name,
+            photo: '',
+            flag: ''
           };
           isHoverPinned = true;
           hoverVisible = true;
-          selectEvent(dPoint.eventKey);
-        } else { 
-          if (isHoverPinned && pinnedHoverData &&
-            pinnedHoverData.athlete === dPoint.raw.athlete_full_name &&
-            pinnedHoverData.year === dPoint.year) {
-            pinnedHoverData = null; isHoverPinned = false; hoverVisible = false;
-            d3.select(this).transition().duration(100).attr('r', selectedEvent ? 5:4);
-          } else {
-            const currentElement = this;
-            showHover(dPoint).then(() => {
-              pinnedHoverData = { ...hover }; isHoverPinned = true; hoverVisible = true;
-              svg.selectAll('circle.data-point')
-              .filter(c => c.eventKey === selectedEvent) 
+
+          // Atualiza hover com foto e bandeira async
+          showHover(dPoint).then(() => {
+            // Atualiza visual: todos os pontos do evento com tamanho normal,
+            // só o ponto fixado maior
+            svg.selectAll('circle.data-point')
               .transition().duration(100)
-              .attr('r', selectedEvent ? 5:4); 
-              d3.select(currentElement).transition().duration(100).attr('r', selectedEvent ? 7:6); 
-            });
-          }
+              .attr('r', selectedEvent ? 5 : 4);
+
+            d3.select(this)
+              .transition().duration(100)
+              .attr('r', selectedEvent ? 7 : 6);
+          });
         }
       })
+
       
       .transition('updateTransition').duration(transitionDuration) 
         .attr('cx', d => xScale(d.year))
