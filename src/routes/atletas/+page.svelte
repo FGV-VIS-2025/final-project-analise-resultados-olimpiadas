@@ -236,9 +236,11 @@
             .domain([Math.max(0, valueExtent[0] - yPadding), valueExtent[1] + yPadding])
             .range([chartHeight - margin.bottom, margin.top]);
 
+        // Updated line generator
         const line = d3.line()
             .x(d => xScale(d.year))
-            .y(d => yScale(d.val));
+            .y(d => yScale(d.val))
+            .curve(d3.curveMonotoneX); // Makes lines smoother
 
         const datasets = [
             { 
@@ -263,9 +265,9 @@
         }
         svg.append('text')
             .attr('x', (chartWidth + margin.left + margin.right) / 2)
-            .attr('y', 30)
+            .attr('y', 30) // Keep this y for title from previous CSS
             .attr('text-anchor', 'middle')
-            .attr('font-size', '20px')
+            .attr('font-size', '20px') // This will be styled by CSS
             .text(titleText);
 
         datasets.forEach(athleteData => {
@@ -283,28 +285,32 @@
                     athleteId: athleteData.id
                 })).sort((a, b) => a.year - b.year);
 
+                // Updated path rendering
                 svg.append('path').datum(series)
                     .attr('fill', 'none')
                     .attr('stroke', athleteData.color)
-                    .attr('stroke-width', 2)
+                    .attr('stroke-width', 2.5)       // Adjusted stroke-width
+                    .attr('stroke-linecap', 'round') // Added linecap for softer ends
                     .attr('d', line);
 
+                // Updated circle rendering
                 svg.selectAll(null).data(series).enter().append('circle')
                     .attr('cx', d => xScale(d.year))
                     .attr('cy', d => yScale(d.val))
-                    .attr('r', 4)
+                    .attr('r', 4) // Base radius
                     .attr('fill', d => {
                         const medalColor = getMedalColor(d.raw.medal_type);
-                        return medalColor || athleteData.color;
+                        // Use medal color if available, otherwise a brighter version of athlete's color
+                        return medalColor || d3.rgb(athleteData.color).brighter(0.3); 
                     })
-                    .attr('stroke', 'white')
-                    .attr('stroke-width', 1)
+                    .attr('stroke', d3.rgb(athleteData.color).darker(1)) // Stroke is darker version of athlete color
+                    .attr('stroke-width', 1.5) // Adjusted stroke-width
                     .on('mouseenter', function(_, d) {
-                        d3.select(this).attr('r', 6);
+                        d3.select(this).attr('r', 6); // Hover radius
                         showHover(d);
                     })
                     .on('mouseleave', function() {
-                        d3.select(this).attr('r', 4);
+                        d3.select(this).attr('r', 4); // Restore base radius
                         hideHover();
                     });
             });
@@ -324,7 +330,7 @@
             .attr('class', 'x-axis')
             .attr('transform', `translate(0,${chartHeight - margin.bottom})`)
             .call(xAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc'))
+            .call(g => g.select('.domain').attr('stroke', '#ccc')) // Original color, can be overridden by CSS
             .call(g => g.selectAll('.tick line').clone()
                 .attr('y2', -chartHeight + margin.top + margin.bottom)
                 .attr('stroke-opacity', 0.1));
@@ -333,7 +339,7 @@
             .attr('class', 'y-axis')
             .attr('transform', `translate(${margin.left},0)`)
             .call(yAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc'))
+            .call(g => g.select('.domain').attr('stroke', '#ccc')) // Original color, can be overridden by CSS
             .call(g => g.selectAll('.tick line').clone()
                 .attr('x2', chartWidth)
                 .attr('stroke-opacity', 0.1));
@@ -484,42 +490,62 @@
 
 <style>
     :global(:root) {
-        --grid: #e0e0e0;
-        --text: #333;
-        --primary: #1a73e8;
-        --primary-light: #4d94ff;
-        --card: #ffffff;
-        --radius: 8px;
-        --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --font-family-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        --primary-color: var(--primary, #007bff);
+        --primary-color-darker: var(--primary-darker, #0056b3);
+        --primary-color-lighter: var(--primary-lighter, #cfe2ff);
+        --primary-color-rgb: var(--primary-rgb, 0, 123, 255);
+        --secondary-color: #6c757d;
+        --text-primary-color: #212529;
+        --text-secondary-color: #495057;
+        --text-muted-color: #6c757d;
+        --text-on-primary: #ffffff;
+        --page-background: #eef1f5;
+        --card-background: var(--card, #ffffff);
+        --border-color-soft: #dee2e6;
+        --border-color-medium: #ced4da;
+        --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+        --shadow-md: 0 .5rem 1rem rgba(0,0,0,.1);
+        --shadow-lg: 0 1rem 3rem rgba(0,0,0,.125);
+        --shadow-primary-glow: 0 0 12px rgba(var(--primary-color-rgb), 0.3);
+        --radius-sm: 4px;
+        --radius-md: var(--radius, 8px);
+        --radius-lg: 12px;
+        --transition-speed: 0.2s;
+        --grid: var(--border-color-soft);
+        --text: var(--text-primary-color);
     }
 
     .page {
         max-width: 1380px;
         margin: auto;
-        padding: 2rem 1rem;
-        background: #f8f9fa;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
+        padding: 1.75rem;
+        background: var(--page-background);
+        font-family: var(--font-family-sans);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
     }
 
     .title h1 {
-        font-weight: 600;
-        color: var(--primary);
-        margin: .2em 0;
+        font-weight: 700;
+        color: var(--primary-color-darker);
+        margin: 0 0 1.5rem 0;
         text-align: center;
-        font-family: Poppins, sans-serif;
+        font-family: var(--font-family-sans);
+        font-size: 1.8rem;
+        letter-spacing: -0.5px;
     }
 
     .controls-container {
         display: flex;
         justify-content: center;
-        margin: 1.5rem 0;
+        margin-bottom: 1.5rem;
     }
 
     .controls {
         display: grid;
         grid-template-columns: 1fr 1fr auto;
-        gap: 15px;
+        gap: 1rem;
         max-width: 800px;
         width: 100%;
         position: relative;
@@ -529,42 +555,57 @@
         position: relative;
     }
 
-    .controls input {
-        padding: .6rem .8rem;
+    .controls input[type="text"] {
+        padding: .75rem 1rem;
         font-size: .9rem;
-        border: 1px solid #ccc;
-        border-radius: var(--radius);
-        font-family: Poppins, sans-serif;
+        border: 1px solid var(--border-color-medium);
+        border-radius: var(--radius-md);
+        font-family: var(--font-family-sans);
         width: 100%;
         box-sizing: border-box;
+        background-color: var(--card-background);
+        color: var(--text-primary-color);
+        transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
+    .controls input[type="text"]:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
+        outline: none;
+    }
+    .controls input[type="text"]::placeholder {
+        color: var(--text-muted-color);
+    }
+
 
     .suggestions-dropdown {
         position: absolute;
-        top: 100%;
+        top: calc(100% + 5px);
         left: 0;
         right: 0;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        z-index: 10;
+        background: var(--card-background);
+        border: 1px solid var(--border-color-medium);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
         margin-top: 5px;
         max-height: 200px;
         overflow-y: auto;
     }
 
     .suggestion-item {
-        padding: 8px 12px;
+        padding: 10px 15px;
         cursor: pointer;
         font-size: 0.9rem;
-        border-bottom: 1px solid #f0f0f0;
-        transition: background 0.2s;
+        border-bottom: 1px solid var(--border-color-soft);
+        transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        color: var(--text-secondary-color);
     }
 
-    .suggestion-item:hover {
-        background-color: var(--primary-light);
-        color: white;
+    .suggestion-item:hover,
+    .suggestion-item:focus { /* Added focus style for keyboard navigation */
+        background-color: var(--primary-color-lighter);
+        color: var(--primary-color-darker);
+        outline: none; /* Or a custom outline */
     }
 
     .suggestion-item:last-child {
@@ -572,142 +613,262 @@
     }
 
     .reset-button {
-        padding: .6rem 1rem;
+        padding: .75rem 1.5rem;
         font-size: .9rem;
         border: none;
-        border-radius: var(--radius);
+        border-radius: var(--radius-md);
         cursor: pointer;
-        background: #f44336;
+        background: #dc3545;
         color: white;
-        font-weight: 500;
-        font-family: Poppins, sans-serif;
-        transition: background .2s;
+        font-weight: 600;
+        font-family: var(--font-family-sans);
+        transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        box-shadow: var(--shadow-sm);
     }
 
     .reset-button:hover {
-        background: #d32f2f;
+        background: #c82333;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
     }
+    .reset-button:active {
+        transform: translateY(0);
+    }
+
 
     .dashboard {
         display: grid;
-        grid-template-columns: 1fr 250px;
-        gap: 1rem;
-        margin-top: 1rem;
+        grid-template-columns: 1fr 300px;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
     }
 
     .sidebar {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
+        max-height: 560px;
     }
+
+    .chart-container, .hover-card, .legend {
+        background: var(--card-background);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md), 0 0 0 1px var(--border-color-soft);
+        padding: 1.25rem 1.5rem;
+        transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        overflow: hidden;
+    }
+    .chart-container:hover, .hover-card:hover, .legend:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-color-medium);
+    }
+
 
     .chart-container {
         min-width: 0;
-        background: white;
-        border-radius: var(--radius);
-        padding: 10px;
-        box-shadow: var(--shadow);
+        padding: 1.0rem;
+        height: 560px;
+        box-sizing: border-box;
     }
 
     .chart-container svg {
         width: 100%;
-        height: 500px;
+        height: 100%;
         display: block;
+        font-family: var(--font-family-sans);
     }
 
     .hover-card {
-        background: var(--card);
-        padding: 1rem;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        font-size: 0.8rem;
-        height: fit-content;
-        font-family: Poppins, sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--text-secondary-color);
+        overflow-y: auto;
+    }
+
+    .hover-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary-color);
+        margin-top: 0;
+        margin-bottom: 1rem;
+        letter-spacing: -0.5px;
+    }
+    .hover-card p {
+        margin-bottom: 0.6rem;
+    }
+     .hover-card b {
+        color: var(--text-primary-color);
+        font-weight: 600;
     }
 
     .legend {
-        max-height: 200px;
+        max-height: 280px;
         overflow-y: auto;
-        padding: 1rem;
-        border-radius: var(--radius);
-        background: var(--card);
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 10px;
-        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .legend-item {
         display: flex;
         align-items: center;
-        margin-bottom: 6px;
-        font-size: 0.75rem;
-        white-space: normal;
-        font-family: Poppins, sans-serif;
+        font-size: 0.85rem;
+        font-family: var(--font-family-sans);
+        color: var(--text-secondary-color);
+        padding: 6px 8px;
+        border-radius: var(--radius-sm);
+        transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
     }
+    .legend-item:hover {
+        background-color: var(--primary-color-lighter);
+        color: var(--primary-color-darker);
+    }
+
 
     .legend-item .swatch {
-        width: 14px;
-        height: 14px;
-        border-radius: 3px;
-        margin-right: 6px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 10px;
         flex-shrink: 0;
         display: inline-block;
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(0, 0, 0, 0.1);
     }
+    .legend-item .swatch[style*="background:#1f77b4"] { box-shadow: 0 0 5px #1f77b4; }
+    .legend-item .swatch[style*="background:#ff7f0e"] { box-shadow: 0 0 5px #ff7f0e; }
+
 
     .ath-img {
-        width: 60px;
-        border-radius: 6px;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: var(--radius-md);
         display: block;
-        margin: .4rem 0;
+        margin: 0.75rem auto;
+        border: 2px solid var(--border-color-medium);
+        box-shadow: var(--shadow-sm);
     }
 
     .flag {
-        width: 14px;
-        height: 9px;
-        margin-left: 3px;
+        width: 20px;
+        height: auto;
+        margin-left: 6px;
         vertical-align: middle;
+        border: 1px solid var(--border-color-soft);
+        border-radius: 3px;
     }
 
-    .x-axis path, .x-axis line,
-    .y-axis path, .y-axis line {
-        stroke: var(--grid);
-        stroke-width: 1;
-        shape-rendering: crispEdges;
+    .chart-container svg .x-axis .domain,
+    .chart-container svg .y-axis .domain {
+        stroke: var(--border-color-medium);
+        stroke-width: 1.5px;
     }
 
-    .x-axis text, .y-axis text {
-        fill: var(--text);
-        font-size: 0.75rem;
-        font-family: Poppins, sans-serif;
+    .chart-container svg .x-axis .tick line,
+    .chart-container svg .y-axis .tick line {
+        stroke: var(--border-color-soft);
+        stroke-opacity: 0.6;
+    }
+    .chart-container svg .x-axis .tick line[y2],
+    .chart-container svg .y-axis .tick line[x2] {
+        stroke-opacity: 0.1;
     }
 
-    .axis-label {
-        fill: var(--text);
-        font-size: 0.9rem;
-        font-family: Poppins, sans-serif;
+
+    .chart-container svg .x-axis .tick text,
+    .chart-container svg .y-axis .tick text {
+        font-size: .75rem;
+        fill: var(--text-muted-color);
+        font-weight: 500;
     }
 
-    @media (max-width: 768px) {
+    .chart-container svg .axis-label { /* This class is explicitly added in your D3 code */
+        font-size: .8rem;
+        fill: var(--text-primary-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: var(--font-family-sans);
+    }
+
+    .chart-container svg text[font-size="20px"] { /* Targets the title based on attribute */
+        font-size: 1.3rem !important;
+        font-weight: 700;
+        fill: var(--primary-color-darker);
+        font-family: var(--font-family-sans);
+        letter-spacing: -0.5px;
+    }
+    .chart-container svg text[text-anchor="middle"]:not([font-size="20px"]):not(.axis-label) { /* Targets "no data" text */
+        font-size: 1.1rem;
+        fill: var(--text-muted-color);
+        font-weight: 500;
+        font-family: var(--font-family-sans);
+    }
+
+    .hover-card::-webkit-scrollbar,
+    .legend::-webkit-scrollbar,
+    .suggestions-dropdown::-webkit-scrollbar {
+        width: 8px;
+    }
+    .hover-card::-webkit-scrollbar-track,
+    .legend::-webkit-scrollbar-track,
+    .suggestions-dropdown::-webkit-scrollbar-track {
+        background: var(--page-background);
+        border-radius: var(--radius-lg);
+    }
+    .hover-card::-webkit-scrollbar-thumb,
+    .legend::-webkit-scrollbar-thumb,
+    .suggestions-dropdown::-webkit-scrollbar-thumb {
+        background: var(--border-color-medium);
+        border-radius: var(--radius-lg);
+        border: 2px solid var(--page-background);
+    }
+    .hover-card::-webkit-scrollbar-thumb:hover,
+    .legend::-webkit-scrollbar-thumb:hover,
+    .suggestions-dropdown::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-color);
+    }
+
+
+    @media (max-width: 992px) {
         .dashboard {
             grid-template-columns: 1fr;
         }
-        
         .sidebar {
             order: 1;
+            flex-direction: row;
+            max-height: none;
+            overflow-x: auto;
         }
-        
+        .hover-card, .legend {
+            min-width: 280px;
+            flex: 1;
+        }
         .chart-container {
             order: 2;
+            height: 450px;
         }
-        
+    }
+
+    @media (max-width: 768px) {
         .controls {
             grid-template-columns: 1fr;
         }
-        
         .search-container {
             width: 100%;
+        }
+        .sidebar {
+            flex-direction: column;
+            overflow-x: visible;
+        }
+        .page {
+            padding: 1rem;
+        }
+        .title h1 {
+            font-size: 1.5rem;
+        }
+        .chart-container svg text[font-size="20px"] {
+             font-size: 1.1rem !important;
         }
     }
 </style>
