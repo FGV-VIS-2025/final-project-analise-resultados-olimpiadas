@@ -330,18 +330,37 @@
         country, GOLD: data.GOLD, SILVER: data.SILVER, BRONZE: data.BRONZE, 
         country_code_iso2: data.country_code_iso2 
     }));
+
+    // Substitui "United States of America" por "USA"
+    countries = countries.map(d => ({
+        ...d,
+        country: d.country === "United States of America" ? "USA" : d.country
+    }));
+    
     countries.forEach(d => d.total = d.GOLD + d.SILVER + d.BRONZE);
 
     const sortedAll = [...countries].sort((a, b) => b.total - a.total || b.GOLD - a.GOLD);
     let topN = sortedAll.slice(0, CHART_DISPLAY_LIMIT);
     
     let brazilDataPoint = countries.find(d => d.country === 'Brazil');
+    
     if (!brazilDataPoint) {
-        brazilDataPoint = { country: 'Brazil', GOLD: 0, SILVER: 0, BRONZE: 0, total: 0, country_code_iso2: officialFlagData.get('Brazil') || 'BR' };
+        brazilDataPoint = { 
+            country: 'Brazil', 
+            GOLD: 0, 
+            SILVER: 0, 
+            BRONZE: 0, 
+            total: 0, 
+            country_code_iso2: officialFlagData.get('Brazil') || 'BR' 
+        };
     } else if (!brazilDataPoint.country_code_iso2) {
         brazilDataPoint.country_code_iso2 = officialFlagData.get('Brazil') || 'BR';
     }
-    
+
+    // Calcular a posição do Brasil no ranking geral
+    const brazilRank = sortedAll.findIndex(d => d.country === 'Brazil') + 1;
+    brazilDataPoint.rank = brazilRank > 0 ? brazilRank : null;
+
     const isBrazilInTopN = topN.some(d => d.country === 'Brazil');
     let display = [];
     if (isBrazilInTopN) {
@@ -352,7 +371,7 @@
         } else {
             display = [...topN];
         }
-        display.push(brazilDataPoint);
+        display.push({...brazilDataPoint, highlight: true}); // Adiciona flag para destacar
     }
     display.sort((a, b) => b.total - a.total || b.GOLD - a.GOLD);
 
@@ -364,31 +383,57 @@
 
     const yAxisFlags = g.select('.axis-y-flags').selectAll('g.tick-flag-group').data(display, d => d.country);
     yAxisFlags.join(
-      enter => {
-        const group = enter.append('g').attr('class', 'tick-flag-group');
-        group.append('svg:image').attr('class', 'country-flag-axis')
-            .attr('xlink:href', d => getCountryFlagUrl(d.country, d.country_code_iso2))
-            .attr('x', -45).attr('y', d => y(d.country) + y.bandwidth() / 2 - 10)
-            .attr('width', 30).attr('height', 20).style('opacity', 0)
-            .transition().duration(300).delay((d,i) => i * 50).style('opacity', 1);
-        group.select('image.country-flag-axis').append("svg:title").text(d => d.country);
-        group.append('line').attr('class', 'grid-line-y').attr('x1', 0).attr('x2', width)
-            .attr('y1', d => y(d.country) + y.bandwidth() / 2).attr('y2', d => y(d.country) + y.bandwidth() / 2)
-            .style('stroke-opacity', 0).transition().duration(800).style('stroke-opacity', 1);
-        return group;
-      },
-      update => {
-        update.select('image.country-flag-axis')
-            .attr('xlink:href', d => getCountryFlagUrl(d.country, d.country_code_iso2))
-            .transition().duration(800)
-            .attr('y', d => y(d.country) + y.bandwidth() / 2 - 10).style('opacity', 1);
-        update.select('image.country-flag-axis title').text(d => d.country);
-        update.select('line.grid-line-y').transition().duration(800)
-            .attr('y1', d => y(d.country) + y.bandwidth() / 2).attr('y2', d => y(d.country) + y.bandwidth() / 2)
-            .style('stroke-opacity', 1);
-        return update;
-      },
-      exit => exit.transition().duration(300).style('opacity', 0).remove()
+        enter => {
+            const group = enter.append('g').attr('class', 'tick-flag-group');
+            group.append('svg:image').attr('class', 'country-flag-axis')
+                .attr('xlink:href', d => getCountryFlagUrl(d.country, d.country_code_iso2))
+                .attr('x', -45).attr('y', d => y(d.country) + y.bandwidth() / 2 - 10)
+                .attr('width', 30).attr('height', 20).style('opacity', 0)
+                .transition().duration(300).delay((d,i) => i * 50).style('opacity', 1);
+            group.select('image.country-flag-axis').append("svg:title").text(d => d.country);
+            
+            // Adicionar texto da posição para o Brasil (mesmo quando não está no top 10)
+            group.filter(d => d.country === 'Brazil' && brazilRank)
+                .append('text')
+                .attr('class', 'brazil-rank-text')
+                .attr('x', -50)
+                .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
+                .attr('text-anchor', 'end')
+                .style('font-size', '10px')
+                .style('font-weight', 'bold')
+                .text(`#${brazilRank}`);
+            
+            group.append('line').attr('class', 'grid-line-y').attr('x1', 0).attr('x2', width)
+                .attr('y1', d => y(d.country) + y.bandwidth() / 2).attr('y2', d => y(d.country) + y.bandwidth() / 2)
+                .style('stroke-opacity', 0).transition().duration(800).style('stroke-opacity', 1);
+            return group;
+        },
+        update => {
+            update.select('image.country-flag-axis')
+                .attr('xlink:href', d => getCountryFlagUrl(d.country, d.country_code_iso2))
+                .transition().duration(800)
+                .attr('y', d => y(d.country) + y.bandwidth() / 2 - 10).style('opacity', 1);
+            update.select('image.country-flag-axis title').text(d => d.country);
+            
+            // Atualizar texto da posição para o Brasil
+            update.selectAll('text.brazil-rank-text').remove(); // Remove qualquer texto existente
+            
+            update.filter(d => d.country === 'Brazil' && brazilRank)
+                .append('text')
+                .attr('class', 'brazil-rank-text')
+                .attr('x', -50)
+                .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
+                .attr('text-anchor', 'end')
+                .style('font-size', '10px')
+                .style('font-weight', 'bold')
+                .text(`#${brazilRank}`);
+            
+            update.select('line.grid-line-y').transition().duration(800)
+                .attr('y1', d => y(d.country) + y.bandwidth() / 2).attr('y2', d => y(d.country) + y.bandwidth() / 2)
+                .style('stroke-opacity', 1);
+            return update;
+        },
+        exit => exit.transition().duration(300).style('opacity', 0).remove()
     );
     
     g.select('.axis-x').transition().duration(800).call(d3.axisBottom(x));
@@ -442,155 +487,158 @@
   <title>Histórico de Medalhas Olímpicas</title>
 </svelte:head>
 
-<div class="title">
-    <h1>História das Edições Olímpicas</h1>
+  <div class="title">
+      <h1>História das Edições Olímpicas</h1>
 
-    <p>
-      A animação abaixo revela a evolução do ranking dos 10 países com mais medalhas conquistadas em todas as edições dos Jogos 
-      Olímpicos. Descubra as ascensões e quedas das maiores potências esportivas do mundo e acompanhe as mudanças no domínio 
-      olímpico ao longo dos anos. Além disso, confira os cards ao lado do ranking para informações detalhadas sobre cada edição, 
-      incluindo curiosidades e destaques marcantes.
-    </p> 
-</div>
-
-<div id="controls">
-  {#if years.length > 0}
-    <label for="year-select">Ano:</label>
-    <select id="year-select" bind:value={selectedYear}>
-      {#each years as year_option (year_option)}
-        <option value={year_option}>{year_option}</option>
-      {/each}
-    </select>
-    <input type="range" min="{years[0]}" max="{years[years.length - 1]}" step="{years.length > 1 ? years[1] - years[0] : 1}" bind:value={selectedYear} on:input={handleYearChange} disabled={years.length === 0}/>
-    <span>{selectedYear !== undefined ? selectedYear : 'N/A'}</span>
-    <button on:click={togglePlay} disabled={years.length === 0}>{isPlaying ? 'Pause' : 'Play'}</button>
-  {:else}
-    <p>Carregando anos...</p>
-  {/if}
-</div>
-
-<div class="main-content-grid">
-  <div class="column cards-column-left" bind:this={leftColumnElement}>
-    <div id="card-atleta-destaque-wrapper">
-      {#if selectedYear !== undefined && editionCardData}
-        {#if editionCardData.highlightedAthlete}
-          <div class="card">
-            <h3>Atleta Destaque: {editionCardData.year}</h3>
-            {#if editionCardData.highlightedAthlete.scraped_direct_photo_url}
-              <img class="athlete-photo" src="{editionCardData.highlightedAthlete.scraped_direct_photo_url}" alt="Foto de {editionCardData.highlightedAthlete.athlete_name}" onError="this.style.display='none'; const next = this.nextElementSibling; if(next) next.style.display='block';"/>
-              <p class="photo-error-message" style="display:none;">Foto não pôde ser carregada.</p>
-            {:else if editionCardData.highlightedAthlete.athlete_profile_url} 
-              <p class="photo-error-message">Tentando carregar foto...</p>
-            {:else}
-              <p class="photo-error-message"><em>Foto não disponível.</em></p>
-            {/if}
-            <p><strong>Nome:</strong> {editionCardData.highlightedAthlete.athlete_name}</p>
-            <p><strong>País:</strong> {editionCardData.highlightedAthlete.country_name}
-              {#if editionCardData.highlightedAthlete.scraped_direct_flag_url}
-                <img class="flag-icon" src="{editionCardData.highlightedAthlete.scraped_direct_flag_url}" alt="Bandeira de {editionCardData.highlightedAthlete.country_name}"/>
-              {/if}
-            </p>
-            <p><strong>Medalhas:</strong>
-              {#if (editionCardData.highlightedAthlete.GOLD || 0) > 0} <span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span> {editionCardData.highlightedAthlete.GOLD} {/if}
-              {#if (editionCardData.highlightedAthlete.SILVER || 0) > 0} <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span> {editionCardData.highlightedAthlete.SILVER} {/if}
-              {#if (editionCardData.highlightedAthlete.BRONZE || 0) > 0} <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span> {editionCardData.highlightedAthlete.BRONZE} {/if}
-              (Total: {editionCardData.highlightedAthlete.total})
-            </p>
-          </div>
-        {/if}
-      {/if}
-    </div>
-
-    <div id="card-brasil-wrapper">
-      {#if selectedYear !== undefined && editionCardData}
-        {#if editionCardData.brazilData}
-          <div class="card">
-            <h3>Brasil: {editionCardData.year}</h3>
-            {#if editionCardData.brazilData.total > 0}
-              <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.brazilData.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.brazilData.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.brazilData.BRONZE}</p>
-              <p><strong>Total de Medalhas:</strong> {editionCardData.brazilData.total}</p>
-              <p><strong>Ranking na Edição:</strong> {editionCardData.brazilRankInEdition}</p>
-            {:else}
-              <p>Brasil sem medalhas ou não participou.</p>
-            {/if}
-          </div>
-        {/if}
-      {/if}
-    </div>
-
-    <div id="card-pais-destaque-wrapper">
-      {#if selectedYear !== undefined && editionCardData}
-        {#if editionCardData.topCountry && editionCardData.topCountry.total > 0}
-          <div class="card">
-            <h3>País Destaque na Edição</h3>
-            <p><strong>País:</strong> {editionCardData.topCountry.country} 
-              {#if getCountryFlagUrl(editionCardData.topCountry.country, editionCardData.topCountry.country_code_iso2)}
-                <img class="flag-icon" src="{getCountryFlagUrl(editionCardData.topCountry.country, editionCardData.topCountry.country_code_iso2)}" alt="Bandeira de {editionCardData.topCountry.country}"/>
-              {/if}
-            </p>
-            <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.topCountry.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.topCountry.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.topCountry.BRONZE} (Total: {editionCardData.topCountry.total})</p>
-          </div>
-        {/if}
-      {/if}
-    </div>
+      <p>
+        A animação abaixo revela a evolução do ranking dos 10 países com mais medalhas conquistadas em todas as edições dos Jogos 
+        Olímpicos. Descubra as ascensões e quedas das maiores potências esportivas do mundo e acompanhe as mudanças no domínio 
+        olímpico ao longo dos anos. Além disso, confira os cards ao lado do ranking para informações detalhadas sobre cada edição, 
+        incluindo curiosidades e destaques marcantes.
+      </p> 
   </div>
 
-  <div id="chart" class="column chart-column" bind:this={chartContainerElement}>
-    {#if countryMedalsData.length === 0 && years.length > 0 && !initialized} 
-        <p class="no-data-message-chart">Aguardando dados do gráfico para {selectedYear}...</p>
+<div class="page">
+
+  <div id="controls">
+    {#if years.length > 0}
+      <label for="year-select">Ano:</label>
+      <select id="year-select" bind:value={selectedYear}>
+        {#each years as year_option (year_option)}
+          <option value={year_option}>{year_option}</option>
+        {/each}
+      </select>
+      <input type="range" min="{years[0]}" max="{years[years.length - 1]}" step="{years.length > 1 ? years[1] - years[0] : 1}" bind:value={selectedYear} on:input={handleYearChange} disabled={years.length === 0}/>
+      <span>{selectedYear !== undefined ? selectedYear : 'N/A'}</span>
+      <button on:click={togglePlay} disabled={years.length === 0}>{isPlaying ? 'Pause' : 'Play'}</button>
+    {:else}
+      <p>Carregando anos...</p>
     {/if}
   </div>
 
-  <div class="column cards-column-right" bind:this={rightColumnElement}>
-
-    <div id="card-top-paises-wrapper">
-      {#if selectedYear !== undefined && editionCardData}
-        {#if editionCardData.topCountriesInEdition && editionCardData.topCountriesInEdition.length > 0}
-          <div class="card">
-            <h3>Top {TOP_N_RANKING_CARDS} Países na Edição</h3> 
-            <ul>
-              {#each editionCardData.topCountriesInEdition as countryRank, i}
-                <li><strong>{i + 1}. {countryRank.country}</strong> 
-                  {#if getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}
-                    <img class="flag-icon" src="{getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}" alt="Bandeira de {countryRank.country}"/>
-                  {/if}
-                  <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{countryRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{countryRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{countryRank.BRONZE}, T:{countryRank.total})
-                </li>
-              {/each}
-            </ul>
-          </div>
+  <div class="main-content-grid">
+    <div class="column cards-column-left" bind:this={leftColumnElement}>
+      <div id="card-atleta-destaque-wrapper">
+        {#if selectedYear !== undefined && editionCardData}
+          {#if editionCardData.highlightedAthlete}
+            <div class="card">
+              <h3>Atleta Destaque: {editionCardData.year}</h3>
+              {#if editionCardData.highlightedAthlete.scraped_direct_photo_url}
+                <img class="athlete-photo" src="{editionCardData.highlightedAthlete.scraped_direct_photo_url}" alt="Foto de {editionCardData.highlightedAthlete.athlete_name}" onError="this.style.display='none'; const next = this.nextElementSibling; if(next) next.style.display='block';"/>
+                <p class="photo-error-message" style="display:none;">Foto não pôde ser carregada.</p>
+              {:else if editionCardData.highlightedAthlete.athlete_profile_url} 
+                <p class="photo-error-message">Tentando carregar foto...</p>
+              {:else}
+                <p class="photo-error-message"><em>Foto não disponível.</em></p>
+              {/if}
+              <p><strong>Nome:</strong> {editionCardData.highlightedAthlete.athlete_name}</p>
+              <p><strong>País:</strong> {editionCardData.highlightedAthlete.country_name}
+                {#if editionCardData.highlightedAthlete.scraped_direct_flag_url}
+                  <img class="flag-icon" src="{editionCardData.highlightedAthlete.scraped_direct_flag_url}" alt="Bandeira de {editionCardData.highlightedAthlete.country_name}"/>
+                {/if}
+              </p>
+              <p><strong>Medalhas:</strong>
+                {#if (editionCardData.highlightedAthlete.GOLD || 0) > 0} <span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span> {editionCardData.highlightedAthlete.GOLD} {/if}
+                {#if (editionCardData.highlightedAthlete.SILVER || 0) > 0} <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span> {editionCardData.highlightedAthlete.SILVER} {/if}
+                {#if (editionCardData.highlightedAthlete.BRONZE || 0) > 0} <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span> {editionCardData.highlightedAthlete.BRONZE} {/if}
+                (Total: {editionCardData.highlightedAthlete.total})
+              </p>
+            </div>
+          {/if}
         {/if}
+      </div>
+
+      <div id="card-brasil-wrapper">
+        {#if selectedYear !== undefined && editionCardData}
+          {#if editionCardData.brazilData}
+            <div class="card">
+              <h3>Brasil: {editionCardData.year}</h3>
+              {#if editionCardData.brazilData.total > 0}
+                <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.brazilData.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.brazilData.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.brazilData.BRONZE}</p>
+                <p><strong>Total de Medalhas:</strong> {editionCardData.brazilData.total}</p>
+                <p><strong>Ranking na Edição:</strong> {editionCardData.brazilRankInEdition}</p>
+              {:else}
+                <p>Brasil sem medalhas ou não participou.</p>
+              {/if}
+            </div>
+          {/if}
+        {/if}
+      </div>
+
+      <div id="card-pais-destaque-wrapper">
+        {#if selectedYear !== undefined && editionCardData}
+          {#if editionCardData.topCountry && editionCardData.topCountry.total > 0}
+            <div class="card">
+              <h3>País Destaque na Edição</h3>
+              <p><strong>País:</strong> {editionCardData.topCountry.country} 
+                {#if getCountryFlagUrl(editionCardData.topCountry.country, editionCardData.topCountry.country_code_iso2)}
+                  <img class="flag-icon" src="{getCountryFlagUrl(editionCardData.topCountry.country, editionCardData.topCountry.country_code_iso2)}" alt="Bandeira de {editionCardData.topCountry.country}"/>
+                {/if}
+              </p>
+              <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.topCountry.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.topCountry.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.topCountry.BRONZE} (Total: {editionCardData.topCountry.total})</p>
+            </div>
+          {/if}
+        {/if}
+      </div>
+    </div>
+
+    <div id="chart" class="column chart-column" bind:this={chartContainerElement}>
+      {#if countryMedalsData.length === 0 && years.length > 0 && !initialized} 
+          <p class="no-data-message-chart">Aguardando dados do gráfico para {selectedYear}...</p>
       {/if}
     </div>
 
-    <div id="card-top-atletas-wrapper">
-      {#if selectedYear !== undefined && editionCardData}
-        {#if editionCardData.topAthletesInEdition && editionCardData.topAthletesInEdition.length > 0}
-          <div class="card">
-            <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
-            <ul>
-              {#each editionCardData.topAthletesInEdition as athleteRank, i}
-                <li><strong>{i + 1}. {athleteRank.athlete_name} ({athleteRank.country_name || 'N/A'})</strong>
-                  {#if getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}
-                        <img class="flag-icon" src="{getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}" alt="Bandeira de {athleteRank.country_name}"/>
-                  {/if}
-                  <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{athleteRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{athleteRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{athleteRank.BRONZE}, T:{athleteRank.total})
-                </li>
-              {/each}
-            </ul>
-          </div>
-        {:else if editionCardData.year && athleteMedalsData.length > 0} 
-          <div class="card">
-            <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
-            <p>Nenhum atleta com medalhas registrado para {editionCardData.year}.</p>
-          </div>
-        {:else if editionCardData.year}
-          <div class="card">
-            <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
-            <p>Dados de atletas não disponíveis para {editionCardData.year}.</p>
-          </div>
+    <div class="column cards-column-right" bind:this={rightColumnElement}>
+
+      <div id="card-top-paises-wrapper">
+        {#if selectedYear !== undefined && editionCardData}
+          {#if editionCardData.topCountriesInEdition && editionCardData.topCountriesInEdition.length > 0}
+            <div class="card">
+              <h3>Top {TOP_N_RANKING_CARDS} Países na Edição</h3> 
+              <ul>
+                {#each editionCardData.topCountriesInEdition as countryRank, i}
+                  <li><strong>{i + 1}. {countryRank.country}</strong> 
+                    {#if getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}
+                      <img class="flag-icon" src="{getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}" alt="Bandeira de {countryRank.country}"/>
+                    {/if}
+                    <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{countryRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{countryRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{countryRank.BRONZE}, T:{countryRank.total})
+                  </li>
+                {/each}
+              </ul>
+            </div>
+          {/if}
         {/if}
-      {/if}
+      </div>
+
+      <div id="card-top-atletas-wrapper">
+        {#if selectedYear !== undefined && editionCardData}
+          {#if editionCardData.topAthletesInEdition && editionCardData.topAthletesInEdition.length > 0}
+            <div class="card">
+              <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
+              <ul>
+                {#each editionCardData.topAthletesInEdition as athleteRank, i}
+                  <li><strong>{i + 1}. {athleteRank.athlete_name} ({athleteRank.country_name || 'N/A'})</strong>
+                    {#if getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}
+                          <img class="flag-icon" src="{getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}" alt="Bandeira de {athleteRank.country_name}"/>
+                    {/if}
+                    <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{athleteRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{athleteRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{athleteRank.BRONZE}, T:{athleteRank.total})
+                  </li>
+                {/each}
+              </ul>
+            </div>
+          {:else if editionCardData.year && athleteMedalsData.length > 0} 
+            <div class="card">
+              <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
+              <p>Nenhum atleta com medalhas registrado para {editionCardData.year}.</p>
+            </div>
+          {:else if editionCardData.year}
+            <div class="card">
+              <h3>Top {TOP_N_RANKING_CARDS} Atletas na Edição</h3>
+              <p>Dados de atletas não disponíveis para {editionCardData.year}.</p>
+            </div>
+          {/if}
+        {/if}
+      </div>
     </div>
   </div>
 </div>
@@ -720,4 +768,21 @@
           order: 2;
       }
   }
+
+  .page {
+        max-width: 1380px;
+        margin: auto;
+        /* padding: 1.75rem; */
+        background: var(--page-background);
+        font-family: var(--font-family-sans);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+    }
+
+  :global(.brazil-rank-text) {
+  fill: #006b3c; /* Verde similar à bandeira do Brasil */
+  font-size: 10px;
+  font-weight: bold;
+  text-shadow: 0 0 2px white; /* Melhora a legibilidade */
+}
 </style>

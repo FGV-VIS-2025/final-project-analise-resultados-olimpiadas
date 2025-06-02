@@ -34,8 +34,8 @@
         
         Nosso objetivo com este site é mergulhar na rica história dos Jogos Olímpicos através de dados e visualizações interativas.
         Queremos oferecer a você uma maneira fascinante de explorar tendências, comparar performances marcantes e compreender a evolução
-        do esporte ao longo das décadas. Logo abaixo, você encontrará nossa visualização principal, um ponto de partida para sua jornada 
-        exploratória.
+        do esporte ao longo das décadas. Navegue por todas as abas para ter a experiência completa e entender diferentes aspectos dos jogos 
+        olímpicos. Logo abaixo, você encontrará nossa visualização principal, um ponto de partida para sua jornada exploratória.
 
     </p>
 
@@ -135,9 +135,9 @@
     font-size: 1rem;
 }
 
-.title p {
+/* .title p {
     font-size: .9rem;
-}
+} */
 
 .controls-container {
     display: flex;
