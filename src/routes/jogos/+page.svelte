@@ -2,6 +2,7 @@
   import { onMount, onDestroy, tick } from 'svelte';
   import * as d3 from 'd3';
   import { base } from '$app/paths';
+  import { browser } from '$app/environment';
 
   let countryMedalsCsvUrl = `${base}/medals_by_country.csv`;
   let athleteMedalsCsvUrl = `${base}/athlete_medals_by_edition.csv`;
@@ -54,6 +55,9 @@
   let chartContainerElement;
 
   function adjustLayoutHeights() {
+    if (!browser) { 
+      return;
+    }
     if (chartContainerElement && leftColumnElement && rightColumnElement) {
       const currentChartHeight = chartContainerElement.getBoundingClientRect().height;
 
@@ -151,6 +155,9 @@
   });
 
   onDestroy(() => {
+    if (!browser) { 
+      return;
+    }
     window.removeEventListener('resize', adjustLayoutHeights);
     if (playInterval) clearInterval(playInterval);
   });
