@@ -25,17 +25,17 @@
 	let hoveredNode = null;
 	let mousePosition = { x: 0, y: 0 };
 	let zoomTransform = d3.zoomIdentity;
-
+	
 	// Section: Visualization Parameters
 	const width = 1000;
 	const height = 700;
 	const nodeRadius = 8;
 	const centralNodeRadius = 15;
+	const baseRingRadius = 350; // Raio base para 1 competição
 
 	// Section: Lifecycle
 	onMount(async () => {
 		try {
-			// Await data fetching
 			const [pairsResponse, metadataResponse] = await Promise.all([
 				fetch(`${base}/athlete_pairs.csv`),
 				fetch(`${base}/df_all.csv`)
@@ -43,27 +43,23 @@
 			allPairs = d3.csvParse(await pairsResponse.text());
 			allMetadata = d3.csvParse(await metadataResponse.text());
 			
-			// Process data for filters
 			processInitialData();
 
-			// --- LÓGICA DE BUSCA AUTOMÁTICA ---
 			const urlParams = $page.url.searchParams;
 			const athleteFromUrl = urlParams.get('athlete');
 
 			if (athleteFromUrl) {
 				const decodedAthlete = decodeURIComponent(athleteFromUrl);
-				// Esta função agora é chamada e irá acionar a criação do grafo
 				selectSuggestion(decodedAthlete);
-			} else {
-				// Se nenhum atleta for encontrado na URL, renderiza o texto de placeholder
-				renderGraph();
 			}
 
 		} catch (error) {
 			console.error('Error loading data:', error);
 		} finally {
-			// Apenas desliga o indicador de carregamento no final
 			isLoading = false;
+			if (!centralNode) {
+				renderGraph();
+			}
 		}
 
 		const handleMouseMove = (event) => {
@@ -85,7 +81,7 @@
 	function updateAvailableEvents() {
 		let availableMetadata = allMetadata;
 		if (selectedDiscipline) {
-			availableMetadata = allMetadata.filter(d => d.discipline_title === selectedDiscipline);
+			availableMetadata = availableMetadata.filter(d => d.discipline_title === selectedDiscipline);
 		}
 		events = [...new Set(availableMetadata.map(d => d.event_title))].sort();
 		updateAvailableAthletes();
@@ -165,14 +161,14 @@
 		}
 
 		simulation = d3.forceSimulation(graph.nodes)
-			.force('link', d3.forceLink(graph.links)
-				.id(d => d.id)
-				.distance(d => 250 - d.weight * 20)
-				.strength(0.8)
-			)
-			.force('charge', d3.forceManyBody().strength(-300))
+			.force('charge', d3.forceManyBody().strength(-50))
 			.force('center', d3.forceCenter(width / 2, height / 2))
-			.force('collision', d3.forceCollide().radius(d => (d.isCentral ? centralNodeRadius : nodeRadius) + 5));
+			.force('radial', d3.forceRadial(d => d.isCentral ? 0 : baseRingRadius / d.competitions)
+				.x(width / 2)
+				.y(height / 2)
+				.strength(1)
+			)
+			.force('collision', d3.forceCollide().radius(d => (d.isCentral ? centralNodeRadius : nodeRadius) + 10));
 		
 		renderGraph();
 	}
@@ -191,15 +187,44 @@
 			return;
 		}
 		
-		const zoomGroup = svg.append('g').attr('transform', zoomTransform);
+		const zoomGroup = svg.append('g').attr('class', 'zoom-group');
 
-		const link = zoomGroup.selectAll('.link')
+		// Desenha os anéis de competição
+		const competitionCounts = [...new Set(graph.nodes.filter(n => !n.isCentral).map(n => n.competitions))];
+		
+		const ringGroup = zoomGroup.append('g').attr('class', 'rings');
+		
+		ringGroup.selectAll('.competition-ring')
+			.data(competitionCounts)
+			.enter()
+			.append('circle')
+			.attr('class', 'competition-ring')
+			.attr('cx', width / 2)
+			.attr('cy', height / 2)
+			.attr('r', d => baseRingRadius / d)
+			.attr('stroke', '#e0e0e0')
+			.attr('stroke-dasharray', '4 4')
+			.attr('fill', 'none');
+
+		ringGroup.selectAll('.ring-label')
+			.data(competitionCounts)
+			.enter()
+			.append('text')
+			.attr('class', 'ring-label')
+			.attr('x', width / 2)
+			.attr('y', d => height / 2 - (baseRingRadius / d) - 5)
+			.attr('text-anchor', 'middle')
+			.text(d => `${d} comp.`);
+
+
+		const link = zoomGroup.append('g').attr('class', 'links')
+			.selectAll('.link')
 			.data(graph.links)
 			.enter().append('line')
-			.attr('class', 'link')
-			.style('stroke-width', d => Math.min(d.weight * 1.5, 8));
+			.attr('class', 'link');
 
-		const nodeGroup = zoomGroup.selectAll('.node-group')
+		const nodeGroup = zoomGroup.append('g').attr('class', 'nodes')
+			.selectAll('.node-group')
 			.data(graph.nodes, d => d.id)
 			.enter().append('g')
 			.attr('class', 'node-group')
@@ -218,19 +243,22 @@
 			.attr('dy', d => d.isCentral ? centralNodeRadius + 15 : nodeRadius + 12)
 			.text(d => d.label);
 
-		simulation.on('tick', () => {
-			link.attr('x1', d => d.source.x)
-				.attr('y1', d => d.source.y)
-				.attr('x2', d => d.target.x)
-				.attr('y2', d => d.target.y);
-			nodeGroup.attr('transform', d => `translate(${d.x}, ${d.y})`);
-		});
+		simulation
+			.on('tick', () => {
+				link.attr('x1', d => d.source.x)
+					.attr('y1', d => d.source.y)
+					.attr('x2', d => d.target.x)
+					.attr('y2', d => d.target.y);
+				nodeGroup.attr('transform', d => `translate(${d.x}, ${d.y})`);
+			});
 		
-		const zoom = d3.zoom().scaleExtent([0.3, 5]).on('zoom', event => {
+		// Re-adiciona o comportamento de zoom e pan
+		const zoom = d3.zoom().scaleExtent([0.2, 5]).on('zoom', event => {
 			zoomTransform = event.transform;
 			zoomGroup.attr('transform', event.transform);
 		});
-		svg.call(zoom);
+		
+		svg.call(zoom).call(zoom.transform, d3.zoomIdentity);
 	}
 
 	function getCountryColor(country) {
@@ -287,10 +315,9 @@
 	}
 </script>
 
-
-
 <div class="network-container">
 	<div class="controls">
+		<!-- Discipline Filter -->
 		<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
 			<option value="">Todas as Modalidades</option>
 			{#each disciplines as discipline}
@@ -298,6 +325,7 @@
 			{/each}
 		</select>
 		
+		<!-- Event Filter -->
 		<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
 			<option value="">Todos os Eventos</option>
 			{#each events as event}
@@ -305,6 +333,7 @@
 			{/each}
 		</select>
 		
+		<!-- Athlete Search -->
 		<div class="search-container">
 			<input
 				type="text"
@@ -419,6 +448,10 @@
 		background: #fff;
 		border-radius: 8px;
 		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		cursor: grab; /* Cursor para indicar que é móvel */
+	}
+	#graph-svg:active {
+		cursor: grabbing;
 	}
 	
 	.placeholder-text {
@@ -473,6 +506,7 @@
 	:global(.link) {
 		stroke: #aaa;
 		stroke-opacity: 0.7;
+		stroke-width: 1.5px;
 	}
 	:global(.node-label) {
 		font-size: 12px;
@@ -482,5 +516,10 @@
 	}
 	:global(.node-group) {
 		cursor: pointer;
+	}
+	:global(.ring-label) {
+		fill: #aaa;
+		font-size: 10px;
+		text-transform: uppercase;
 	}
 </style>
