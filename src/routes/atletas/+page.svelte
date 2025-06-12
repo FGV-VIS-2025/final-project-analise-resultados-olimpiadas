@@ -10,6 +10,7 @@
 	let disciplines = [];
 	let events = [];
 	let athletes = [];
+	let eventsMap = new Map();
 
 	// Section: Filter States
 	let selectedDiscipline = '';
@@ -24,15 +25,16 @@
 	let isLoading = true;
 	let centralNode = null;
 	let hoveredNode = null;
+	let hoveredCompetitionDetails = [];
 	let mousePosition = { x: 0, y: 0 };
 	let zoomTransform = d3.zoomIdentity;
 	
 	// Section: Visualization Parameters
 	const width = 1000;
-	const height = 600; // Altura reduzida
+	const height = 600;
 	const nodeRadius = 8;
 	const centralNodeRadius = 15;
-	const baseRingRadius = 300; // Raio base ajustado para a nova altura
+	const baseRingRadius = 300;
 
 	// Section: Lifecycle
 	onMount(async () => {
@@ -55,15 +57,12 @@
 			console.error('Error loading data:', error);
 		} finally {
 			isLoading = false;
-			// Aguarda o Svelte atualizar o DOM (remover o 'loading' e mostrar o SVG)
 			await tick(); 
 
 			if (athleteFromUrl) {
 				const decodedAthlete = decodeURIComponent(athleteFromUrl);
-				// Agora que o SVG existe, a busca é acionada
 				selectSuggestion(decodedAthlete);
 			} else {
-				// Se nenhum atleta foi passado, renderiza o placeholder
 				renderGraph();
 			}
 		}
@@ -81,11 +80,20 @@
 	// Section: Data Processing
 	function processInitialData() {
 		disciplines = [...new Set(allMetadata.map(d => d.discipline_title))].sort();
+		
+		allMetadata.forEach(row => {
+			const key = `${row.event_title}|${row.ano}`;
+			if (!eventsMap.has(key)) {
+				eventsMap.set(key, []);
+			}
+			eventsMap.get(key).push(row);
+    	});
+
 		updateAvailableEvents();
 	}
 	
 	function getCountryColor(countryName) {
-		if (!countryName || countryName === 'N/A') return '#ccc'; // Cor padrão
+		if (!countryName || countryName === 'N/A') return '#ccc';
 		let hash = 0;
 		for (let i = 0; i < countryName.length; i++) {
 			hash = countryName.charCodeAt(i) + ((hash << 5) - hash);
@@ -166,6 +174,34 @@
 			country: meta.country_name,
 			event: meta.event_title,
 		};
+	}
+
+	function findCommonCompetitions(centralAthleteName, hoveredAthleteName) {
+		const common = [];
+		for (const [key, participants] of eventsMap.entries()) {
+			const centralAthleteData = participants.find(p => p.athlete_full_name === centralAthleteName);
+			const hoveredAthleteData = participants.find(p => p.athlete_full_name === hoveredAthleteName);
+
+			if (centralAthleteData && hoveredAthleteData) {
+				const [event_title, ano] = key.split('|');
+				common.push({
+					event: event_title,
+					year: ano,
+					centralValue: centralAthleteData.value_unit || 'N/A',
+					hoveredValue: hoveredAthleteData.value_unit || 'N/A'
+				});
+			}
+		}
+		return common.sort((a,b) => b.year - a.year);
+	}
+
+	// Reactive statement for tooltip data
+	$: {
+		if (hoveredNode && !hoveredNode.isCentral && centralNode) {
+			hoveredCompetitionDetails = findCommonCompetitions(centralNode.id, hoveredNode.id);
+		} else {
+			hoveredCompetitionDetails = [];
+		}
 	}
 
 	// Section: D3 Visualization
@@ -323,7 +359,6 @@
 	}
 </script>
 
-
 <div class="page-wrapper">
 	<div class="network-container">
 		<div class="controls">
@@ -394,8 +429,27 @@
 		<div class="tooltip" style="left: {mousePosition.x + 15}px; top: {mousePosition.y + 15}px">
 			<h3>{hoveredNode.label}</h3>
 			<p><strong>País:</strong> {hoveredNode.country || 'N/A'}</p>
-			{#if !hoveredNode.isCentral}
-			<p><strong>Competições juntos:</strong> {hoveredNode.competitions}</p>
+			{#if hoveredCompetitionDetails.length > 0}
+				<table class="competition-table">
+					<thead>
+						<tr>
+							<th>Evento (Ano)</th>
+							<th>{centralNode.label}</th>
+							<th>{hoveredNode.label}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each hoveredCompetitionDetails as comp}
+							<tr>
+								<td>{comp.event} ({comp.year})</td>
+								<td>{comp.centralValue}</td>
+								<td>{comp.hoveredValue}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			{:else if !hoveredNode.isCentral}
+				<p><strong>Competições juntos:</strong> {hoveredNode.competitions}</p>
 			{/if}
 		</div>
 	{/if}
@@ -501,14 +555,15 @@
 
 	.tooltip {
 		position: fixed;
-		background: rgba(255, 255, 255, 0.95);
+		background: rgba(255, 255, 255, 0.98);
 		padding: 12px;
-		border-radius: 6px;
-		box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+		border-radius: 8px;
+		box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 		z-index: 10;
 		pointer-events: none;
-		max-width: 300px;
+		max-width: 450px;
 		border: 1px solid #ddd;
+		transition: opacity 0.1s ease;
 	}
 	
 	.tooltip h3 {
@@ -528,6 +583,27 @@
 		color: #000;
 	}
 
+	.competition-table {
+		margin-top: 12px;
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 12px;
+	}
+	.competition-table th, .competition-table td {
+		border: 1px solid #e0e0e0;
+		padding: 6px 8px;
+		text-align: left;
+		white-space: nowrap;
+	}
+	.competition-table th {
+		background-color: #f7f7f7;
+		font-weight: 600;
+	}
+	.competition-table tr:nth-child(even) {
+		background-color: #fdfdfd;
+	}
+
+
 	.competitor-legend {
 		background: #fff;
 		border-radius: 8px;
@@ -536,7 +612,7 @@
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		position: sticky;
 		top: 20px;
-		height: 640px; /* Altura correspondente ao gráfico + controles */
+		height: 640px; 
 	}
 	
 	.competitor-legend h2 {
