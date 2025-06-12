@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import * as d3 from 'd3';
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
@@ -19,6 +19,7 @@
 	
 	// Section: Graph & UI States
 	let graph = { nodes: [], links: [] };
+	let legendCompetitors = [];
 	let simulation;
 	let isLoading = true;
 	let centralNode = null;
@@ -28,13 +29,15 @@
 	
 	// Section: Visualization Parameters
 	const width = 1000;
-	const height = 700;
+	const height = 600; // Altura reduzida
 	const nodeRadius = 8;
 	const centralNodeRadius = 15;
-	const baseRingRadius = 350; // Raio base para 1 competição
+	const baseRingRadius = 300; // Raio base ajustado para a nova altura
 
 	// Section: Lifecycle
 	onMount(async () => {
+		let athleteFromUrl = null;
+
 		try {
 			const [pairsResponse, metadataResponse] = await Promise.all([
 				fetch(`${base}/athlete_pairs.csv`),
@@ -46,18 +49,21 @@
 			processInitialData();
 
 			const urlParams = $page.url.searchParams;
-			const athleteFromUrl = urlParams.get('athlete');
-
-			if (athleteFromUrl) {
-				const decodedAthlete = decodeURIComponent(athleteFromUrl);
-				selectSuggestion(decodedAthlete);
-			}
+			athleteFromUrl = urlParams.get('athlete');
 
 		} catch (error) {
 			console.error('Error loading data:', error);
 		} finally {
 			isLoading = false;
-			if (!centralNode) {
+			// Aguarda o Svelte atualizar o DOM (remover o 'loading' e mostrar o SVG)
+			await tick(); 
+
+			if (athleteFromUrl) {
+				const decodedAthlete = decodeURIComponent(athleteFromUrl);
+				// Agora que o SVG existe, a busca é acionada
+				selectSuggestion(decodedAthlete);
+			} else {
+				// Se nenhum atleta foi passado, renderiza o placeholder
 				renderGraph();
 			}
 		}
@@ -78,6 +84,16 @@
 		updateAvailableEvents();
 	}
 	
+	function getCountryColor(countryName) {
+		if (!countryName || countryName === 'N/A') return '#ccc'; // Cor padrão
+		let hash = 0;
+		for (let i = 0; i < countryName.length; i++) {
+			hash = countryName.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const h = hash % 360;
+		return `hsl(${h}, 65%, 50%)`;
+	}
+
 	function updateAvailableEvents() {
 		let availableMetadata = allMetadata;
 		if (selectedDiscipline) {
@@ -139,6 +155,7 @@
 		}));
 		
 		graph = { nodes, links };
+		legendCompetitors = competitorNodes.sort((a,b) => b.competitions - a.competitions);
 		initGraph();
 	}
 
@@ -189,7 +206,6 @@
 		
 		const zoomGroup = svg.append('g').attr('class', 'zoom-group');
 
-		// Desenha os anéis de competição
 		const competitionCounts = [...new Set(graph.nodes.filter(n => !n.isCentral).map(n => n.competitions))];
 		
 		const ringGroup = zoomGroup.append('g').attr('class', 'rings');
@@ -252,22 +268,12 @@
 				nodeGroup.attr('transform', d => `translate(${d.x}, ${d.y})`);
 			});
 		
-		// Re-adiciona o comportamento de zoom e pan
 		const zoom = d3.zoom().scaleExtent([0.2, 5]).on('zoom', event => {
 			zoomTransform = event.transform;
 			zoomGroup.attr('transform', event.transform);
 		});
 		
 		svg.call(zoom).call(zoom.transform, d3.zoomIdentity);
-	}
-
-	function getCountryColor(country) {
-		if (!country || country === 'N/A') return '#ccc';
-		let hash = 0;
-		for (let i = 0; i < country.length; i++) {
-			hash = country.charCodeAt(i) + ((hash << 5) - hash);
-		}
-		return `hsl(${Math.abs(hash) % 360}, 70%, 50%)`;
 	}
 	
 	// Section: UI Handlers
@@ -276,6 +282,7 @@
 		athleteSearch = '';
 		centralNode = null;
 		graph = { nodes: [], links: [] };
+		legendCompetitors = [];
 		updateAvailableEvents();
 		renderGraph();
 	}
@@ -284,6 +291,7 @@
 		athleteSearch = '';
 		centralNode = null;
 		graph = { nodes: [], links: [] };
+		legendCompetitors = [];
 		updateAvailableAthletes();
 		renderGraph();
 	}
@@ -315,52 +323,72 @@
 	}
 </script>
 
-<div class="network-container">
-	<div class="controls">
-		<!-- Discipline Filter -->
-		<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
-			<option value="">Todas as Modalidades</option>
-			{#each disciplines as discipline}
-				<option value={discipline}>{discipline}</option>
-			{/each}
-		</select>
-		
-		<!-- Event Filter -->
-		<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
-			<option value="">Todos os Eventos</option>
-			{#each events as event}
-				<option value={event}>{event}</option>
-			{/each}
-		</select>
-		
-		<!-- Athlete Search -->
-		<div class="search-container">
-			<input
-				type="text"
-				bind:value={athleteSearch}
-				placeholder="Buscar atleta..."
-				on:input={handleSearchInput}
-				on:keydown={(e) => e.key === 'Enter' && handleSearch()}
-			/>
-			<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
+
+<div class="page-wrapper">
+	<div class="network-container">
+		<div class="controls">
+			<!-- Discipline Filter -->
+			<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
+				<option value="">Todas as Modalidades</option>
+				{#each disciplines as discipline}
+					<option value={discipline}>{discipline}</option>
+				{/each}
+			</select>
 			
-			{#if suggestions.length > 0}
-				<div class="suggestions">
-					{#each suggestions as suggestion}
-						<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
-							{suggestion}
-						</button>
-					{/each}
-				</div>
-			{/if}
+			<!-- Event Filter -->
+			<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
+				<option value="">Todos os Eventos</option>
+				{#each events as event}
+					<option value={event}>{event}</option>
+				{/each}
+			</select>
+			
+			<!-- Athlete Search -->
+			<div class="search-container">
+				<input
+					type="text"
+					bind:value={athleteSearch}
+					placeholder="Buscar atleta..."
+					on:input={handleSearchInput}
+					on:keydown={(e) => e.key === 'Enter' && handleSearch()}
+				/>
+				<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
+				
+				{#if suggestions.length > 0}
+					<div class="suggestions">
+						{#each suggestions as suggestion}
+							<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
+								{suggestion}
+							</button>
+						{/each}
+					</div>
+				{/if}
+			</div>
 		</div>
+
+		{#if isLoading}
+			<div class="loading">Carregando dados...</div>
+		{:else}
+			<svg id="graph-svg" {width} {height}></svg>
+		{/if}
 	</div>
 
-	{#if isLoading}
-		<div class="loading">Carregando dados...</div>
-	{:else}
-		<svg id="graph-svg" {width} {height}></svg>
-	{/if}
+	<aside class="competitor-legend">
+		<h2>Competidores</h2>
+		<div class="legend-list">
+			{#if legendCompetitors.length > 0}
+				{#each legendCompetitors as competitor}
+				<div class="legend-item" on:click={() => selectSuggestion(competitor.label)} title="Ver rede de {competitor.label}">
+					<span class="legend-swatch" style="background-color: {getCountryColor(competitor.country)}"></span>
+					<span class="competitor-name">{competitor.label}</span>
+					<span class="competitor-count">{competitor.competitions} comp.</span>
+				</div>
+				{/each}
+			{:else}
+				<p class="legend-placeholder">Nenhum atleta selecionado.</p>
+			{/if}
+		</div>
+	</aside>
 
 	{#if hoveredNode}
 		<div class="tooltip" style="left: {mousePosition.x + 15}px; top: {mousePosition.y + 15}px">
@@ -374,12 +402,17 @@
 </div>
 
 <style>
-	.network-container {
-		position: relative;
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
+	.page-wrapper {
+		display: grid;
+		grid-template-columns: 1fr 300px;
+		gap: 20px;
 		padding: 20px;
+		align-items: start;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.network-container {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	}
 
@@ -448,7 +481,7 @@
 		background: #fff;
 		border-radius: 8px;
 		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-		cursor: grab; /* Cursor para indicar que é móvel */
+		cursor: grab;
 	}
 	#graph-svg:active {
 		cursor: grabbing;
@@ -493,6 +526,80 @@
 
 	.tooltip strong {
 		color: #000;
+	}
+
+	.competitor-legend {
+		background: #fff;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		padding: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		position: sticky;
+		top: 20px;
+		height: 640px; /* Altura correspondente ao gráfico + controles */
+	}
+	
+	.competitor-legend h2 {
+		margin-top: 0;
+		font-size: 1.2rem;
+		border-bottom: 1px solid #eee;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
+
+	.legend-list {
+		max-height: 550px;
+		overflow-y: auto;
+		padding-right: 10px;
+	}
+
+	.legend-placeholder {
+		font-style: italic;
+		color: #888;
+		text-align: center;
+		padding: 20px 0;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		padding: 8px 4px;
+		font-size: 0.9rem;
+		border-bottom: 1px solid #f0f0f0;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: background-color 0.2s;
+	}
+	.legend-item:hover {
+		background-color: #f5f5f5;
+	}
+
+	.legend-item:last-child {
+		border-bottom: none;
+	}
+
+	.legend-swatch {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		margin-right: 10px;
+		flex-shrink: 0;
+		border: 1px solid rgba(0,0,0,0.1);
+	}
+	
+	.competitor-name {
+		color: #333;
+		flex-grow: 1;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.competitor-count {
+		color: #888;
+		font-weight: 500;
+		white-space: nowrap;
+		margin-left: 15px;
 	}
 	
 	:global(.node) {
