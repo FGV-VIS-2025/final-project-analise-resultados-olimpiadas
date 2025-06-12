@@ -1,845 +1,486 @@
 <script>
-    import { onMount } from 'svelte';
-    import * as d3 from 'd3';
-    import { page } from '$app/stores';
-    import { base } from '$app/paths';
+	import { onMount } from 'svelte';
+	import * as d3 from 'd3';
+	import { base } from '$app/paths';
+	import { page } from '$app/stores';
 
-    let csvUrl = `${base}/df_all.csv`;
-    let rawData = [];
-    let athleteName1 = '';
-    let athleteName2 = '';
-    let filteredAthleteData1 = [];
-    let filteredAthleteData2 = [];
-    let athleteSports = [];
-    let allAthleteNames = [];
-    let suggestions1 = [];
-    let suggestions2 = [];
-    let showSuggestions1 = false;
-    let showSuggestions2 = false;
-    let secondAthleteOptions = [];
+	// Section: Data Stores
+	let allMetadata = [];
+	let allPairs = [];
+	let disciplines = [];
+	let events = [];
+	let athletes = [];
 
-    let svgRef, chartContainerRef, ro;
-    const margin = { top: 60, right: 50, bottom: 70, left: 60 };
-    const chartHeight = 500;
-    let chartWidth = 600;
+	// Section: Filter States
+	let selectedDiscipline = '';
+	let selectedEvent = '';
+	let athleteSearch = '';
+	let suggestions = [];
+	
+	// Section: Graph & UI States
+	let graph = { nodes: [], links: [] };
+	let simulation;
+	let isLoading = true;
+	let centralNode = null;
+	let hoveredNode = null;
+	let mousePosition = { x: 0, y: 0 };
+	let zoomTransform = d3.zoomIdentity;
 
-    let xScale, yScale;
-    const athleteColors = {
-        athlete1: '#1f77b4',
-        athlete2: '#ff7f0e'
-    };
+	// Section: Visualization Parameters
+	const width = 1000;
+	const height = 700;
+	const nodeRadius = 8;
+	const centralNodeRadius = 15;
 
-    let hoverVisible = false;
-    let hoverData = { athlete: '', sport: '', year: 0, value: 0, country: '', photo: '', flag: '' };
-    const cache = new Map();
+	// Section: Lifecycle
+	onMount(async () => {
+		try {
+			// Await data fetching
+			const [pairsResponse, metadataResponse] = await Promise.all([
+				fetch(`${base}/athlete_pairs.csv`),
+				fetch(`${base}/df_all.csv`)
+			]);
+			allPairs = d3.csvParse(await pairsResponse.text());
+			allMetadata = d3.csvParse(await metadataResponse.text());
+			
+			// Process data for filters
+			processInitialData();
 
-    onMount(() => {
-        const urlParams = $page.url.searchParams;
-        if (urlParams.has('athlete1')) {
-            athleteName1 = decodeURIComponent(urlParams.get('athlete1'));
-        }
-        if (urlParams.has('athlete2')) {
-            athleteName2 = decodeURIComponent(urlParams.get('athlete2'));
-        }
-        filterAndDrawAthleteData();
-    });
+			// --- LÓGICA DE BUSCA AUTOMÁTICA ---
+			const urlParams = $page.url.searchParams;
+			const athleteFromUrl = urlParams.get('athlete');
 
-    onMount(async () => {
-        rawData = await d3.csv(csvUrl);
-        allAthleteNames = [...new Set(rawData.map(d => d.athlete_full_name).filter(Boolean))].sort();
-        updateWidth();
-        if (typeof ResizeObserver !== 'undefined') {
-            ro = new ResizeObserver(updateWidth);
-            ro.observe(chartContainerRef);
-        }
-        filterAndDrawAthleteData();
-    });
+			if (athleteFromUrl) {
+				const decodedAthlete = decodeURIComponent(athleteFromUrl);
+				// Esta função agora é chamada e irá acionar a criação do grafo
+				selectSuggestion(decodedAthlete);
+			} else {
+				// Se nenhum atleta for encontrado na URL, renderiza o texto de placeholder
+				renderGraph();
+			}
 
-    $: {
-        if (athleteName1 && rawData.length) {
-            const sports = new Set(
-                rawData
-                    .filter(d => d.athlete_full_name === athleteName1)
-                    .map(d => d.event_title)
-            );
-            secondAthleteOptions = [...new Set(
-                rawData
-                    .filter(d => sports.has(d.event_title))
-                    .map(d => d.athlete_full_name)
-            )].filter(name => name !== athleteName1);
-        } else {
-            secondAthleteOptions = [];
-        }
-    }
+		} catch (error) {
+			console.error('Error loading data:', error);
+		} finally {
+			// Apenas desliga o indicador de carregamento no final
+			isLoading = false;
+		}
 
-    function updateWidth() {
-        if (!chartContainerRef) return;
-        const w = chartContainerRef.clientWidth;
-        chartWidth = Math.max(300, w - margin.left - margin.right);
-        drawAthleteGraph();
-    }
+		const handleMouseMove = (event) => {
+			mousePosition = { x: event.clientX, y: event.clientY };
+		};
+		window.addEventListener('mousemove', handleMouseMove);
 
-    async function fetchAthleteMedia(athleteUrl) {
-        if (!athleteUrl) return { photo: '', flag: '' };
-        if (cache.has(athleteUrl)) {
-            return cache.get(athleteUrl);
-        }
-        try {
-            const html = await (await fetch(athleteUrl)).text();
-            const d = new DOMParser().parseFromString(html, 'text/html');
-            const media = {
-                photo: d.querySelector('section picture img')?.src || '',
-                flag: d.querySelector('section img[alt][src*="noc"]')?.src || ''
-            };
-            cache.set(athleteUrl, media);
-            return media;
-        } catch (e) {
-            console.error('Error fetching athlete media:', e);
-            cache.set(athleteUrl, { photo: '', flag: '' });
-            return { photo: '', flag: '' };
-        }
-    }
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove);
+		};
+	});
 
-    function resetSearch() {
-        athleteName1 = '';
-        athleteName2 = '';
-        if ($page.url.searchParams.has('athlete1')) {
-            $page.url.searchParams.delete('athlete1');
-            $page.url.searchParams.delete('athlete2');
-            $page.url.search = $page.url.searchParams.toString();
-        }
-        filteredAthleteData1 = [];
-        filteredAthleteData2 = [];
-        athleteSports = [];
-        hoverVisible = false;
-        showSuggestions1 = false;
-        showSuggestions2 = false;
-        drawAthleteGraph();
-    }
+	// Section: Data Processing
+	function processInitialData() {
+		disciplines = [...new Set(allMetadata.map(d => d.discipline_title))].sort();
+		updateAvailableEvents();
+	}
+	
+	function updateAvailableEvents() {
+		let availableMetadata = allMetadata;
+		if (selectedDiscipline) {
+			availableMetadata = allMetadata.filter(d => d.discipline_title === selectedDiscipline);
+		}
+		events = [...new Set(availableMetadata.map(d => d.event_title))].sort();
+		updateAvailableAthletes();
+	}
 
-    async function filterAndDrawAthleteData() {
-        filteredAthleteData1 = [];
-        filteredAthleteData2 = [];
-        athleteSports = [];
-        if (!athleteName1) {
-            filteredAthleteData1 = [];
-            filteredAthleteData2 = [];
-            athleteSports = [];
-            drawAthleteGraph();
-            return;
-        }
-        if (athleteName1) {
-            filteredAthleteData1 = rawData.filter(d =>
-                d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName1.toLowerCase() && !isNaN(+d.value_unit)
-            ).sort((a, b) => +a.ano - +b.ano);
-            athleteSports = [...new Set(filteredAthleteData1.map(d => d.event_title))];
-        }
-        if (athleteName2) {
-            filteredAthleteData2 = rawData.filter(d =>
-                d.athlete_full_name && d.athlete_full_name.toLowerCase() === athleteName2.toLowerCase() && 
-                !isNaN(+d.value_unit) && 
-                athleteSports.includes(d.event_title)
-            ).sort((a, b) => +a.ano - +b.ano);
-        }
-        drawAthleteGraph();
-    }
+	function updateAvailableAthletes() {
+		let availableMetadata = allMetadata;
+		if (selectedDiscipline) {
+			availableMetadata = availableMetadata.filter(d => d.discipline_title === selectedDiscipline);
+		}
+		if (selectedEvent) {
+			availableMetadata = availableMetadata.filter(d => d.event_title === selectedEvent);
+		}
+		athletes = [...new Set(availableMetadata.map(d => d.athlete_full_name))].sort();
+	}
 
-    function selectSuggestion(name, athleteNum) {
-        if (athleteNum === 1) {
-            athleteName1 = name;
-            showSuggestions1 = false;
-        } else {
-            athleteName2 = name;
-            showSuggestions2 = false;
-        }
-        $page.url.searchParams.set('athlete1', encodeURIComponent(athleteName1));
-        if (athleteName2) {
-            $page.url.searchParams.set('athlete2', encodeURIComponent(athleteName2));
-        } else {
-            $page.url.searchParams.delete('athlete2');
-        }
-        $page.url.search = $page.url.searchParams.toString();
-        filterAndDrawAthleteData();
-    }
+	function createAthleteGraph(athleteName) {
+		centralNode = {
+			id: athleteName,
+			label: athleteName,
+			isCentral: true,
+			...getAthleteMetadata(athleteName)
+		};
 
-    function getMedalColor(medalType) {
-        if (!medalType) return null;
-        const medal = medalType.toLowerCase();
-        if (medal.includes('gold')) return 'gold';
-        if (medal.includes('silver')) return 'silver';
-        if (medal.includes('bronze')) return '#cd7f32';
-        return null;
-    }
+		centralNode.fx = width / 2;
+		centralNode.fy = height / 2;
+		
+		const competitorMap = new Map();
+		
+		allPairs.forEach(pair => {
+			let competitor = null;
+			if (pair.athlete1 === athleteName) competitor = pair.athlete2;
+			if (pair.athlete2 === athleteName) competitor = pair.athlete1;
+			
+			if (competitor) {
+				const weight = parseInt(pair.competitions, 10);
+				const currentWeight = competitorMap.has(competitor) ? competitorMap.get(competitor).weight : 0;
+				competitorMap.set(competitor, { weight: currentWeight + weight });
+			}
+		});
 
-    async function showHover(d) {
-        hoverData = {
-            athlete: d.athlete,
-            sport: d.raw.event_title,
-            year: d.year,
-            value: d.val,
-            country: d.raw.country_name,
-            photo: '',
-            flag: ''
-        };
-        hoverVisible = true;
-        const media = await fetchAthleteMedia(d.raw.athlete_url);
-        hoverData = {...hoverData, ...media};
-    }
+		const competitorNodes = Array.from(competitorMap.entries()).map(([name, data]) => ({
+			id: name,
+			label: name,
+			isCentral: false,
+			competitions: data.weight,
+			...getAthleteMetadata(name)
+		}));
+		
+		const nodes = [centralNode, ...competitorNodes];
+		const links = competitorNodes.map(competitor => ({
+			source: centralNode.id,
+			target: competitor.id,
+			weight: competitor.competitions
+		}));
+		
+		graph = { nodes, links };
+		initGraph();
+	}
 
-    function hideHover() {
-        hoverVisible = false;
-    }
+	function getAthleteMetadata(athleteName) {
+		const meta = allMetadata.find(d => d.athlete_full_name === athleteName);
+		if (!meta) return { country: 'N/A', event: 'N/A' };
+		return {
+			country: meta.country_name,
+			event: meta.event_title,
+		};
+	}
 
-    function drawAthleteGraph() {
-        if (!svgRef) return;
-        const svg = d3.select(svgRef)
-            .attr('width', chartWidth + margin.left + margin.right)
-            .attr('height', chartHeight);
-        svg.selectAll('*').remove();
-        if (!filteredAthleteData1.length && !filteredAthleteData2.length) {
-            svg.append('text')
-                .attr('x', (chartWidth + margin.left + margin.right) / 2)
-                .attr('y', chartHeight / 2)
-                .attr('text-anchor', 'middle')
-                .text(athleteName1 ? 'Nenhum dado encontrado.' : 'Selecione pelo menos um atleta.');
-            return;
-        }
-        const allYears = [
-            ...filteredAthleteData1.map(d => +d.ano),
-            ...filteredAthleteData2.map(d => +d.ano)
-        ];
-        const allValues = [
-            ...filteredAthleteData1.map(d => +d.value_unit),
-            ...filteredAthleteData2.map(d => +d.value_unit)
-        ];
-        const yearExtent = d3.extent(allYears);
-        xScale = d3.scaleLinear()
-            .domain([Math.floor(yearExtent[0] / 4) * 4, Math.ceil(yearExtent[1] / 4) * 4])
-            .range([margin.left, margin.left + chartWidth]);
-        const valueExtent = d3.extent(allValues);
-        const yPadding = (valueExtent[1] - valueExtent[0]) * 0.1;
-        yScale = d3.scaleLinear()
-            .domain([Math.max(0, valueExtent[0] - yPadding), valueExtent[1] + yPadding])
-            .range([chartHeight - margin.bottom, margin.top]);
-        const line = d3.line()
-            .x(d => xScale(d.year))
-            .y(d => yScale(d.val))
-            .curve(d3.curveMonotoneX);
-        const datasets = [
-            { 
-                name: athleteName1, 
-                data: filteredAthleteData1, 
-                color: athleteColors.athlete1,
-                id: 'athlete1'
-            },
-            { 
-                name: athleteName2, 
-                data: filteredAthleteData2, 
-                color: athleteColors.athlete2,
-                id: 'athlete2'
-            }
-        ];
-        let titleText = '';
-        if (athleteName1 && athleteName2) {
-            titleText = `Resultados de ${athleteName1} e ${athleteName2}`;
-        } else if (athleteName1) {
-            titleText = `Resultados de ${athleteName1}`;
-        }
-        svg.append('text')
-            .attr('x', (chartWidth + margin.left + margin.right) / 2)
-            .attr('y', 30)
-            .attr('text-anchor', 'middle')
-            .attr('font-size', '20px')
-            .text(titleText);
-        datasets.forEach(athleteData => {
-            if (!athleteData.data.length) return;
-            const dataBySport = d3.group(athleteData.data, d => d.event_title);
-            dataBySport.forEach((rows, sportTitle) => {
-                const series = rows.map(r => ({
-                    year: +r.ano,
-                    val: +r.value_unit,
-                    raw: r,
-                    sport: sportTitle,
-                    athlete: athleteData.name,
-                    athleteId: athleteData.id
-                })).sort((a, b) => a.year - b.year);
-                svg.append('path').datum(series)
-                    .attr('fill', 'none')
-                    .attr('stroke', athleteData.color)
-                    .attr('stroke-width', 2.5)
-                    .attr('stroke-linecap', 'round')
-                    .attr('d', line);
-                svg.selectAll(null).data(series).enter().append('circle')
-                    .attr('cx', d => xScale(d.year))
-                    .attr('cy', d => yScale(d.val))
-                    .attr('r', 4)
-                    .attr('fill', d => {
-                        const medalColor = getMedalColor(d.raw.medal_type);
-                        return medalColor || d3.rgb(athleteData.color).brighter(0.3);
-                    })
-                    .attr('stroke', d3.rgb(athleteData.color).darker(1))
-                    .attr('stroke-width', 1.5)
-                    .on('mouseenter', function(_, d) {
-                        d3.select(this).attr('r', 6);
-                        showHover(d);
-                    })
-                    .on('mouseleave', function() {
-                        d3.select(this).attr('r', 4);
-                        hideHover();
-                    });
-            });
-        });
-        const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
-        const yAxis = d3.axisLeft(yScale)
-            .tickFormat(d => {
-                const maxVal = d3.max(allValues);
-                if (maxVal > 1000) return d3.format('.1s')(d);
-                if (maxVal > 100) return d3.format('.0f')(d);
-                if (maxVal > 10) return d3.format('.1f')(d);
-                return d3.format('.2f')(d);
-            });
-        svg.append('g')
-            .attr('class', 'x-axis')
-            .attr('transform', `translate(0,${chartHeight - margin.bottom})`)
-            .call(xAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc'))
-            .call(g => g.selectAll('.tick line').clone()
-                .attr('y2', -chartHeight + margin.top + margin.bottom)
-                .attr('stroke-opacity', 0.1));
-        svg.append('g')
-            .attr('class', 'y-axis')
-            .attr('transform', `translate(${margin.left},0)`)
-            .call(yAxis)
-            .call(g => g.select('.domain').attr('stroke', '#ccc'))
-            .call(g => g.selectAll('.tick line').clone()
-                .attr('x2', chartWidth)
-                .attr('stroke-opacity', 0.1));
-        svg.append('text')
-            .attr('class', 'axis-label')
-            .attr('x', margin.left + (chartWidth / 2))
-            .attr('y', chartHeight - (margin.bottom / 3))
-            .attr('text-anchor', 'middle')
-            .text('Ano');
-        svg.append('text')
-            .attr('class', 'axis-label')
-            .attr('transform', 'rotate(-90)')
-            .attr('y', margin.left / 3 - 10)
-            .attr('x', -(chartHeight / 2))
-            .attr('text-anchor', 'middle')
-            .text('Valor do Resultado');
-    }
+	// Section: D3 Visualization
+	function initGraph() {
+		if (simulation) simulation.stop();
 
-    $: if (athleteName1 || athleteName2) {
-        filterAndDrawAthleteData();
-    }
+		if (graph.nodes.length <= 1) {
+			renderGraph();
+			return;
+		}
+
+		simulation = d3.forceSimulation(graph.nodes)
+			.force('link', d3.forceLink(graph.links)
+				.id(d => d.id)
+				.distance(d => 250 - d.weight * 20)
+				.strength(0.8)
+			)
+			.force('charge', d3.forceManyBody().strength(-300))
+			.force('center', d3.forceCenter(width / 2, height / 2))
+			.force('collision', d3.forceCollide().radius(d => (d.isCentral ? centralNodeRadius : nodeRadius) + 5));
+		
+		renderGraph();
+	}
+
+	function renderGraph() {
+		const svg = d3.select('#graph-svg');
+		svg.selectAll('*').remove();
+
+		if (!centralNode) {
+			svg.append('text')
+				.attr('class', 'placeholder-text')
+				.attr('x', width / 2)
+				.attr('y', height / 2)
+				.attr('text-anchor', 'middle')
+				.text('Filtre e busque por um atleta para começar.');
+			return;
+		}
+		
+		const zoomGroup = svg.append('g').attr('transform', zoomTransform);
+
+		const link = zoomGroup.selectAll('.link')
+			.data(graph.links)
+			.enter().append('line')
+			.attr('class', 'link')
+			.style('stroke-width', d => Math.min(d.weight * 1.5, 8));
+
+		const nodeGroup = zoomGroup.selectAll('.node-group')
+			.data(graph.nodes, d => d.id)
+			.enter().append('g')
+			.attr('class', 'node-group')
+			.on('mouseover', (e, d) => { hoveredNode = d; })
+			.on('mouseout', () => { hoveredNode = null; })
+			.on('click', handleNodeClick);
+
+		nodeGroup.append('circle')
+			.attr('r', d => d.isCentral ? centralNodeRadius : nodeRadius)
+			.attr('fill', d => getCountryColor(d.country))
+			.attr('class', d => d.isCentral ? 'node central-node' : 'node');
+			
+		nodeGroup.append('text')
+			.attr('class', 'node-label')
+			.attr('text-anchor', 'middle')
+			.attr('dy', d => d.isCentral ? centralNodeRadius + 15 : nodeRadius + 12)
+			.text(d => d.label);
+
+		simulation.on('tick', () => {
+			link.attr('x1', d => d.source.x)
+				.attr('y1', d => d.source.y)
+				.attr('x2', d => d.target.x)
+				.attr('y2', d => d.target.y);
+			nodeGroup.attr('transform', d => `translate(${d.x}, ${d.y})`);
+		});
+		
+		const zoom = d3.zoom().scaleExtent([0.3, 5]).on('zoom', event => {
+			zoomTransform = event.transform;
+			zoomGroup.attr('transform', event.transform);
+		});
+		svg.call(zoom);
+	}
+
+	function getCountryColor(country) {
+		if (!country || country === 'N/A') return '#ccc';
+		let hash = 0;
+		for (let i = 0; i < country.length; i++) {
+			hash = country.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		return `hsl(${Math.abs(hash) % 360}, 70%, 50%)`;
+	}
+	
+	// Section: UI Handlers
+	function handleDisciplineChange() {
+		selectedEvent = '';
+		athleteSearch = '';
+		centralNode = null;
+		graph = { nodes: [], links: [] };
+		updateAvailableEvents();
+		renderGraph();
+	}
+
+	function handleEventChange() {
+		athleteSearch = '';
+		centralNode = null;
+		graph = { nodes: [], links: [] };
+		updateAvailableAthletes();
+		renderGraph();
+	}
+	
+	function handleSearchInput() {
+		if (athleteSearch.length > 2) {
+			suggestions = athletes.filter(a => a.toLowerCase().includes(athleteSearch.toLowerCase())).slice(0, 10);
+		} else {
+			suggestions = [];
+		}
+	}
+	
+	function handleSearch() {
+		const foundAthlete = athletes.find(a => a.toLowerCase() === athleteSearch.toLowerCase());
+		if (foundAthlete) {
+			selectSuggestion(foundAthlete);
+		}
+	}
+
+	function selectSuggestion(name) {
+		athleteSearch = name;
+		suggestions = [];
+		createAthleteGraph(name);
+	}
+	
+	function handleNodeClick(event, d) {
+		if (d.isCentral) return;
+		selectSuggestion(d.label);
+	}
 </script>
 
-<svelte:head>
-    <title>Comparação de Atletas</title>
-</svelte:head>
 
-<div class="title">
-    <h1>Detalhes dos Atletas</h1>
 
-    <p>
-        Esta página é dedicada a se aprofundar na trajetória dos protagonistas dos jogos olímpicos: os atletas. Pesquise por dois atletas 
-            para visualizar e comparar seus resultados ao longo das edições olímpicas em que competiram. 
-        Acompanhe a evolução de suas performances e, para uma análise mais detalhada, simplesmente passe o mouse sobre os pontos no 
-        gráfico para revelar informações precisas de cada marca ou conquista. Descubra a história olímpica contada através de seus 
-        protagonistas!
-    </p> 
+<div class="network-container">
+	<div class="controls">
+		<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
+			<option value="">Todas as Modalidades</option>
+			{#each disciplines as discipline}
+				<option value={discipline}>{discipline}</option>
+			{/each}
+		</select>
+		
+		<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
+			<option value="">Todos os Eventos</option>
+			{#each events as event}
+				<option value={event}>{event}</option>
+			{/each}
+		</select>
+		
+		<div class="search-container">
+			<input
+				type="text"
+				bind:value={athleteSearch}
+				placeholder="Buscar atleta..."
+				on:input={handleSearchInput}
+				on:keydown={(e) => e.key === 'Enter' && handleSearch()}
+			/>
+			<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
+			
+			{#if suggestions.length > 0}
+				<div class="suggestions">
+					{#each suggestions as suggestion}
+						<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
+							{suggestion}
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	</div>
 
-</div>
+	{#if isLoading}
+		<div class="loading">Carregando dados...</div>
+	{:else}
+		<svg id="graph-svg" {width} {height}></svg>
+	{/if}
 
-<div class="page">
-    <div class="title">
-        <h1>
-            {#if athleteName1 && athleteName2}
-                Comparação: {athleteName1} e {athleteName2}
-            {:else if athleteName1}
-                Detalhes do Atleta: {athleteName1}
-            {:else}
-                Comparação de Atletas
-            {/if}
-        </h1>
-    </div>
-
-    <div class="controls-container">
-        <div class="controls">
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    bind:value={athleteName1}
-                    on:input={() => {
-                        showSuggestions1 = true;
-                        suggestions1 = allAthleteNames.filter(name => 
-                            name.toLowerCase().includes(athleteName1.toLowerCase())
-                        ).slice(0, 5);
-                    }}
-                    on:blur={() => setTimeout(() => showSuggestions1 = false, 200)}
-                    placeholder="Primeiro atleta...">
-                {#if showSuggestions1 && suggestions1.length > 0}
-                    <div class="suggestions-dropdown">
-                        {#each suggestions1 as suggestion}
-                            <div 
-                                class="suggestion-item"
-                                on:mousedown={() => selectSuggestion(suggestion, 1)}>
-                                {suggestion}
-                            </div>
-                        {/each}
-                    </div>
-                {/if}
-            </div>
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    bind:value={athleteName2}
-                    disabled={!athleteName1}
-                    on:input={() => {
-                        showSuggestions2 = true;
-                        suggestions2 = secondAthleteOptions.filter(name => 
-                            name.toLowerCase().includes(athleteName2.toLowerCase())
-                        ).slice(0, 5);
-                    }}
-                    on:blur={() => setTimeout(() => showSuggestions2 = false, 200)}
-                    placeholder={athleteName1 ? "Segundo atleta..." : "Selecione primeiro atleta"}>
-                {#if showSuggestions2 && suggestions2.length > 0}
-                    <div class="suggestions-dropdown">
-                        {#each suggestions2 as suggestion}
-                            <div 
-                                class="suggestion-item"
-                                on:mousedown={() => selectSuggestion(suggestion, 2)}>
-                                {suggestion}
-                            </div>
-                        {/each}
-                    </div>
-                {/if}
-            </div>
-            <button class="reset-button" on:click={resetSearch}>
-                Limpar
-            </button>
-        </div>
-    </div>
-
-    <div class="dashboard">
-        <div class="chart-container" bind:this={chartContainerRef}>
-            <svg bind:this={svgRef}></svg>
-        </div>
-
-        <div class="sidebar">
-            <aside class="hover-card">
-                {#if hoverVisible}
-                    <h3>Resultado do Atleta</h3>
-                    <p><b>Atleta:</b> {hoverData.athlete}</p>
-                    <p><b>Evento:</b> {hoverData.sport}</p>
-                    <p><b>Ano:</b> {hoverData.year}</p>
-                    {#if hoverData.photo}
-                        <img class="ath-img" src={hoverData.photo} alt={hoverData.athlete}/>
-                    {/if}
-                    <p><b>País:</b> {hoverData.country}
-                        {#if hoverData.flag}
-                            <img class="flag" src={hoverData.flag} alt={hoverData.country}/>
-                        {/if}
-                    </p>
-                    <p><b>Resultado:</b> {hoverData.value}</p>
-                {:else}
-                    <p>Passe o mouse sobre um ponto para ver os detalhes.</p>
-                {/if}
-            </aside>
-
-            <aside class="legend">
-                {#if athleteName1}
-                    <div class="legend-item">
-                        <span class="swatch" style="background:#1f77b4"></span>
-                        {athleteName1}
-                    </div>
-                {/if}
-                {#if athleteName2}
-                    <div class="legend-item">
-                        <span class="swatch" style="background:#ff7f0e"></span>
-                        {athleteName2}
-                    </div>
-                {/if}
-            </aside>
-        </div>
-    </div>
+	{#if hoveredNode}
+		<div class="tooltip" style="left: {mousePosition.x + 15}px; top: {mousePosition.y + 15}px">
+			<h3>{hoveredNode.label}</h3>
+			<p><strong>País:</strong> {hoveredNode.country || 'N/A'}</p>
+			{#if !hoveredNode.isCentral}
+			<p><strong>Competições juntos:</strong> {hoveredNode.competitions}</p>
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
-    :global(:root) {
-        --font-family-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        --primary-color: var(--primary, #007bff);
-        --primary-color-darker: var(--primary-darker, #0056b3);
-        --primary-color-lighter: var(--primary-lighter, #cfe2ff);
-        --primary-color-rgb: var(--primary-rgb, 0, 123, 255);
-        --secondary-color: #6c757d;
-        --text-primary-color: #212529;
-        --text-secondary-color: #495057;
-        --text-muted-color: #6c757d;
-        --text-on-primary: #ffffff;
-        --page-background: #eef1f5;
-        --card-background: var(--card, #ffffff);
-        --border-color-soft: #dee2e6;
-        --border-color-medium: #ced4da;
-        --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
-        --shadow-md: 0 .5rem 1rem rgba(0,0,0,.1);
-        --shadow-lg: 0 1rem 3rem rgba(0,0,0,.125);
-        --shadow-primary-glow: 0 0 12px rgba(var(--primary-color-rgb), 0.3);
-        --radius-sm: 4px;
-        --radius-md: var(--radius, 8px);
-        --radius-lg: 12px;
-        --transition-speed: 0.2s;
-        --grid: var(--border-color-soft);
-        --text: var(--text-primary-color);
-    }
+	.network-container {
+		position: relative;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
 
-    .page {
-        max-width: 1380px;
-        margin: auto;
-        padding: 1.75rem;
-        background: var(--page-background);
-        font-family: var(--font-family-sans);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-md);
-    }
+	.controls {
+		display: grid;
+		grid-template-columns: 1fr 1fr 2fr;
+		gap: 15px;
+		margin-bottom: 20px;
+		padding: 15px;
+		background: #f8f9fa;
+		border-radius: 8px;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	}
 
-    .title h1 {
-        font-weight: 700;
-        color: var(--primary-color-darker);
-        margin: 0 0 1.5rem 0;
-        text-align: center;
-        font-family: var(--font-family-sans);
-        font-size: 1.8rem;
-        letter-spacing: -0.5px;
-    }
+	select, input, button {
+		padding: 10px 15px;
+		border: 1px solid #ced4da;
+		border-radius: 4px;
+		font-size: 16px;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	
+	button:disabled, select:disabled {
+		background-color: #e9ecef;
+		cursor: not-allowed;
+	}
 
+	.search-container {
+		position: relative;
+		display: flex;
+		gap: 10px;
+	}
+	
+	.suggestions {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: white;
+		border: 1px solid #dee2e6;
+		border-radius: 0 0 4px 4px;
+		z-index: 100;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+		max-height: 200px;
+		overflow-y: auto;
+	}
+	
+	.suggestion-item {
+		width: 100%;
+		text-align: left;
+		background: none;
+		border: none;
+		border-bottom: 1px solid #eee;
+	}
+	.suggestion-item:last-child {
+		border-bottom: none;
+	}
+	.suggestion-item:hover {
+		background: #f1f1f1;
+	}
 
-    .controls-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
+	#graph-svg {
+		display: block;
+		margin: 0 auto;
+		background: #fff;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+	}
+	
+	.placeholder-text {
+		font-size: 1.5em;
+		fill: #888;
+	}
 
-    .controls {
-        display: grid;
-        grid-template-columns: 1fr 1fr auto;
-        gap: 1rem;
-        max-width: 800px;
-        width: 100%;
-        position: relative;
-    }
+	.loading {
+		text-align: center;
+		padding: 50px;
+		font-size: 18px;
+		color: #6c757d;
+	}
 
-    .search-container {
-        position: relative;
-    }
+	.tooltip {
+		position: fixed;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 12px;
+		border-radius: 6px;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+		z-index: 10;
+		pointer-events: none;
+		max-width: 300px;
+		border: 1px solid #ddd;
+	}
+	
+	.tooltip h3 {
+		margin-top: 0;
+		margin-bottom: 8px;
+		color: #1a1a1a;
+		font-size: 16px;
+	}
 
-    .controls input[type="text"] {
-        padding: .75rem 1rem;
-        font-size: .9rem;
-        border: 1px solid var(--border-color-medium);
-        border-radius: var(--radius-md);
-        font-family: var(--font-family-sans);
-        width: 100%;
-        box-sizing: border-box;
-        background-color: var(--card-background);
-        color: var(--text-primary-color);
-        transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    }
-    .controls input[type="text"]:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
-        outline: none;
-    }
-    .controls input[type="text"]::placeholder {
-        color: var(--text-muted-color);
-    }
+	.tooltip p {
+		margin: 4px 0;
+		color: #333;
+		font-size: 14px;
+	}
 
-    .suggestions-dropdown {
-        position: absolute;
-        top: calc(100% + 5px);
-        left: 0;
-        right: 0;
-        background: var(--card-background);
-        border: 1px solid var(--border-color-medium);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-md);
-        z-index: 1000;
-        margin-top: 5px;
-        max-height: 200px;
-        overflow-y: auto;
-    }
-
-    .suggestion-item {
-        padding: 10px 15px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        border-bottom: 1px solid var(--border-color-soft);
-        transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-        color: var(--text-secondary-color);
-    }
-
-    .suggestion-item:hover,
-    .suggestion-item:focus {
-        background-color: var(--primary-color-lighter);
-        color: var(--primary-color-darker);
-        outline: none;
-    }
-
-    .suggestion-item:last-child {
-        border-bottom: none;
-    }
-
-    .reset-button {
-        padding: .75rem 1.5rem;
-        font-size: .9rem;
-        border: none;
-        border-radius: var(--radius-md);
-        cursor: pointer;
-        background: #dc3545;
-        color: white;
-        font-weight: 600;
-        font-family: var(--font-family-sans);
-        transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
-        box-shadow: var(--shadow-sm);
-    }
-
-    .reset-button:hover {
-        background: #c82333;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-    }
-    .reset-button:active {
-        transform: translateY(0);
-    }
-
-    .dashboard {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-    }
-
-    .sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        max-height: 560px;
-    }
-
-    .chart-container, .hover-card, .legend {
-        background: var(--card-background);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-md), 0 0 0 1px var(--border-color-soft);
-        padding: 1.25rem 1.5rem;
-        transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        overflow: hidden;
-    }
-    .chart-container:hover, .hover-card:hover, .legend:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg), 0 0 0 1px var(--border-color-medium);
-    }
-
-    .chart-container {
-        min-width: 0;
-        padding: 1.0rem;
-        height: 560px;
-        box-sizing: border-box;
-    }
-
-    .chart-container svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-        font-family: var(--font-family-sans);
-    }
-
-    .hover-card {
-        font-size: 0.9rem;
-        line-height: 1.65;
-        color: var(--text-secondary-color);
-        overflow-y: auto;
-    }
-
-    .hover-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-primary-color);
-        margin-top: 0;
-        margin-bottom: 1rem;
-        letter-spacing: -0.5px;
-    }
-    .hover-card p {
-        margin-bottom: 0.6rem;
-    }
-     .hover-card b {
-        color: var(--text-primary-color);
-        font-weight: 600;
-    }
-
-    .legend {
-        max-height: 280px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .legend-item {
-        display: flex;
-        align-items: center;
-        font-size: 0.85rem;
-        font-family: var(--font-family-sans);
-        color: var(--text-secondary-color);
-        padding: 6px 8px;
-        border-radius: var(--radius-sm);
-        transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-    }
-    .legend-item:hover {
-        background-color: var(--primary-color-lighter);
-        color: var(--primary-color-darker);
-    }
-
-    .legend-item .swatch {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        margin-right: 10px;
-        flex-shrink: 0;
-        display: inline-block;
-        border: 2px solid rgba(0, 0, 0, 0.1);
-    }
-    .legend-item .swatch[style*="background:#1f77b4"] { box-shadow: 0 0 5px #1f77b4; }
-    .legend-item .swatch[style*="background:#ff7f0e"] { box-shadow: 0 0 5px #ff7f0e; }
-
-    .ath-img {
-        width: 70px;
-        height: 70px;
-        object-fit: cover;
-        border-radius: var(--radius-md);
-        display: block;
-        margin: 0.75rem auto;
-        border: 2px solid var(--border-color-medium);
-        box-shadow: var(--shadow-sm);
-    }
-
-    .flag {
-        width: 20px;
-        height: auto;
-        margin-left: 6px;
-        vertical-align: middle;
-        border: 1px solid var(--border-color-soft);
-        border-radius: 3px;
-    }
-
-    .chart-container svg .x-axis .domain,
-    .chart-container svg .y-axis .domain {
-        stroke: var(--border-color-medium);
-        stroke-width: 1.5px;
-    }
-
-    .chart-container svg .x-axis .tick line,
-    .chart-container svg .y-axis .tick line {
-        stroke: var(--border-color-soft);
-        stroke-opacity: 0.6;
-    }
-    .chart-container svg .x-axis .tick line[y2],
-    .chart-container svg .y-axis .tick line[x2] {
-        stroke-opacity: 0.1;
-    }
-
-    .chart-container svg .x-axis .tick text,
-    .chart-container svg .y-axis .tick text {
-        font-size: .75rem;
-        fill: var(--text-muted-color);
-        font-weight: 500;
-    }
-
-    .chart-container svg .axis-label {
-        font-size: .8rem;
-        fill: var(--text-primary-color);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-family: var(--font-family-sans);
-    }
-
-    .chart-container svg text[font-size="20px"] {
-        font-size: 1.3rem !important;
-        font-weight: 700;
-        fill: var(--primary-color-darker);
-        font-family: var(--font-family-sans);
-        letter-spacing: -0.5px;
-    }
-    .chart-container svg text[text-anchor="middle"]:not([font-size="20px"]):not(.axis-label) {
-        font-size: 1.1rem;
-        fill: var(--text-muted-color);
-        font-weight: 500;
-        font-family: var(--font-family-sans);
-    }
-
-    .hover-card::-webkit-scrollbar,
-    .legend::-webkit-scrollbar,
-    .suggestions-dropdown::-webkit-scrollbar {
-        width: 8px;
-    }
-    .hover-card::-webkit-scrollbar-track,
-    .legend::-webkit-scrollbar-track,
-    .suggestions-dropdown::-webkit-scrollbar-track {
-        background: var(--page-background);
-        border-radius: var(--radius-lg);
-    }
-    .hover-card::-webkit-scrollbar-thumb,
-    .legend::-webkit-scrollbar-thumb,
-    .suggestions-dropdown::-webkit-scrollbar-thumb {
-        background: var(--border-color-medium);
-        border-radius: var(--radius-lg);
-        border: 2px solid var(--page-background);
-    }
-    .hover-card::-webkit-scrollbar-thumb:hover,
-    .legend::-webkit-scrollbar-thumb:hover,
-    .suggestions-dropdown::-webkit-scrollbar-thumb:hover {
-        background: var(--secondary-color);
-    }
-
-    @media (max-width: 992px) {
-        .dashboard {
-            grid-template-columns: 1fr;
-        }
-        .sidebar {
-            order: 1;
-            flex-direction: row;
-            max-height: none;
-            overflow-x: auto;
-        }
-        .hover-card, .legend {
-            min-width: 280px;
-            flex: 1;
-        }
-        .chart-container {
-            order: 2;
-            height: 450px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .controls {
-            grid-template-columns: 1fr;
-        }
-        .search-container {
-            width: 100%;
-        }
-        .sidebar {
-            flex-direction: column;
-            overflow-x: visible;
-        }
-        .page {
-            padding: 1rem;
-        }
-        .title h1 {
-            font-size: 1.5rem;
-        }
-        .chart-container svg text[font-size="20px"] {
-             font-size: 1.1rem !important;
-        }
-    }
+	.tooltip strong {
+		color: #000;
+	}
+	
+	:global(.node) {
+		stroke: #fff;
+		stroke-width: 2px;
+	}
+	:global(.central-node) {
+		stroke: gold;
+		stroke-width: 3px;
+	}
+	:global(.link) {
+		stroke: #aaa;
+		stroke-opacity: 0.7;
+	}
+	:global(.node-label) {
+		font-size: 12px;
+		fill: #333;
+		pointer-events: none;
+		font-weight: 500;
+	}
+	:global(.node-group) {
+		cursor: pointer;
+	}
 </style>
