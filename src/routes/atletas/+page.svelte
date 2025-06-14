@@ -34,7 +34,54 @@
 	const height = 600;
 	const nodeRadius = 8;
 	const centralNodeRadius = 15;
-	const baseRingRadius = 300;
+	const baseRingRadius = 250; // Reduzido para um visual mais compacto
+
+	// --- Lógica de Bandeiras ---
+	const countryCodeMapping = {
+		"United States of America": "US", "USA": "US", "United States": "US",
+		"People's Republic of China": "CN", "China": "CN",
+		"Great Britain": "GB", "United Kingdom": "GB",
+		"Japan": "JP", "Australia": "AU", "Italy": "IT", "Germany": "DE",
+		"Netherlands": "NL", "Holland": "NL", "France": "FR", "Canada": "CA", "Brazil": "BR",
+		"Republic of Korea": "KR", "South Korea": "KR", "Korea, South": "KR",
+		"Russian Federation": "RU", "Russia": "RU", "ROC": "RU", 
+		"Soviet Union": "SU", "URS": "SU", "Unified Team": "EUN", 
+		"West Germany": "DE", "FRG": "DE", "East Germany": "DE", "GDR": "DE",
+		"Czechoslovakia": "CS", "TCH": "CS", "Yugoslavia": "YU", "YUG": "YU",
+		"Bohemia": "CZ", "BOH": "CZ", "Australasia": "AU", "ANZ": "AU",
+		"Russian Empire": "RU", "Serbia and Montenegro": "CS", "SCG": "CS",
+		"Ceylon": "LK", "Burma": "MM", "Rhodesia": "ZW", "Zaire": "CD",
+		"Dutch Antilles": "NL", "British Guiana": "GY", "Gold Coast": "GH",
+		"Spain": "ES", "Hungary": "HU", "Poland": "PL", "Sweden": "SE", "Norway": "NO",
+		"Cuba": "CU", "New Zealand": "NZ", "Switzerland": "CH", "Kenya": "KE",
+		"Jamaica": "JM", "Ukraine": "UA", "Iran": "IR", "India": "IN", "Chinese Taipei": "TW", "Nigeria": "NG"
+	};
+
+	const localFlagOverrides = {
+		'Soviet Union': `${base}/missing_flags/soviet_union.png`,
+		'German Democratic Republic (Germany)': `${base}/missing_flags/east_germany.png`,
+		'Federal Republic of Germany': `${base}/missing_flags/west_germany.png`,
+		'Unified Team': `${base}/missing_flags/unified_team.png`,
+	};
+
+	function getFlagUrl(countryName, countryCode) {
+		if (countryName && localFlagOverrides[countryName]) {
+			return localFlagOverrides[countryName];
+		}
+		
+		let finalCode = countryCode;
+		if (!finalCode && countryName) {
+			finalCode = countryCodeMapping[countryName];
+		}
+
+		if (finalCode) {
+			return `https://flagcdn.com/w40/${finalCode.toLowerCase()}.png`;
+		}
+		
+		return '';
+	}
+	// --- Fim da lógica de bandeiras ---
+
 
 	// Section: Lifecycle
 	onMount(async () => {
@@ -232,41 +279,59 @@
 		const zoomGroup = svg.append('g').attr('class', 'zoom-group');
 		
 		const defs = zoomGroup.append('defs');
-		const countriesInGraph = [...new Set(graph.nodes.map(n => n.country_code).filter(c => c))];
+
+		defs.append('pattern')
+			.attr('id', 'olympic-rings')
+			.attr('height', '100%')
+			.attr('width', '100%')
+			.attr('patternContentUnits', 'objectBoundingBox')
+			.append('image')
+			.attr('xlink:href', `${base}/rings.png`)
+			.attr('height', 1)
+			.attr('width', 1)
+			.attr('preserveAspectRatio', 'xMidYMid meet');
 		
-		countriesInGraph.forEach(code => {
-			defs.append('pattern')
-				.attr('id', `flag-${code.toLowerCase()}`)
-				.attr('height', '100%')
-				.attr('width', '100%')
-				.attr('patternContentUnits', 'objectBoundingBox')
-				.append('image')
-				.attr('xlink:href', `https://flagcdn.com/w40/${code.toLowerCase()}.png`)
-				.attr('height', 1)
-				.attr('width', 1)
-				.attr('preserveAspectRatio', 'xMidYMid slice');
+		graph.nodes.forEach(node => {
+			const flagUrl = getFlagUrl(node.country, node.country_code);
+			const patternId = `flag-${node.country_code?.toLowerCase() || node.country.replace(/\s+/g, '-')}`;
+			if (flagUrl && !defs.select(`#${patternId}`).node()) {
+				defs.append('pattern')
+					.attr('id', patternId)
+					.attr('height', '100%')
+					.attr('width', '100%')
+					.attr('patternContentUnits', 'objectBoundingBox')
+					.append('image')
+					.attr('xlink:href', flagUrl)
+					.attr('height', 1)
+					.attr('width', 1)
+					.attr('preserveAspectRatio', 'xMidYMid slice');
+			}
 		});
 
 		const competitionCounts = [...new Set(graph.nodes.filter(n => !n.isCentral).map(n => n.competitions))];
 		const ringGroup = zoomGroup.append('g').attr('class', 'rings');
 		
-		ringGroup.selectAll('.competition-ring')
-			.data(competitionCounts)
-			.enter()
-			.append('circle')
-			.attr('class', 'competition-ring')
-			.attr('cx', width / 2)
-			.attr('cy', height / 2)
-			.attr('r', d => baseRingRadius / d);
+		const centralNodeData = graph.nodes.find(n => n.isCentral);
+		if(centralNodeData) {
+			ringGroup.selectAll('.competition-ring')
+				.data(competitionCounts)
+				.enter()
+				.append('circle')
+				.attr('class', 'competition-ring')
+				.attr('cx', centralNodeData.fx) // Usar a posição fixa do nó central
+				.attr('cy', centralNodeData.fy)
+				.attr('r', d => baseRingRadius / d);
 
-		ringGroup.selectAll('.ring-label')
-			.data(competitionCounts)
-			.enter()
-			.append('text')
-			.attr('class', 'ring-label')
-			.attr('x', width / 2)
-			.attr('y', d => height / 2 - (baseRingRadius / d) - 5)
-			.text(d => `${d} comp.`);
+			ringGroup.selectAll('.ring-label')
+				.data(competitionCounts)
+				.enter()
+				.append('text')
+				.attr('class', 'ring-label')
+				.attr('x', centralNodeData.fx)
+				.attr('y', d => centralNodeData.fy - (baseRingRadius / d) - 5)
+				.text(d => `${d} comp.`);
+		}
+		
 
 		const link = zoomGroup.append('g').attr('class', 'links')
 			.selectAll('.link')
@@ -285,7 +350,11 @@
 
 		nodeGroup.append('circle')
 			.attr('r', d => d.isCentral ? centralNodeRadius : nodeRadius)
-			.attr('fill', d => d.country_code ? `url(#flag-${d.country_code.toLowerCase()})` : '#ccc')
+			.attr('fill', d => {
+				const flagUrl = getFlagUrl(d.country, d.country_code);
+				const patternId = `flag-${d.country_code?.toLowerCase() || d.country.replace(/\s+/g, '-')}`;
+				return flagUrl ? `url(#${patternId})` : 'url(#olympic-rings)';
+			})
 			.attr('class', d => d.isCentral ? 'node central-node' : 'node');
 			
 		nodeGroup.append('text')
@@ -375,45 +444,45 @@
 		</div>
 	</div>
 
+	<div class="controls">
+		<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
+			<option value="">Todas as Modalidades</option>
+			{#each disciplines as discipline}
+				<option value={discipline}>{discipline}</option>
+			{/each}
+		</select>
+		
+		<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
+			<option value="">Todos os Eventos</option>
+			{#each events as event}
+				<option value={event}>{event}</option>
+			{/each}
+		</select>
+		
+		<div class="search-container">
+			<input
+				type="text"
+				bind:value={athleteSearch}
+				placeholder="Buscar atleta..."
+				on:input={handleSearchInput}
+				on:keydown={(e) => e.key === 'Enter' && handleSearch()}
+			/>
+			<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
+			
+			{#if suggestions.length > 0}
+				<div class="suggestions">
+					{#each suggestions as suggestion}
+						<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
+							{suggestion}
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
+	</div>
+
 	<div class="page-wrapper">
 		<div class="network-container">
-			<div class="controls">
-				<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
-					<option value="">Todas as Modalidades</option>
-					{#each disciplines as discipline}
-						<option value={discipline}>{discipline}</option>
-					{/each}
-				</select>
-				
-				<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
-					<option value="">Todos os Eventos</option>
-					{#each events as event}
-						<option value={event}>{event}</option>
-					{/each}
-				</select>
-				
-				<div class="search-container">
-					<input
-						type="text"
-						bind:value={athleteSearch}
-						placeholder="Buscar atleta..."
-						on:input={handleSearchInput}
-						on:keydown={(e) => e.key === 'Enter' && handleSearch()}
-					/>
-					<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
-					
-					{#if suggestions.length > 0}
-						<div class="suggestions">
-							{#each suggestions as suggestion}
-								<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
-									{suggestion}
-								</button>
-							{/each}
-						</div>
-					{/if}
-				</div>
-			</div>
-
 			{#if isLoading}
 				<div class="loading">Carregando dados...</div>
 			{:else}
@@ -427,7 +496,7 @@
 				{#if legendCompetitors.length > 0}
 					{#each legendCompetitors as competitor}
 					<div class="legend-item" on:click={() => selectSuggestion(competitor.label)} title="Ver rede de {competitor.label}">
-						<span class="legend-swatch" style="background-image: url(https://flagcdn.com/w40/{competitor.country_code?.toLowerCase()}.png)"></span>
+						<span class="legend-swatch" style="background-image: url({getFlagUrl(competitor.country, competitor.country_code) || `${base}/olympic_rings.svg`});"></span>
 						<span class="competitor-name">{competitor.label}</span>
 						<span class="competitor-count">{competitor.competitions} comp.</span>
 					</div>
@@ -488,14 +557,16 @@
 	.title h1 {
 		font-weight: 700;
 		color: var(--primary-color-darker);
-		margin: 0 0 1.5rem 0;
-		font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		margin: 0 0 1rem 0;
 		font-size: 1.8rem;
 		letter-spacing: -0.5px;
+		text-align: center;
 	}
+	
 	.intro-text p {
 		text-align: justify;
 		line-height: 1.6;
+		color: #555;
 	}
 
 	.instructions-block {
@@ -508,6 +579,7 @@
 		flex: 1;
 		text-align: left;
 		line-height: 1.6;
+		color: #555;
 		margin: 0;
 		font-size: 0.95rem;
 	}
@@ -520,6 +592,7 @@
 	}
 
 	.controls {
+		grid-column: 1 / -1;
 		display: grid;
 		grid-template-columns: 1fr 1fr 2fr;
 		gap: 15px;
@@ -657,9 +730,7 @@
 		border-radius: 8px;
 		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 		padding: 20px;
-		position: sticky;
-		top: 20px;
-		height: calc(100vh - 40px);
+		height: 600px;
 	}
 	
 	.competitor-legend h2 {
@@ -671,7 +742,7 @@
 	}
 
 	.legend-list {
-		max-height: calc(100% - 50px);
+		height: calc(100% - 50px);
 		overflow-y: auto;
 		padding-right: 10px;
 	}
