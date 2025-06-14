@@ -16,14 +16,6 @@
 
     onMount(() => {
         rootElement = document.documentElement;
-        const storedScheme = localStorage.getItem("colorScheme");
-        if (storedScheme) {
-            colorScheme = storedScheme;
-        } else {
-            // Detecta preferência do sistema se não houver nada salvo
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            colorScheme = prefersDark ? "dark" : "light";
-        }
         rootElement.style.setProperty("color-scheme", colorScheme);
         // Adicionamos uma classe para facilitar o styling do tema escuro
         if (colorScheme === 'dark') {
@@ -84,22 +76,6 @@
 
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         line-height: 1.6;
-    }
-
-    :global(:root.dark-theme) {
-        /* Tema Escuro */
-        --background-color: #1a1a1a; /* Um cinza bem escuro */
-        --text-color: #e0e0e0; /* Cinza claro para texto */
-        --card-background: #2c2c2c; /* Cinza escuro para cards */
-        --border-color: #444444;
-
-        --nav-background: #212121;
-        --nav-text-color: #e0e0e0;
-
-        --link-color: var(--olympic-yellow); /* Amarelo para links no tema escuro */
-        --link-hover-color: var(--olympic-red);
-        --link-active-color: var(--olympic-green);
-        --link-hover-bg: #383838;
     }
 
     :global(body) {
