@@ -494,19 +494,19 @@
   <title>Histórico de Medalhas Olímpicas</title>
 </svelte:head>
 
+<div class="page">
   <div class="title">
       <h1>História das Edições Olímpicas</h1>
 
       <p>
-        A animação abaixo revela a evolução do ranking dos 10 países com mais medalhas conquistadas em todas as edições dos Jogos 
-        Olímpicos. Descubra as ascensões e quedas das maiores potências esportivas do mundo e acompanhe as mudanças no domínio 
+        A animação abaixo revela a evolução do ranking dos <strong>10 países</strong> com mais medalhas conquistadas em todas as edições dos <strong>Jogos 
+        Olímpicos</strong>. Descubra as ascensões e quedas das maiores potências esportivas do mundo e acompanhe as mudanças no domínio 
         olímpico ao longo dos anos. Além disso, confira os cards ao lado do ranking para informações detalhadas sobre cada edição, 
-        incluindo curiosidades e destaques marcantes.
+        incluindo <strong>curiosidades</strong> e <strong>destaques marcantes</strong>.
       </p> 
   </div>
 
-<div class="page">
-
+  <div class="page_content">
   <div id="controls">
     {#if years.length > 0}
       <label for="year-select">Ano:</label>
@@ -648,6 +648,7 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 {#if years.length === 0 && !initialized }
@@ -668,12 +669,12 @@
   select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit; font-size: 1em;}
   #controls span { font-weight: bold; font-size: 1.1em; color: #333;}
   
-  .card {display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 270px; min-height: 160px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
+  .card {display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-width: 250px; min-height: 160px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
   .card:hover { transform: translateY(-5px); }
   .card h3 { margin-top: 0; color: #0056b3; font-size: 1em; border-bottom: 1px solid #007bff;}
-  .card p, .card li { margin: 6px 0; color: #444; font-size: 0.8em; line-height: 1.5;}
+  .card p, .card li { margin: 6px 0; color: #444; font-size: 0.8em; line-height: 1.5}
   .card strong { color: #000; }
-  .card ul { list-style-type: none; padding-left: 0; }
+  .card ul { list-style-type: none; padding-left: 0}
   .card li { padding: 0px 0; border-bottom: 1px dashed #eee; }
   .card li:last-child { border-bottom: none; }
   .card img.athlete-photo { max-width: 100%; height: auto; max-height: 80px; object-fit: contain; border-radius: 4px; margin-top:10px; margin-bottom: 10px; align-self: center; border:1px solid #eee;}
@@ -697,7 +698,7 @@
     display: grid;
     grid-template-columns: minmax(auto, 340px) 1fr minmax(auto, 340px); 
     gap: 15px;
-    align-items: start; /* Mantido como start para consistência, altura será gerenciada por JS */
+    align-items: start; 
     padding: 20px;
     max-width: 1600px; 
     margin: 0 auto;
@@ -728,14 +729,16 @@
     padding-right: 30px;
   }
 
-  .title h1 {
+.title h1 {
     font-weight: 700;
     color: var(--primary-color-darker);
     margin: 0 0 1.5rem 0;
-    text-align: center;
     font-family: var(--font-family-sans);
     font-size: 1.8rem;
     letter-spacing: -0.5px;
+}
+  .title {
+    margin-bottom: 2rem; 
   }
 
   @media (max-width: 1300px) { 
@@ -776,20 +779,28 @@
       }
   }
 
-  .page {
-        max-width: 1380px;
-        margin: auto;
-        /* padding: 1.75rem; */
-        background: var(--page-background);
-        font-family: var(--font-family-sans);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-md);
-    }
+ .page {
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .page_content {
+      background: var(--page-background);
+      font-family: var(--font-family-sans);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+  }
+
+  .tooltip strong {
+		color: #000;
+	}
 
   :global(.brazil-rank-text) {
-  fill: #006b3c; /* Verde similar à bandeira do Brasil */
+  fill: #006b3c;
   font-size: 10px;
   font-weight: bold;
-  text-shadow: 0 0 2px white; /* Melhora a legibilidade */
+  text-shadow: 0 0 2px white; 
 }
 </style>

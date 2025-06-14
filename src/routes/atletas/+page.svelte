@@ -488,16 +488,14 @@
 	.title h1 {
 		font-weight: 700;
 		color: var(--primary-color-darker);
-		margin: 0 0 1rem 0;
+		margin: 0 0 1.5rem 0;
+		font-family: var(--font-family-sans);
 		font-size: 1.8rem;
 		letter-spacing: -0.5px;
-		text-align: center;
 	}
-	
 	.intro-text p {
 		text-align: justify;
 		line-height: 1.6;
-		color: #555;
 	}
 
 	.instructions-block {
@@ -510,7 +508,6 @@
 		flex: 1;
 		text-align: left;
 		line-height: 1.6;
-		color: #555;
 		margin: 0;
 		font-size: 0.95rem;
 	}

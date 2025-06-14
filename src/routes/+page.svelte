@@ -24,7 +24,8 @@
     <title>Tarefa 4 – Olimpíadas</title>
 </svelte:head>
 
-<div class="title">
+<div class="page">
+    <div class="title">
     <h1>Análise dos Resultados Olímpicos</h1>
             
     <h3>por Guilherme Buss, Guilherme Carvalho e Luís Felipe Marciano</h3>
@@ -49,9 +50,7 @@
     </p>    
 
     <hr style="margin: 30px 0; border: 0; border-top: 1px solid #e0e0e0;">
-</div>
-
-<div class="page">
+    </div>
     <div class="title">
 
         <h1 class="graph_title">Resultados olímpicos ao longo do tempo</h1>
@@ -82,13 +81,13 @@
                 <input type="number" bind:value={yMin} placeholder="Min" disabled={!measure} class="range-input">
                 <span>a</span>
                 <input type="number" bind:value={yMax} placeholder="Max" disabled={!measure} class="range-input">
+                <span id="guide">
+                    *recomendamos o uso para visualizar valores pequenos
+                </span>
                 <button on:click={resetFilters} disabled={!measure} class="clear-btn">Limpar</button>
             </div>
         </div>
     </div>
-    <span id="guide">
-        *recomendamos o uso para visualizar valores pequenos
-    </span>
 
     {#key graphKey}
         <Graph
@@ -105,9 +104,10 @@
 
 <style>
 .page {
-    max-width: 1380px;
-    margin: auto;
-    padding: 2rem 1rem;
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 20px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* .page {
     max-width: 1380px;
@@ -148,7 +148,7 @@
 .controls {
     display: flex;
     gap: 40px;
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
@@ -204,13 +204,9 @@
 
 
 #guide {
-    position: relative;
-    left: 49%;
-    height: 10px;
-    top: -20px;
-    display: block;
-    font-size: 0.68rem;
-    color: #777;
+margin-top: 0px;
+font-size: 0.70rem;
+color: #777;
 }
 
 .graph_title {
