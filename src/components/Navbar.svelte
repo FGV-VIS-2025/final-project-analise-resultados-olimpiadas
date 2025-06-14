@@ -2,13 +2,12 @@
     import { page } from "$app/stores";
     import { base } from "$app/paths";
 
-    export let pages = [ // Tornamos 'pages' uma prop para flexibilidade, ou pode manter fixo
+    export let pages = [
         { url: "/", title: "Home" },
         { url: "/atletas", title: "Atletas" },
         { url: "/jogos", title: "Edições" }
     ];
 
-    // Caminho para a imagem dos arcos olímpicos na pasta static
     const olympicRingsPath = `${base}/olympic_rings.svg`;
 </script>
 
@@ -35,45 +34,45 @@
 <style>
     nav {
         display: flex;
-        align-items: center; /* Alinha verticalmente o logo e os links */
-        gap: 1.5rem; /* Espaçamento entre o logo e os links */
-        padding: 0.8rem 1.5rem; /* Padding vertical e horizontal */
-        background-color: var(--nav-background, #ffffff); /* Cor de fundo da navbar */
+        align-items: center; 
+        gap: 1.5rem; 
+        padding: 0.8rem 1.5rem; 
+        background-color: var(--nav-background, #ffffff);
         border-bottom: 1px solid var(--border-color, #e0e0e0);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        position: sticky; /* Faz a navbar ficar no topo ao rolar */
+        position: sticky; 
         top: 0;
-        z-index: 1000; /* Garante que a navbar fique sobre outros elementos */
+        z-index: 1000; 
     }
 
     .logo-link {
-        display: inline-block; /* Para o link não ocupar largura total */
+        display: inline-block; 
         text-decoration: none;
         color: inherit;
     }
 
     .olympic-logo {
-        height: 40px; /* Ajuste a altura conforme necessário */
+        height: 40px;
         width: auto;
-        display: block; /* Remove espaço extra abaixo da imagem */
+        display: block; 
     }
     
 
     .nav-links {
         display: flex;
-        gap: 1.2rem; /* Espaçamento entre os links */
-        margin-left: auto; /* Empurra os links para a direita (opcional) */
-                         /* ou use justify-content: center; no 'nav' e remova margin-left: auto */
+        gap: 1.2rem; 
+        margin-left: auto; 
     }
 
-    nav a:not(.logo-link) { /* Aplica estilo apenas aos links de texto */
+    nav a:not(.logo-link) { 
         text-decoration: none;
         color: var(--nav-text-color, #333333);
-        font-weight: 500; /* Um pouco menos "bold" que o padrão */
+        font-weight: 300;
+        font-family:Georgia, 'Times New Roman', Times, serif;
         padding: 0.5rem 0.8rem;
         border-radius: 6px;
         transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-        position: relative; /* Para o pseudo-elemento ::after */
+        position: relative; 
     }
 
     nav a:not(.logo-link)::after {
@@ -81,32 +80,31 @@
         position: absolute;
         width: 0;
         height: 2px;
-        bottom: -2px; /* Posição da linha abaixo do texto */
+        bottom: 3px; 
         left: 50%;
         transform: translateX(-50%);
-        background-color: var(--link-hover-color, #007bff); /* Cor da linha, azul olímpico */
+        background-color: #007bff;
         transition: width 0.3s ease-in-out;
     }
     
     nav a:not(.logo-link):hover::after,
     nav a:not(.logo-link).current::after {
-        width: 70%; /* Largura da linha no hover/current */
+        width: 70%; 
     }
 
     nav a:not(.logo-link):hover {
-        color: var(--link-hover-color, #007bff);
-        /* background-color: var(--link-hover-bg, #f0f0f0); */ /* Opcional: fundo no hover */
+        color: #007bff;
     }
 
     nav a:not(.logo-link).current {
-        color: var(--link-active-color, #0056b3); /* Cor para o link ativo */
-        font-weight: 700;
+        color: #0056b3; 
+        font-weight: 400;
     }
 
     .logo-container {
         display: flex;
         align-items: center;
-        gap: 15px; /* Espaço entre a imagem e o texto */
+        gap: 15px; 
     }
 
 
@@ -115,14 +113,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 24px; /* Ajuste o tamanho conforme necessário */
-      font-weight: bold;
-      color: #000; /* Cor do texto - ajuste conforme necessário */
+      font-size: 24px; 
+      font-weight: 300;
+      color: #000; 
       text-align: center;
       width: 100%;
-      /* Adicione sombra ou contorno se o texto não estiver legível */
       text-shadow: 1px 1px 2px white;
       white-space: nowrap;
-
+      font-family:Georgia, 'Times New Roman', Times, serif;
     }
 </style>

@@ -669,7 +669,7 @@
   select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit; font-size: 1em;}
   #controls span { font-weight: bold; font-size: 1.1em; color: #333;}
   
-  .card {display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-width: 250px; min-height: 160px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
+  .card {border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-width: 250px; min-height: 160px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
   .card:hover { transform: translateY(-5px); }
   .card h3 { margin-top: 0; color: #0056b3; font-size: 1em; border-bottom: 1px solid #007bff;}
   .card p, .card li { margin: 6px 0; color: #444; font-size: 0.8em; line-height: 1.5}
@@ -733,7 +733,7 @@
     font-weight: 700;
     color: var(--primary-color-darker);
     margin: 0 0 1.5rem 0;
-    font-family: var(--font-family-sans);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.8rem;
     letter-spacing: -0.5px;
 }
@@ -802,5 +802,9 @@
   font-size: 10px;
   font-weight: bold;
   text-shadow: 0 0 2px white; 
+}
+
+#card-top-atletas-wrapper {
+
 }
 </style>

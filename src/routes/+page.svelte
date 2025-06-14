@@ -123,7 +123,7 @@
     font-weight: 700;
     color: var(--primary-color-darker);
     margin: 0 0 1.5rem 0;
-    font-family: var(--font-family-sans);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.8rem;
     letter-spacing: -0.5px;
 }
