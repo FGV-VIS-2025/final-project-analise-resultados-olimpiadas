@@ -50,6 +50,13 @@
     "Jamaica": "JM", "Ukraine": "UA", "Iran": "IR", "India": "IN", "Chinese Taipei": "TW",
   };
 
+  const localFlagOverrides = {
+    'Soviet Union': `${base}/missing_flags/soviet_union.png`,
+    'German Democratic Republic (Germany)': `${base}/missing_flags/east_germany.png`,
+    'Federal Republic of Germany': `${base}/missing_flags/west_germany.png`,
+    'Unified Team': `${base}/missing_flags/unified_team.png`,
+  };
+
   let leftColumnElement;
   let rightColumnElement;
   let chartContainerElement;
@@ -79,28 +86,32 @@
     }
   }
 
-  function getCountryFlagUrl(countryNameForLookup, countryCodeFromMedalData) {
-    let finalCode = null;
-    if (officialFlagData.has(countryNameForLookup)) {
-        const codeFromOfficialCsv = officialFlagData.get(countryNameForLookup);
-        if (codeFromOfficialCsv && typeof codeFromOfficialCsv === 'string' && codeFromOfficialCsv.length === 2) {
-            finalCode = codeFromOfficialCsv.toUpperCase();
-        }
+function getCountryFlagUrl(countryNameForLookup, countryCodeFromMedalData) {
+    if (countryNameForLookup && localFlagOverrides[countryNameForLookup]) {
+        return localFlagOverrides[countryNameForLookup];
     }
-    if (!finalCode && countryCodeFromMedalData && typeof countryCodeFromMedalData === 'string' && countryCodeFromMedalData.length === 2) {
-        finalCode = countryCodeFromMedalData.toUpperCase();
-    }
-    if (!finalCode && countryNameForLookup && countryCodeMapping[countryNameForLookup]) {
-        finalCode = countryCodeMapping[countryNameForLookup];
-    }
-    if (!finalCode && countryNameForLookup && countryNameForLookup.length >= 2 && countryNameForLookup.length <= 3 && countryCodeMapping[countryNameForLookup.toUpperCase()]) {
-        finalCode = countryCodeMapping[countryNameForLookup.toUpperCase()];
-    }
-    if (finalCode) {
-        return `https://flagcdn.com/w40/${finalCode.toLowerCase()}.png`;
-    }
-    return ''; 
+
+let finalCode = null;
+if (officialFlagData.has(countryNameForLookup)) {
+  const codeFromOfficialCsv = officialFlagData.get(countryNameForLookup);
+  if (codeFromOfficialCsv && typeof codeFromOfficialCsv === 'string' && codeFromOfficialCsv.length === 2) {
+    finalCode = codeFromOfficialCsv.toUpperCase();
   }
+  }
+  if (!finalCode && countryCodeFromMedalData && typeof countryCodeFromMedalData === 'string' && countryCodeFromMedalData.length === 2) {
+    finalCode = countryCodeFromMedalData.toUpperCase();
+  }
+  if (!finalCode && countryNameForLookup && countryCodeMapping[countryNameForLookup]) {
+    finalCode = countryCodeMapping[countryNameForLookup];
+  }
+  if (!finalCode && countryNameForLookup && countryNameForLookup.length >= 2 && countryNameForLookup.length <= 3 && countryCodeMapping[countryNameForLookup.toUpperCase()]) {
+    finalCode = countryCodeMapping[countryNameForLookup.toUpperCase()];
+  }
+  if (finalCode) {
+    return `https://flagcdn.com/w40/${finalCode.toLowerCase()}.png`;
+  }
+  return ''; 
+ }
 
   async function fetchAthleteMedia(profileUrl) {
     const k = profileUrl || '';
@@ -545,9 +556,9 @@
                 {/if}
               </p>
               <p><strong>Medalhas:</strong>
-                {#if (editionCardData.highlightedAthlete.GOLD || 0) > 0} <span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span> {editionCardData.highlightedAthlete.GOLD} {/if}
-                {#if (editionCardData.highlightedAthlete.SILVER || 0) > 0} <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span> {editionCardData.highlightedAthlete.SILVER} {/if}
-                {#if (editionCardData.highlightedAthlete.BRONZE || 0) > 0} <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span> {editionCardData.highlightedAthlete.BRONZE} {/if}
+                {#if (editionCardData.highlightedAthlete.GOLD || 0) > 0} <span style="color:{medalColors.GOLD}; font-weight:bold;">🥇:</span> {editionCardData.highlightedAthlete.GOLD} {/if}
+                {#if (editionCardData.highlightedAthlete.SILVER || 0) > 0} <span style="color:{medalColors.SILVER}; font-weight:bold;">🥈:</span> {editionCardData.highlightedAthlete.SILVER} {/if}
+                {#if (editionCardData.highlightedAthlete.BRONZE || 0) > 0} <span style="color:{medalColors.BRONZE}; font-weight:bold;">🥉:</span> {editionCardData.highlightedAthlete.BRONZE} {/if}
                 (Total: {editionCardData.highlightedAthlete.total})
               </p>
             </div>
@@ -561,7 +572,7 @@
             <div class="card">
               <h3>Brasil: {editionCardData.year}</h3>
               {#if editionCardData.brazilData.total > 0}
-                <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.brazilData.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.brazilData.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.brazilData.BRONZE}</p>
+                <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">🥇:</span></strong> {editionCardData.brazilData.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">🥈:</span></strong> {editionCardData.brazilData.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">🥉:</span></strong> {editionCardData.brazilData.BRONZE}</p>
                 <p><strong>Total de Medalhas:</strong> {editionCardData.brazilData.total}</p>
                 <p><strong>Ranking na Edição:</strong> {editionCardData.brazilRankInEdition}</p>
               {:else}
@@ -582,7 +593,7 @@
                   <img class="flag-icon" src="{getCountryFlagUrl(editionCardData.topCountry.country, editionCardData.topCountry.country_code_iso2)}" alt="Bandeira de {editionCardData.topCountry.country}"/>
                 {/if}
               </p>
-              <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span></strong> {editionCardData.topCountry.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span></strong> {editionCardData.topCountry.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span></strong> {editionCardData.topCountry.BRONZE} (Total: {editionCardData.topCountry.total})</p>
+              <p><strong><span style="color:{medalColors.GOLD}; font-weight:bold;">🥇:</span></strong> {editionCardData.topCountry.GOLD}, <strong><span style="color:{medalColors.SILVER}; font-weight:bold;">🥈:</span></strong> {editionCardData.topCountry.SILVER}, <strong><span style="color:{medalColors.BRONZE}; font-weight:bold;">🥉:</span></strong> {editionCardData.topCountry.BRONZE} (Total: {editionCardData.topCountry.total})</p>
             </div>
           {/if}
         {/if}
@@ -608,7 +619,7 @@
                     {#if getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}
                       <img class="flag-icon" src="{getCountryFlagUrl(countryRank.country, countryRank.country_code_iso2)}" alt="Bandeira de {countryRank.country}"/>
                     {/if}
-                    <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{countryRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{countryRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{countryRank.BRONZE}, T:{countryRank.total})
+                    <br/><span style="color:{medalColors.GOLD}; font-weight:bold;">🥇:</span>{countryRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">🥈:</span>{countryRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">🥉:</span>{countryRank.BRONZE}, Total: {countryRank.total}
                   </li>
                 {/each}
               </ul>
@@ -628,7 +639,7 @@
                     {#if getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}
                           <img class="flag-icon" src="{getCountryFlagUrl(athleteRank.country_name, athleteRank.country_code_iso2)}" alt="Bandeira de {athleteRank.country_name}"/>
                     {/if}
-                    <br/>(<span style="color:{medalColors.GOLD}; font-weight:bold;">O:</span>{athleteRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">P:</span>{athleteRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">B:</span>{athleteRank.BRONZE}, T:{athleteRank.total})
+                    <br/><span style="color:{medalColors.GOLD}; font-weight:bold;">🥇:</span>{athleteRank.GOLD}, <span style="color:{medalColors.SILVER}; font-weight:bold;">🥈:</span>{athleteRank.SILVER}, <span style="color:{medalColors.BRONZE}; font-weight:bold;">🥉:</span>{athleteRank.BRONZE}, Total: {athleteRank.total}
                   </li>
                 {/each}
               </ul>
@@ -661,7 +672,7 @@
 
 
 <style>
-  #controls { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; padding: 10px; background-color: #f0f0f0; border-radius: 5px;}
+  #controls {display: flex; align-items: center; gap: 15px; flex-wrap: wrap; padding: 10px; background-color: #f0f0f0; border-radius: 5px;}
   input[type='range'] { width: 250px; cursor: pointer;}
   button { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; background-color: #007bff; color: #fff; font-weight: bold;}
   button:hover { background-color: #0056b3; }
@@ -669,13 +680,13 @@
   select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-family: inherit; font-size: 1em;}
   #controls span { font-weight: bold; font-size: 1.1em; color: #333;}
   
-  .card {border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-width: 250px; min-height: 160px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
+  .card {border: 1px solid #ddd; border-radius: 8px; padding: 10px; max-width: 250px; min-height: 130px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff; transition: transform 0.2s ease-in-out;}
   .card:hover { transform: translateY(-5px); }
   .card h3 { margin-top: 0; color: #0056b3; font-size: 1em; border-bottom: 1px solid #007bff;}
   .card p, .card li { margin: 6px 0; color: #444; font-size: 0.8em; line-height: 1.5}
   .card strong { color: #000; }
   .card ul { list-style-type: none; padding-left: 0}
-  .card li { padding: 0px 0; border-bottom: 1px dashed #eee; }
+  .card li { padding: 0px 0; border-bottom: 1px dashed #949494; }
   .card li:last-child { border-bottom: none; }
   .card img.athlete-photo { max-width: 100%; height: auto; max-height: 80px; object-fit: contain; border-radius: 4px; margin-top:10px; margin-bottom: 10px; align-self: center; border:1px solid #eee;}
   .card img.flag-icon { height: 1em; vertical-align: middle; margin-left: 5px; border: 1px solid #ccc;}
@@ -711,7 +722,7 @@
   }
 
   .cards-column-left, .cards-column-right {
-      overflow-y: auto; /* ADICIONADO */
+      overflow-y: auto; 
   }
   
   .chart-column {
