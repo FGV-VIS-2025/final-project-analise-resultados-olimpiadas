@@ -1,1 +1,22 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/DlYL7vDj)
+# Análise de Resultados - Olimpíadas
+
+## Resumo do projeto
+
+Bem-vindo(a) à nossa plataforma de Análise Olímpica! Nosso objetivo com este site é mergulhar na rica história dos Jogos Olímpicos através de dados e visualizações interativas. Queremos oferecer a você uma maneira fascinante de explorar tendências, comparar performances marcantes e compreender a evolução do esporte ao longo das décadas. Navegue por todas as abas para ter a experiência completa e entender diferentes aspectos dos jogos olímpicos. Logo abaixo, você encontrará nossa visualização principal, um ponto de partida para sua jornada exploratória.
+
+Dataset: [Olympic Results (1986-2018)](https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_results.csv)
+
+### Resultados olímpicos ao longo do tempo
+A ideia geral da nossa visualização é de observar a evolução dos recordes olímpicos durante a história dos jogos, evidenciando, como consequência, a melhora do atleticismo/preparo físico humano para essas atividades. Para isso, escolhemos uma base que continha as informações necessárias e fizemos uma filtragem e limpeza nos dados, escolhendo as categorias que seriam analizadas e formatando os resultados de cada atleta.
+
+Para a visualização de fato, escolhemos representá-la com um gráfico de linha, já que ele apresenta com mais efetividade o aspecto temporal que gostaríamos de implementar. Além disso, fizemos uma separação entre esportes de tempo, distância e peso com um gráfico para cada, visto que esportes em uma mesma unidade de medida possuem linhas que tendem a seguir a mesma tendência (crescimento para distância e redução para tempo, por exemplo). O leitor, portanto, poderia escolher a medida que deseja analisar e todos os esportes que ela engloba apareceriam em um gráfico de linhas acumulado. A partir daqui, uma tendência geral já poderia ser observada.
+
+Ao clicar em uma linha, selecionar o esporte no card à direita ou pesquisar pelo esporte, o gráfico seria filtrado para apenas a categoria escolhida, onde o usuário seria apresentado à um diagnóstico mais específico. Aqui, além do hover que mostra as informações do ponto, incluímos também um card fixo com o recorde da categoria. Para auxiliar na visibilidade, adicionamos a possibilidade de alterar o range do eixo y (categorias de score baixo ficavam comprimidadas no fundo do gráfico).
+
+Carvalho preparou os dados enquanto Buss fez o gráfico inicial. A partir daí, ambos trabalharam juntos na elaboração dos filtros, cards, legendas, aspectos visuais e redação final. Escolher os esportes que seríam utilizados foi uma tarefa bastante complicada, já que tínhamos uma gama muito grande de opções e muitos deles tinham resultados em formado de string que se diferenciavam e requiriam tratamento. Outro ponto desafiador foi escolher como seria a transição de gráfico agrupado -> gráfico de um esporte, mas após analisar as críticas enviadas, vimos a combinação da redução de opacidade com o filtro do eixo y como uma boa opção. Acreditamos ter gasto por volta de 15 horas/pessoa no desenvolvimento desse trabalho, que se dividiu quase que equivalentemente entre as preparações e componentes elaborados (tratamento de dados, criação de cards, hover e filtragem de esportes, etc).
+
+### Rede de Competição dos Atletas
+
+### História das Edições Olímpicas
+
+## Processo de produção do projeto
