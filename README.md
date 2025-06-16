@@ -2,21 +2,34 @@
 
 ## Resumo do projeto
 
-Bem-vindo(a) à nossa plataforma de Análise Olímpica! Nosso objetivo com este site é mergulhar na rica história dos Jogos Olímpicos através de dados e visualizações interativas. Queremos oferecer a você uma maneira fascinante de explorar tendências, comparar performances marcantes e compreender a evolução do esporte ao longo das décadas. Navegue por todas as abas para ter a experiência completa e entender diferentes aspectos dos jogos olímpicos. Logo abaixo, você encontrará nossa visualização principal, um ponto de partida para sua jornada exploratória.
+Nosso projeto consiste em uma plataforma interativa de análise para explorar dados históricos dos Jogos Olímpicos por meio de três visualizações complementares: (1) a evolução temporal do desempenho em provas de atletismo, (2) uma visualização dinâmica em rede das relações de competição entre atletas, e (3) um ranking animado das conquistas de medalhas por nação ao longo das edições olímpicas. Nosso sistema permite que entusiastas do esporte, analistas e historiadores identifiquem tendências de desempenho, examinem padrões de domínio e compreendam a evolução das Olimpíadas por meio de interfaces visuais intuitivas.
 
 Dataset: [Olympic Results (1986-2018)](https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_results.csv)
 
-### Resultados olímpicos ao longo do tempo
-A ideia geral da nossa visualização é de observar a evolução dos recordes olímpicos durante a história dos jogos, evidenciando, como consequência, a melhora do atleticismo/preparo físico humano para essas atividades. Para isso, escolhemos uma base que continha as informações necessárias e fizemos uma filtragem e limpeza nos dados, escolhendo as categorias que seriam analizadas e formatando os resultados de cada atleta.
+## Processo de pesquisa/desenvolvimento
 
-Para a visualização de fato, escolhemos representá-la com um gráfico de linha, já que ele apresenta com mais efetividade o aspecto temporal que gostaríamos de implementar. Além disso, fizemos uma separação entre esportes de tempo, distância e peso com um gráfico para cada, visto que esportes em uma mesma unidade de medida possuem linhas que tendem a seguir a mesma tendência (crescimento para distância e redução para tempo, por exemplo). O leitor, portanto, poderia escolher a medida que deseja analisar e todos os esportes que ela engloba apareceriam em um gráfico de linhas acumulado. A partir daqui, uma tendência geral já poderia ser observada.
+Este projeto é uma expansão do trabalho iniciado na Tarefa 4. Decidimos continuar com a mesma base de dados olímpicos para aproveitar todo o seu potencial e transformar a análise inicial em uma plataforma mais completa.
 
-Ao clicar em uma linha, selecionar o esporte no card à direita ou pesquisar pelo esporte, o gráfico seria filtrado para apenas a categoria escolhida, onde o usuário seria apresentado à um diagnóstico mais específico. Aqui, além do hover que mostra as informações do ponto, incluímos também um card fixo com o recorde da categoria. Para auxiliar na visibilidade, adicionamos a possibilidade de alterar o range do eixo y (categorias de score baixo ficavam comprimidadas no fundo do gráfico).
+A primeira visualização, de resultados ao longo do tempo, já existia e foi aprimorada. Melhoramos a interatividade, permitindo que o usuário clique em uma linha para focar em um evento específico, e melhoramos todo o seu visual. As outras duas páginas, "Atletas" e "Edições", foram criadas do zero nesta nova fase.
 
-Carvalho preparou os dados enquanto Buss fez o gráfico inicial. A partir daí, ambos trabalharam juntos na elaboração dos filtros, cards, legendas, aspectos visuais e redação final. Escolher os esportes que seríam utilizados foi uma tarefa bastante complicada, já que tínhamos uma gama muito grande de opções e muitos deles tinham resultados em formado de string que se diferenciavam e requiriam tratamento. Outro ponto desafiador foi escolher como seria a transição de gráfico agrupado -> gráfico de um esporte, mas após analisar as críticas enviadas, vimos a combinação da redução de opacidade com o filtro do eixo y como uma boa opção. Acreditamos ter gasto por volta de 15 horas/pessoa no desenvolvimento desse trabalho, que se dividiu quase que equivalentemente entre as preparações e componentes elaborados (tratamento de dados, criação de cards, hover e filtragem de esportes, etc).
+Para a página "Atletas", nossa primeira ideia foi um gráfico de linha do tempo, comparando dois atletas. Após recebermos feedbacks, percebemos que essa não era a melhor abordagem, já que a maioria dos atletas compete em poucas Olimpíadas, o que deixava o gráfico com apenas dois ou três pontos. Por isso, mudamos para uma rede de rivalidades. Com ela, fica muito mais fácil ver todos os adversários de um atleta e comparar seus resultados ao passar o mouse sobre eles.
 
-### Rede de Competição dos Atletas
+Já a página "Edições" traz uma animação com os 10 países com mais medalhas acumuladas. Para inovar em um formato de visualização já conhecido, adicionamos cards dinâmicos ao lado do gráfico, que trazem informações e curiosidades sobre cada edição específica, como os atletas de destaque e o desempenho do Brasil. 
 
-### História das Edições Olímpicas
+## Divisão do trabalho:
 
-## Processo de produção do projeto
+Durante o trabalho todos tiveram participação nas discussões e decisões de projeto. A divisão a seguir não foi seguida a risca, todos  tiveram contribuições em todas as partes do projeto.
+
+Guilherme Carvalho:
+  - Cards animados do gráfico de ranking
+  - Estilização do gráfico da home
+  - CSS geral
+
+Guilherme Buss:
+  - Gráfico da Rede de atletas
+  - Trailer de apresentação
+    
+Luís Felipe Marciano:
+  - Gráfico do raking de países animado
+  - Paper final e README
+  - Textos motivadores
