@@ -8,6 +8,8 @@ Nosso projeto consiste em uma plataforma interativa de análise para explorar da
 
 Dataset: [Olympic Results (1986-2018)](https://www.kaggle.com/datasets/piterfm/olympic-games-medals-19862018?select=olympic_results.csv)
 
+A página do nosso projeto pode ser encontrada em: [Link para a página](https://carvguilherme8.github.io/project_page_dataviz/)
+
 ## Processo de pesquisa/desenvolvimento
 
 Este projeto é uma expansão do trabalho iniciado na Tarefa 4. Decidimos continuar com a mesma base de dados olímpicos para aproveitar todo o seu potencial e transformar a análise inicial em uma plataforma mais completa.
