@@ -7,17 +7,18 @@
 	// Section: Data Stores
 	let allMetadata = [];
 	let allPairs = [];
-	let disciplines = [];
 	let events = [];
 	let athletes = [];
 	let eventsMap = new Map();
 
 	// Section: Filter States
-	let selectedDiscipline = '';
 	let selectedEvent = '';
+	let eventSearch = '';
+	let eventSuggestions = [];
 	let athleteSearch = '';
 	let suggestions = [];
-	
+	let selectedValueType = '';
+
 	// Section: Graph & UI States
 	let graph = { nodes: [], links: [] };
 	let legendCompetitors = [];
@@ -34,9 +35,16 @@
 	const height = 600;
 	const nodeRadius = 8;
 	const centralNodeRadius = 15;
-	const baseRingRadius = 250; // Reduzido para um visual mais compacto
+	const baseRingRadius = 250;
 
-	// --- Lógica de Bandeiras ---
+	// --- Logic ---
+	const valueTypes = ['TIME', 'DISTANCE', 'WEIGHT'];
+	const valueTypeLabels = {
+		'TIME': 'Tempo',
+		'DISTANCE': 'Distância',
+		'WEIGHT': 'Peso'
+	};
+
 	const countryCodeMapping = {
 		"United States of America": "US", "USA": "US", "United States": "US",
 		"People's Republic of China": "CN", "China": "CN",
@@ -80,9 +88,7 @@
 		
 		return '';
 	}
-	// --- Fim da lógica de bandeiras ---
-
-
+	
 	// Section: Lifecycle
 	onMount(async () => {
 		let athleteFromUrl = null;
@@ -126,8 +132,6 @@
 
 	// Section: Data Processing
 	function processInitialData() {
-		disciplines = [...new Set(allMetadata.map(d => d.discipline_title))].sort();
-		
 		allMetadata.forEach(row => {
 			const key = `${row.event_title}|${row.ano}`;
 			if (!eventsMap.has(key)) {
@@ -141,22 +145,22 @@
 
 	function updateAvailableEvents() {
 		let availableMetadata = allMetadata;
-		if (selectedDiscipline) {
-			availableMetadata = availableMetadata.filter(d => d.discipline_title === selectedDiscipline);
+		if (selectedValueType) {
+			availableMetadata = allMetadata.filter(d => d.value_type === selectedValueType);
 		}
-		events = [...new Set(availableMetadata.map(d => d.event_title))].sort();
+		events = [...new Set(availableMetadata.map(d => d.event_title).filter(Boolean))].sort();
 		updateAvailableAthletes();
 	}
 
 	function updateAvailableAthletes() {
 		let availableMetadata = allMetadata;
-		if (selectedDiscipline) {
-			availableMetadata = availableMetadata.filter(d => d.discipline_title === selectedDiscipline);
+		if (selectedValueType) {
+			availableMetadata = availableMetadata.filter(d => d.value_type === selectedValueType);
 		}
 		if (selectedEvent) {
 			availableMetadata = availableMetadata.filter(d => d.event_title === selectedEvent);
 		}
-		athletes = [...new Set(availableMetadata.map(d => d.athlete_full_name))].sort();
+		athletes = [...new Set(availableMetadata.map(d => d.athlete_full_name).filter(Boolean))].sort();
 	}
 
 	function createAthleteGraph(athleteName) {
@@ -286,7 +290,7 @@
 			.attr('width', '100%')
 			.attr('patternContentUnits', 'objectBoundingBox')
 			.append('image')
-			.attr('xlink:href', `${base}/rings.png`)
+			.attr('xlink:href', `${base}/olympic_rings.svg`)
 			.attr('height', 1)
 			.attr('width', 1)
 			.attr('preserveAspectRatio', 'xMidYMid meet');
@@ -318,7 +322,7 @@
 				.enter()
 				.append('circle')
 				.attr('class', 'competition-ring')
-				.attr('cx', centralNodeData.fx) // Usar a posição fixa do nó central
+				.attr('cx', centralNodeData.fx)
 				.attr('cy', centralNodeData.fy)
 				.attr('r', d => baseRingRadius / d);
 
@@ -377,17 +381,35 @@
 		svg.call(zoom).call(zoom.transform, d3.zoomIdentity);
 	}
 	
-	function handleDisciplineChange() {
+	function handleValueTypeChange() {
 		selectedEvent = '';
 		athleteSearch = '';
+		eventSearch = '';
 		centralNode = null;
 		graph = { nodes: [], links: [] };
 		legendCompetitors = [];
 		updateAvailableEvents();
 		renderGraph();
 	}
+	
+	function handleEventSearchInput() {
+		if (eventSearch) {
+			eventSuggestions = events.filter(e => e.toLowerCase().includes(eventSearch.toLowerCase()));
+		} else {
+			eventSuggestions = events;
+		}
+	}
+	
+	function hideEventSuggestions() {
+		setTimeout(() => {
+			eventSuggestions = [];
+		}, 200);
+	}
 
-	function handleEventChange() {
+	function selectEventSuggestion(name) {
+		selectedEvent = name;
+		eventSearch = name;
+		eventSuggestions = [];
 		athleteSearch = '';
 		centralNode = null;
 		graph = { nodes: [], links: [] };
@@ -397,13 +419,19 @@
 	}
 	
 	function handleSearchInput() {
-		if (athleteSearch.length > 2) {
-			suggestions = athletes.filter(a => a.toLowerCase().includes(athleteSearch.toLowerCase())).slice(0, 10);
+		if (athleteSearch) {
+			suggestions = athletes.filter(a => a.toLowerCase().includes(athleteSearch.toLowerCase()));
 		} else {
-			suggestions = [];
+			suggestions = athletes;
 		}
 	}
 	
+	function hideSuggestions() {
+		setTimeout(() => {
+			suggestions = [];
+		}, 200);
+	}
+
 	function handleSearch() {
 		const foundAthlete = athletes.find(a => a.toLowerCase() === athleteSearch.toLowerCase());
 		if (foundAthlete) {
@@ -445,33 +473,48 @@
 	</div>
 
 	<div class="controls">
-		<select bind:value={selectedDiscipline} on:change={handleDisciplineChange}>
-			<option value="">Todas as Modalidades</option>
-			{#each disciplines as discipline}
-				<option value={discipline}>{discipline}</option>
-			{/each}
-		</select>
-		
-		<select bind:value={selectedEvent} on:change={handleEventChange} disabled={!selectedDiscipline}>
-			<option value="">Todos os Eventos</option>
-			{#each events as event}
-				<option value={event}>{event}</option>
+		<select bind:value={selectedValueType} on:change={handleValueTypeChange}>
+			<option value="">Todos os Tipos</option>
+			{#each valueTypes as type}
+				<option value={type}>{valueTypeLabels[type] || type}</option>
 			{/each}
 		</select>
 		
 		<div class="search-container">
 			<input
 				type="text"
+				bind:value={eventSearch}
+				placeholder="Buscar evento..."
+				on:focus={handleEventSearchInput}
+				on:input={handleEventSearchInput}
+				on:blur={hideEventSuggestions}
+			/>
+			{#if eventSuggestions.length > 0}
+				<div class="suggestions">
+					{#each eventSuggestions.slice(0, 100) as suggestion}
+						<button class="suggestion-item" on:click={() => selectEventSuggestion(suggestion)}>
+							{suggestion}
+						</button>
+					{/each}
+				</div>
+			{/if}
+		</div>
+		
+		<div class="search-container">
+			<input
+				type="text"
 				bind:value={athleteSearch}
 				placeholder="Buscar atleta..."
+				on:focus={handleSearchInput}
 				on:input={handleSearchInput}
+				on:blur={hideSuggestions}
 				on:keydown={(e) => e.key === 'Enter' && handleSearch()}
 			/>
 			<button on:click={handleSearch} disabled={!athleteSearch}>Buscar</button>
 			
 			{#if suggestions.length > 0}
 				<div class="suggestions">
-					{#each suggestions as suggestion}
+					{#each suggestions.slice(0, 100) as suggestion}
 						<button class="suggestion-item" on:click={() => selectSuggestion(suggestion)}>
 							{suggestion}
 						</button>
@@ -512,24 +555,26 @@
 				<h3>{hoveredNode.label}</h3>
 				<p><strong>País:</strong> {hoveredNode.country || 'N/A'}</p>
 				{#if hoveredCompetitionDetails.length > 0}
-					<table class="competition-table">
-						<thead>
-							<tr>
-								<th>Evento (Ano)</th>
-								<th>{centralNode.label}</th>
-								<th>{hoveredNode.label}</th>
-							</tr>
-						</thead>
-						<tbody>
-							{#each hoveredCompetitionDetails as comp}
+					<div class="table-wrapper">
+						<table class="competition-table">
+							<thead>
 								<tr>
-									<td>{comp.event} ({comp.year})</td>
-									<td>{comp.centralValue}</td>
-									<td>{comp.hoveredValue}</td>
+									<th>Evento (Ano)</th>
+									<th>{centralNode.label}</th>
+									<th>{hoveredNode.label}</th>
 								</tr>
-							{/each}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{#each hoveredCompetitionDetails as comp}
+									<tr>
+										<td>{comp.event} ({comp.year})</td>
+										<td>{comp.centralValue}</td>
+										<td>{comp.hoveredValue}</td>
+									</tr>
+								{/each}
+							</tbody>
+						</table>
+					</div>
 				{:else if !hoveredNode.isCentral}
 					<p><strong>Competições juntos:</strong> {hoveredNode.competitions}</p>
 				{/if}
@@ -594,7 +639,7 @@
 	.controls {
 		grid-column: 1 / -1;
 		display: grid;
-		grid-template-columns: 1fr 1fr 2fr;
+		grid-template-columns: 1fr 1.5fr 1.5fr;
 		gap: 15px;
 		margin-bottom: 20px;
 		padding: 15px;
@@ -683,7 +728,6 @@
 		box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 		z-index: 10;
 		pointer-events: none;
-		max-width: 450px;
 		border: 1px solid #ddd;
 		transition: opacity 0.1s ease;
 	}
@@ -705,6 +749,11 @@
 		color: #000;
 	}
 
+	.table-wrapper {
+		width: auto;
+		max-width: 450px;
+	}
+	
 	.competition-table {
 		margin-top: 12px;
 		width: 100%;

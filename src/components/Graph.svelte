@@ -1,494 +1,489 @@
 <script>
-  // Seu script permanece o mesmo
-  import { onMount, onDestroy } from 'svelte';
-  import * as d3 from 'd3';
-  import { goto } from '$app/navigation';
+	import { onMount, onDestroy, tick } from 'svelte';
+	import * as d3 from 'd3';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
-  export let csvUrl;
-  export let measure = '';
-  export let searchQuery = '';
-  export let valueTypes = [];
-  export let yMin = '';
-  export let yMax = '';
-  export let selectedEvent = null;
+	export let csvUrl;
+	export let measure = '';
+	export let searchQuery = '';
+	export let valueTypes = [];
+	export let yMin = '';
+	export let yMax = '';
+	export let selectedEvent = null;
 
-  const margin = { top: 50, right: 10, bottom: 30, left: 60 };
-  const chartHeight = 500;
-  let chartWidth = 600;
+	const margin = { top: 50, right: 10, bottom: 30, left: 60 };
+	const chartHeight = 500;
+	let chartWidth = 600;
 
-  let svgRef, chartContainerRef, ro;
+	let svgRef, chartContainerRef, ro;
 
-  let rawData = [], filtered = [], groups = [], legend = [];
-  let xScale, yScale, color;
+	let rawData = [],
+		filtered = [],
+		groups = [],
+		legend = [];
+	let xScale, yScale, color;
 
-  let hoverVisible = false;
-  let hover = { sport: '', athlete: '', year: 0, value: 0, country: '', photo: '', flag: '' };
-  const cache = new Map();
+	let hoverVisible = false;
+	let hover = { sport: '', athlete: '', year: 0, value: 0, country: '', photo: '', flag: '' };
+	const cache = new Map();
 
-  let pinnedHoverData = null;
-  let isHoverPinned = false;
+	let pinnedHoverData = null;
+	let isHoverPinned = false;
 
-  let introYear, recordRow, recAth, recVal, recYear;
-  let recPhoto = '', recFlag = '';
+	let introYear, recordRow, recAth, recVal, recYear;
+	let recPhoto = '',
+		recFlag = '';
 
-  const transitionDuration = 750;
+	const transitionDuration = 750;
 
-  onMount(async () => {
-    rawData = await d3.csv(csvUrl);
-    valueTypes = [...new Set(rawData.map(d => d.value_type))].filter(Boolean);
-    if (!measure && valueTypes.length) measure = valueTypes[0];
-    
-    yScale = d3.scaleLinear().range([chartHeight - margin.bottom - margin.top, margin.top]);
-    xScale = d3.scaleLinear();
-
-    updateWidth();
-    if (typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(updateWidth);
-      ro.observe(chartContainerRef);
-    } else {
-      if (typeof window !== 'undefined') window.addEventListener('resize', updateWidth);
-    }
-  });
-
-  onDestroy(() => {
-    ro?.disconnect();
-    if (typeof window !== 'undefined') window.removeEventListener('resize', updateWidth);
-  });
-
-  $: { rawData; measure; searchQuery; yMin; yMax; rawData.length && validFilterData(); }
-  $: selectedEvent, calcInfoAndUpdateDraw();
-
-  function calcInfoAndUpdateDraw() {
-    calcInfo();
-  }
-
-  function validFilterData() {
-    if (rawData.length > 0) {
-      filterData();
-    }
-  }
-  
-  function updateWidth() {
-    if (!chartContainerRef) return;
-    const w = chartContainerRef.clientWidth;
-    chartWidth = Math.max(300, w); 
-    
-    if(xScale) xScale.range([margin.left, chartWidth - margin.right]);
-
-    if (rawData.length > 0) {
-      filterData();
-    }
-  }
-
-  function filterData() {
-    if (!rawData || rawData.length === 0) {
-      groups = [];
-      legend = [];
-      draw();
-      return;
-    }
-
-    filtered = rawData.filter(r =>
-      r.medal_type === 'GOLD' &&
-      !isNaN(+r.value_unit) &&
-      (!measure || r.value_type === measure)
-    );
-
-    if (searchQuery.trim() && !selectedEvent) {
-      const q = searchQuery.trim().toLowerCase();
-      filtered = filtered.filter(r => r.event_title.toLowerCase().includes(q));
-    }
-
-    groups = Array.from(d3.group(filtered, r => r.event_title));
-
-    const yMinNumProp = Number(yMin);
-    const yMaxNumProp = Number(yMax);
-
-    const applyPropRangeFilter = !selectedEvent && 
-                                  yMin.toString().trim() !== '' && 
-                                  yMax.toString().trim() !== '' && 
-                                  !isNaN(yMinNumProp) && 
-                                  !isNaN(yMaxNumProp) && 
-                                  yMinNumProp <= yMaxNumProp;
-
-    if (applyPropRangeFilter) {
-      groups = groups.filter(([ev, rows]) => {
-        const values = rows.map(r => (r.value_unit === null || String(r.value_unit).trim() === "") ? NaN : +r.value_unit)
-                            .filter(v => !isNaN(v)); 
-        if (values.length === 0) return false;
-
-        const minRowVal = d3.min(values);
-        const maxRowVal = d3.max(values);
-
-        if (minRowVal === undefined || maxRowVal === undefined) return false;
-
-        return minRowVal >= yMinNumProp && maxRowVal <= yMaxNumProp;
-      });
-    }
-    
-    legend = groups.map(([ev]) => ev).sort((a, b) => a.localeCompare(b));
-    if (color) {
-      color.domain(legend);
-    } else {
-      // Usando uma paleta de cores mais vibrante ou um esquema diferente
-      // color = d3.scaleOrdinal().domain(legend).range(d3.schemeTableau10); // Exemplo: Tableau10
-      // Ou mantendo o interpolateRainbow se preferir muitas cores distintas
-      color = d3.scaleOrdinal().domain(legend).range(d3.quantize(t => d3.interpolateRainbow(t * 0.8 + 0.1), Math.max(10, legend.length)));
-    }
-    draw();
-  }
-
-  function selectEvent(ev) {
-    if (selectedEvent === ev) { 
-      return; 
-    }
-    selectedEvent = ev;
-
-    pinnedHoverData = null;
-    isHoverPinned = false;
-    hoverVisible = false;
-
-    draw(); 
-  }
-
-  async function fetchAthleteMedia(athleteUrl, athleteLink) {
-    const k = athleteUrl || athleteLink || '';
-    if (!k) return { photo: '', flag: '' };
-    if (cache.has(k)) return cache.get(k);
-    try {
-      const html = await (await fetch(k)).text();
-      const d = new DOMParser().parseFromString(html, 'text/html');
-      const media = {
-        photo: d.querySelector('section picture img')?.src || '',
-        flag: d.querySelector('section img[alt][src*="noc"]')?.src || ''
-      };
-      cache.set(k, media);
-      return media;
-    } catch (e) {
-      cache.set(k, { photo: '', flag: '' });
-      return { photo: '', flag: '' };
-    }
-  }
-
-  async function calcInfo() {
-    if (!selectedEvent) {
-      introYear = null; recordRow = null; recAth = ''; recVal = ''; recYear = ''; recPhoto = ''; recFlag = '';
-      return;
-    }
-    const rows = rawData.filter(r => r.event_title === selectedEvent && r.medal_type === 'GOLD');
-      if (!rows.length) {
-        introYear = null; recordRow = null; recAth = ''; recVal = ''; recYear = ''; recPhoto = ''; recFlag = '';
-        return;
-    }
-    introYear = d3.min(rows, r => +r.ano);
-    recordRow = measure === 'TIME'
-      ? rows.reduce((a, b) => +b.value_unit < +a.value_unit ? b : a, rows[0])
-      : rows.reduce((a, b) => +b.value_unit > +a.value_unit ? b : a, rows[0]);
-    
-    if (!recordRow) return;
-    recAth = recordRow.athlete_full_name;
-    recVal = recordRow.value_unit;
-    recYear = recordRow.ano;
-    const { photo, flag } = await fetchAthleteMedia(recordRow.athlete_url, recordRow.athlete_link);
-    recPhoto = photo;
-    recFlag = flag;
-  }
-
-  async function showHover(pointData) {
-    if (isHoverPinned && !(pinnedHoverData.year === pointData.year && pinnedHoverData.athlete === pointData.raw.athlete_full_name)) {
-        return;
-    }
-    hover = {
-      sport: pointData.event, athlete: pointData.raw.athlete_full_name,
-      year: pointData.year, value: pointData.val, country: pointData.raw.country_name,
-      photo: '', flag: ''
-    };
-    const { photo, flag } = await fetchAthleteMedia(pointData.raw.athlete_url, pointData.raw.athlete_link);
-    hover.photo = photo;
-    hover.flag = flag;
-    hoverVisible = true;
-  }
-
-  const hideHover = () => {
-    if (!isHoverPinned) hoverVisible = false;
+	// Objeto de tradução para os tipos de medida
+	const measureLabels = {
+      TIME: 'Tempo',
+      DISTANCE: 'Distância',
+      WEIGHT: 'Peso',
   };
 
-  function resetAll() {
-    selectedEvent = null;
-    pinnedHoverData = null;
-    isHoverPinned = false;
-    hoverVisible = false;
-    validFilterData();
-  }
+	onMount(async () => {
+		rawData = await d3.csv(csvUrl);
+		valueTypes = [...new Set(rawData.map((d) => d.value_type))].filter(Boolean);
+		if (!measure && valueTypes.length) measure = valueTypes[0];
 
-  function draw() {
-    if (!svgRef || !rawData.length || !xScale || !yScale || !color) return;
+		yScale = d3.scaleLinear().range([chartHeight - margin.bottom - margin.top, margin.top]);
+		xScale = d3.scaleLinear();
 
-    const svg = d3.select(svgRef)
-      .attr('width', chartWidth)
-      .attr('height', chartHeight);
+		updateWidth();
+		if (typeof ResizeObserver !== 'undefined') {
+			ro = new ResizeObserver(updateWidth);
+			if (chartContainerRef) ro.observe(chartContainerRef);
+		} else {
+			if (typeof window !== 'undefined') window.addEventListener('resize', updateWidth);
+		}
+	});
 
-    const actualChartWidth = chartWidth - margin.left - margin.right;
-    const actualChartHeight = chartHeight - margin.top - margin.bottom;
+	onDestroy(() => {
+		ro?.disconnect();
+		if (typeof window !== 'undefined') window.removeEventListener('resize', updateWidth);
+	});
 
-    xScale.range([margin.left, actualChartWidth + margin.left]);
-    yScale.range([actualChartHeight + margin.top, margin.top]);
+	$: {
+		rawData;
+		measure;
+		searchQuery;
+		yMin;
+		yMax;
+		rawData.length && validFilterData();
+	}
+	$: selectedEvent, calcInfoAndUpdateDraw();
 
-    const activeGroups = selectedEvent ? groups.filter(([ev]) => ev === selectedEvent) : groups;
-    const allYears = activeGroups.flatMap(([, groupRows]) => groupRows.map(r => +r.ano));
+	function calcInfoAndUpdateDraw() {
+		calcInfo();
+	}
 
-    if (allYears.length > 0) {
-      xScale.domain(d3.extent(allYears));
-    } else {
-      const currentYear = new Date().getFullYear();
-      xScale.domain([currentYear - 10, currentYear]);
-    }
-    
-    const allDataForGlobalScale = groups.flatMap(([, groupRows]) => groupRows.map(r => +r.value_unit));
+	function validFilterData() {
+		if (rawData.length > 0) {
+			filterData();
+		}
+	}
 
-    if (selectedEvent) {
-      const eventGroup = groups.find(([evName]) => evName === selectedEvent);
-      if (eventGroup && eventGroup[1].length > 0) {
-        const eventValues = eventGroup[1].map(r => +r.value_unit);
-        let [minVal, maxVal] = d3.extent(eventValues);
-        if (minVal !== undefined) {
-          if (minVal === maxVal) {
-            const delta = Math.abs(minVal * 0.1) || 0.5; // Aumentar delta para melhor visualização de ponto único
-            minVal -= delta;
-            maxVal += delta;
-          } else {
-            const padding = (maxVal - minVal) * 0.15; // Aumentar padding
-            minVal -= padding;
-            maxVal += padding;
-          }
-          yScale.domain([minVal, maxVal]);
-        } else { 
-          const yMinNumProp = Number(yMin);
-          const yMaxNumProp = Number(yMax);
-          if (yMin && yMax && !isNaN(yMinNumProp) && !isNaN(yMaxNumProp) && yMinNumProp <= yMaxNumProp) {
-            yScale.domain([yMinNumProp, yMaxNumProp]);
-          } else {
-            yScale.domain(allDataForGlobalScale.length > 0 ? d3.extent(allDataForGlobalScale) : [0, 1]).nice(5);
-          }
-        }
-      } else { 
-        const yMinNumProp = Number(yMin);
-        const yMaxNumProp = Number(yMax);
-          if (yMin && yMax && !isNaN(yMinNumProp) && !isNaN(yMaxNumProp) && yMinNumProp <= yMaxNumProp) {
-          yScale.domain([yMinNumProp, yMaxNumProp]);
-        } else {
-          yScale.domain(allDataForGlobalScale.length > 0 ? d3.extent(allDataForGlobalScale) : [0, 1]).nice(5);
-        }
+	function updateWidth() {
+		if (!chartContainerRef) return;
+		const w = chartContainerRef.clientWidth;
+		chartWidth = Math.max(300, w);
+
+		if (xScale) xScale.range([margin.left, chartWidth - margin.right]);
+
+		if (rawData.length > 0) {
+			filterData();
+		}
+	}
+
+  function filterData() {
+      if (!rawData || rawData.length === 0) {
+          groups = [];
+          legend = [];
+          draw();
+          return;
       }
-    } else {
-      const yMinNumProp = Number(yMin);
-      const yMaxNumProp = Number(yMax);
-      if (yMin && yMax && !isNaN(yMinNumProp) && !isNaN(yMaxNumProp) && yMinNumProp <= yMaxNumProp) {
-        yScale.domain([yMinNumProp, yMaxNumProp]);
+
+      filtered = rawData.filter(
+          (r) =>
+              r.medal_type === 'GOLD' &&
+              !isNaN(+r.value_unit) &&
+              (!measure || r.value_type === measure)
+      );
+
+      if (searchQuery.trim() && !selectedEvent) {
+          const q = searchQuery.trim().toLowerCase();
+          filtered = filtered.filter((r) => r.event_title.toLowerCase().includes(q));
+      }
+
+      groups = Array.from(d3.group(filtered, (r) => r.event_title));
+
+      // Tratamento dos valores yMin e yMax quando vazios
+      const hasMin = yMin.toString().trim() !== '';
+      const hasMax = yMax.toString().trim() !== '';
+      const yMinNum = hasMin ? Number(yMin) : -Infinity;
+      const yMaxNum = hasMax ? Number(yMax) : Infinity;
+
+      const isRangeFilterActive = 
+        !selectedEvent &&
+        (hasMin || hasMax) &&
+        !isNaN(yMinNum) && 
+        !isNaN(yMaxNum) && 
+        yMinNum <= yMaxNum;
+
+      if (isRangeFilterActive) {
+        groups = groups.filter(([ev, rows]) => {
+          const values = rows
+            .map((r) => +r.value_unit)
+            .filter(v => !isNaN(v));
+          
+          if (values.length === 0) return false;
+
+          const minRowVal = d3.min(values);
+          const maxRowVal = d3.max(values);
+
+          return minRowVal >= yMinNum && maxRowVal <= yMaxNum;
+        });
+      }
+
+      legend = groups.map(([ev]) => ev).sort((a, b) => a.localeCompare(b));
+      if (color) {
+          color.domain(legend);
       } else {
-        yScale.domain(allDataForGlobalScale.length > 0 ? d3.extent(allDataForGlobalScale) : [0, 1]).nice(5);
+          color = d3
+              .scaleOrdinal()
+              .domain(legend)
+              .range(d3.quantize((t) => d3.interpolateRainbow(t * 0.8 + 0.1), Math.max(10, legend.length)));
       }
-    }
-    if (!yScale.domain() || yScale.domain().length < 2 || yScale.domain()[0] === yScale.domain()[1]) {
-      yScale.domain(allDataForGlobalScale.length > 0 ? d3.extent(allDataForGlobalScale) : [0,1]).nice(5);
-        if (!yScale.domain() || yScale.domain().length < 2 || yScale.domain()[0] === yScale.domain()[1]) yScale.domain([0,1]);
-    }
-
-    const lineGenerator = d3.line()
-      .defined(d => !isNaN(d.val) && yScale(d.val) !== undefined && !isNaN(yScale(d.val)))
-      .x(d => xScale(d.year))
-      .y(d => yScale(d.val))
-      .curve(d3.curveMonotoneX); // Curva mais suave para um visual moderno
-
-    const measureLabels = { 'TIME': 'Tempo (s)', 'DISTANCE': 'Distância (m)', 'WEIGHT': 'Peso (kg)' };
-    const measureLabel = measureLabels[measure] || measure;
-
-    svg.selectAll('g.y-axis').data([null])
-      .join(
-        enter => enter.append('g').attr('class', 'y-axis callout').call(sel => sel.attr('transform', `translate(${margin.left},0)`).call(d3.axisLeft(yScale).ticks(5).tickSizeOuter(0))),
-        update => update.call(sel => sel.transition().duration(transitionDuration).call(d3.axisLeft(yScale).ticks(5).tickSizeOuter(0)))
-      );
-
-    svg.selectAll('g.x-axis').data([null])
-      .join(
-        enter => enter.append('g').attr('class', 'x-axis callout').call(sel => sel.attr('transform', `translate(0,${actualChartHeight + margin.top})`).call(d3.axisBottom(xScale).ticks(Math.min(8, actualChartWidth / 80)).tickFormat(d3.format('d')).tickSizeOuter(0))),
-        update => update.call(sel => sel.attr('transform', `translate(0,${actualChartHeight + margin.top})`).transition().duration(transitionDuration).call(d3.axisBottom(xScale).ticks(Math.min(8, actualChartWidth / 80)).tickFormat(d3.format('d')).tickSizeOuter(0)))
-      );
-    
-    svg.selectAll('text.y-axis-label').data([measureLabel])
-      .join( enter => enter.append('text').attr('class', 'y-axis-label').attr('transform', 'rotate(-90)').attr('y', margin.left / 4 - 15 ).attr('x', -( (actualChartHeight + margin.top + margin.top) / 2)).attr('text-anchor', 'middle').text(d => d), update => update.attr('y', margin.left / 4).attr('x', -( (actualChartHeight + margin.top + margin.top) / 2)).text(d => d) );
-    svg.selectAll('text.x-axis-label').data(['Ano'])
-      .join( enter => enter.append('text').attr('class', 'x-axis-label').attr('x', margin.left + actualChartWidth / 2).attr('y', chartHeight - margin.bottom / 3 + 5).attr('text-anchor', 'middle').text(d => d), update => update.attr('x', margin.left + actualChartWidth / 2).attr('y', chartHeight - margin.bottom / 3 + 22).text(d => d) );
-    svg.selectAll('text.chart-title-text').data([`${selectedEvent ? selectedEvent + ' - ' : ''}Resultados Olímpicos (${measureLabel})`])
-      .join( enter => enter.append('text').attr('class', 'chart-title-text').attr('x', (margin.left + actualChartWidth + margin.left) / 2).attr('y', margin.top / 2.5).attr('text-anchor', 'middle').text(d => d), update => update.attr('x', (margin.left + actualChartWidth + margin.left) / 2).text(d => d) );
-
-    const seriesToDraw = selectedEvent ? groups.filter(([ev]) => ev === selectedEvent) : groups;
-      const seriesData = seriesToDraw.map(([ev, rows]) => ({
-        event: ev,
-        values: rows.map(r => ({ year: +r.ano, val: +r.value_unit, raw: r, event: ev }))
-                    .sort((a, b) => a.year - b.year)
-      })).filter(s => s.values.length > 0);
-
-    const paths = svg.selectAll('path.line')
-      .data(seriesData, d => d.event);
-
-    paths.join(
-      enter => enter.append('path')
-        .attr('class', 'line')
-        .attr('fill', 'none')
-        .attr('stroke', d => color(d.event))
-        .attr('stroke-width', selectedEvent ? 3.5 : 2.5) // Linha mais grossa se selecionada
-        .attr('stroke-linecap', 'round')
-        .style('cursor', 'pointer')
-        .on('click', (e, d) => { e.stopPropagation(); selectEvent(d.event); })
-        .attr('d', d => lineGenerator(d.values))
-        .style('opacity', 0)
-        .call(pEnter => pEnter.transition().duration(transitionDuration)
-          .style('opacity', d => selectedEvent ? (d.event === selectedEvent ? 1 : 0.1) : (groups.length > 15 ? 0.35 : 0.75))
-        ),
-      update => update
-        .attr('stroke', d => color(d.event)) 
-        .style('cursor', 'pointer')
-        .on('click', (e, d) => { e.stopPropagation(); selectEvent(d.event); })
-        .call(upd => upd.transition().duration(transitionDuration)
-          .attr('stroke-width', selectedEvent ? 3.5 : 2.5)
-          .style('opacity', d => selectedEvent ? (d.event === selectedEvent ? 1 : 0.1) : (groups.length > 15 ? 0.35 : 0.75))
-          .attr('d', d => lineGenerator(d.values))
-        ),
-      exit => exit.transition().duration(transitionDuration)
-        .style('opacity', 0)
-        .attr('stroke-width', 0)
-        .remove()
-    );
-
-    const allPoints = seriesData.flatMap(s => s.values.map(p => ({...p, eventKey: s.event})))
-                              .filter(d => !isNaN(d.val) && yScale(d.val) !== undefined && !isNaN(yScale(d.val)));
-
-    const circlesGroup = svg.selectAll('g.circles-group').data([null]);
-    circlesGroup.enter().append('g').attr('class', 'circles-group')
-      .merge(circlesGroup);
-
-    const circles = svg.select('g.circles-group').selectAll('circle.data-point')
-      .data(allPoints, d => `${d.eventKey}-${d.year}-${d.raw.athlete_url || d.val}-${d.val}`);
-
-    const mergedCircles = circles.join(
-      enter => enter.append('circle')
-        .attr('class', 'data-point')
-        .attr('cx', d => xScale(d.year)) 
-        .attr('cy', d => yScale(d.val))  
-        .attr('r', 0)         
-        .call(cEnter => cEnter.transition('enterRadius').duration(500).ease(d3.easeBounceOut) // Efeito bounce
-          .delay((d,i) => selectedEvent === d.eventKey || !selectedEvent ? i * (200 / (allPoints.filter(p => selectedEvent ? p.eventKey === selectedEvent : true).length || 1)) : 0)
-          .attr('r', selectedEvent ? 5 : 4)  // Pontos maiores se evento selecionado
-        ),
-      update => update, 
-      exit => exit.transition('exitTransition').duration(transitionDuration / 2) 
-        .attr('r', 0)
-        .style('opacity', 0)
-        .remove()
-    );
-
-    mergedCircles
-      .attr('fill', d => d3.rgb(color(d.eventKey)).brighter(0.5))
-      .attr('stroke', d => d3.rgb(color(d.eventKey)).darker(1))
-      .attr('stroke-width', 1.5)
-      .style('cursor', d => (!selectedEvent || d.eventKey === selectedEvent) ? 'pointer' : 'default')
-      .on('mouseenter', function (event, dPoint) {
-        if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
-        d3.select(this).transition().duration(100).attr('r', selectedEvent ? 7 : 6).style('fill-opacity', 1);
-        showHover(dPoint);
-      })
-      .on('mouseleave', function (event, dPoint) {
-        if (isHoverPinned && pinnedHoverData.year === dPoint.year && pinnedHoverData.athlete === dPoint.raw.athlete_full_name) {
-        
-        } else {
-          d3.select(this).transition().duration(100).attr('r', selectedEvent ? 5 : 4).style('fill-opacity', null);
-        }
-        if (!isHoverPinned) hideHover();
-        else if (!(pinnedHoverData.year === dPoint.year && pinnedHoverData.athlete === dPoint.raw.athlete_full_name)) hideHover();
-      })
-      .on('click', function(e, dPoint) {
-        e.stopPropagation();
-
-        // Se existe filtro de evento, só permite clicar no evento selecionado
-        if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
-
-        // Se já está fixado no mesmo ponto, desfaz a fixação
-        if (isHoverPinned &&
-            pinnedHoverData &&
-            pinnedHoverData.athlete === dPoint.raw.athlete_full_name &&
-            pinnedHoverData.year === dPoint.year) {
-          // Destrava hover
-          pinnedHoverData = null;
-          isHoverPinned = false;
-          hoverVisible = false;
-
-          // Atualiza visual dos pontos (remove destaque)
-          svg.selectAll('circle.data-point')
-            .transition().duration(100)
-            .attr('r', selectedEvent ? 5 : 4);
-
-        } else {
-          // Atualiza hover fixado para o novo ponto
-          pinnedHoverData = {
-            sport: dPoint.event,
-            athlete: dPoint.raw.athlete_full_name,
-            year: dPoint.year,
-            value: dPoint.val,
-            country: dPoint.raw.country_name,
-            photo: '',
-            flag: ''
-          };
-          isHoverPinned = true;
-          hoverVisible = true;
-
-          // Atualiza hover com foto e bandeira async
-          showHover(dPoint).then(() => {
-            // Atualiza visual: todos os pontos do evento com tamanho normal,
-            // só o ponto fixado maior
-            svg.selectAll('circle.data-point')
-              .transition().duration(100)
-              .attr('r', selectedEvent ? 5 : 4);
-
-            d3.select(this)
-              .transition().duration(100)
-              .attr('r', selectedEvent ? 7 : 6);
-          });
-        }
-      })
-
-      
-      .transition('updateTransition').duration(transitionDuration) 
-        .attr('cx', d => xScale(d.year))
-        .attr('cy', d => yScale(d.val))
-        .style('opacity', d => selectedEvent ? (d.eventKey === selectedEvent ? 0.9 : 0.2) : (groups.length > 15 ? 0.6 : 1))
-        .attr('r', d => (isHoverPinned && pinnedHoverData && pinnedHoverData.athlete === d.raw.athlete_full_name && pinnedHoverData.year === d.year) ? (selectedEvent ? 7:6) : (selectedEvent ? 5:4) );
-
-    if (svg.select('g.circles-group').node()) { 
-        svg.select('g.circles-group').raise();
-    }
-
-    if (allPoints.length === 0 && groups.length > 0) {
-      svg.selectAll('text.no-data-message').data([null])
-        .join(enter => enter.append('text').attr('class', 'no-data-message')
-          .attr('x', chartWidth / 3)
-          .attr('y', chartHeight / 3)
-          .attr('text-anchor', 'middle')
-          .text(selectedEvent ? 'Nenhum dado para o evento selecionado com os filtros atuais.' : 'Nenhum dado para exibir com os filtros atuais.')
-        );
-    } else {
-      svg.select('text.no-data-message').remove();
-    }
+      draw();
   }
 
-  function goToAthleteDetails(athleteName) {
-    const isGitHubPages = window.location.hostname.includes('github.io');
-    const basePath = isGitHubPages ? '/final-project-analise-resultados-olimpiadas' : '';
-    
-    // A única mudança é aqui: usamos "?athlete=" em vez de "?athlete1="
-    goto(`${basePath}/atletas?athlete=${encodeURIComponent(athleteName)}`);
-  }
+	function selectEvent(ev) {
+		if (selectedEvent === ev) {
+			return;
+		}
+		selectedEvent = ev;
+
+		pinnedHoverData = null;
+		isHoverPinned = false;
+		hoverVisible = false;
+
+		draw();
+	}
+
+	async function fetchAthleteMedia(athleteUrl, athleteLink) {
+		const k = athleteUrl || athleteLink || '';
+		if (!k) return { photo: '', flag: '' };
+		if (cache.has(k)) return cache.get(k);
+		try {
+			const html = await (await fetch(k)).text();
+			const d = new DOMParser().parseFromString(html, 'text/html');
+			const media = {
+				photo: d.querySelector('section picture img')?.src || '',
+				flag: d.querySelector('section img[alt][src*="noc"]')?.src || ''
+			};
+			cache.set(k, media);
+			return media;
+		} catch (e) {
+			cache.set(k, { photo: '', flag: '' });
+			return { photo: '', flag: '' };
+		}
+	}
+
+	async function calcInfo() {
+		if (!selectedEvent) {
+			introYear = null; recordRow = null; recAth = ''; recVal = ''; recYear = ''; recPhoto = ''; recFlag = '';
+			return;
+		}
+		const rows = rawData.filter(r => r.event_title === selectedEvent && r.medal_type === 'GOLD');
+		if (!rows.length) {
+			introYear = null; recordRow = null; recAth = ''; recVal = ''; recYear = ''; recPhoto = ''; recFlag = '';
+			return;
+		}
+		introYear = d3.min(rows, r => +r.ano);
+		recordRow = measure === 'TIME'
+			? rows.reduce((a, b) => +b.value_unit < +a.value_unit ? b : a, rows[0])
+			: rows.reduce((a, b) => +b.value_unit > +a.value_unit ? b : a, rows[0]);
+		
+		if (!recordRow) return;
+		recAth = recordRow.athlete_full_name;
+		recVal = recordRow.value_unit;
+		recYear = recordRow.ano;
+		const { photo, flag } = await fetchAthleteMedia(recordRow.athlete_url, recordRow.athlete_link);
+		recPhoto = photo;
+		recFlag = flag;
+	}
+
+	async function showHover(pointData) {
+		if (isHoverPinned && !(pinnedHoverData.year === pointData.year && pinnedHoverData.athlete === pointData.raw.athlete_full_name)) {
+			return;
+		}
+		hover = {
+			sport: pointData.event, athlete: pointData.raw.athlete_full_name,
+			year: pointData.year, value: pointData.val, country: pointData.raw.country_name,
+			photo: '', flag: ''
+		};
+		const { photo, flag } = await fetchAthleteMedia(pointData.raw.athlete_url, pointData.raw.athlete_link);
+		hover.photo = photo;
+		hover.flag = flag;
+		hoverVisible = true;
+	}
+
+	const hideHover = () => {
+		if (!isHoverPinned) hoverVisible = false;
+	};
+
+	function resetAll() {
+		selectedEvent = null;
+		pinnedHoverData = null;
+		isHoverPinned = false;
+		hoverVisible = false;
+		validFilterData();
+	}
+
+	function draw() {
+		if (!svgRef || !rawData.length || !xScale || !yScale || !color) return;
+
+		const svg = d3.select(svgRef).attr('width', chartWidth).attr('height', chartHeight);
+
+		const actualChartWidth = chartWidth - margin.left - margin.right;
+		const actualChartHeight = chartHeight - margin.top - margin.bottom;
+
+		xScale.range([margin.left, actualChartWidth + margin.left]);
+		yScale.range([actualChartHeight + margin.top, margin.top]);
+
+		const activeGroups = selectedEvent ? groups.filter(([ev]) => ev === selectedEvent) : groups;
+		const allYears = activeGroups.flatMap(([, groupRows]) => groupRows.map(r => +r.ano));
+
+		if (allYears.length > 0) {
+			xScale.domain(d3.extent(allYears));
+		} else {
+			const currentYear = new Date().getFullYear();
+			xScale.domain([currentYear - 10, currentYear]);
+		}
+		
+		let yDomain;
+		const yMinNumProp = Number(yMin);
+		const yMaxNumProp = Number(yMax);
+		const isRangeFilterActive = !selectedEvent && yMin.toString().trim() !== '' && yMax.toString().trim() !== '' && !isNaN(yMinNumProp) && !isNaN(yMaxNumProp) && yMinNumProp <= yMaxNumProp;
+
+		if (isRangeFilterActive) {
+			yDomain = [yMinNumProp, yMaxNumProp];
+		} else if (selectedEvent) {
+			const eventGroup = groups.find(([evName]) => evName === selectedEvent);
+			if (eventGroup && eventGroup[1].length > 0) {
+				const eventValues = eventGroup[1].map(r => +r.value_unit).filter(v => !isNaN(v));
+				if (eventValues.length > 0) {
+					yDomain = d3.extent(eventValues);
+				}
+			}
+		}
+
+		if (!yDomain) {
+			const allVisibleValues = activeGroups.flatMap(([, groupRows]) => groupRows.map(r => +r.value_unit)).filter(v => !isNaN(v));
+			if (allVisibleValues.length > 0) {
+				yDomain = d3.extent(allVisibleValues);
+			} else {
+				yDomain = [0, 1]; 
+			}
+		}
+		
+		if (yDomain[0] === yDomain[1]) {
+			const delta = Math.abs(yDomain[0] * 0.1) || 0.5;
+			yDomain = [yDomain[0] - delta, yDomain[1] + delta];
+		}
+		yScale.domain(yDomain).nice(5);
+		
+
+		const lineGenerator = d3
+			.line()
+			.defined(d => !isNaN(d.val) && yScale(d.val) !== undefined && !isNaN(yScale(d.val)))
+			.x(d => xScale(d.year))
+			.y(d => yScale(d.val))
+			.curve(d3.curveMonotoneX);
+
+		const measureLabel = measureLabels[measure] || measure;
+
+		svg.selectAll('g.y-axis').data([null])
+			.join(
+				enter => enter.append('g').attr('class', 'y-axis callout').call(sel => sel.attr('transform', `translate(${margin.left},0)`).call(d3.axisLeft(yScale).ticks(5).tickSizeOuter(0))),
+				update => update.call(sel => sel.transition().duration(transitionDuration).call(d3.axisLeft(yScale).ticks(5).tickSizeOuter(0)))
+			);
+
+		svg.selectAll('g.x-axis').data([null])
+			.join(
+				enter => enter.append('g').attr('class', 'x-axis callout').call(sel => sel.attr('transform', `translate(0,${actualChartHeight + margin.top})`).call(d3.axisBottom(xScale).ticks(Math.min(8, actualChartWidth / 80)).tickFormat(d3.format('d')).tickSizeOuter(0))),
+				update => update.call(sel => sel.attr('transform', `translate(0,${actualChartHeight + margin.top})`).transition().duration(transitionDuration).call(d3.axisBottom(xScale).ticks(Math.min(8, actualChartWidth / 80)).tickFormat(d3.format('d')).tickSizeOuter(0)))
+			);
+		
+		svg.selectAll('text.y-axis-label').data([measureLabel])
+			.join( enter => enter.append('text').attr('class', 'y-axis-label').attr('transform', 'rotate(-90)').attr('y', margin.left / 4 - 15 ).attr('x', -( (actualChartHeight + margin.top + margin.top) / 2)).attr('text-anchor', 'middle').text(d => d), update => update.attr('y', margin.left / 4).attr('x', -( (actualChartHeight + margin.top + margin.top) / 2)).text(d => d) );
+		svg.selectAll('text.x-axis-label').data(['Ano'])
+			.join( enter => enter.append('text').attr('class', 'x-axis-label').attr('x', margin.left + actualChartWidth / 2).attr('y', chartHeight - margin.bottom / 3 + 5).attr('text-anchor', 'middle').text(d => d), update => update.attr('x', margin.left + actualChartWidth / 2).attr('y', chartHeight - margin.bottom / 3 + 22).text(d => d) );
+		svg.selectAll('text.chart-title-text').data([`${selectedEvent ? selectedEvent + ' - ' : ''}Resultados Olímpicos (${measureLabel})`])
+			.join( enter => enter.append('text').attr('class', 'chart-title-text').attr('x', (margin.left + actualChartWidth + margin.left) / 2).attr('y', margin.top / 2.5).attr('text-anchor', 'middle').text(d => d), update => update.attr('x', (margin.left + actualChartWidth + margin.left) / 2).text(d => d) );
+
+		const seriesToDraw = selectedEvent ? groups.filter(([ev]) => ev === selectedEvent) : groups;
+			const seriesData = seriesToDraw.map(([ev, rows]) => ({
+				event: ev,
+				values: rows.map(r => ({ year: +r.ano, val: +r.value_unit, raw: r, event: ev }))
+									.sort((a, b) => a.year - b.year)
+			})).filter(s => s.values.length > 0);
+
+		const paths = svg.selectAll('path.line')
+			.data(seriesData, d => d.event);
+
+		paths.join(
+			enter => enter.append('path')
+				.attr('class', 'line')
+				.attr('fill', 'none')
+				.attr('stroke', d => color(d.event))
+				.attr('stroke-width', selectedEvent ? 3.5 : 2.5)
+				.attr('stroke-linecap', 'round')
+				.style('cursor', 'pointer')
+				.on('click', (e, d) => { e.stopPropagation(); selectEvent(d.event); })
+				.attr('d', d => lineGenerator(d.values))
+				.style('opacity', 0)
+				.call(pEnter => pEnter.transition().duration(transitionDuration)
+					.style('opacity', d => selectedEvent ? (d.event === selectedEvent ? 1 : 0.1) : (groups.length > 15 ? 0.35 : 0.75))
+				),
+			update => update
+				.attr('stroke', d => color(d.event)) 
+				.style('cursor', 'pointer')
+				.on('click', (e, d) => { e.stopPropagation(); selectEvent(d.event); })
+				.call(upd => upd.transition().duration(transitionDuration)
+					.attr('stroke-width', selectedEvent ? 3.5 : 2.5)
+					.style('opacity', d => selectedEvent ? (d.event === selectedEvent ? 1 : 0.1) : (groups.length > 15 ? 0.35 : 0.75))
+					.attr('d', d => lineGenerator(d.values))
+				),
+			exit => exit.transition().duration(transitionDuration)
+				.style('opacity', 0)
+				.attr('stroke-width', 0)
+				.remove()
+		);
+
+		const allPoints = seriesData.flatMap(s => s.values.map(p => ({...p, eventKey: s.event})))
+									.filter(d => !isNaN(d.val) && yScale(d.val) !== undefined && !isNaN(yScale(d.val)));
+
+		const circlesGroup = svg.selectAll('g.circles-group').data([null]);
+		circlesGroup.enter().append('g').attr('class', 'circles-group')
+			.merge(circlesGroup);
+
+		const circles = svg.select('g.circles-group').selectAll('circle.data-point')
+			.data(allPoints, d => `${d.eventKey}-${d.year}-${d.raw.athlete_url || d.val}-${d.val}`);
+
+		const mergedCircles = circles.join(
+			enter => enter.append('circle')
+				.attr('class', 'data-point')
+				.attr('cx', d => xScale(d.year)) 
+				.attr('cy', d => yScale(d.val)) 	
+				.attr('r', 0) 				
+				.call(cEnter => cEnter.transition('enterRadius').duration(500).ease(d3.easeBounceOut)
+					.delay((d,i) => selectedEvent === d.eventKey || !selectedEvent ? i * (200 / (allPoints.filter(p => selectedEvent ? p.eventKey === selectedEvent : true).length || 1)) : 0)
+					.attr('r', selectedEvent ? 5 : 4)
+				),
+			update => update, 
+			exit => exit.transition('exitTransition').duration(transitionDuration / 2) 
+				.attr('r', 0)
+				.style('opacity', 0)
+				.remove()
+		);
+
+		mergedCircles
+			.attr('fill', d => d3.rgb(color(d.eventKey)).brighter(0.5))
+			.attr('stroke', d => d3.rgb(color(d.eventKey)).darker(1))
+			.attr('stroke-width', 1.5)
+			.style('cursor', d => (!selectedEvent || d.eventKey === selectedEvent) ? 'pointer' : 'default')
+			.on('mouseenter', function (event, dPoint) {
+				if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
+				d3.select(this).transition().duration(100).attr('r', selectedEvent ? 7 : 6).style('fill-opacity', 1);
+				showHover(dPoint);
+			})
+			.on('mouseleave', function (event, dPoint) {
+				if (isHoverPinned && pinnedHoverData.year === dPoint.year && pinnedHoverData.athlete === dPoint.raw.athlete_full_name) {
+				
+				} else {
+					d3.select(this).transition().duration(100).attr('r', selectedEvent ? 5 : 4).style('fill-opacity', null);
+				}
+				if (!isHoverPinned) hideHover();
+				else if (!(pinnedHoverData.year === dPoint.year && pinnedHoverData.athlete === dPoint.raw.athlete_full_name)) hideHover();
+			})
+			.on('click', function(e, dPoint) {
+				e.stopPropagation();
+
+				if (selectedEvent && dPoint.eventKey !== selectedEvent) return;
+
+				if (isHoverPinned &&
+					pinnedHoverData &&
+					pinnedHoverData.athlete === dPoint.raw.athlete_full_name &&
+					pinnedHoverData.year === dPoint.year) {
+					pinnedHoverData = null;
+					isHoverPinned = false;
+					hoverVisible = false;
+
+					svg.selectAll('circle.data-point')
+						.transition().duration(100)
+						.attr('r', selectedEvent ? 5 : 4);
+
+				} else {
+					pinnedHoverData = {
+						sport: dPoint.event,
+						athlete: dPoint.raw.athlete_full_name,
+						year: dPoint.year,
+						value: dPoint.val,
+						country: dPoint.raw.country_name,
+						photo: '',
+						flag: ''
+					};
+					isHoverPinned = true;
+					hoverVisible = true;
+
+					showHover(dPoint).then(() => {
+						svg.selectAll('circle.data-point')
+							.transition().duration(100)
+							.attr('r', selectedEvent ? 5 : 4);
+
+						d3.select(this)
+							.transition().duration(100)
+							.attr('r', selectedEvent ? 7 : 6);
+					});
+				}
+			})
+			.transition('updateTransition').duration(transitionDuration) 
+				.attr('cx', d => xScale(d.year))
+				.attr('cy', d => yScale(d.val))
+				.style('opacity', d => selectedEvent ? (d.eventKey === selectedEvent ? 0.9 : 0.2) : (groups.length > 15 ? 0.6 : 1))
+				.attr('r', d => (isHoverPinned && pinnedHoverData && pinnedHoverData.athlete === d.raw.athlete_full_name && pinnedHoverData.year === d.year) ? (selectedEvent ? 7:6) : (selectedEvent ? 5:4) );
+
+		if (svg.select('g.circles-group').node()) { 
+			svg.select('g.circles-group').raise();
+		}
+
+		if (allPoints.length === 0 && groups.length > 0) {
+			svg.selectAll('text.no-data-message').data([null])
+				.join(enter => enter.append('text').attr('class', 'no-data-message')
+					.attr('x', chartWidth / 3)
+					.attr('y', chartHeight / 3)
+					.attr('text-anchor', 'middle')
+					.text(selectedEvent ? 'Nenhum dado para o evento selecionado com os filtros atuais.' : 'Nenhum dado para exibir com os filtros atuais.')
+				);
+		} else {
+			svg.select('text.no-data-message').remove();
+		}
+	}
+
+	function goToAthleteDetails(athleteName) {
+		const isGitHubPages = window.location.hostname.includes('github.io');
+		const basePath = isGitHubPages ? '/final-project-analise-resultados-olimpiadas' : '';
+		
+		goto(`${basePath}/atletas?athlete=${encodeURIComponent(athleteName)}`);
+	}
+
+  
 </script>
+
 
 <div class="dashboard" on:click|self={resetAll}>
   <div class="cards-column">

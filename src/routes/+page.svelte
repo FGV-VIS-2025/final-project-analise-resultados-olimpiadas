@@ -18,6 +18,12 @@
         yMin = '';
         yMax = '';
     }
+
+    const measureLabels = {
+        TIME: 'Tempo',
+        DISTANCE: 'Distância',
+        WEIGHT: 'Peso',
+    };
 </script>
 
 <svelte:head>
@@ -68,9 +74,9 @@
     <div class="controls-container">
         <div class="controls">
             <select bind:value={measure}>
-                <option value="" disabled selected>tipo de medida</option>
+                <option value="" disabled selected>Tipo de medida</option>
                 {#each valueTypes as t}
-                    <option value={t}>{t.toLowerCase()}</option>
+                    <option value={t}>{measureLabels[t] || t.toLowerCase()}</option>
                 {/each}
             </select>
 
